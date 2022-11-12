@@ -1,11 +1,32 @@
-# Movie recommendations
+<h1 align="center">
+  Movie recommendations <br/> 
+  (React)
+</h1>
+<br>
 
-This project is made in React. This is my first time working with context as app providing method, and i think it is a great solution. I used Omdbapi API to make movie recommendations app, where you can search and learn more about a lot of movies. I used fetch and promises to get API data.
+## Table of contents
 
-## Used Technologies
+- [Project task](#project-task)
+- [Project overview](#project-overview)
+- [Built with](#built-with)
+- [Live preview](#live-preview)
 
-### `React` `CSS` `Omdbapi API` `JSON` `GitHub Pages`
+## Project task
+
+This is my first time working with context as app providing method, and i think it is a great solution. I used Omdbapi API to make movie recommendations app.
+
+## Project overview
+
+Home page displays search bar, for searching movies by name, and results for browsing godfather. You can search and learn more about a lot of movies. It displays basic info like director's name, the year it was published, runtime etc. I used fetch and promises to get API data.
+
+## Built with
+
+- React
+- CSS
+- Omdbapi API
+- JSON
+- GitHub Pages
 
 ## Live preview
 
-Live preview: https://jeko10.github.io/Movie-recommendations/
+[Click for live preview](https://jeko10.github.io/Movie-recommendations/)

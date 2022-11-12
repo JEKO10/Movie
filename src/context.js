@@ -4,7 +4,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState("superman");
+  const [query, setQuery] = useState("godfather");
   const [data, setData] = useState([]);
 
   const fetchData = async () => {
