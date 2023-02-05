@@ -25,7 +25,6 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchData();
-    console.log(data);
   }, [query]);
 
   return (
