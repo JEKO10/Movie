@@ -1,5 +1,5 @@
 <h1 align="center">
-  Movie recommendations <br/> 
+  Moviexd <br/> 
   (React)
 </h1>
 <br>
