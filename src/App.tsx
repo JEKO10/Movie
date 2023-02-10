@@ -8,6 +8,7 @@ import Watchlist from "./pages/Watchlist";
 import Lists from "./pages/Lists";
 import Reviews from "./pages/Reviews";
 import Likes from "./pages/Likes";
+import Error from "./pages/Error";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/films" element={<Films />} />
         <Route path="/lists" element={<Lists />} />
         <Route path="/singeMovie" element={<SingleMovie />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </>
   );
