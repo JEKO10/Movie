@@ -1,7 +1,7 @@
 import React from "react";
 
-function Profile() {
+const Profile = () => {
   return <section>Profile</section>;
-}
+};
 
 export default Profile;

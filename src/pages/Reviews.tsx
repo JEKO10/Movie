@@ -1,7 +1,7 @@
 import React from "react";
 
-function Reviews() {
+const Reviews = () => {
   return <section>Reviews</section>;
-}
+};
 
 export default Reviews;

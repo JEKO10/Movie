@@ -1,7 +1,7 @@
 import React from "react";
 
-function Watchlist() {
+const Watchlist = () => {
   return <section>Watchlist</section>;
-}
+};
 
 export default Watchlist;

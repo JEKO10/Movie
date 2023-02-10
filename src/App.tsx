@@ -1,4 +1,5 @@
-import { Switch, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Films from "./pages/Films";
@@ -10,30 +11,19 @@ import Likes from "./pages/Likes";
 
 function App() {
   return (
-    <Switch>
-      <Route path="/" exact>
-        <Home />
-      </Route>
-      <Route path="/profile">
-        <Profile />
-      </Route>
-      <Route path="reviews">
-        <Reviews />
-      </Route>
-      <Route path="/likes">
-        <Likes />
-      </Route>
-      <Route path="/watchlist">
-        <Watchlist />
-      </Route>
-      <Route path="/films">
-        <Films />
-      </Route>
-      <Route path="/lists">
-        <Lists />
-      </Route>
-      <Route children={<SingleMovie />} />
-    </Switch>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="reviews" element={<Reviews />} />
+        <Route path="/likes" element={<Likes />} />
+        <Route path="/watchlist" element={<Watchlist />} />
+        <Route path="/films" element={<Films />} />
+        <Route path="/lists" element={<Lists />} />
+        <Route path="/singeMovie" element={<SingleMovie />} />
+      </Routes>
+    </>
   );
 }
 

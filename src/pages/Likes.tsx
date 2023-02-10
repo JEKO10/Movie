@@ -1,6 +1,6 @@
 import React from "react";
 
-const Likes: React.FC = () => {
+const Likes = () => {
   return <section>Likes</section>;
 };
 

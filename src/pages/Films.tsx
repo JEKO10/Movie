@@ -1,7 +1,7 @@
 import React from "react";
 
-function Films() {
+const Films = () => {
   return <section>Films</section>;
-}
+};
 
 export default Films;

@@ -1,7 +1,7 @@
 import React from "react";
 
-function SingleMovie() {
+const SingleMovie = () => {
   return <section>SingleMovie</section>;
-}
+};
 
 export default SingleMovie;
