@@ -1,14 +1,21 @@
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex(space-between, center);
+  background-color: #15181d;
+  color: #fff;
   padding: 30px 50px;
 
   ul {
     list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex(space-between, center);
     width: 100%;
+
+    li {
+      color: #99aabb;
+      font-family: $primaryFont;
+      text-transform: uppercase;
+      font-weight: 900;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+    }
   }
 }

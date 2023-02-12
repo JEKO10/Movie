@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;800;900&display=swap");
 nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8,6 +9,8 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #15181d;
+  color: #fff;
   padding: 30px 50px;
 }
 nav ul {
@@ -22,6 +25,21 @@ nav ul {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+}
+nav ul li {
+  color: #99aabb;
+  font-family: "Hanken Grotesk", sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+}
+
+.home {
+  background-color: #13181c;
+  min-height: 100vh;
+  color: #fff;
+  font-family: "Hanken Grotesk", sans-serif;
 }
 
 * {
