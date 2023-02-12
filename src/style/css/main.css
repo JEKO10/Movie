@@ -36,8 +36,10 @@ nav ul li {
 }
 
 .home {
-  background-color: #13181c;
-  min-height: 100vh;
+  background: rgb(19, 24, 28);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(70%, rgb(19, 24, 28)), to(rgb(32, 38, 46)));
+  background: linear-gradient(0deg, rgb(19, 24, 28) 70%, rgb(32, 38, 46) 100%);
+  min-height: 200vh;
   color: #fff;
   font-family: "Hanken Grotesk", sans-serif;
 }

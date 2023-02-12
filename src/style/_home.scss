@@ -1,6 +1,11 @@
 .home {
-  background-color: #13181c;
-  min-height: 100vh;
+  background: rgb(19, 24, 28);
+  background: linear-gradient(
+    0deg,
+    rgba(19, 24, 28, 1) 70%,
+    rgba(32, 38, 46, 1) 100%
+  );
+  min-height: 200vh;
   color: #fff;
   font-family: $primaryFont;
 }
