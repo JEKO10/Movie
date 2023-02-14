@@ -1,23 +1,31 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+const url = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
 
-const url = `https://api.themoviedb.org/3/movie/297802?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=images,credits`;
+type User = {
+  id: number;
+  title: string;
+  price: string;
+  img: string;
+  amount: number;
+};
 
 type InitialStateType = {
   isLoading: boolean;
-  allMovies: string[];
+  allMovies: User[];
 };
 
 const initialState: InitialStateType = {
-  isLoading: true,
   allMovies: [],
+  isLoading: true,
 };
 
-const getMovies = createAsyncThunk(
+export const getMovies = createAsyncThunk(
   "movies/getMovies",
-  async (query: string, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      const resp = await axios(url);
+      const resp = await axios.get(url);
+      console.log(resp.data);
       return resp.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response);
@@ -29,17 +37,18 @@ const moviesSlice = createSlice({
   name: "movies",
   initialState,
   reducers: {},
-  extraReducers: {
-    [getMovies.pending]: (state) => {
-      state.isLoading = true;
-    },
-    [getMovies.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.allMovies = action.payload;
-    },
-    [getMovies.rejected]: (state, action) => {
-      state.isLoading = false;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getMovies.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getMovies.fulfilled, (state, action: PayloadAction<User[]>) => {
+        state.isLoading = false;
+        state.allMovies = action.payload;
+      })
+      .addCase(getMovies.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 

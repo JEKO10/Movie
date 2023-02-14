@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Home from "./pages/Home";
@@ -9,8 +10,18 @@ import Lists from "./pages/Lists";
 import Reviews from "./pages/Reviews";
 import Likes from "./pages/Likes";
 import Error from "./pages/Error";
+import { getMovies } from "./features/moviesSlice";
+import { useAppSelector, useAppDispatch } from "./common/hooks";
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  const { allMovies } = useAppSelector((state) => state.movies);
+
+  useEffect(() => {
+    dispatch(getMovies());
+  }, [allMovies]);
+
   return (
     <>
       <Navbar />
