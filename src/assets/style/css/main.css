@@ -11,16 +11,20 @@ nav {
           align-items: center;
   background-color: #15181d;
   color: #fff;
-  padding: 30px 50px;
+  padding: 20px 50px;
+}
+nav img {
+  height: 55px;
+  cursor: pointer;
 }
 nav ul {
   list-style-type: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -33,15 +37,8 @@ nav ul li {
   font-weight: 900;
   font-size: 0.8rem;
   letter-spacing: 1.5px;
-}
-
-.home {
-  background: rgb(19, 24, 28);
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(70%, rgb(19, 24, 28)), to(rgb(32, 38, 46)));
-  background: linear-gradient(0deg, rgb(19, 24, 28) 70%, rgb(32, 38, 46) 100%);
-  min-height: 200vh;
-  color: #fff;
-  font-family: "Hanken Grotesk", sans-serif;
+  padding: 0 20px;
+  cursor: pointer;
 }
 
 * {
@@ -49,4 +46,18 @@ nav ul li {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+body {
+  background: rgb(19, 24, 28);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(70%, rgb(19, 24, 28)), to(rgb(32, 38, 46)));
+  background: linear-gradient(0deg, rgb(19, 24, 28) 70%, rgb(32, 38, 46) 100%);
+}
+
+main {
+  max-width: 60vw;
+  margin: 3rem auto;
+  min-height: 200vh;
+  color: #fff;
+  font-family: "Hanken Grotesk", sans-serif;
 }/*# sourceMappingURL=main.css.map */

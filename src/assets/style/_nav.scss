@@ -2,11 +2,16 @@ nav {
   @include flex(space-between, center);
   background-color: #15181d;
   color: #fff;
-  padding: 30px 50px;
+  padding: 20px 50px;
+
+  img {
+    height: 55px;
+    cursor: pointer;
+  }
 
   ul {
     list-style-type: none;
-    @include flex(space-between, center);
+    @include flex(flex-end, center);
     width: 100%;
 
     li {
@@ -16,6 +21,8 @@ nav {
       font-weight: 900;
       font-size: 0.8rem;
       letter-spacing: 1.5px;
+      padding: 0 20px;
+      cursor: pointer;
     }
   }
 }

@@ -1,20 +1,22 @@
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import { getMovies } from "./features/moviesSlice";
-import { useAppSelector, useAppDispatch } from "./common/hooks";
+import { useAppDispatch } from "./common/hooks";
+import RouterProvider from "../router/RouterProvide";
 
 function App() {
   const dispatch = useAppDispatch();
 
-  const { allMovies } = useAppSelector((state) => state.movies);
-
   useEffect(() => {
     dispatch(getMovies());
-  }, [allMovies]);
+  }, []);
 
   return (
     <>
       <Navbar />
+      <main>
+        <RouterProvider />
+      </main>
     </>
   );
 }

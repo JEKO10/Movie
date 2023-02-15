@@ -10,38 +10,47 @@ import Error from "./pages/Error";
 
 const routes = [
   {
+    id: 0,
     path: "/",
     element: Home,
   },
   {
+    id: 1,
     path: "/profile",
     element: Profile,
   },
   {
+    id: 2,
     path: "/reviews",
     element: Reviews,
   },
   {
+    id: 3,
     path: "/likes",
     element: Likes,
   },
   {
+    id: 4,
     path: "/watchlist",
     element: Watchlist,
   },
   {
+    id: 5,
     path: "/films",
     element: Films,
   },
   {
+    id: 6,
     path: "/lists",
     element: Lists,
   },
   {
+    id: 7,
     path: "/singeMovie",
     element: SingleMovie,
   },
   {
+    id: 8,
     path: "/*",
     element: Error,
   },
