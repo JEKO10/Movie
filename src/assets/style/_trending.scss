@@ -1,2 +1,49 @@
 .trending {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  article {
+    @include flex(space-between, center);
+    gap: 140px 10px;
+
+    > div {
+      height: 250px;
+      width: 160px;
+
+      img {
+        height: 100%;
+        width: 100%;
+        border: solid 2px;
+        border-image: linear-gradient(rgba(225, 225, 255, 0.6), rgb(0, 0, 0)) 1 /
+          200px;
+      }
+
+      .info {
+        background: #445566;
+        margin-top: -0.3rem;
+        padding: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        border: solid 2px;
+        border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
+
+        h4.move {
+          animation: move 3s linear infinite alternate;
+        }
+      }
+    }
+  }
+}
+
+@keyframes move {
+  0%,
+  25% {
+    transform: translateX(0%);
+  }
+  75%,
+  100% {
+    transform: translateX(-100%);
+  }
 }

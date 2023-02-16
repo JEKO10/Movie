@@ -6,8 +6,8 @@ const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env
 type User = {
   id: number;
   title: string;
+  name: string;
   poster_path: string;
-  release_date: string;
 };
 
 type InitialStateType = {
