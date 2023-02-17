@@ -20,13 +20,12 @@ const Trending = () => {
           <div key={id} className="movie">
             <img src={posterUrl + poster_path} alt="Poster" />
             <div className="info">
-              <h4
-                className={
-                  title?.length > 15 || name?.length > 15 ? "move" : ""
-                }
-              >
-                {title ? title : name}
-              </h4>
+              <h4>{title ? title : name}</h4>
+              {title?.length > 17 || name?.length > 17 ? (
+                <div className="fade"></div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         ))}

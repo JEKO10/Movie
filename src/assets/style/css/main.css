@@ -59,7 +59,7 @@ nav ul li {
 }
 .trending article > div {
   height: 250px;
-  width: 160px;
+  width: 180px;
 }
 .trending article > div img {
   height: 100%;
@@ -68,8 +68,10 @@ nav ul li {
   -o-border-image: linear-gradient(rgba(225, 225, 255, 0.6), rgb(0, 0, 0)) 1/200px;
      border-image: -webkit-gradient(linear, left top, left bottom, from(rgba(225, 225, 255, 0.6)), to(rgb(0, 0, 0))) 1/200px;
      border-image: linear-gradient(rgba(225, 225, 255, 0.6), rgb(0, 0, 0)) 1/200px;
+  border-bottom: none;
 }
 .trending article > div .info {
+  position: relative;
   background: #445566;
   margin-top: -0.3rem;
   padding: 5px;
@@ -79,33 +81,18 @@ nav ul li {
   -o-border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
      border-image: -webkit-gradient(linear, left bottom, left top, from(rgba(225, 225, 255, 0.6)), to(#000)) 1;
      border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
+  border-top: none;
 }
-.trending article > div .info h4.move {
-  -webkit-animation: move 3s linear infinite alternate;
-          animation: move 3s linear infinite alternate;
-}
-
-@-webkit-keyframes move {
-  0%, 25% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-  75%, 100% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
+.trending article > div .info .fade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: -webkit-gradient(linear, left top, right top, color-stop(90%, rgba(255, 255, 255, 0)), to(rgb(68, 85, 102)));
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 90%, rgb(68, 85, 102) 100%);
 }
 
-@keyframes move {
-  0%, 25% {
-    -webkit-transform: translateX(0%);
-            transform: translateX(0%);
-  }
-  75%, 100% {
-    -webkit-transform: translateX(-100%);
-            transform: translateX(-100%);
-  }
-}
 * {
   margin: 0;
   padding: 0;
