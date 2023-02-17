@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`;
-
 type User = {
   id: number;
   title: string;
@@ -13,18 +11,22 @@ type User = {
 type InitialStateType = {
   isLoading: boolean;
   trendingMovies: User[];
+  time: string;
 };
 
 const initialState: InitialStateType = {
   isLoading: true,
   trendingMovies: [],
+  time: "day",
 };
 
 export const getTrending = createAsyncThunk(
   "movies/getTrending",
-  async (data, thunkAPI) => {
+  async (time: string, thunkAPI) => {
     try {
-      const resp = await axios.get(url);
+      const resp = await axios.get(
+        `https://api.themoviedb.org/3/trending/all/${time}?api_key=${process.env.REACT_APP_API_KEY}`
+      );
       return resp.data.results;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response);
@@ -35,7 +37,15 @@ export const getTrending = createAsyncThunk(
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    changeTime: (state) => {
+      if (state.time === "day") {
+        state.time = "week";
+      } else {
+        state.time = "day";
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getTrending.pending, (state) => {
@@ -53,5 +63,7 @@ const moviesSlice = createSlice({
       });
   },
 });
+
+export const { changeTime } = moviesSlice.actions;
 
 export const { reducer } = moviesSlice;

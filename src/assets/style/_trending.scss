@@ -1,7 +1,88 @@
 .trending {
-  h1 {
-    font-size: 2rem;
+  > div {
+    @include flex(space-between, center);
     margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .toggle .knobs,
+    .layer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .button {
+      position: relative;
+      top: 50%;
+      height: 36px;
+      width: 78px;
+      overflow: hidden;
+      border-radius: 100px;
+
+      & .knobs:before {
+        content: "Day";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 24px;
+        height: 10px;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1;
+        padding: 9px 4px;
+        background-color: #dda824;
+        border-radius: 50%;
+        transition: 500ms all ease,
+          left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+      }
+
+      & .checkbox {
+        &:active + .knobs:before {
+          width: 46px;
+        }
+
+        &:checked:active + .knobs:before {
+          margin-left: -26px;
+        }
+
+        &:checked + .knobs:before {
+          content: "Week";
+          left: 42px;
+          background-color: #fff;
+          color: #000;
+        }
+
+        &:checked ~ .layer {
+          background-color: #dda824;
+        }
+      }
+    }
+
+    .checkbox {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 3;
+      cursor: pointer;
+    }
+
+    .knobs {
+      z-index: 2;
+    }
+
+    .layer {
+      width: 100%;
+      background-color: #fff;
+      transition: 500ms all ease;
+    }
   }
 
   article {
@@ -59,3 +140,70 @@
 //     transform: translateX(-100%);
 //   }
 // }
+
+// .switch {
+//   position: relative;
+//   display: inline-block;
+//   width: 90px;
+//   height: 34px;
+
+//   input {
+//     display: none;
+
+//     &:checked + .slider {
+//       background-color: #2196f3;
+
+//       &::after {
+//         content: "Week";
+//       }
+//     }
+
+//     &:focus + .slider {
+//       box-shadow: 0 0 1px #2196f3;
+//     }
+
+//     &:checked + .slider:before {
+//       -webkit-transform: translateX(26px);
+//       -ms-transform: translateX(26px);
+//       transform: translateX(55px);
+//     }
+//   }
+
+//   .slider {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     background-color: #ccc;
+//     transition: all 500ms ease;
+//     cursor: pointer;
+
+//     &::before {
+//       content: "";
+//       position: absolute;
+//       height: 20px;
+//       width: 20px;
+//       left: 4px;
+//       bottom: 7px;
+//       background-color: white;
+//       transition: all 500ms ease;
+//     }
+
+//     &::after {
+//       content: "Day";
+//       position: absolute;
+//       top: 50%;
+//       left: 50%;
+//       display: block;
+//       color: #fff;
+//       font-size: 10px;
+//       transform: translate(-50%, -50%);
+//     }
+//   }
+// }
+
+// <label className="switch">
+//       <input type="checkbox" />
+//       <div className="slider"></div>
+//     </label>
