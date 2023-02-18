@@ -1,9 +1,11 @@
-import Trending from "../features/trending/Trending";
+import TrendingMovie from "../features/trendingMovie/TrendingMovie";
+import TrendingPeople from "../features/trendingPeople/TrendingPeople";
 
 const Home = () => {
   return (
     <section className="home">
-      <Trending />
+      <TrendingMovie />
+      <TrendingPeople />
     </section>
   );
 };

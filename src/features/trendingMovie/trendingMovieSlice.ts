@@ -25,7 +25,7 @@ export const getTrending = createAsyncThunk(
   async (time: string, thunkAPI) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/trending/all/${time}?api_key=${process.env.REACT_APP_API_KEY}`
+        `https://api.themoviedb.org/3/trending/movie/${time}?api_key=${process.env.REACT_APP_API_KEY}`
       );
       return resp.data.results;
     } catch (error: any) {

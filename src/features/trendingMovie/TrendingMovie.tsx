@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getTrending, changeTime } from "./trendingSlice";
+import { getTrending, changeTime } from "./trendingMovieSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 
 const Trending = () => {
@@ -13,8 +13,8 @@ const Trending = () => {
 
   return (
     <section className="trending">
-      <div>
-        <h2>Popular movies this {time}</h2>
+      <div className="title">
+        <h2>Popular movies {time === "day" ? "today" : "this " + time}</h2>
         <div className="toggle" onClick={() => dispatch(changeTime())}>
           <div className="button">
             <input type="checkbox" className="checkbox" />
@@ -22,11 +22,11 @@ const Trending = () => {
             <div className="layer"></div>
           </div>
         </div>
-        {/* <button >asd</button> */}
       </div>
+      <div className="underline"></div>
       <article>
         {trendingMovies.slice(0, 5).map(({ id, title, name, poster_path }) => (
-          <div key={id} className="movie">
+          <div key={id} className="trendElement">
             <img src={posterUrl + poster_path} alt="Poster" />
             <div className="info">
               <h4>{title ? title : name}</h4>
