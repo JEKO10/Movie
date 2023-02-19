@@ -13,19 +13,14 @@
 
 ## Project task
 
-This is my first time working with context as app providing method, and I think it is a great solution. I used Omdbapi API to make a movie recommendations app.
 
 ## Project overview
 
-The home page displays a search bar, for searching movies by name, and results for browsing godfather. You can search and learn more about a lot of movies. It displays basic info like the director's name, the year it was published, runtime, etc. I used fetch and promises to get API data.
+
 
 ## Built with
 
 - React
-- CSS
-- Omdbapi API
-- JSON
-- GitHub Pages
 
 ## Live preview
 
