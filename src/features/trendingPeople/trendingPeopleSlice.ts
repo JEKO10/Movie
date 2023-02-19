@@ -18,8 +18,8 @@ const initialState: InitialStateType = {
   trendingPeople: [],
 };
 
-export const getPeople = createAsyncThunk(
-  "people/getTrending",
+export const getTrendingPeople = createAsyncThunk(
+  "trendingPeople/getTrending",
   async (data, thunkAPI) => {
     try {
       const resp = await axios.get(
@@ -32,23 +32,26 @@ export const getPeople = createAsyncThunk(
   }
 );
 
-const peopleSlice = createSlice({
-  name: "people",
+const trendingPeopleSlice = createSlice({
+  name: "trendingPeople",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getPeople.pending, (state) => {
+      .addCase(getTrendingPeople.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getPeople.fulfilled, (state, action: PayloadAction<User[]>) => {
-        state.isLoading = false;
-        state.trendingPeople = action.payload;
-      })
-      .addCase(getPeople.rejected, (state) => {
+      .addCase(
+        getTrendingPeople.fulfilled,
+        (state, action: PayloadAction<User[]>) => {
+          state.isLoading = false;
+          state.trendingPeople = action.payload;
+        }
+      )
+      .addCase(getTrendingPeople.rejected, (state) => {
         state.isLoading = false;
       });
   },
 });
 
-export const { reducer } = peopleSlice;
+export const { reducer } = trendingPeopleSlice;

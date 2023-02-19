@@ -1,14 +1,14 @@
 import { useEffect } from "react";
-import { getPeople } from "./trendingPeopleSlice";
+import { getTrendingPeople } from "./trendingPeopleSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 
 const Trending = () => {
-  const { trendingPeople } = useAppSelector((state) => state.people);
+  const { trendingPeople } = useAppSelector((state) => state.trendingPeople);
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w500/";
 
   useEffect(() => {
-    dispatch(getPeople());
+    dispatch(getTrendingPeople());
     console.log(trendingPeople);
   }, []);
 

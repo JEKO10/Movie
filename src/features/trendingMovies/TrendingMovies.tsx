@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import { getTrending, changeTime } from "./trendingMovieSlice";
+import { getTrending, changeTime } from "./trendingMoviesSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 
 const Trending = () => {
-  const { trendingMovies, time } = useAppSelector((state) => state.movies);
+  const { trendingMovies, time } = useAppSelector(
+    (state) => state.trendingMovies
+  );
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w500/";
 

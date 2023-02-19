@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { reducer as moviesReducer } from "../features/trendingMovie/trendingMovieSlice";
-import { reducer as peopleReducer } from "../features/trendingPeople/trendingPeopleSlice";
+import { reducer as trendingMoviesReducer } from "../features/trendingMovies/trendingMoviesSlice";
+import { reducer as trendingPeopleReducer } from "../features/trendingPeople/trendingPeopleSlice";
+import { reducer as singlePersonReducer } from "../features/singlePerson/singlePersonSlice";
 
 export const store = configureStore({
   reducer: {
-    movies: moviesReducer,
-    people: peopleReducer,
+    trendingMovies: trendingMoviesReducer,
+    trendingPeople: trendingPeopleReducer,
+    singlePerson: singlePersonReducer,
   },
 });
 

@@ -102,14 +102,21 @@
     .trendElement {
       height: 250px;
       width: 180px;
+      cursor: pointer;
 
       img {
         height: 100%;
         width: 100%;
         border: solid 2px;
-        border-image: linear-gradient(rgba(225, 225, 255, 0.6), rgb(0, 0, 0)) 1 /
-          200px;
+        border-image: linear-gradient(rgba(225, 225, 255, 0.6), rgb(19, 24, 28))
+          1 / 200px;
         border-bottom: none;
+        transition: all 500ms ease;
+
+        &:hover {
+          border-image: linear-gradient(rgba(225, 225, 255, 1), rgb(19, 24, 28))
+            1 / 200px;
+        }
       }
 
       .info {

@@ -21,7 +21,7 @@ const initialState: InitialStateType = {
 };
 
 export const getTrending = createAsyncThunk(
-  "movies/getTrending",
+  "trendingMovies/getTrending",
   async (time: string, thunkAPI) => {
     try {
       const resp = await axios.get(
@@ -34,8 +34,8 @@ export const getTrending = createAsyncThunk(
   }
 );
 
-const moviesSlice = createSlice({
-  name: "movies",
+const trendingMoviesSlice = createSlice({
+  name: "trendingMovies",
   initialState,
   reducers: {
     changeTime: (state) => {
@@ -64,6 +64,6 @@ const moviesSlice = createSlice({
   },
 });
 
-export const { changeTime } = moviesSlice.actions;
+export const { changeTime } = trendingMoviesSlice.actions;
 
-export const { reducer } = moviesSlice;
+export const { reducer } = trendingMoviesSlice;

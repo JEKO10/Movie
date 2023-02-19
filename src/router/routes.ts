@@ -1,11 +1,12 @@
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import Films from "../pages/Films";
-import SingleMovie from "../pages/SingleMovie";
 import Watchlist from "../pages/Watchlist";
 import Lists from "../pages/Lists";
 import Reviews from "../pages/Reviews";
 import Likes from "../pages/Likes";
+import SingleMovie from "../pages/SingleMovie";
+import Person from "../pages/Person";
 import Error from "../pages/Error";
 
 const routes = [
@@ -46,11 +47,16 @@ const routes = [
   },
   {
     id: 7,
-    path: "/singeMovie",
+    path: "/movies/:id",
     element: SingleMovie,
   },
   {
     id: 8,
+    path: "/person/:id",
+    element: Person,
+  },
+  {
+    id: 9,
     path: "/*",
     element: Error,
   },
