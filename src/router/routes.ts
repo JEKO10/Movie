@@ -6,7 +6,7 @@ import Lists from "../pages/Lists";
 import Reviews from "../pages/Reviews";
 import Likes from "../pages/Likes";
 import SingleMovie from "../pages/SingleMovie";
-import Person from "../pages/Person";
+import SinglePerson from "../features/singlePerson/SinglePerson";
 import Error from "../pages/Error";
 
 const routes = [
@@ -52,8 +52,8 @@ const routes = [
   },
   {
     id: 8,
-    path: "/person/:id",
-    element: Person,
+    path: "/person/:id/:name",
+    element: SinglePerson,
   },
   {
     id: 9,

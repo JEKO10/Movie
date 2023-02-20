@@ -147,6 +147,8 @@ nav ul li {
 .trending article .trendElement {
   height: 250px;
   width: 180px;
+  color: #fff;
+  text-decoration: none;
   cursor: pointer;
 }
 .trending article .trendElement img {
@@ -186,6 +188,10 @@ nav ul li {
   height: 100%;
   background: -webkit-gradient(linear, left top, right top, color-stop(90%, rgba(255, 255, 255, 0)), to(rgb(68, 85, 102)));
   background: linear-gradient(to right, rgba(255, 255, 255, 0) 90%, rgb(68, 85, 102) 100%);
+}
+
+.person {
+  min-height: 200vh;
 }
 
 * {

@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import { getTrendingPeople } from "./trendingPeopleSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Link } from "react-router-dom";
 
 const Trending = () => {
-  const { trendingPeople } = useAppSelector((state) => state.trendingPeople);
+  const { trendingPeople } = useAppSelector((store) => store.trendingPeople);
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w500/";
 
   useEffect(() => {
     dispatch(getTrendingPeople());
-    console.log(trendingPeople);
   }, []);
 
   return (
@@ -20,13 +20,13 @@ const Trending = () => {
       <div className="underline"></div>
       <article>
         {trendingPeople.slice(0, 5).map(({ id, name, profile_path }) => (
-          <div key={id} className="trendElement">
+          <Link to={`/person/${id}/${name}`} key={id} className="trendElement">
             <img src={posterUrl + profile_path} alt="Poster" />
             <div className="info">
               <h4>{name}</h4>
               {name?.length > 17 ? <div className="fade"></div> : ""}
             </div>
-          </div>
+          </Link>
         ))}
       </article>
     </section>

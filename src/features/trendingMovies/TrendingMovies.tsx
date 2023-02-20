@@ -4,13 +4,14 @@ import { useAppDispatch, useAppSelector } from "../../common/hooks";
 
 const Trending = () => {
   const { trendingMovies, time } = useAppSelector(
-    (state) => state.trendingMovies
+    (store) => store.trendingMovies
   );
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w500/";
 
   useEffect(() => {
     dispatch(getTrending(time));
+    console.log(trendingMovies);
   }, [time]);
 
   return (
