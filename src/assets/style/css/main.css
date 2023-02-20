@@ -191,7 +191,38 @@ nav ul li {
 }
 
 .person {
-  min-height: 200vh;
+  color: rgba(255, 255, 255, 0.5);
+}
+.person img {
+  width: 200px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+.person img:hover {
+  border: 2px solid #fff;
+}
+.person h2 {
+  margin: 0.5rem 0;
+}
+.person h4 {
+  margin: 0.2rem 0;
+}
+.person h5 {
+  display: inline-block;
+  font-size: 1rem;
+  color: #fff;
+  text-decoration: underline;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.person h5:hover {
+  color: #40bcf4;
+}
+.person p {
+  margin-top: 1rem;
+  max-width: 280px;
 }
 
 * {

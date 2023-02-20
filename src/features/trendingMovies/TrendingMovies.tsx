@@ -11,7 +11,6 @@ const Trending = () => {
 
   useEffect(() => {
     dispatch(getTrending(time));
-    console.log(trendingMovies);
   }, [time]);
 
   return (

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Trending = () => {
   const { trendingPeople } = useAppSelector((store) => store.trendingPeople);
   const dispatch = useAppDispatch();
-  const posterUrl = "https://image.tmdb.org/t/p/w500/";
+  const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   useEffect(() => {
     dispatch(getTrendingPeople());

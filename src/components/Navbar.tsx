@@ -1,9 +1,9 @@
-import Logo from "../assets/images/log.png";
+import logo from "../assets/images/log.png";
 
 const Navbar = () => {
   return (
     <nav>
-      <img src={Logo} alt="Logo" />
+      <img src={logo} alt="Logo" />
       <ul>
         <li>Profile</li>
         <li>Films</li>

@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 type PersonInfoType = {
-  // id: number;
   name: string;
   biography: string;
   birthday: string;
@@ -10,18 +9,19 @@ type PersonInfoType = {
   gender: number;
   known_for_department: string;
   place_of_birth: string;
-  popularity: number;
   profile_path: string;
 };
 
 type InitialStateType = {
   isLoading: boolean;
   personInfo: PersonInfoType;
+  isBioOpen: boolean;
 };
 
 const initialState: InitialStateType = {
   isLoading: true,
   personInfo: <PersonInfoType>{},
+  isBioOpen: false,
 };
 
 export const getPerson = createAsyncThunk(
@@ -41,7 +41,15 @@ export const getPerson = createAsyncThunk(
 const singlePersonSlice = createSlice({
   name: "singlePerson",
   initialState,
-  reducers: {},
+  reducers: {
+    toggleBio: (state) => {
+      if (state.isBioOpen === false) {
+        state.isBioOpen = true;
+      } else {
+        state.isBioOpen = false;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getPerson.pending, (state) => {
@@ -59,5 +67,7 @@ const singlePersonSlice = createSlice({
       });
   },
 });
+
+export const { toggleBio } = singlePersonSlice.actions;
 
 export const { reducer } = singlePersonSlice;
