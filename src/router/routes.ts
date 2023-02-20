@@ -5,7 +5,7 @@ import Watchlist from "../pages/Watchlist";
 import Lists from "../pages/Lists";
 import Reviews from "../pages/Reviews";
 import Likes from "../pages/Likes";
-import SingleMovie from "../pages/SingleMovie";
+import SingleMovie from "../features/singleMovie/SingleMovie";
 import SinglePerson from "../features/singlePerson/SinglePerson";
 import Error from "../pages/Error";
 
@@ -47,7 +47,7 @@ const routes = [
   },
   {
     id: 7,
-    path: "/movies/:id",
+    path: "/movie/:id",
     element: SingleMovie,
   },
   {
