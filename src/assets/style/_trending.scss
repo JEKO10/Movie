@@ -1,98 +1,20 @@
 .trending {
   margin: 5rem 0 8rem 0;
 
+  h2 {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
   .underline {
     width: 100%;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.5);
     margin-bottom: 1rem;
-  }
-
-  .title {
-    @include flex(space-between, center);
-    margin-bottom: 0.2rem;
-
-    h2 {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.5rem;
-    }
-
-    .toggle .knobs,
-    .layer {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-
-    .button {
-      position: relative;
-      top: 50%;
-      height: 36px;
-      width: 78px;
-      overflow: hidden;
-      border-radius: 100px;
-
-      & .knobs:before {
-        content: "Day";
-        position: absolute;
-        top: 4px;
-        left: 4px;
-        width: 24px;
-        height: 10px;
-        color: #fff;
-        font-size: 10px;
-        font-weight: 700;
-        text-align: center;
-        line-height: 1;
-        padding: 9px 4px;
-        background-color: #dda824;
-        border-radius: 50%;
-        transition: 500ms all ease,
-          left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
-      }
-
-      & .checkbox {
-        &:active + .knobs:before {
-          width: 46px;
-        }
-
-        &:checked:active + .knobs:before {
-          margin-left: -26px;
-        }
-
-        &:checked + .knobs:before {
-          content: "Week";
-          left: 42px;
-          background-color: #fff;
-          color: #000;
-        }
-
-        &:checked ~ .layer {
-          background-color: #dda824;
-        }
-      }
-    }
-
-    .checkbox {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      z-index: 3;
-      cursor: pointer;
-    }
-
-    .knobs {
-      z-index: 2;
-    }
-
-    .layer {
-      width: 100%;
-      background-color: #fff;
-      transition: 500ms all ease;
-    }
   }
 
   article {
