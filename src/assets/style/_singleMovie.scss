@@ -1,0 +1,5 @@
+.singleMovie {
+  .wrapper {
+    @include flex(center, center);
+  }
+}
