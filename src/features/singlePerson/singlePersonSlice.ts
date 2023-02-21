@@ -10,6 +10,7 @@ type PersonInfoType = {
   known_for_department: string;
   place_of_birth: string;
   profile_path: string;
+  imdb_id: string;
 };
 
 type InitialStateType = {

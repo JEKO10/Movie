@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { getTrending, changeTime } from "./trendingMoviesSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Link } from "react-router-dom";
 
 const Trending = () => {
   const { trendingMovies, time } = useAppSelector(
@@ -29,7 +30,7 @@ const Trending = () => {
       <div className="underline"></div>
       <article>
         {trendingMovies.slice(0, 5).map(({ id, title, name, poster_path }) => (
-          <div key={id} className="trendElement">
+          <Link to={`/movie/${id}`} key={id} className="trendElement">
             <img src={posterUrl + poster_path} alt="Poster" />
             <div className="info">
               <h4>{title ? title : name}</h4>
@@ -39,7 +40,7 @@ const Trending = () => {
                 ""
               )}
             </div>
-          </div>
+          </Link>
         ))}
       </article>
     </section>

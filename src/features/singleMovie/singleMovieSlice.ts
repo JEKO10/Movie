@@ -1,8 +1,45 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type MovieInfoType = {
+type MovieCollection = {
+  id: number;
+  backdrop_path: string;
   name: string;
+  poster_path: string;
+};
+
+type MovieGenres = {
+  id: number;
+  name: string;
+};
+
+type MovieCompanies = {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
+};
+
+type MovieInfoType = {
+  title: string;
+  backdrop_path: string;
+  belongs_to_collection: MovieCollection;
+  genres: MovieGenres[];
+  budget: number;
+  homepage: string;
+  imdb_id: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: MovieCompanies[];
+  production_countries: [{ name: string }];
+  release_date: string;
+  revenue: number;
+  runtime: number;
+  spoken_languages: [{ english_name: string }];
+  status: string;
+  vote_average: number;
+  vote_count: number;
 };
 
 type InitialStateType = {

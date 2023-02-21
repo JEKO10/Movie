@@ -13,17 +13,15 @@ const SinglePerson = () => {
     known_for_department,
     place_of_birth,
     profile_path,
+    imdb_id,
   } = useAppSelector((store) => store.singlePerson.personInfo);
-  const { personInfo, isBioOpen } = useAppSelector(
-    (store) => store.singlePerson
-  );
+  const { isBioOpen } = useAppSelector((store) => store.singlePerson);
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   useEffect(() => {
     dispatch(getPerson(id));
-    console.log(personInfo.biography);
   }, [name]);
 
   return (
