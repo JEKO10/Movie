@@ -44,13 +44,37 @@ nav ul li {
 .trending {
   margin: 5rem 0 8rem 0;
 }
-.trending h2 {
+.trending .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 0.2rem;
+}
+.trending .title h2,
+.trending .title select {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 500;
-  margin-bottom: 0.2rem;
+}
+.trending .title select {
+  margin-left: 0.3rem;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: "Hanken Grotesk", sans-serif;
+  cursor: pointer;
+}
+.trending .title select option {
+  background-color: #445566;
+  color: rgba(255, 255, 255, 0.5);
 }
 .trending .underline {
   width: 100%;
@@ -58,7 +82,7 @@ nav ul li {
   background-color: rgba(255, 255, 255, 0.5);
   margin-bottom: 1rem;
 }
-.trending article {
+.trending article:last-of-type {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -70,14 +94,14 @@ nav ul li {
           align-items: center;
   gap: 140px 10px;
 }
-.trending article .trendElement {
+.trending article:last-of-type .trendElement {
   height: 250px;
   width: 180px;
   color: #fff;
   text-decoration: none;
   cursor: pointer;
 }
-.trending article .trendElement img {
+.trending article:last-of-type .trendElement img {
   height: 100%;
   width: 100%;
   border: solid 2px;
@@ -88,12 +112,12 @@ nav ul li {
   -webkit-transition: all 500ms ease;
   transition: all 500ms ease;
 }
-.trending article .trendElement img:hover {
+.trending article:last-of-type .trendElement img:hover {
   -o-border-image: linear-gradient(rgb(225, 225, 255), rgb(19, 24, 28)) 1/200px;
      border-image: -webkit-gradient(linear, left top, left bottom, from(rgb(225, 225, 255)), to(rgb(19, 24, 28))) 1/200px;
      border-image: linear-gradient(rgb(225, 225, 255), rgb(19, 24, 28)) 1/200px;
 }
-.trending article .trendElement .info {
+.trending article:last-of-type .trendElement .info {
   position: relative;
   background: #445566;
   margin-top: -0.3rem;
@@ -106,7 +130,7 @@ nav ul li {
      border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
   border-top: none;
 }
-.trending article .trendElement .info .fade {
+.trending article:last-of-type .trendElement .info .fade {
   position: absolute;
   top: 0;
   left: 0;

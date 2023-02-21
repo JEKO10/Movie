@@ -38,12 +38,8 @@ const trendingMoviesSlice = createSlice({
   name: "trendingMovies",
   initialState,
   reducers: {
-    changeTime: (state) => {
-      if (state.time === "day") {
-        state.time = "week";
-      } else {
-        state.time = "day";
-      }
+    changeTime: (state, { payload }) => {
+      state.time = payload;
     },
   },
   extraReducers: (builder) => {

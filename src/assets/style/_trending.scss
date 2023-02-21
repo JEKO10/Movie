@@ -1,13 +1,32 @@
 .trending {
   margin: 5rem 0 8rem 0;
 
-  h2 {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 500;
+  .title {
+    @include flex(flex-start, center);
     margin-bottom: 0.2rem;
+
+    h2,
+    select {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    select {
+      margin-left: 0.3rem;
+      background: none;
+      border: none;
+      outline: none;
+      font-family: $primaryFont;
+      cursor: pointer;
+
+      option {
+        background-color: #445566;
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
   }
 
   .underline {
@@ -17,7 +36,7 @@
     margin-bottom: 1rem;
   }
 
-  article {
+  article:last-of-type {
     @include flex(space-between, center);
     gap: 140px 10px;
 

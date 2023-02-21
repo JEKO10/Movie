@@ -15,7 +15,17 @@ const Trending = () => {
 
   return (
     <section className="trending">
-      <h2>Popular movies {time === "day" ? "today" : "this " + time}</h2>
+      <article className="title">
+        <h2>Popular movies</h2>
+        <select
+          name="time"
+          onChange={(e) => dispatch(changeTime(e.currentTarget.value))}
+          style={{ width: time === "day" ? "80px" : "120px" }}
+        >
+          <option value="day">Today</option>
+          <option value="week">This week</option>
+        </select>
+      </article>
       <div className="underline"></div>
       <article>
         {trendingMovies.slice(0, 5).map(({ id, title, name, poster_path }) => (
@@ -37,3 +47,6 @@ const Trending = () => {
 };
 
 export default Trending;
+// {
+// time === "day" ? "today" : "this " + time;
+// }
