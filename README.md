@@ -13,6 +13,8 @@
 
 ## Project task
 
+This website is built with SASS/React-TypeScript and Redux-Toolkit. I used TMDB API to make a movie app. You can sign up, add reviews, make lists, add films to your watchlist and
+search for movies.
 
 ## Project overview
 
