@@ -18,11 +18,16 @@ search for movies.
 
 ## Project overview
 
-
+I created 4 redux-toolkit slices so far. One for trending movies that gets data from TMDB API with axios. Second for trending people. And other 2 for getting single movie and person information.
 
 ## Built with
 
 - React
+- TypeScript
+- Sass
+- Redux-Toolkit
+- React-router-dom
+- TMDB API
 
 ## Live preview
 
