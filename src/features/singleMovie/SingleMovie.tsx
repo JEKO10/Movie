@@ -6,6 +6,7 @@ import { getMovie } from "./singleMovieSlice";
 const SingleMovie = () => {
   const {
     title,
+    tagline,
     backdrop_path,
     belongs_to_collection,
     genres,
@@ -25,18 +26,26 @@ const SingleMovie = () => {
     vote_average,
     vote_count,
   } = useAppSelector((store) => store.singleMovie.movieInfo);
+  const { movieInfo } = useAppSelector((store) => store.singleMovie);
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const posterUrl = "https://image.tmdb.org/t/p/w300/";
+  const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   useEffect(() => {
     dispatch(getMovie(id));
+    console.log(movieInfo);
   }, []);
 
   return (
     <section className="singleMovie">
-      <img src={posterUrl + backdrop_path} alt="BANNER" />
-      <article className="wrapper">
+      <div
+        className="banner"
+        style={{ backgroundImage: `url('${posterUrl + backdrop_path}')` }}
+      >
+        <div className="inner"></div>
+        {/* <img src={posterUrl + backdrop_path} alt="BANNER" /> */}
+      </div>
+      {/* <article className="wrapper">
         <img src={posterUrl + poster_path} alt="POSTER" />
         <div>
           <h2>{title}</h2>
@@ -44,8 +53,8 @@ const SingleMovie = () => {
           <h3>{runtime}min</h3>
           <h4>{release_date}</h4>
         </div>
-        <article className="collection"></article>
-      </article>
+        <article className="collection">{belongs_to_collection?.name}</article>
+      </article> */}
     </section>
   );
 };

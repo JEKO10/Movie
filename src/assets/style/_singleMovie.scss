@@ -1,4 +1,20 @@
 .singleMovie {
+  @include flex(center, center);
+  flex-direction: column;
+
+  .banner {
+    width: 80vw;
+    height: 600px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    mask-image: radial-gradient(
+      ellipse 50% 100% at 50% 50%,
+      #13181c 35%,
+      transparent 99%
+    );
+  }
+
   .wrapper {
     @include flex(center, center);
   }

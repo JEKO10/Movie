@@ -22,6 +22,7 @@ type MovieCompanies = {
 
 type MovieInfoType = {
   title: string;
+  tagline: string;
   backdrop_path: string;
   belongs_to_collection: MovieCollection;
   genres: MovieGenres[];
