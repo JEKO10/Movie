@@ -41,10 +41,7 @@ const SingleMovie = () => {
       <div
         className="banner"
         style={{ backgroundImage: `url('${posterUrl + backdrop_path}')` }}
-      >
-        <div className="inner"></div>
-        {/* <img src={posterUrl + backdrop_path} alt="BANNER" /> */}
-      </div>
+      ></div>
       {/* <article className="wrapper">
         <img src={posterUrl + poster_path} alt="POSTER" />
         <div>

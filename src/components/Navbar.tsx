@@ -1,3 +1,4 @@
+import { useState } from "react";
 import logo from "../assets/images/log.png";
 
 const Navbar = () => {
