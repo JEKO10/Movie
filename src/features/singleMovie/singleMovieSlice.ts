@@ -43,14 +43,35 @@ type MovieInfoType = {
   vote_count: number;
 };
 
+type MovieCast = {
+  id: number;
+  cast_id: number;
+  adult: boolean;
+  character: string;
+  credit_id: string;
+  gender: number;
+  known_for_department: string;
+  name: string;
+  order: number;
+  profile_path: string;
+};
+
+type MovieCreditsType = {
+  id: number;
+  cast: MovieCast[];
+  crew: [];
+};
+
 type InitialStateType = {
   isLoading: boolean;
   movieInfo: MovieInfoType;
+  movieCredits: MovieCreditsType;
 };
 
 const initialState: InitialStateType = {
   isLoading: true,
   movieInfo: <MovieInfoType>{},
+  movieCredits: <MovieCreditsType>{},
 };
 
 export const getMovie = createAsyncThunk(
@@ -68,11 +89,11 @@ export const getMovie = createAsyncThunk(
 );
 
 export const getCredits = createAsyncThunk(
-  "singleMovie/getMovie",
+  "singleMovie/getCredits",
   async (id: string | undefined, thunkAPI) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
       );
       return resp.data;
     } catch (error: any) {
@@ -87,7 +108,7 @@ const singleMovieSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getMovie.pending, (state) => {
+      .addCase(getMovie.pending && getCredits.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
@@ -97,9 +118,16 @@ const singleMovieSlice = createSlice({
           state.movieInfo = action.payload;
         }
       )
-      .addCase(getMovie.rejected, (state) => {
+      .addCase(getMovie.rejected && getCredits.rejected, (state) => {
         state.isLoading = false;
-      });
+      })
+      .addCase(
+        getCredits.fulfilled,
+        (state, action: PayloadAction<MovieCreditsType>) => {
+          state.isLoading = false;
+          state.movieCredits = action.payload;
+        }
+      );
   },
 });
 

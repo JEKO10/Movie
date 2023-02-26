@@ -273,11 +273,13 @@ nav ul li.active {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
   margin-bottom: 2rem;
 }
-.singleMovie .wrapper .name > *:not(h2) {
-  margin: 0 1.5rem;
+.singleMovie .wrapper .name > * {
+  margin-right: 1rem;
 }
 .singleMovie .wrapper .name h2 {
   font-size: 2rem;
@@ -296,7 +298,7 @@ nav ul li.active {
   text-transform: uppercase;
 }
 .singleMovie .wrapper .overview p {
-  max-width: 65%;
+  max-width: 60%;
   line-height: 25px;
   margin-bottom: 2rem;
 }

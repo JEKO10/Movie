@@ -150,11 +150,12 @@
 
     .name {
       @include flex(flex-start, flex-end);
+      flex-wrap: wrap;
       width: 100%;
       margin-bottom: 2rem;
 
-      > *:not(h2) {
-        margin: 0 1.5rem;
+      > * {
+        margin-right: 1rem;
       }
 
       h2 {
@@ -178,7 +179,7 @@
       }
 
       p {
-        max-width: 65%;
+        max-width: 60%;
         line-height: 25px;
         margin-bottom: 2rem;
       }
