@@ -48,6 +48,3 @@ const Trending = () => {
 };
 
 export default Trending;
-// {
-// time === "day" ? "today" : "this " + time;
-// }

@@ -7,15 +7,20 @@ const Navbar = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <nav>
+    <nav
+      style={{
+        backgroundColor:
+          query === "singleMovie"
+            ? "rgba(19, 24, 28, 0)"
+            : "rgba(19, 24, 28, 1)",
+      }}
+    >
       <img src={logo} alt="Logo" />
       <ul>
         <li
           className={query === "Profile" ? "active" : ""}
           onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
-        >
-          Profile
-        </li>
+        ></li>
         <li
           className={query === "Films" ? "active" : ""}
           onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
@@ -46,7 +51,9 @@ const Navbar = () => {
         >
           Watchlist
         </li>
-        <li>Search for movies</li>
+        <li onClick={(e) => dispatch(setQuery("singleMovie"))}>
+          Search for movies
+        </li>
       </ul>
     </nav>
   );

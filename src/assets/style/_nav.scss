@@ -25,6 +25,10 @@ nav {
       cursor: pointer;
       transition: all 200ms ease;
 
+      &:hover {
+        color: #fff;
+      }
+
       &.active {
         color: #fff;
       }

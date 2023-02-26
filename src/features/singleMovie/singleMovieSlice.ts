@@ -67,6 +67,20 @@ export const getMovie = createAsyncThunk(
   }
 );
 
+export const getCredits = createAsyncThunk(
+  "singleMovie/getMovie",
+  async (id: string | undefined, thunkAPI) => {
+    try {
+      const resp = await axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
+      );
+      return resp.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response);
+    }
+  }
+);
+
 const singleMovieSlice = createSlice({
   name: "singleMovie",
   initialState,
