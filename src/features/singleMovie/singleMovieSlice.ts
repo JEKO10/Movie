@@ -20,6 +20,30 @@ type MovieCompanies = {
   origin_country: string;
 };
 
+type MovieCast = {
+  id: number;
+  adult: boolean;
+  character: string;
+  credit_id: string;
+  known_for_department: string;
+  name: string;
+  order: number;
+  profile_path: string;
+};
+
+type MovieCrew = {
+  id: number;
+  department: string;
+  job: string;
+  name: string;
+  profile_path: string;
+};
+
+type MovieCreditsType = {
+  cast: MovieCast[];
+  crew: MovieCrew[];
+};
+
 type MovieInfoType = {
   title: string;
   tagline: string;
@@ -41,37 +65,17 @@ type MovieInfoType = {
   status: string;
   vote_average: number;
   vote_count: number;
-};
-
-type MovieCast = {
-  id: number;
-  cast_id: number;
-  adult: boolean;
-  character: string;
-  credit_id: string;
-  gender: number;
-  known_for_department: string;
-  name: string;
-  order: number;
-  profile_path: string;
-};
-
-type MovieCreditsType = {
-  id: number;
-  cast: MovieCast[];
-  crew: [];
+  credits: MovieCreditsType;
 };
 
 type InitialStateType = {
   isLoading: boolean;
   movieInfo: MovieInfoType;
-  movieCredits: MovieCreditsType;
 };
 
 const initialState: InitialStateType = {
   isLoading: true,
   movieInfo: <MovieInfoType>{},
-  movieCredits: <MovieCreditsType>{},
 };
 
 export const getMovie = createAsyncThunk(
@@ -79,21 +83,7 @@ export const getMovie = createAsyncThunk(
   async (id: string | undefined, thunkAPI) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
-      );
-      return resp.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response);
-    }
-  }
-);
-
-export const getCredits = createAsyncThunk(
-  "singleMovie/getCredits",
-  async (id: string | undefined, thunkAPI) => {
-    try {
-      const resp = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits&adult=false`
       );
       return resp.data;
     } catch (error: any) {
@@ -108,7 +98,7 @@ const singleMovieSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getMovie.pending && getCredits.pending, (state) => {
+      .addCase(getMovie.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
@@ -118,16 +108,9 @@ const singleMovieSlice = createSlice({
           state.movieInfo = action.payload;
         }
       )
-      .addCase(getMovie.rejected && getCredits.rejected, (state) => {
+      .addCase(getMovie.rejected, (state) => {
         state.isLoading = false;
-      })
-      .addCase(
-        getCredits.fulfilled,
-        (state, action: PayloadAction<MovieCreditsType>) => {
-          state.isLoading = false;
-          state.movieCredits = action.payload;
-        }
-      );
+      });
   },
 });
 

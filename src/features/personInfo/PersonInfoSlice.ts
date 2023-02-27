@@ -26,7 +26,7 @@ const initialState: InitialStateType = {
 };
 
 export const getPerson = createAsyncThunk(
-  "singlePerson/getPerson",
+  "personInfo/getPerson",
   async (id: string | undefined, thunkAPI) => {
     try {
       const resp = await axios.get(
@@ -39,8 +39,8 @@ export const getPerson = createAsyncThunk(
   }
 );
 
-const singlePersonSlice = createSlice({
-  name: "singlePerson",
+const personInfoSlice = createSlice({
+  name: "personInfo",
   initialState,
   reducers: {
     toggleBio: (state) => {
@@ -69,6 +69,6 @@ const singlePersonSlice = createSlice({
   },
 });
 
-export const { toggleBio } = singlePersonSlice.actions;
+export const { toggleBio } = personInfoSlice.actions;
 
-export const { reducer } = singlePersonSlice;
+export const { reducer } = personInfoSlice;

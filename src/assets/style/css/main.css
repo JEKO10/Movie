@@ -289,6 +289,10 @@ nav ul li.active {
   color: rgba(225, 225, 255, 0.6);
   font-weight: 400;
 }
+.singleMovie .wrapper .name h4 a {
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 0.5rem;
+}
 .singleMovie .wrapper .overview {
   color: rgba(225, 225, 255, 0.6);
 }
