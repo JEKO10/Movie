@@ -5,9 +5,9 @@
   width: 100vw;
   max-width: 100%;
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: 0;
   z-index: -1;
 
   .banner {
@@ -176,6 +176,9 @@
 
     .overview {
       color: #e1e1ff99;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
 
       h4 {
         margin-bottom: 1rem;
@@ -192,6 +195,7 @@
       h3 {
         font-weight: 400;
         font-size: 1rem;
+        margin-top: auto;
       }
     }
   }

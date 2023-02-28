@@ -202,9 +202,9 @@ nav ul li.active {
   width: 100vw;
   max-width: 100%;
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: 0;
   z-index: -1;
 }
 .singleMovie .banner {
@@ -295,6 +295,14 @@ nav ul li.active {
 }
 .singleMovie .wrapper .overview {
   color: rgba(225, 225, 255, 0.6);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
 }
 .singleMovie .wrapper .overview h4 {
   margin-bottom: 1rem;
@@ -309,6 +317,7 @@ nav ul li.active {
 .singleMovie .wrapper .overview h3 {
   font-weight: 400;
   font-size: 1rem;
+  margin-top: auto;
 }
 
 * {

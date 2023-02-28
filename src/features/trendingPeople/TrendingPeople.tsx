@@ -20,7 +20,7 @@ const Trending = () => {
       <div className="underline"></div>
       <article>
         {trendingPeople.slice(0, 5).map(({ id, name, profile_path }) => (
-          <Link to={`/person/${id}/${name}`} key={id} className="trendElement">
+          <Link to={`/person/${id}`} key={id} className="trendElement">
             <img src={posterUrl + profile_path} alt="Poster" />
             <div className="info">
               <h4>{name}</h4>

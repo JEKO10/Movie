@@ -3,7 +3,7 @@ import { getPerson, toggleBio } from "./PersonInfoSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { useParams } from "react-router-dom";
 
-const SinglePerson = () => {
+const PersonInfo = () => {
   const {
     name,
     biography,
@@ -45,4 +45,4 @@ const SinglePerson = () => {
   );
 };
 
-export default SinglePerson;
+export default PersonInfo;
