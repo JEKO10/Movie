@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { getMovie, toggleModal } from "./singleMovieSlice";
@@ -38,11 +38,19 @@ const SingleMovie = () => {
   const director = movieInfo?.credits?.crew.find(
     (person) => person.job === "Director"
   );
+  const posterRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
-  }, []);
+    document.addEventListener("click", clickOutside, true);
+  }, [id]);
+
+  const clickOutside = (e) => {
+    if (!posterRef.current?.contains(e.target)) {
+      dispatch(toggleModal(false));
+    }
+  };
 
   return (
     <>
@@ -77,9 +85,9 @@ const SingleMovie = () => {
         </article>
       </section>
       {isModalOpen && (
-        <div className="imgModal">
+        <div className="posterModal">
           <RxCross2 onClick={() => dispatch(toggleModal(false))} />
-          <img src={posterUrl + poster_path} alt="POSTER" />
+          <img src={posterUrl + poster_path} alt="POSTER" ref={posterRef} />
         </div>
       )}
     </>
