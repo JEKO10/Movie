@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { getMovie } from "./singleMovieSlice";
+import { getMovie, toggleModal } from "./singleMovieSlice";
 import { setQuery } from "../navbar/navbarSlice";
+import { RxCross2 } from "react-icons/rx";
 
 const SingleMovie = () => {
   const {
@@ -27,7 +28,9 @@ const SingleMovie = () => {
     vote_average,
     vote_count,
   } = useAppSelector((store) => store.singleMovie.movieInfo);
-  const { movieInfo } = useAppSelector((store) => store.singleMovie);
+  const { movieInfo, isModalOpen } = useAppSelector(
+    (store) => store.singleMovie
+  );
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
@@ -39,36 +42,47 @@ const SingleMovie = () => {
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
-    console.log(director);
   }, []);
 
   return (
-    <section className="singleMovie">
-      <div
-        className="banner"
-        style={{ backgroundImage: `url('${posterUrl + backdrop_path}')` }}
-      ></div>
-      <article className="wrapper">
-        <img src={posterUrl + poster_path} alt="POSTER" />
-        <div className="info">
-          <div className="name">
-            <h2>{title}</h2>
-            <h4>{release_date?.slice(0, 4)}</h4>
-            <h4>
-              Directed by
-              <Link to={`/person/${director?.id}/`}>{director?.name}</Link>
-            </h4>
+    <>
+      <section className="singleMovie">
+        <div
+          className="banner"
+          style={{ backgroundImage: `url('${posterUrl + backdrop_path}')` }}
+        ></div>
+        <article className="wrapper">
+          <img
+            src={posterUrl + poster_path}
+            alt="POSTER"
+            onClick={() => dispatch(toggleModal(true))}
+          />
+          <div className="info">
+            <div className="name">
+              <h2>{title}</h2>
+              <h4>{release_date?.slice(0, 4)}</h4>
+              <h4>
+                Directed by
+                <Link to={`/person/${director?.id}/`}>{director?.name}</Link>
+              </h4>
+            </div>
+            <div className="overview">
+              <h4>{tagline}</h4>
+              <p>{overview}</p>
+              <h3>{runtime}min</h3>
+            </div>
+            <div></div>
           </div>
-          <div className="overview">
-            <h4>{tagline}</h4>
-            <p>{overview}</p>
-            <h3>{runtime}min</h3>
-          </div>
-          <div></div>
+          {/* <article className="collection">{belongs_to_collection?.name}</article> */}
+        </article>
+      </section>
+      {isModalOpen && (
+        <div className="imgModal">
+          <RxCross2 onClick={() => dispatch(toggleModal(false))} />
+          <img src={posterUrl + poster_path} alt="POSTER" />
         </div>
-        {/* <article className="collection">{belongs_to_collection?.name}</article> */}
-      </article>
-    </section>
+      )}
+    </>
   );
 };
 

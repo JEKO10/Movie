@@ -71,11 +71,13 @@ type MovieInfoType = {
 type InitialStateType = {
   isLoading: boolean;
   movieInfo: MovieInfoType;
+  isModalOpen: boolean;
 };
 
 const initialState: InitialStateType = {
   isLoading: true,
   movieInfo: <MovieInfoType>{},
+  isModalOpen: false,
 };
 
 export const getMovie = createAsyncThunk(
@@ -95,7 +97,16 @@ export const getMovie = createAsyncThunk(
 const singleMovieSlice = createSlice({
   name: "singleMovie",
   initialState,
-  reducers: {},
+  reducers: {
+    toggleModal: (state, { payload }) => {
+      state.isModalOpen = payload;
+      if (payload) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getMovie.pending, (state) => {
@@ -113,5 +124,7 @@ const singleMovieSlice = createSlice({
       });
   },
 });
+
+export const { toggleModal } = singleMovieSlice.actions;
 
 export const { reducer } = singleMovieSlice;
