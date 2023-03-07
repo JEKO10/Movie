@@ -1,11 +1,14 @@
 import { useEffect, useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { getMovie, toggleModal } from "./singleMovieSlice";
+import { getMovie, toggleModal, toggleCategory } from "./singleMovieSlice";
 import { setQuery } from "../navbar/navbarSlice";
 import { RxCross2 } from "react-icons/rx";
 
 const SingleMovie = () => {
+  const { movieInfo, isModalOpen, category } = useAppSelector(
+    (store) => store.singleMovie
+  );
   const {
     title,
     tagline,
@@ -27,28 +30,28 @@ const SingleMovie = () => {
     status,
     vote_average,
     vote_count,
-  } = useAppSelector((store) => store.singleMovie.movieInfo);
-  const { movieInfo, isModalOpen } = useAppSelector(
-    (store) => store.singleMovie
-  );
+    credits,
+    keywords,
+  } = movieInfo;
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
-  const director = movieInfo?.credits?.crew.find(
-    (person) => person.job === "Director"
-  );
+  const director = credits?.crew.find((person) => person.job === "Director");
   const posterRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
     document.addEventListener("click", clickOutside, true);
+    console.log(movieInfo);
   }, [id]);
 
   const clickOutside = (e) => {
     if (!posterRef.current?.contains(e.target)) {
       dispatch(toggleModal(false));
+    } else {
+      dispatch(toggleModal(true));
     }
   };
 
@@ -65,7 +68,7 @@ const SingleMovie = () => {
             alt="POSTER"
             onClick={() => dispatch(toggleModal(true))}
           />
-          <div className="info">
+          <article className="info">
             <div className="name">
               <h2>{title}</h2>
               <h4>{release_date?.slice(0, 4)}</h4>
@@ -77,19 +80,68 @@ const SingleMovie = () => {
             <div className="overview">
               <h4>{tagline}</h4>
               <p>{overview}</p>
-              <h3>{runtime}min</h3>
+              <h3>{runtime} min</h3>
             </div>
-            <div></div>
+          </article>
+        </article>
+        <article className="details">
+          <ul className="options">
+            <li
+              onClick={(e) => {
+                dispatch(toggleCategory(e.currentTarget.textContent));
+              }}
+              className={category === "cast" ? "active" : ""}
+            >
+              cast
+            </li>
+            <li
+              onClick={(e) => {
+                dispatch(toggleCategory(e.currentTarget.textContent));
+              }}
+              className={category === "crew" ? "active" : ""}
+            >
+              crew
+            </li>
+            <li
+              onClick={(e) => {
+                dispatch(toggleCategory(e.currentTarget.textContent));
+              }}
+              className={category === "genres" ? "active" : ""}
+            >
+              genres
+            </li>
+            <li
+              onClick={(e) => {
+                dispatch(toggleCategory(e.currentTarget.textContent));
+              }}
+              className={category === "details" ? "active" : ""}
+            >
+              details
+            </li>
+          </ul>
+          <div>
+            <p>Genres</p>
+            <ul>
+              {genres?.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
           </div>
-          {/* <article className="collection">{belongs_to_collection?.name}</article> */}
+          <div>
+            <p>Themes</p>
+            <ul>
+              {keywords?.keywords?.map((keyword) => (
+                <li key={keyword.id}>{keyword.name}</li>
+              ))}
+            </ul>
+          </div>
         </article>
       </section>
-      {isModalOpen && (
-        <div className="posterModal">
-          <RxCross2 onClick={() => dispatch(toggleModal(false))} />
-          <img src={posterUrl + poster_path} alt="POSTER" ref={posterRef} />
-        </div>
-      )}
+
+      <div className={`${isModalOpen ? "open" : ""} posterModal`}>
+        <RxCross2 onClick={() => dispatch(toggleModal(false))} />
+        <img src={posterUrl + poster_path} alt="POSTER" ref={posterRef} />
+      </div>
     </>
   );
 };

@@ -1,6 +1,7 @@
 .singleMovie {
   @include flex(flex-start, center);
   flex-direction: column;
+  margin-bottom: 31rem;
   background: #13181c;
   width: 100vw;
   max-width: 100%;
@@ -130,15 +131,14 @@
     @include flex(flex-start, flex-start);
     width: 70vw;
     margin-top: -2rem;
+    margin-bottom: 4rem;
     z-index: 2;
-    margin-bottom: 5rem;
 
     > img {
       width: 230px;
       height: 345px;
       border: 1.5px solid #e1e1ff99;
       border-radius: 5px;
-      margin-right: 2rem;
       cursor: pointer;
     }
 
@@ -147,6 +147,7 @@
       flex-direction: column;
       height: 345px;
       width: 100%;
+      margin: 0 2rem;
     }
 
     .name {
@@ -188,7 +189,7 @@
       }
 
       p {
-        max-width: 60%;
+        max-width: 430px;
         line-height: 25px;
         margin-bottom: 2rem;
       }
@@ -197,6 +198,49 @@
         font-weight: 400;
         font-size: 1rem;
         margin-top: auto;
+      }
+    }
+  }
+
+  .details {
+    width: 70vw;
+    margin-bottom: 5rem;
+
+    > div {
+      @include flex(flex-start, center);
+      margin: 2rem 0;
+      width: 50%;
+
+      p {
+        margin-right: 4rem;
+      }
+
+      ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px 20px;
+        list-style-type: none;
+      }
+    }
+
+    .options {
+      @include flex(flex-start, center);
+      list-style-type: none;
+      color: #dda804;
+
+      li {
+        margin-right: 20px;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+          border-bottom: 2px solid #dda804;
+        }
+
+        &.active {
+          color: #fff;
+          border-bottom: 2px solid #fff;
+        }
       }
     }
   }
@@ -211,6 +255,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 500ms ease;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+  }
 
   img {
     position: relative;

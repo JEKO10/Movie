@@ -8,7 +8,7 @@ type MovieCollection = {
   poster_path: string;
 };
 
-type MovieGenres = {
+type GenresKeywords = {
   id: number;
   name: string;
 };
@@ -49,7 +49,7 @@ type MovieInfoType = {
   tagline: string;
   backdrop_path: string;
   belongs_to_collection: MovieCollection;
-  genres: MovieGenres[];
+  genres: GenresKeywords[];
   budget: number;
   homepage: string;
   imdb_id: string;
@@ -66,18 +66,23 @@ type MovieInfoType = {
   vote_average: number;
   vote_count: number;
   credits: MovieCreditsType;
+  keywords: {
+    keywords: GenresKeywords[];
+  };
 };
 
 type InitialStateType = {
   isLoading: boolean;
   movieInfo: MovieInfoType;
   isModalOpen: boolean;
+  category: string;
 };
 
 const initialState: InitialStateType = {
   isLoading: true,
   movieInfo: <MovieInfoType>{},
   isModalOpen: false,
+  category: "cast",
 };
 
 export const getMovie = createAsyncThunk(
@@ -85,7 +90,7 @@ export const getMovie = createAsyncThunk(
   async (id: string | undefined, thunkAPI) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits&adult=false`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,keywords&adult=false`
       );
       return resp.data;
     } catch (error: any) {
@@ -106,6 +111,10 @@ const singleMovieSlice = createSlice({
         document.body.style.overflow = "auto";
       }
     },
+    toggleCategory: (state, { payload }) => {
+      state.category = payload;
+      console.log(state.category);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -125,6 +134,6 @@ const singleMovieSlice = createSlice({
   },
 });
 
-export const { toggleModal } = singleMovieSlice.actions;
+export const { toggleModal, toggleCategory } = singleMovieSlice.actions;
 
 export const { reducer } = singleMovieSlice;

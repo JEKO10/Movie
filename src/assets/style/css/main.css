@@ -198,6 +198,7 @@ nav ul li.active {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 31rem;
   background: #13181c;
   width: 100vw;
   max-width: 100%;
@@ -236,15 +237,14 @@ nav ul li.active {
           align-items: flex-start;
   width: 70vw;
   margin-top: -2rem;
+  margin-bottom: 4rem;
   z-index: 2;
-  margin-bottom: 5rem;
 }
 .singleMovie .wrapper > img {
   width: 230px;
   height: 345px;
   border: 1.5px solid rgba(225, 225, 255, 0.6);
   border-radius: 5px;
-  margin-right: 2rem;
   cursor: pointer;
 }
 .singleMovie .wrapper .info {
@@ -263,6 +263,7 @@ nav ul li.active {
           flex-direction: column;
   height: 345px;
   width: 100%;
+  margin: 0 2rem;
 }
 .singleMovie .wrapper .name {
   display: -webkit-box;
@@ -311,7 +312,7 @@ nav ul li.active {
   text-transform: uppercase;
 }
 .singleMovie .wrapper .overview p {
-  max-width: 60%;
+  max-width: 430px;
   line-height: 25px;
   margin-bottom: 2rem;
 }
@@ -319,6 +320,57 @@ nav ul li.active {
   font-weight: 400;
   font-size: 1rem;
   margin-top: auto;
+}
+.singleMovie .details {
+  width: 70vw;
+  margin-bottom: 5rem;
+}
+.singleMovie .details > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem 0;
+  width: 50%;
+}
+.singleMovie .details > div p {
+  margin-right: 4rem;
+}
+.singleMovie .details > div ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px 20px;
+  list-style-type: none;
+}
+.singleMovie .details .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style-type: none;
+  color: #dda804;
+}
+.singleMovie .details .options li {
+  margin-right: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.singleMovie .details .options li:hover {
+  border-bottom: 2px solid #dda804;
+}
+.singleMovie .details .options li.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
 }
 
 .posterModal {
@@ -331,6 +383,14 @@ nav ul li.active {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.8);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.posterModal.open {
+  visibility: visible;
+  opacity: 1;
 }
 .posterModal img {
   position: relative;
