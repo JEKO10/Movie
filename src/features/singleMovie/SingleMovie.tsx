@@ -119,14 +119,47 @@ const SingleMovie = () => {
               details
             </li>
           </ul>
-          <div>
-            <p>Genres</p>
-            <ul>
-              {genres?.map((genre) => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </ul>
-          </div>
+          {category === "genres" ? (
+            <div>
+              <p>Genres</p>
+              <ul>
+                {genres?.map((genre) => (
+                  <li key={genre.id}>{genre.name}</li>
+                ))}
+              </ul>
+            </div>
+          ) : category === "cast" ? (
+            <div>
+              <ul>
+                {credits?.cast?.map((cast) => (
+                  <li key={cast.id}>{cast.name}</li>
+                ))}
+              </ul>
+            </div>
+          ) : category === "crew" ? (
+            <div>
+              <ul>
+                {credits?.crew?.map((crew) => (
+                  <li key={crew.id}>{crew.name}</li>
+                ))}
+              </ul>
+            </div>
+          ) : category === "details" ? (
+            <div>
+              <p>Budger</p>
+              <p>Languages</p>
+              <p>Popularity</p>
+              <ul>
+                <li>{budget}</li>
+              </ul>
+              <ul>
+                <li>{spoken_languages.map((item) => item.english_name)}</li>
+              </ul>
+              <p>{popularity}</p>
+            </div>
+          ) : (
+            ""
+          )}
           <div>
             <p>Themes</p>
             <ul>
