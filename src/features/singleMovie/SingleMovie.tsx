@@ -16,7 +16,6 @@ const SingleMovie = () => {
     belongs_to_collection,
     genres,
     budget,
-    homepage,
     imdb_id,
     overview,
     popularity,
@@ -27,9 +26,7 @@ const SingleMovie = () => {
     revenue,
     runtime,
     spoken_languages,
-    status,
     vote_average,
-    vote_count,
     credits,
     keywords,
   } = movieInfo;
@@ -121,12 +118,22 @@ const SingleMovie = () => {
           </ul>
           {category === "genres" ? (
             <div>
-              <p>Genres</p>
-              <ul>
-                {genres?.map((genre) => (
-                  <li key={genre.id}>{genre.name}</li>
-                ))}
-              </ul>
+              <div>
+                <p>Genres</p>
+                <ul>
+                  {genres?.map((genre) => (
+                    <li key={genre.id}>{genre.name}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p>Themes</p>
+                <ul>
+                  {keywords?.keywords?.map((keyword) => (
+                    <li key={keyword.id}>{keyword.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ) : category === "cast" ? (
             <div>
@@ -145,29 +152,64 @@ const SingleMovie = () => {
               </ul>
             </div>
           ) : category === "details" ? (
-            <div>
-              <p>Budger</p>
-              <p>Languages</p>
-              <p>Popularity</p>
-              <ul>
-                <li>{budget}</li>
-              </ul>
-              <ul>
-                <li>{spoken_languages.map((item) => item.english_name)}</li>
-              </ul>
-              <p>{popularity}</p>
+            <div className="details">
+              <div>
+                <p>Budget</p>
+                <div className="line"></div>
+                <ul>
+                  <li>{budget} $</li>
+                </ul>
+              </div>
+              <div>
+                <p>Revenue</p>
+                <ul>
+                  <li>{revenue} $</li>
+                </ul>
+              </div>
+              <div>
+                <p>Languages</p>
+                <ul>
+                  {spoken_languages.map((language) => (
+                    <li key={language.english_name}>{language.english_name}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p>Popularity</p>
+                <ul>
+                  <li>{popularity}</li>
+                </ul>
+              </div>
+              <div>
+                <p>Rating</p>
+                <ul>
+                  <li>{vote_average} / 10</li>
+                </ul>
+              </div>
+              <div>
+                {production_countries.length > 1 ? (
+                  <p>Countries</p>
+                ) : (
+                  <p>Country</p>
+                )}
+                <ul>
+                  {production_countries.map((country) => (
+                    <li key={country.name}>{country.name}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p>Production</p>
+                <ul>
+                  {production_companies.map((production) => (
+                    <li key={production.id}>{production.name}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ) : (
             ""
           )}
-          <div>
-            <p>Themes</p>
-            <ul>
-              {keywords?.keywords?.map((keyword) => (
-                <li key={keyword.id}>{keyword.name}</li>
-              ))}
-            </ul>
-          </div>
         </article>
       </section>
 

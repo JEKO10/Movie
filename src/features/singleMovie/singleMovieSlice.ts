@@ -51,7 +51,6 @@ type MovieInfoType = {
   belongs_to_collection: MovieCollection;
   genres: GenresKeywords[];
   budget: number;
-  homepage: string;
   imdb_id: string;
   overview: string;
   popularity: number;
@@ -62,9 +61,7 @@ type MovieInfoType = {
   revenue: number;
   runtime: number;
   spoken_languages: [{ english_name: string }];
-  status: string;
   vote_average: number;
-  vote_count: number;
   credits: MovieCreditsType;
   keywords: {
     keywords: GenresKeywords[];
@@ -113,7 +110,6 @@ const singleMovieSlice = createSlice({
     },
     toggleCategory: (state, { payload }) => {
       state.category = payload;
-      console.log(state.category);
     },
   },
   extraReducers: (builder) => {
