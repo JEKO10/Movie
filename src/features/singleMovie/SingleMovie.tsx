@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { getMovie, toggleModal, toggleCategory } from "./singleMovieSlice";
 import { setQuery } from "../navbar/navbarSlice";
 import { RxCross2 } from "react-icons/rx";
+import Categories from "./components/Categories";
 
 const SingleMovie = () => {
   const { movieInfo, isModalOpen, category } = useAppSelector(
@@ -14,21 +15,12 @@ const SingleMovie = () => {
     tagline,
     backdrop_path,
     belongs_to_collection,
-    genres,
-    budget,
     imdb_id,
     overview,
-    popularity,
     poster_path,
-    production_companies,
-    production_countries,
     release_date,
-    revenue,
     runtime,
-    spoken_languages,
-    vote_average,
     credits,
-    keywords,
   } = movieInfo;
   const { id } = useParams();
   const dispatch = useAppDispatch();
@@ -81,138 +73,8 @@ const SingleMovie = () => {
             </div>
           </article>
         </article>
-        <article className="details">
-          <ul className="options">
-            <li
-              onClick={(e) => {
-                dispatch(toggleCategory(e.currentTarget.textContent));
-              }}
-              className={category === "cast" ? "active" : ""}
-            >
-              cast
-            </li>
-            <li
-              onClick={(e) => {
-                dispatch(toggleCategory(e.currentTarget.textContent));
-              }}
-              className={category === "crew" ? "active" : ""}
-            >
-              crew
-            </li>
-            <li
-              onClick={(e) => {
-                dispatch(toggleCategory(e.currentTarget.textContent));
-              }}
-              className={category === "genres" ? "active" : ""}
-            >
-              genres
-            </li>
-            <li
-              onClick={(e) => {
-                dispatch(toggleCategory(e.currentTarget.textContent));
-              }}
-              className={category === "details" ? "active" : ""}
-            >
-              details
-            </li>
-          </ul>
-          {category === "genres" ? (
-            <div>
-              <div>
-                <p>Genres</p>
-                <ul>
-                  {genres?.map((genre) => (
-                    <li key={genre.id}>{genre.name}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p>Themes</p>
-                <ul>
-                  {keywords?.keywords?.map((keyword) => (
-                    <li key={keyword.id}>{keyword.name}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ) : category === "cast" ? (
-            <div>
-              <ul>
-                {credits?.cast?.map((cast) => (
-                  <li key={cast.id}>{cast.name}</li>
-                ))}
-              </ul>
-            </div>
-          ) : category === "crew" ? (
-            <div>
-              <ul>
-                {credits?.crew?.map((crew) => (
-                  <li key={crew.id}>{crew.name}</li>
-                ))}
-              </ul>
-            </div>
-          ) : category === "details" ? (
-            <div className="details">
-              <div>
-                <p>Budget</p>
-                <div className="line"></div>
-                <ul>
-                  <li>{budget} $</li>
-                </ul>
-              </div>
-              <div>
-                <p>Revenue</p>
-                <ul>
-                  <li>{revenue} $</li>
-                </ul>
-              </div>
-              <div>
-                <p>Languages</p>
-                <ul>
-                  {spoken_languages.map((language) => (
-                    <li key={language.english_name}>{language.english_name}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p>Popularity</p>
-                <ul>
-                  <li>{popularity}</li>
-                </ul>
-              </div>
-              <div>
-                <p>Rating</p>
-                <ul>
-                  <li>{vote_average} / 10</li>
-                </ul>
-              </div>
-              <div>
-                {production_countries.length > 1 ? (
-                  <p>Countries</p>
-                ) : (
-                  <p>Country</p>
-                )}
-                <ul>
-                  {production_countries.map((country) => (
-                    <li key={country.name}>{country.name}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p>Production</p>
-                <ul>
-                  {production_companies.map((production) => (
-                    <li key={production.id}>{production.name}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
-        </article>
+        <Categories />
       </section>
-
       <div className={`${isModalOpen ? "open" : ""} posterModal`}>
         <RxCross2 onClick={() => dispatch(toggleModal(false))} />
         <img src={posterUrl + poster_path} alt="POSTER" ref={posterRef} />
