@@ -7,6 +7,10 @@ const Navbar = () => {
   const { query } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
 
+  const setClicked = (e) => {
+    dispatch(setQuery(e.currentTarget.textContent));
+  };
+
   return (
     <nav
       style={{
@@ -20,42 +24,64 @@ const Navbar = () => {
         <img src={logo} alt="Logo" />
       </Link>
       <ul>
-        <li
-          className={query === "Profile" ? "active" : ""}
-          onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
-        ></li>
-        <li
-          className={query === "Films" ? "active" : ""}
-          onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
-        >
-          Films
+        <li>
+          <Link
+            to={"/profile"}
+            onClick={(e) => setClicked(e)}
+            className={query === "Profile" ? "active" : ""}
+          >
+            Profile
+          </Link>
         </li>
-        <li
-          className={query === "Likes" ? "active" : ""}
-          onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
-        >
-          Likes
+        <li>
+          <Link
+            to={"/films"}
+            onClick={(e) => setClicked(e)}
+            className={query === "Films" ? "active" : ""}
+          >
+            Films
+          </Link>
         </li>
-        <li
-          className={query === "Lists" ? "active" : ""}
-          onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
-        >
-          Lists
+        <li>
+          <Link
+            to={"/likes"}
+            onClick={(e) => setClicked(e)}
+            className={query === "Likes" ? "active" : ""}
+          >
+            Likes
+          </Link>
         </li>
-        <li
-          className={query === "Reviews" ? "active" : ""}
-          onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
-        >
-          Reviews
+        <li>
+          <Link
+            to={"/lists"}
+            onClick={(e) => setClicked(e)}
+            className={query === "Lists" ? "active" : ""}
+          >
+            Lists
+          </Link>
         </li>
-        <li
-          className={query === "Watchlist" ? "active" : ""}
-          onClick={(e) => dispatch(setQuery(e.currentTarget.textContent))}
-        >
-          Watchlist
+        <li>
+          <Link
+            to={"/reviews"}
+            onClick={(e) => setClicked(e)}
+            className={query === "Reviews" ? "active" : ""}
+          >
+            Reviews
+          </Link>
         </li>
-        <li onClick={(e) => dispatch(setQuery("singleMovie"))}>
-          Search for movies
+        <li>
+          <Link
+            to={"/watchlist"}
+            onClick={(e) => setClicked(e)}
+            className={query === "Watchlist" ? "active" : ""}
+          >
+            Watchlist
+          </Link>
+        </li>
+        <li>
+          <Link to={"/"} onClick={(e) => setClicked(e)}>
+            Search for movies
+          </Link>
         </li>
       </ul>
     </nav>

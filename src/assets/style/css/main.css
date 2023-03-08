@@ -31,7 +31,6 @@ nav ul {
   width: 100%;
 }
 nav ul li {
-  color: #99aabb;
   font-family: "Hanken Grotesk", sans-serif;
   text-transform: uppercase;
   font-weight: 900;
@@ -42,10 +41,11 @@ nav ul li {
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
 }
-nav ul li:hover {
-  color: #fff;
+nav ul li a {
+  color: #99aabb;
+  text-decoration: none;
 }
-nav ul li.active {
+nav ul li a:hover, nav ul li a.active {
   color: #fff;
 }
 

@@ -15,7 +15,6 @@ nav {
     width: 100%;
 
     li {
-      color: #99aabb;
       font-family: $primaryFont;
       text-transform: uppercase;
       font-weight: 900;
@@ -25,12 +24,14 @@ nav {
       cursor: pointer;
       transition: all 200ms ease;
 
-      &:hover {
-        color: #fff;
-      }
+      a {
+        color: #99aabb;
+        text-decoration: none;
 
-      &.active {
-        color: #fff;
+        &:hover,
+        &.active {
+          color: #fff;
+        }
       }
     }
   }
