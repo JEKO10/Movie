@@ -1,15 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { getMovie, toggleModal, toggleCategory } from "./singleMovieSlice";
+import { getMovie, toggleModal } from "./singleMovieSlice";
 import { setQuery } from "../navbar/navbarSlice";
-import { RxCross2 } from "react-icons/rx";
 import Categories from "./components/Categories";
+import ImageModal from "./components/ImageModal";
 
 const SingleMovie = () => {
-  const { movieInfo, isModalOpen, category } = useAppSelector(
-    (store) => store.singleMovie
-  );
+  const { movieInfo } = useAppSelector((store) => store.singleMovie);
   const {
     title,
     tagline,
@@ -27,22 +25,12 @@ const SingleMovie = () => {
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   const director = credits?.crew.find((person) => person.job === "Director");
-  const posterRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
-    document.addEventListener("click", clickOutside, true);
     console.log(movieInfo);
   }, [id]);
-
-  const clickOutside = (e) => {
-    if (!posterRef.current?.contains(e.target)) {
-      dispatch(toggleModal(false));
-    } else {
-      dispatch(toggleModal(true));
-    }
-  };
 
   return (
     <>
@@ -75,10 +63,7 @@ const SingleMovie = () => {
         </article>
         <Categories />
       </section>
-      <div className={`${isModalOpen ? "open" : ""} posterModal`}>
-        <RxCross2 onClick={() => dispatch(toggleModal(false))} />
-        <img src={posterUrl + poster_path} alt="POSTER" ref={posterRef} />
-      </div>
+      <ImageModal id={id} posterUrl={posterUrl} poster_path={poster_path} />
     </>
   );
 };

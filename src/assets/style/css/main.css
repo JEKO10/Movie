@@ -322,6 +322,79 @@ nav ul li a:hover, nav ul li a.active {
   margin-top: auto;
 }
 
+.categories {
+  width: 70vw;
+  margin-bottom: 5rem;
+}
+.categories .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style-type: none;
+  color: #dda804;
+}
+.categories .options li {
+  margin-right: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.categories .options li:hover {
+  border-bottom: 2px solid #dda804;
+}
+.categories .options li.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+.categories > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin: 2rem 0;
+  width: 40%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.categories > div > div {
+  margin: 0 2rem 1rem 0;
+}
+.categories > div p {
+  margin: 0 1rem 0.5rem 0;
+  color: rgba(225, 225, 255, 0.6);
+  text-transform: uppercase;
+}
+.categories > div ul {
+  list-style-type: none;
+}
+.categories > div ul li {
+  display: inline-block;
+  font-size: 0.9rem;
+  background-color: #303840;
+  color: rgba(225, 225, 255, 0.6);
+  margin: 5px 5px 5px 0;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.categories > div ul li:hover {
+  color: #fff;
+}
+
 .posterModal {
   height: 100%;
   width: 100%;
@@ -359,98 +432,6 @@ nav ul li a:hover, nav ul li a.active {
 }
 .posterModal svg:hover {
   color: #fff;
-}
-
-.categories {
-  width: 70vw;
-  margin-bottom: 5rem;
-}
-.categories > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  margin: 2rem 0;
-  width: 40%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.categories > div > div {
-  margin: 0 2rem 1rem 0;
-}
-.categories > div.details {
-  margin: 2rem 0;
-}
-.categories > div.details > div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 100%;
-}
-.categories > div p {
-  margin-bottom: 0.5rem;
-  color: rgba(225, 225, 255, 0.6);
-  text-transform: uppercase;
-}
-.categories > div ul {
-  list-style-type: none;
-}
-.categories > div ul li {
-  display: inline-block;
-  font-size: 0.9rem;
-  background-color: #303840;
-  color: rgba(225, 225, 255, 0.6);
-  margin: 5px 5px 5px 0;
-  padding: 5px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-.categories > div ul li:hover {
-  color: #fff;
-}
-.categories .options {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  list-style-type: none;
-  color: #dda804;
-}
-.categories .options li {
-  margin-right: 20px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.categories .options li:hover {
-  border-bottom: 2px solid #dda804;
-}
-.categories .options li.active {
-  color: #fff;
-  border-bottom: 2px solid #fff;
 }
 
 * {

@@ -89,10 +89,9 @@ const Categories = () => {
           </ul>
         </div>
       ) : category === "details" ? (
-        <div className="details">
+        <div>
           <div>
             <p>Budget</p>
-            <div className="line"></div>
             <ul>
               <li>{budget} $</li>
             </ul>
