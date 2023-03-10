@@ -1,5 +1,6 @@
-@import "config", "nav", "trending", "person", "singleMovie", "categories",
-  "posterModal";
+@import "./utilities/config", "./modules/nav", "./modules/trending",
+  "./pages/person", "./pages/singleMovie", "./modules/categories",
+  "./modules/posterModal";
 
 * {
   margin: 0;
