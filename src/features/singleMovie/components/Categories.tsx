@@ -1,8 +1,11 @@
-import { toggleCategory } from "../singleMovieSlice";
+import { toggleCategory, toggleCast } from "../singleMovieSlice";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
+import { useEffect } from "react";
 
 const Categories = () => {
-  const { movieInfo, category } = useAppSelector((store) => store.singleMovie);
+  const { movieInfo, category, isCastOpen } = useAppSelector(
+    (store) => store.singleMovie
+  );
   const {
     genres,
     budget,
@@ -16,6 +19,10 @@ const Categories = () => {
     credits,
   } = movieInfo;
   const dispatch = useAppDispatch();
+
+  const actors = credits?.cast?.filter(
+    (cast) => cast.known_for_department === "Acting"
+  );
 
   return (
     <article className="categories">
@@ -75,9 +82,18 @@ const Categories = () => {
       ) : category === "cast" ? (
         <div>
           <ul>
-            {credits?.cast?.map((cast) => (
-              <li key={cast.id}>{cast.name}</li>
-            ))}
+            {actors
+              ?.slice(...(!isCastOpen ? [0, actors.length] : [0, 20]))
+              .map((cast) => (
+                <li key={cast.id}>{cast.name}</li>
+              ))}
+            {actors?.length >= 25 ? (
+              <li onClick={() => dispatch(toggleCast())}>
+                {isCastOpen ? "Show All..." : "Hide All..."}
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       ) : category === "crew" ? (

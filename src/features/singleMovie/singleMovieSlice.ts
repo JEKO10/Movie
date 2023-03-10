@@ -22,13 +22,9 @@ type MovieCompanies = {
 
 type MovieCast = {
   id: number;
-  adult: boolean;
   character: string;
-  credit_id: string;
   known_for_department: string;
   name: string;
-  order: number;
-  profile_path: string;
 };
 
 type MovieCrew = {
@@ -73,6 +69,7 @@ type InitialStateType = {
   movieInfo: MovieInfoType;
   isModalOpen: boolean;
   category: string;
+  isCastOpen: boolean;
 };
 
 const initialState: InitialStateType = {
@@ -80,6 +77,7 @@ const initialState: InitialStateType = {
   movieInfo: <MovieInfoType>{},
   isModalOpen: false,
   category: "cast",
+  isCastOpen: false,
 };
 
 export const getMovie = createAsyncThunk(
@@ -111,6 +109,10 @@ const singleMovieSlice = createSlice({
     toggleCategory: (state, { payload }) => {
       state.category = payload;
     },
+    toggleCast: (state) => {
+      state.isCastOpen = !state.isCastOpen;
+      console.log(state.isCastOpen);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -130,6 +132,7 @@ const singleMovieSlice = createSlice({
   },
 });
 
-export const { toggleModal, toggleCategory } = singleMovieSlice.actions;
+export const { toggleModal, toggleCategory, toggleCast } =
+  singleMovieSlice.actions;
 
 export const { reducer } = singleMovieSlice;
