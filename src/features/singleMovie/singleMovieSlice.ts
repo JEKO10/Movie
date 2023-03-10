@@ -109,9 +109,8 @@ const singleMovieSlice = createSlice({
     toggleCategory: (state, { payload }) => {
       state.category = payload;
     },
-    toggleCast: (state) => {
-      state.isCastOpen = !state.isCastOpen;
-      console.log(state.isCastOpen);
+    toggleCast: (state, { payload }) => {
+      state.isCastOpen = payload;
     },
   },
   extraReducers: (builder) => {

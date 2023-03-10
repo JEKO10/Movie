@@ -61,7 +61,7 @@ const SingleMovie = () => {
             </div>
           </article>
         </article>
-        <Categories />
+        <Categories id={id} />
       </section>
       <ImageModal id={id} posterUrl={posterUrl} poster_path={poster_path} />
     </>
