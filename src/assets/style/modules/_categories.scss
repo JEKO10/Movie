@@ -49,9 +49,19 @@
         background-color: #303840;
         color: #e1e1ff99;
         margin: 5px 5px 5px 0;
-        padding: 5px 10px;
         border-radius: 5px;
         cursor: pointer;
+
+        a {
+          display: inline-block;
+          color: #e1e1ff99;
+          text-decoration: none;
+          padding: 5px 10px;
+
+          &:hover {
+            color: #fff;
+          }
+        }
 
         &:hover {
           color: #fff;

@@ -1,6 +1,7 @@
 import { toggleCategory, toggleCast } from "../singleMovieSlice";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 type CategoriesProps = {
   id?: string;
@@ -23,6 +24,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
     credits,
   } = movieInfo;
   const dispatch = useAppDispatch();
+  const genreUrl = ``;
 
   const actors = credits?.cast?.filter(
     (cast) => cast.known_for_department === "Acting"
@@ -98,7 +100,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             <p>Genres</p>
             <ul>
               {genres?.map((genre) => (
-                <li key={genre.id}>{genre.name}</li>
+                <li key={genre.id}>
+                  <Link to={genreUrl + genre.id}>{genre.name}</Link>
+                </li>
               ))}
             </ul>
           </div>
@@ -117,10 +121,15 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             {actors
               ?.slice(...(isCastOpen ? [0, actors.length] : [0, 20]))
               .map((cast) => (
-                <li key={cast.id}>{cast.name}</li>
+                <li key={cast.id}>
+                  <Link to={`/person/${cast?.id}/`}>{cast?.name}</Link>
+                </li>
               ))}
             {actors?.length >= 25 ? (
-              <li onClick={() => dispatch(toggleCast(!isCastOpen))}>
+              <li
+                onClick={() => dispatch(toggleCast(!isCastOpen))}
+                style={{ padding: "5px 10px" }}
+              >
                 {!isCastOpen ? "Show All..." : "Hide All..."}
               </li>
             ) : (
@@ -134,7 +143,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             <div>
               <p>Director</p>
               <ul>
-                <li>{director?.name}</li>
+                <li>
+                  <Link to={`/person/${director?.id}/`}>{director?.name}</Link>
+                </li>
               </ul>
             </div>
           ) : (
@@ -145,7 +156,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Writers</p>
               <ul>
                 {writers?.map((writer) => (
-                  <li key={writer.id}>{writer.name}</li>
+                  <li key={writer.id}>
+                    <Link to={`/person/${writer?.id}/`}>{writer.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -157,7 +170,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Producer</p>
               <ul>
                 {producers.map((producer) => (
-                  <li key={producer.id}>{producer.name}</li>
+                  <li key={producer.id}>
+                    <Link to={`/person/${producer?.id}/`}>{producer.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -169,7 +184,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Cinematography</p>
               <ul>
                 {cinematography.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -181,7 +198,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Casting</p>
               <ul>
                 {casting?.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -193,7 +212,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Editors</p>
               <ul>
                 {editors.map((editor) => (
-                  <li key={editor.id}>{editor.name}</li>
+                  <li key={editor.id}>
+                    <Link to={`/person/${editor?.id}/`}>{editor.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -205,7 +226,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Sounds</p>
               <ul>
                 {sounds.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -217,7 +240,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Visual Effects</p>
               <ul>
                 {visualEffects.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -229,7 +254,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Stunts</p>
               <ul>
                 {stunts.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -241,7 +268,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Makeup</p>
               <ul>
                 {makeup.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -253,7 +282,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Hairstyling</p>
               <ul>
                 {hairstyle.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -265,7 +296,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               <p>Costume design</p>
               <ul>
                 {costume.map((person) => (
-                  <li key={person.id}>{person.name}</li>
+                  <li key={person.id}>
+                    <Link to={`/person/${person?.id}/`}>{person.name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>

@@ -387,9 +387,17 @@ nav ul li a:hover, nav ul li a.active {
   background-color: #303840;
   color: rgba(225, 225, 255, 0.6);
   margin: 5px 5px 5px 0;
-  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+.categories > div ul li a {
+  display: inline-block;
+  color: rgba(225, 225, 255, 0.6);
+  text-decoration: none;
+  padding: 5px 10px;
+}
+.categories > div ul li a:hover {
+  color: #fff;
 }
 .categories > div ul li:hover {
   color: #fff;
