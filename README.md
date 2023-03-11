@@ -13,11 +13,11 @@
 
 ## Project task
 
-This website is built with SASS/React-TypeScript and Redux-Toolkit. I used TMDB API to make a movie app. The user will be able to sign up, add reviews, make lists, add films to the watchlist, and search for movies.
+I built this website with SASS/React-TypeScript and Redux-Toolkit. I used TMDB API to make a movie app. The user will be able to sign up, add reviews, make lists, add films to the watchlist, and search for movies.
 
 ## Project overview
 
-I created 4 redux-toolkit slices so far. One for trending movies that gets data from TMDB API with axios. Second for trending people. And other 2 for getting single movie and person information.
+I created 4 redux-toolkit slices so far. One is for trending movies that get data from TMDB API with axios. Second for trending people. And the other 2 for getting a single movie and information about a certain person.
 
 ## Built with
 
