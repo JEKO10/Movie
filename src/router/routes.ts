@@ -8,6 +8,7 @@ import Likes from "../pages/Likes";
 import SingleMovie from "../features/singleMovie/SingleMovie";
 import PersonInfo from "../features/personInfo/PersonInfo";
 import Error from "../pages/Error";
+import GenreMovies from "../features/genreMovies/GenreMovies";
 
 const routes = [
   {
@@ -57,6 +58,11 @@ const routes = [
   },
   {
     id: 9,
+    path: "/genre",
+    element: GenreMovies,
+  },
+  {
+    id: 10,
     path: "/*",
     element: Error,
   },
