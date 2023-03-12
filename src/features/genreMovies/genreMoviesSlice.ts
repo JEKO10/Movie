@@ -3,6 +3,7 @@ import axios from "axios";
 
 type GenreMovies = {
   id: number;
+  poster_path: string;
 };
 
 type InitialStateType = {
@@ -17,7 +18,7 @@ const initialState: InitialStateType = {
 
 export const getGenreMovies = createAsyncThunk(
   "genreMovies/getGenreMovies",
-  async (id: number, thunkAPI) => {
+  async (id: string, thunkAPI) => {
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${id}`

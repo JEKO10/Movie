@@ -53,12 +53,12 @@ const routes = [
   },
   {
     id: 8,
-    path: "/person/:id/",
+    path: "/person/:id",
     element: PersonInfo,
   },
   {
     id: 9,
-    path: "/genre",
+    path: "/genre/:id/:name",
     element: GenreMovies,
   },
   {

@@ -442,6 +442,14 @@ nav ul li a:hover, nav ul li a.active {
   color: #fff;
 }
 
+.genreMovie h2 {
+  font-size: 2rem;
+  line-height: 32px;
+}
+.genreMovie article img {
+  height: 200px;
+}
+
 * {
   margin: 0;
   padding: 0;

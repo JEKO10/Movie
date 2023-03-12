@@ -24,7 +24,6 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
     credits,
   } = movieInfo;
   const dispatch = useAppDispatch();
-  const genreUrl = ``;
 
   const actors = credits?.cast?.filter(
     (cast) => cast.known_for_department === "Acting"
@@ -56,6 +55,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
 
   useEffect(() => {
     dispatch(toggleCast(false));
+    dispatch(toggleCategory("cast"));
   }, [id]);
 
   return (
@@ -101,7 +101,9 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             <ul>
               {genres?.map((genre) => (
                 <li key={genre.id}>
-                  <Link to={genreUrl + genre.id}>{genre.name}</Link>
+                  <Link to={`/genre/${genre?.id}/${genre?.name}`}>
+                    {genre.name}
+                  </Link>
                 </li>
               ))}
             </ul>
