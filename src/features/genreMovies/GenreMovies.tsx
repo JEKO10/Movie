@@ -5,14 +5,15 @@ import { Link, useParams } from "react-router-dom";
 
 const GenreMovies = () => {
   const { name, id } = useParams();
-  const { genreMovies } = useAppSelector((store) => store.genreMovies);
+  const { genreMovies, totalItems, totalPages } = useAppSelector(
+    (store) => store.genreMovies
+  );
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   useEffect(() => {
-    dispatch(getGenreMovies(id!));
-    console.log(genreMovies);
-  }, []);
+    dispatch(getGenreMovies(id));
+  }, [id]);
 
   return (
     <section className="genreMovie">

@@ -107,7 +107,15 @@ nav ul li a:hover, nav ul li a.active {
   width: 180px;
   color: #fff;
   text-decoration: none;
+  -webkit-box-shadow: 5px 8px 2px 1px rgba(0, 0, 0, 0.8);
+          box-shadow: 5px 8px 2px 1px rgba(0, 0, 0, 0.8);
   cursor: pointer;
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.trending article:last-of-type .trendElement:hover {
+  -webkit-box-shadow: 2px 2px 2px 1px rgb(0, 0, 0);
+          box-shadow: 2px 2px 2px 1px rgb(0, 0, 0);
 }
 .trending article:last-of-type .trendElement img {
   height: 100%;
@@ -137,6 +145,14 @@ nav ul li a:hover, nav ul li a.active {
      border-image: -webkit-gradient(linear, left bottom, left top, from(rgba(225, 225, 255, 0.6)), to(#000)) 1;
      border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
   border-top: none;
+  -webkit-box-shadow: 5px 10px 2px 1px rgba(0, 0, 0, 0.8);
+          box-shadow: 5px 10px 2px 1px rgba(0, 0, 0, 0.8);
+  -webkit-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.trending article:last-of-type .trendElement .info:hover {
+  -webkit-box-shadow: 2px 2px 2px 1px rgb(0, 0, 0);
+          box-shadow: 2px 2px 2px 1px rgb(0, 0, 0);
 }
 .trending article:last-of-type .trendElement .info .fade {
   position: absolute;
@@ -278,10 +294,11 @@ nav ul li a:hover, nav ul li a.active {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 .singleMovie .wrapper .name > * {
   margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 .singleMovie .wrapper .name h2 {
   font-size: 2rem;
@@ -290,6 +307,7 @@ nav ul li a:hover, nav ul li a.active {
 .singleMovie .wrapper .name h4 {
   color: rgba(225, 225, 255, 0.6);
   font-weight: 400;
+  font-size: 1.2rem;
 }
 .singleMovie .wrapper .name h4 a {
   color: rgba(255, 255, 255, 0.8);
@@ -324,7 +342,7 @@ nav ul li a:hover, nav ul li a.active {
 
 .categories {
   width: 70vw;
-  margin-bottom: 5rem;
+  margin: 2rem 0 5rem 0;
 }
 .categories .options {
   display: -webkit-box;

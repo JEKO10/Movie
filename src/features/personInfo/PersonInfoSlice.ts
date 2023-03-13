@@ -27,7 +27,7 @@ const initialState: InitialStateType = {
 
 export const getPerson = createAsyncThunk(
   "personInfo/getPerson",
-  async (id: string | undefined, thunkAPI) => {
+  async (id: string, thunkAPI) => {
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}&adult=false`

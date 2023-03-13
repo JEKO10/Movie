@@ -27,7 +27,7 @@ const SingleMovie = () => {
   const director = credits?.crew.find((person) => person.job === "Director");
 
   useEffect(() => {
-    dispatch(getMovie(id));
+    dispatch(getMovie(id!));
     dispatch(setQuery("singleMovie"));
     console.log(movieInfo);
   }, [id]);

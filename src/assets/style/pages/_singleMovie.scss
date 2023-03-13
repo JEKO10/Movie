@@ -142,10 +142,11 @@
       @include flex(flex-start, flex-end);
       flex-wrap: wrap;
       width: 100%;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
 
       > * {
         margin-right: 1rem;
+        margin-bottom: 1rem;
       }
 
       h2 {
@@ -156,6 +157,7 @@
       h4 {
         color: #e1e1ff99;
         font-weight: 400;
+        font-size: 1.2rem;
 
         a {
           color: rgba(255, 255, 255, 0.8);

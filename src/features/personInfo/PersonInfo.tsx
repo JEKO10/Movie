@@ -21,7 +21,7 @@ const PersonInfo = () => {
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   useEffect(() => {
-    dispatch(getPerson(id));
+    dispatch(getPerson(id!));
   }, [name]);
 
   return (

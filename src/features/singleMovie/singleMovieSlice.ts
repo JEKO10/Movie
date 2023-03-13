@@ -82,7 +82,7 @@ const initialState: InitialStateType = {
 
 export const getMovie = createAsyncThunk(
   "singleMovie/getMovie",
-  async (id: string | undefined, thunkAPI) => {
+  async (id: string, thunkAPI) => {
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,keywords&adult=false`

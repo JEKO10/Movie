@@ -9,23 +9,31 @@ type GenreMovies = {
 type InitialStateType = {
   isLoading: boolean;
   genreMovies: GenreMovies[];
+  totalPages: number;
+  totalItems: number;
+  page: number;
 };
 
 const initialState: InitialStateType = {
   isLoading: true,
   genreMovies: [],
+  totalPages: 0,
+  totalItems: 0,
+  page: 1,
 };
 
 export const getGenreMovies = createAsyncThunk(
   "genreMovies/getGenreMovies",
-  async (id: string, thunkAPI) => {
+  async (id: string | undefined, { getState }) => {
+    const state: any = getState();
+
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${id}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${id}&page=${state.page}`
       );
-      return resp.data.results;
+      return resp.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response);
+      console.log(error);
     }
   }
 );
@@ -39,9 +47,11 @@ const genreMoviesSlice = createSlice({
       .addCase(getGenreMovies.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getGenreMovies.fulfilled, (state, action) => {
+      .addCase(getGenreMovies.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.genreMovies = action.payload;
+        state.genreMovies = payload.results;
+        state.totalPages = payload.total_pages;
+        state.totalItems = payload.total_results;
       })
       .addCase(getGenreMovies.rejected, (state) => {
         state.isLoading = false;
