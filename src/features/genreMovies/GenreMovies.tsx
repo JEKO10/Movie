@@ -17,7 +17,28 @@ const GenreMovies = () => {
 
   return (
     <section className="genreMovie">
-      <h2>{name}</h2>
+      <article className="sorting">
+        <div>
+          <h3>Films</h3>
+          <div>
+            <select name="sort">
+              <option>Sort by...</option>
+              <option value="popularity">Popularity</option>
+              <option value="date">Release date</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+        </div>
+        <div className="underline"></div>
+        <p>
+          There are{" "}
+          {totalItems.toString().slice(0, 2) +
+            "," +
+            totalItems.toString().slice(2)}
+          <span>{name}</span>
+          films.
+        </p>
+      </article>
       <article>
         {genreMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>

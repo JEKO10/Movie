@@ -1,12 +1,44 @@
 .genreMovie {
-  h2 {
-    font-size: 2rem;
-    line-height: 32px;
+  margin: 3rem 0;
+
+  .sorting {
+    h3 {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
+
+    .underline {
+      width: 100%;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      text-align: center;
+      background-color: #445566;
+      color: #e1e1ff99;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 1rem 0;
+
+      span {
+        text-transform: lowercase;
+        margin: 0 4px;
+      }
+    }
+
+    > div {
+      @include flex(space-between, center);
+    }
   }
 
   article {
     img {
-      height: 200px;
+      width: 10%;
     }
   }
 }
