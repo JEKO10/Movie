@@ -12,6 +12,7 @@ type InitialStateType = {
   totalPages: number;
   totalItems: number;
   page: number;
+  sortBy: string;
 };
 
 const initialState: InitialStateType = {
@@ -20,20 +21,21 @@ const initialState: InitialStateType = {
   totalPages: 0,
   totalItems: 0,
   page: 1,
+  sortBy: "popularity.desc",
 };
 
 export const getGenreMovies = createAsyncThunk(
   "genreMovies/getGenreMovies",
-  async (id: string | undefined, { getState }) => {
+  async (id: string | undefined, { getState, rejectWithValue }) => {
     const state: any = getState();
 
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${id}&page=${state.page}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${state.sortBy}&vote_count.gte=50&with_genres=${id}&page=${state.page}&with_original_language=en`
       );
       return resp.data;
     } catch (error: any) {
-      console.log(error);
+      return rejectWithValue(error.response);
     }
   }
 );
@@ -41,7 +43,12 @@ export const getGenreMovies = createAsyncThunk(
 const genreMoviesSlice = createSlice({
   name: "genreMovies",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    toggleSort: (state, { payload }) => {
+      state.sortBy = payload;
+      console.log(state.sortBy);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getGenreMovies.pending, (state) => {
@@ -59,4 +66,5 @@ const genreMoviesSlice = createSlice({
   },
 });
 
+export const { toggleSort } = genreMoviesSlice.actions;
 export const { reducer } = genreMoviesSlice;

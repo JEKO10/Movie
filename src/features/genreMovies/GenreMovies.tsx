@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { getGenreMovies } from "./genreMoviesSlice";
+import { getGenreMovies, toggleSort } from "./genreMoviesSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Link, useParams } from "react-router-dom";
 
@@ -13,6 +13,7 @@ const GenreMovies = () => {
 
   useEffect(() => {
     dispatch(getGenreMovies(id));
+    console.log(genreMovies);
   }, [id]);
 
   return (
@@ -21,11 +22,16 @@ const GenreMovies = () => {
         <div>
           <h3>Films</h3>
           <div>
-            <select name="sort">
-              <option>Sort by...</option>
+            <select
+              name="sort"
+              onChange={(e) => dispatch(toggleSort(e.currentTarget.value))}
+            >
+              <option selected>Sort by</option>
               <option value="popularity">Popularity</option>
+              <option value="rating">Average Rating</option>
               <option value="date">Release date</option>
               <option value="name">Name</option>
+              <option value="revenue">Revenue</option>
             </select>
           </div>
         </div>

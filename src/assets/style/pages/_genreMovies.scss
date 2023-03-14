@@ -2,12 +2,28 @@
   margin: 3rem 0;
 
   .sorting {
-    h3 {
+    h3,
+    select {
       color: rgba(255, 255, 255, 0.5);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: 500;
+    }
+
+    select {
+      font-size: 0.8rem;
+      background: none;
+      border: none;
+      outline: none;
+      font-family: $primaryFont;
+      width: 105px;
+      cursor: pointer;
+
+      option {
+        background-color: #445566;
+        color: rgba(255, 255, 255, 0.5);
+      }
     }
 
     .underline {
