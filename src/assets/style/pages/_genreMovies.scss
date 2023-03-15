@@ -3,7 +3,7 @@
 
   .sorting {
     h3,
-    select {
+    ul {
       color: rgba(255, 255, 255, 0.5);
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -11,18 +11,27 @@
       font-weight: 500;
     }
 
-    select {
-      font-size: 0.8rem;
-      background: none;
-      border: none;
-      outline: none;
-      font-family: $primaryFont;
-      width: 105px;
-      cursor: pointer;
+    ul {
+      list-style-type: none;
+      text-transform: none;
+      width: 200px;
 
-      option {
+      li {
+        cursor: pointer;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+
+      ul {
+        position: absolute;
         background-color: #445566;
-        color: rgba(255, 255, 255, 0.5);
+        padding: 5px 10px;
+
+        li {
+          margin: 5px 0;
+        }
       }
     }
 
@@ -58,3 +67,17 @@
     }
   }
 }
+
+// select {
+//       font-size: 0.8rem;
+//       background: none;
+//       border: none;
+//       outline: none;
+//       font-family: $primaryFont;
+//       cursor: pointer;
+
+//       option {
+//         background-color: #445566;
+//         color: rgba(255, 255, 255, 0.5);
+//       }
+//     }

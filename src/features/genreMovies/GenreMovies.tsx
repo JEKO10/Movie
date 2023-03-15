@@ -1,11 +1,13 @@
-import { useEffect } from "react";
-import { getGenreMovies, toggleSort } from "./genreMoviesSlice";
+import { useEffect, useState } from "react";
+import { getGenreMovies, toggleSort, toggleSortName } from "./genreMoviesSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Link, useParams } from "react-router-dom";
+import { setQuery } from "../navbar/navbarSlice";
 
 const GenreMovies = () => {
+  const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
   const { name, id } = useParams();
-  const { genreMovies, totalItems, totalPages } = useAppSelector(
+  const { genreMovies, totalItems, totalPages, sortName } = useAppSelector(
     (store) => store.genreMovies
   );
   const dispatch = useAppDispatch();
@@ -14,6 +16,7 @@ const GenreMovies = () => {
   useEffect(() => {
     dispatch(getGenreMovies(id));
     console.log(genreMovies);
+    dispatch(setQuery(""));
   }, [id]);
 
   return (
@@ -22,17 +25,36 @@ const GenreMovies = () => {
         <div>
           <h3>Films</h3>
           <div>
-            <select
+            {/* <select
               name="sort"
-              onChange={(e) => dispatch(toggleSort(e.currentTarget.value))}
+              onChange={(e) => {
+                dispatch(toggleSort(e.currentTarget.value));
+                dispatch(toggleSortName(e.currentTarget.textContent));
+              }}
             >
-              <option selected>Sort by</option>
-              <option value="popularity">Popularity</option>
+              <option selected>Sort by {sortName}</option>
+              <option value="popularity.desc">Popularity</option>
               <option value="rating">Average Rating</option>
               <option value="date">Release date</option>
               <option value="name">Name</option>
               <option value="revenue">Revenue</option>
-            </select>
+            </select> */}
+            <ul>
+              <li onClick={() => setIsSortOpen(!isSortOpen)}>
+                Sort by {sortName}
+              </li>
+              {isSortOpen ? (
+                <ul>
+                  <li value="popularity.desc">Popularity</li>
+                  <li value="rating">Average Rating</li>
+                  <li value="date">Release date</li>
+                  <li value="name">Name</li>
+                  <li value="revenue">Revenue</li>
+                </ul>
+              ) : (
+                ""
+              )}
+            </ul>
           </div>
         </div>
         <div className="underline"></div>

@@ -13,6 +13,7 @@ type InitialStateType = {
   totalItems: number;
   page: number;
   sortBy: string;
+  sortName: string;
 };
 
 const initialState: InitialStateType = {
@@ -22,6 +23,7 @@ const initialState: InitialStateType = {
   totalItems: 0,
   page: 1,
   sortBy: "popularity.desc",
+  sortName: "popularity",
 };
 
 export const getGenreMovies = createAsyncThunk(
@@ -46,7 +48,9 @@ const genreMoviesSlice = createSlice({
   reducers: {
     toggleSort: (state, { payload }) => {
       state.sortBy = payload;
-      console.log(state.sortBy);
+    },
+    toggleSortName: (state, { payload }) => {
+      state.sortName = payload;
     },
   },
   extraReducers: (builder) => {
@@ -66,5 +70,5 @@ const genreMoviesSlice = createSlice({
   },
 });
 
-export const { toggleSort } = genreMoviesSlice.actions;
+export const { toggleSort, toggleSortName } = genreMoviesSlice.actions;
 export const { reducer } = genreMoviesSlice;

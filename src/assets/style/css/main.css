@@ -455,25 +455,31 @@ nav ul li a:hover, nav ul li a.active {
   margin: 3rem 0;
 }
 .genreMovie .sorting h3,
-.genreMovie .sorting select {
+.genreMovie .sorting ul {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 500;
 }
-.genreMovie .sorting select {
-  font-size: 0.8rem;
-  background: none;
-  border: none;
-  outline: none;
-  font-family: "Hanken Grotesk", sans-serif;
-  width: 105px;
+.genreMovie .sorting ul {
+  list-style-type: none;
+  text-transform: none;
+  width: 200px;
+}
+.genreMovie .sorting ul li {
   cursor: pointer;
 }
-.genreMovie .sorting select option {
+.genreMovie .sorting ul li:hover {
+  color: #fff;
+}
+.genreMovie .sorting ul ul {
+  position: absolute;
   background-color: #445566;
-  color: rgba(255, 255, 255, 0.5);
+  padding: 5px 10px;
+}
+.genreMovie .sorting ul ul li {
+  margin: 5px 0;
 }
 .genreMovie .sorting .underline {
   width: 100%;
