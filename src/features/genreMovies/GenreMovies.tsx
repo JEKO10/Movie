@@ -13,6 +13,14 @@ const GenreMovies = () => {
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
+  const changeSort = (e) => {
+    dispatch(toggleSort(e.currentTarget.value));
+  };
+
+  const changeSortName = (e) => {
+    dispatch(toggleSortName(e.currentTarget.textContent));
+  };
+
   useEffect(() => {
     dispatch(getGenreMovies(id));
     console.log(genreMovies);
@@ -25,31 +33,62 @@ const GenreMovies = () => {
         <div>
           <h3>Films</h3>
           <div>
-            {/* <select
-              name="sort"
-              onChange={(e) => {
-                dispatch(toggleSort(e.currentTarget.value));
-                dispatch(toggleSortName(e.currentTarget.textContent));
-              }}
-            >
-              <option selected>Sort by {sortName}</option>
-              <option value="popularity.desc">Popularity</option>
-              <option value="rating">Average Rating</option>
-              <option value="date">Release date</option>
-              <option value="name">Name</option>
-              <option value="revenue">Revenue</option>
-            </select> */}
             <ul>
               <li onClick={() => setIsSortOpen(!isSortOpen)}>
                 Sort by {sortName}
               </li>
               {isSortOpen ? (
                 <ul>
-                  <li value="popularity.desc">Popularity</li>
-                  <li value="rating">Average Rating</li>
-                  <li value="date">Release date</li>
-                  <li value="name">Name</li>
-                  <li value="revenue">Revenue</li>
+                  <li
+                    value="popularity.desc"
+                    onClick={(e) => {
+                      changeSort(e);
+                      changeSortName(e);
+                      setIsSortOpen(false);
+                    }}
+                  >
+                    Popularity
+                  </li>
+                  <li
+                    value="rating.desc"
+                    onClick={(e) => {
+                      changeSort(e);
+                      changeSortName(e);
+                      setIsSortOpen(false);
+                    }}
+                  >
+                    Average Rating
+                  </li>
+                  <li
+                    value="release_date.desc"
+                    onClick={(e) => {
+                      changeSort(e);
+                      changeSortName(e);
+                      setIsSortOpen(false);
+                    }}
+                  >
+                    Release date
+                  </li>
+                  <li
+                    value="original_title.desc"
+                    onClick={(e) => {
+                      changeSort(e);
+                      changeSortName(e);
+                      setIsSortOpen(false);
+                    }}
+                  >
+                    Name
+                  </li>
+                  <li
+                    value="revenue.desc"
+                    onClick={(e) => {
+                      changeSort(e);
+                      changeSortName(e);
+                      setIsSortOpen(false);
+                    }}
+                  >
+                    Revenue
+                  </li>
                 </ul>
               ) : (
                 ""
