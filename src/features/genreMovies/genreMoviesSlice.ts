@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { RootState } from "../../app/store";
 
 type GenreMovies = {
   id: number;
@@ -23,17 +24,18 @@ const initialState: InitialStateType = {
   totalItems: 0,
   page: 1,
   sortBy: "popularity.desc",
-  sortName: "popularity",
+  sortName: "Popularity",
 };
 
 export const getGenreMovies = createAsyncThunk(
   "genreMovies/getGenreMovies",
   async (id: string | undefined, { getState, rejectWithValue }) => {
-    const state: any = getState();
+    const { genreMovies } = getState() as { genreMovies: InitialStateType };
+    console.log(genreMovies.sortBy);
 
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${state.sortBy}&vote_count.gte=50&with_genres=${id}&page=${state.page}&with_original_language=en`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${genreMovies.sortBy}&vote_count.gte=50&with_genres=${id}&page=${genreMovies.page}&with_original_language=en`
       );
       return resp.data;
     } catch (error: any) {
@@ -46,10 +48,10 @@ const genreMoviesSlice = createSlice({
   name: "genreMovies",
   initialState: initialState,
   reducers: {
-    toggleSort: (state, { payload }) => {
+    toggleSort: (state, { payload }: { payload: string }) => {
       state.sortBy = payload;
     },
-    toggleSortName: (state, { payload }) => {
+    toggleSortName: (state, { payload }: { payload: string }) => {
       state.sortName = payload;
     },
   },

@@ -14,16 +14,17 @@ const GenreMovies = () => {
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   const changeSort = (e) => {
-    dispatch(toggleSort(e.currentTarget.value));
+    dispatch(toggleSort(e));
+    dispatch(getGenreMovies(id));
   };
 
   const changeSortName = (e) => {
     dispatch(toggleSortName(e.currentTarget.textContent));
+    setIsSortOpen(false);
   };
 
   useEffect(() => {
     dispatch(getGenreMovies(id));
-    console.log(genreMovies);
     dispatch(setQuery(""));
   }, [id]);
 
@@ -38,59 +39,69 @@ const GenreMovies = () => {
                 Sort by {sortName}
               </li>
               {isSortOpen ? (
-                <ul>
-                  <li
-                    value="popularity.desc"
-                    onClick={(e) => {
-                      changeSort(e);
-                      changeSortName(e);
-                      setIsSortOpen(false);
-                    }}
-                  >
-                    Popularity
-                  </li>
-                  <li
-                    value="rating.desc"
-                    onClick={(e) => {
-                      changeSort(e);
-                      changeSortName(e);
-                      setIsSortOpen(false);
-                    }}
-                  >
-                    Average Rating
-                  </li>
-                  <li
-                    value="release_date.desc"
-                    onClick={(e) => {
-                      changeSort(e);
-                      changeSortName(e);
-                      setIsSortOpen(false);
-                    }}
-                  >
-                    Release date
-                  </li>
-                  <li
-                    value="original_title.desc"
-                    onClick={(e) => {
-                      changeSort(e);
-                      changeSortName(e);
-                      setIsSortOpen(false);
-                    }}
-                  >
-                    Name
-                  </li>
-                  <li
-                    value="revenue.desc"
-                    onClick={(e) => {
-                      changeSort(e);
-                      changeSortName(e);
-                      setIsSortOpen(false);
-                    }}
-                  >
-                    Revenue
-                  </li>
-                </ul>
+                <select
+                  name=""
+                  id=""
+                  onChange={(e) => {
+                    changeSort(e.currentTarget.value);
+                    changeSortName(e);
+                    console.log(e.currentTarget.value);
+                  }}
+                >
+                  <option value="popularity.desc">P</option>
+                  <option value="vote_average.desc">B</option>
+                  <option value="primary_release_date.desc">T</option>
+                  <option value="revenue.desc">R</option>
+                </select>
               ) : (
+                // <ul>
+                //   <li
+                //     value="popularity.desc"
+                //     onClick={(e) => {
+                //       changeSort(e.currentTarget.value);
+                //       changeSortName(e);
+                //       console.log(e.currentTarget.nodeValue);
+                //     }}
+                //   >
+                //     Popularity
+                //   </li>
+                //   <li
+                //     value="vote_average.desc"
+                //     onClick={(e) => {
+                //       changeSort(e.currentTarget.value);
+                //       changeSortName(e);
+                //     }}
+                //   >
+                //     Average Rating
+                //   </li>
+                //   <li
+                //     value="primary_release_date.desc"
+                //     onClick={(e) => {
+                //       changeSort(e.currentTarget.value);
+                //       changeSortName(e);
+                //     }}
+                //   >
+                //     Release date
+                //   </li>
+                //   <li
+                //     value="original_title.desc"
+                //     onClick={(e) => {
+                //       changeSort(e.currentTarget.value);
+                //       changeSortName(e);
+                //     }}
+                //   >
+                //     Name
+                //   </li>
+                //   <li
+                //     value="revenue.desc"
+                //     onClick={(e) => {
+                //       changeSort(e.currentTarget.value);
+                //       changeSortName(e);
+                //     }}
+                //   >
+                //     Revenue
+                //   </li>
+                // </ul>
                 ""
               )}
             </ul>
