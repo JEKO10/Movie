@@ -1,14 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type GenreMovies = {
+type KeywordMovies = {
   id: number;
   poster_path: string;
 };
 
 type InitialStateType = {
   isLoading: boolean;
-  genreMovies: GenreMovies[];
+  keywordMovies: KeywordMovies[];
   totalPages: number;
   totalItems: number;
   page: number;
@@ -18,7 +18,7 @@ type InitialStateType = {
 
 const initialState: InitialStateType = {
   isLoading: true,
-  genreMovies: [],
+  keywordMovies: [],
   totalPages: 0,
   totalItems: 0,
   page: 1,
@@ -26,15 +26,14 @@ const initialState: InitialStateType = {
   sortName: "Popularity",
 };
 
-export const getGenreMovies = createAsyncThunk(
-  "genreMovies/getGenreMovies",
+export const getKeywordMovies = createAsyncThunk(
+  "keywordMovies/getKeywordMovies",
   async (id: string | undefined, { getState, rejectWithValue }) => {
-    const { genreMovies } = getState() as { genreMovies: InitialStateType };
-    console.log(genreMovies.sortBy);
+    const { keywordMovies } = getState() as { keywordMovies: InitialStateType };
 
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${genreMovies.sortBy}&vote_count.gte=50&with_genres=${id}&page=${genreMovies.page}&with_original_language=en`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${keywordMovies.sortBy}&vote_count.gte=50&with_keywords=${id}&page=${keywordMovies.page}&with_original_language=en`
       );
       return resp.data;
     } catch (error: any) {
@@ -43,8 +42,8 @@ export const getGenreMovies = createAsyncThunk(
   }
 );
 
-const genreMoviesSlice = createSlice({
-  name: "genreMovies",
+const keywordMoviesSlice = createSlice({
+  name: "keywordMovies",
   initialState: initialState,
   reducers: {
     toggleSort: (state, { payload }: { payload: string }) => {
@@ -56,20 +55,19 @@ const genreMoviesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getGenreMovies.pending, (state) => {
+      .addCase(getKeywordMovies.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getGenreMovies.fulfilled, (state, { payload }) => {
+      .addCase(getKeywordMovies.fulfilled, (state, { payload }) => {
         state.isLoading = false;
-        state.genreMovies = payload.results;
+        state.keywordMovies = payload.results;
         state.totalPages = payload.total_pages;
         state.totalItems = payload.total_results;
       })
-      .addCase(getGenreMovies.rejected, (state) => {
+      .addCase(getKeywordMovies.rejected, (state) => {
         state.isLoading = false;
       });
   },
 });
 
-export const { toggleSort, toggleSortName } = genreMoviesSlice.actions;
-export const { reducer } = genreMoviesSlice;
+export const { reducer } = keywordMoviesSlice;

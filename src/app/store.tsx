@@ -5,6 +5,7 @@ import { reducer as personInfoReducer } from "../features/personInfo/personInfoS
 import { reducer as singleMovieReducer } from "../features/singleMovie/singleMovieSlice";
 import { reducer as navbarReducer } from "../features/navbar/navbarSlice";
 import { reducer as genreMoviesReducer } from "../features/genreMovies/genreMoviesSlice";
+import { reducer as keywordMoviesReducer } from "../features/keywords/keywordMoviesSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     singleMovie: singleMovieReducer,
     navbar: navbarReducer,
     genreMovies: genreMoviesReducer,
+    keywordMovies: keywordMoviesReducer,
   },
 });
 

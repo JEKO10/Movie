@@ -21,7 +21,7 @@ type InitialStateType = {
 
 const initialState: InitialStateType = {
   isLoading: true,
-  personInfo: <PersonInfoType>{},
+  personInfo: {} as PersonInfoType,
   isBioOpen: false,
 };
 
