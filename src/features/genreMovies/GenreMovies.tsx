@@ -13,13 +13,13 @@ const GenreMovies = () => {
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
-  const changeSort = (e) => {
-    dispatch(toggleSort(e));
-    dispatch(getGenreMovies(id));
-  };
+  const changeSort = (event) => {
+    const value = event.target.getAttribute("value");
+    const name = event.target.innerText;
 
-  const changeSortName = (e) => {
-    dispatch(toggleSortName(e.currentTarget.textContent));
+    dispatch(toggleSort(value));
+    dispatch(toggleSortName(name));
+    dispatch(getGenreMovies(id));
     setIsSortOpen(false);
   };
 
@@ -39,69 +39,24 @@ const GenreMovies = () => {
                 Sort by {sortName}
               </li>
               {isSortOpen ? (
-                <select
-                  name=""
-                  id=""
-                  onChange={(e) => {
-                    changeSort(e.currentTarget.value);
-                    changeSortName(e);
-                    console.log(e.currentTarget.value);
-                  }}
-                >
-                  <option value="popularity.desc">P</option>
-                  <option value="vote_average.desc">B</option>
-                  <option value="primary_release_date.desc">T</option>
-                  <option value="revenue.desc">R</option>
-                </select>
+                <ul>
+                  <li value="popularity.desc" onClick={changeSort}>
+                    Popularity
+                  </li>
+                  <li value="vote_average.desc" onClick={changeSort}>
+                    Average Rating
+                  </li>
+                  <li value="primary_release_date.desc" onClick={changeSort}>
+                    Release date
+                  </li>
+                  <li value="original_title.desc" onClick={changeSort}>
+                    Name
+                  </li>
+                  <li value="revenue.desc" onClick={changeSort}>
+                    Revenue
+                  </li>
+                </ul>
               ) : (
-                // <ul>
-                //   <li
-                //     value="popularity.desc"
-                //     onClick={(e) => {
-                //       changeSort(e.currentTarget.value);
-                //       changeSortName(e);
-                //       console.log(e.currentTarget.nodeValue);
-                //     }}
-                //   >
-                //     Popularity
-                //   </li>
-                //   <li
-                //     value="vote_average.desc"
-                //     onClick={(e) => {
-                //       changeSort(e.currentTarget.value);
-                //       changeSortName(e);
-                //     }}
-                //   >
-                //     Average Rating
-                //   </li>
-                //   <li
-                //     value="primary_release_date.desc"
-                //     onClick={(e) => {
-                //       changeSort(e.currentTarget.value);
-                //       changeSortName(e);
-                //     }}
-                //   >
-                //     Release date
-                //   </li>
-                //   <li
-                //     value="original_title.desc"
-                //     onClick={(e) => {
-                //       changeSort(e.currentTarget.value);
-                //       changeSortName(e);
-                //     }}
-                //   >
-                //     Name
-                //   </li>
-                //   <li
-                //     value="revenue.desc"
-                //     onClick={(e) => {
-                //       changeSort(e.currentTarget.value);
-                //       changeSortName(e);
-                //     }}
-                //   >
-                //     Revenue
-                //   </li>
-                // </ul>
                 ""
               )}
             </ul>

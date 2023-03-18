@@ -3,37 +3,37 @@
 
   .sorting {
     h3,
-    // ul {
-    //   color: rgba(255, 255, 255, 0.5);
-    //   font-size: 0.8rem;
-    //   text-transform: uppercase;
-    //   letter-spacing: 2px;
-    //   font-weight: 500;
-    // }
+    ul {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+    }
 
-    // ul {
-    //   list-style-type: none;
-    //   text-transform: none;
-    //   width: 200px;
+    ul {
+      list-style-type: none;
+      text-transform: none;
+      width: 200px;
 
-    //   li {
-    //     cursor: pointer;
+      li {
+        cursor: pointer;
 
-    //     &:hover {
-    //       color: #fff;
-    //     }
-    //   }
+        &:hover {
+          color: #fff;
+        }
+      }
 
-      // ul {
-      //   position: absolute;
-      //   background-color: #445566;
-      //   padding: 5px 10px;
+      ul {
+        position: absolute;
+        background-color: #445566;
+        padding: 5px 10px;
 
-      //   li {
-      //     margin: 5px 0;
-      //   }
-      // }
-    // }
+        li {
+          margin: 5px 0;
+        }
+      }
+    }
 
     .underline {
       width: 100%;
@@ -67,17 +67,3 @@
     }
   }
 }
-
-// select {
-//       font-size: 0.8rem;
-//       background: none;
-//       border: none;
-//       outline: none;
-//       font-family: $primaryFont;
-//       cursor: pointer;
-
-//       option {
-//         background-color: #445566;
-//         color: rgba(255, 255, 255, 0.5);
-//       }
-//     }
