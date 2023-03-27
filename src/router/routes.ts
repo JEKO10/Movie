@@ -9,6 +9,7 @@ import SingleMovie from "../features/singleMovie/SingleMovie";
 import PersonInfo from "../features/personInfo/PersonInfo";
 import Error from "../pages/Error";
 import GenreMovies from "../features/genreMovies/GenreMovies";
+import KeywordMovies from "../features/keywords/KeywordMovies";
 
 const routes = [
   {
@@ -58,11 +59,12 @@ const routes = [
   },
   {
     id: 9,
-    path: "/genre/:id/:name",
+    path: "/movie/genre/:id/:name",
     element: GenreMovies,
   },
+  { id: 10, path: "/movie/theme/:id/:name", element: KeywordMovies },
   {
-    id: 10,
+    id: 11,
     path: "/*",
     element: Error,
   },

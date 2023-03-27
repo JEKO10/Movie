@@ -70,4 +70,6 @@ const keywordMoviesSlice = createSlice({
   },
 });
 
+export const { toggleSort, toggleSortName } = keywordMoviesSlice.actions;
+
 export const { reducer } = keywordMoviesSlice;

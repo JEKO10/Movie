@@ -29,7 +29,7 @@ const GenreMovies = () => {
   }, [id]);
 
   return (
-    <section className="genreMovie">
+    <section className="discover">
       <article className="sorting">
         <div>
           <h3>Films</h3>
