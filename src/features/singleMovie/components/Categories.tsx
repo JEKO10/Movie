@@ -313,7 +313,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
           )}
         </div>
       ) : category === "details" ? (
-        <div>
+        <div className="details">
           <div>
             <p>Budget</p>
             <ul>

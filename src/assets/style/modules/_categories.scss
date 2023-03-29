@@ -2,6 +2,10 @@
   width: 70vw;
   margin: 2rem 0 5rem 0;
 
+  .details ul li {
+    padding: 5px 10px;
+  }
+
   .options {
     @include flex(flex-start, center);
     list-style-type: none;

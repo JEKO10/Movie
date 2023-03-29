@@ -1,22 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type GenreMovies = {
-  id: number;
-  poster_path: string;
-};
+import { InitialGenreMovies } from "../../common/types/typesTS";
 
-type InitialStateType = {
-  isLoading: boolean;
-  genreMovies: GenreMovies[];
-  totalPages: number;
-  totalItems: number;
-  page: number;
-  sortBy: string;
-  sortName: string;
-};
-
-const initialState: InitialStateType = {
+const initialState: InitialGenreMovies = {
   isLoading: true,
   genreMovies: [],
   totalPages: 0,
@@ -29,7 +16,7 @@ const initialState: InitialStateType = {
 export const getGenreMovies = createAsyncThunk(
   "genreMovies/getGenreMovies",
   async (id: string | undefined, { getState, rejectWithValue }) => {
-    const { genreMovies } = getState() as { genreMovies: InitialStateType };
+    const { genreMovies } = getState() as { genreMovies: InitialGenreMovies };
     console.log(genreMovies.sortBy);
 
     try {

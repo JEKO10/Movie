@@ -1,27 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type PersonInfoType = {
-  name: string;
-  biography: string;
-  birthday: string;
-  deathday: string | null;
-  gender: number;
-  known_for_department: string;
-  place_of_birth: string;
-  profile_path: string;
-  imdb_id: string;
-};
+import { PersonInfo, InitialPersonInfo } from "../../common/types/typesTS";
 
-type InitialStateType = {
-  isLoading: boolean;
-  personInfo: PersonInfoType;
-  isBioOpen: boolean;
-};
-
-const initialState: InitialStateType = {
+const initialState: InitialPersonInfo = {
   isLoading: true,
-  personInfo: {} as PersonInfoType,
+  personInfo: {} as PersonInfo,
   isBioOpen: false,
 };
 
@@ -54,7 +38,7 @@ const personInfoSlice = createSlice({
       })
       .addCase(
         getPerson.fulfilled,
-        (state, action: PayloadAction<PersonInfoType>) => {
+        (state, action: PayloadAction<PersonInfo>) => {
           state.isLoading = false;
           state.personInfo = action.payload;
         }

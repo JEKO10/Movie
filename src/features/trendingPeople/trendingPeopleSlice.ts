@@ -1,19 +1,9 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type User = {
-  id: number;
-  title: string;
-  name: string;
-  profile_path: string;
-};
+import { Trending, InitialTPeople } from "../../common/types/typesTS";
 
-type InitialStateType = {
-  isLoading: boolean;
-  trendingPeople: User[];
-};
-
-const initialState: InitialStateType = {
+const initialState: InitialTPeople = {
   isLoading: true,
   trendingPeople: [],
 };
@@ -43,7 +33,7 @@ const trendingPeopleSlice = createSlice({
       })
       .addCase(
         getTrendingPeople.fulfilled,
-        (state, action: PayloadAction<User[]>) => {
+        (state, action: PayloadAction<Trending[]>) => {
           state.isLoading = false;
           state.trendingPeople = action.payload;
         }

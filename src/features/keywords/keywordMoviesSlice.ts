@@ -1,22 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-type KeywordMovies = {
-  id: number;
-  poster_path: string;
-};
+import { InitialKeywordMovies } from "../../common/types/typesTS";
 
-type InitialStateType = {
-  isLoading: boolean;
-  keywordMovies: KeywordMovies[];
-  totalPages: number;
-  totalItems: number;
-  page: number;
-  sortBy: string;
-  sortName: string;
-};
-
-const initialState: InitialStateType = {
+const initialState: InitialKeywordMovies = {
   isLoading: true,
   keywordMovies: [],
   totalPages: 0,
@@ -29,7 +16,9 @@ const initialState: InitialStateType = {
 export const getKeywordMovies = createAsyncThunk(
   "keywordMovies/getKeywordMovies",
   async (id: string | undefined, { getState, rejectWithValue }) => {
-    const { keywordMovies } = getState() as { keywordMovies: InitialStateType };
+    const { keywordMovies } = getState() as {
+      keywordMovies: InitialKeywordMovies;
+    };
 
     try {
       const resp = await axios.get(
