@@ -4,8 +4,7 @@ import { reducer as trendingPeopleReducer } from "../features/trendingPeople/tre
 import { reducer as personInfoReducer } from "../features/personInfo/personInfoSlice";
 import { reducer as singleMovieReducer } from "../features/singleMovie/singleMovieSlice";
 import { reducer as navbarReducer } from "../features/navbar/navbarSlice";
-import { reducer as genreMoviesReducer } from "../features/genreMovies/genreMoviesSlice";
-import { reducer as keywordMoviesReducer } from "../features/keywords/keywordMoviesSlice";
+import { reducer as discoverReducer } from "../features/discoverMovies/discoverMovies";
 
 export const store = configureStore({
   reducer: {
@@ -14,8 +13,7 @@ export const store = configureStore({
     personInfo: personInfoReducer,
     singleMovie: singleMovieReducer,
     navbar: navbarReducer,
-    genreMovies: genreMoviesReducer,
-    keywordMovies: keywordMoviesReducer,
+    discoverMovies: discoverReducer,
   },
 });
 

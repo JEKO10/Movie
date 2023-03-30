@@ -46,24 +46,15 @@ type DiscoverMovies = {
   poster_path: string;
 };
 
-export type InitialKeywordMovies = {
+export type InitialDiscoverMovies = {
   isLoading: boolean;
-  keywordMovies: DiscoverMovies[];
+  discoverMovies: DiscoverMovies[];
   totalPages: number;
   totalItems: number;
   page: number;
   sortBy: string;
   sortName: string;
-};
-
-export type InitialGenreMovies = {
-  isLoading: boolean;
-  genreMovies: DiscoverMovies[];
-  totalPages: number;
-  totalItems: number;
-  page: number;
-  sortBy: string;
-  sortName: string;
+  discover: string;
 };
 
 export type DiscoverPayload = {
