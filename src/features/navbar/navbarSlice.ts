@@ -8,7 +8,7 @@ const navbarSlice = createSlice({
   name: "navbar",
   initialState,
   reducers: {
-    setQuery: (state, { payload }) => {
+    setQuery: (state, { payload }: { payload: string }) => {
       state.query = payload;
     },
   },

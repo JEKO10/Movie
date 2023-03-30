@@ -41,7 +41,7 @@ export type InitialPersonInfo = {
 
 // discover movies
 
-export type DiscoverMovies = {
+type DiscoverMovies = {
   id: number;
   poster_path: string;
 };
@@ -64,4 +64,10 @@ export type InitialGenreMovies = {
   page: number;
   sortBy: string;
   sortName: string;
+};
+
+export type DiscoverPayload = {
+  results: DiscoverMovies[];
+  total_pages: number;
+  total_results: number;
 };

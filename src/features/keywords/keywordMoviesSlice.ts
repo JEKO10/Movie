@@ -1,7 +1,10 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { InitialKeywordMovies } from "../../common/types/typesTS";
+import {
+  DiscoverPayload,
+  InitialKeywordMovies,
+} from "../../common/types/typesTS";
 
 const initialState: InitialKeywordMovies = {
   isLoading: true,
@@ -47,12 +50,15 @@ const keywordMoviesSlice = createSlice({
       .addCase(getKeywordMovies.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getKeywordMovies.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.keywordMovies = payload.results;
-        state.totalPages = payload.total_pages;
-        state.totalItems = payload.total_results;
-      })
+      .addCase(
+        getKeywordMovies.fulfilled,
+        (state, action: PayloadAction<DiscoverPayload>) => {
+          state.isLoading = false;
+          state.keywordMovies = action.payload.results;
+          state.totalPages = action.payload.total_pages;
+          state.totalItems = action.payload.total_results;
+        }
+      )
       .addCase(getKeywordMovies.rejected, (state) => {
         state.isLoading = false;
       });
