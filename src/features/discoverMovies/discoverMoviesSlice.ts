@@ -14,7 +14,7 @@ const initialState: InitialDiscoverMovies = {
   page: 1,
   sortBy: "popularity.desc",
   sortName: "Popularity",
-  discover: "keywords",
+  discover: "genres",
 };
 
 export const getDiscoverMovies = createAsyncThunk(
@@ -48,6 +48,24 @@ const DiscoverMoviesSlice = createSlice({
     toggleDiscover: (state, { payload }: { payload: string }) => {
       state.discover = payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getDiscoverMovies.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(
+        getDiscoverMovies.fulfilled,
+        (state, action: PayloadAction<DiscoverPayload>) => {
+          state.isLoading = false;
+          state.discoverMovies = action.payload.results;
+          state.totalPages = action.payload.total_pages;
+          state.totalItems = action.payload.total_results;
+        }
+      )
+      .addCase(getDiscoverMovies.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 

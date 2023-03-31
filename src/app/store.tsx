@@ -4,7 +4,7 @@ import { reducer as trendingPeopleReducer } from "../features/trendingPeople/tre
 import { reducer as personInfoReducer } from "../features/personInfo/personInfoSlice";
 import { reducer as singleMovieReducer } from "../features/singleMovie/singleMovieSlice";
 import { reducer as navbarReducer } from "../features/navbar/navbarSlice";
-import { reducer as discoverReducer } from "../features/discoverMovies/discoverMovies";
+import { reducer as discoverReducer } from "../features/discoverMovies/discoverMoviesSlice";
 
 export const store = configureStore({
   reducer: {

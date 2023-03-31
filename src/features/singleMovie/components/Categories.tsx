@@ -101,7 +101,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             <ul>
               {genres?.map((genre) => (
                 <li key={genre.id}>
-                  <Link to={`/movie/genre/${genre?.id}/${genre?.name}`}>
+                  <Link to={`/discover/${genre?.id}/${genre?.name}`}>
                     {genre.name}
                   </Link>
                 </li>
@@ -113,7 +113,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             <ul>
               {keywords?.keywords?.map((keyword) => (
                 <li key={keyword.id}>
-                  <Link to={`/movie/theme/${keyword?.id}/${keyword?.name}`}>
+                  <Link to={`/discover/${keyword?.id}/${keyword?.name}`}>
                     {keyword.name}
                   </Link>
                 </li>

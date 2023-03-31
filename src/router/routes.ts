@@ -8,8 +8,7 @@ import Likes from "../pages/Likes";
 import SingleMovie from "../features/singleMovie/SingleMovie";
 import PersonInfo from "../features/personInfo/PersonInfo";
 import Error from "../pages/Error";
-import GenreMovies from "../features/genreMovies/GenreMovies";
-import KeywordMovies from "../features/keywords/KeywordMovies";
+import DiscoverMovies from "../features/discoverMovies/DiscoverMovies";
 
 const routes = [
   {
@@ -59,12 +58,11 @@ const routes = [
   },
   {
     id: 9,
-    path: "/movie/genre/:id/:name",
-    element: GenreMovies,
+    path: "/discover/:id/:name",
+    element: DiscoverMovies,
   },
-  { id: 10, path: "/movie/theme/:id/:name", element: KeywordMovies },
   {
-    id: 11,
+    id: 10,
     path: "/*",
     element: Error,
   },
