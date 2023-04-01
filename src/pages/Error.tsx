@@ -2,7 +2,7 @@ import React from "react";
 
 const Error = () => {
   return (
-    <section className="error">
+    <section>
       <p>
         Sorry, we can’t find the page you’ve requested. Perhaps you imagined it?
         Please contact us if the problem persists.

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { getPerson, toggleBio } from "./personInfoSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { useParams } from "react-router-dom";

@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-    <section className="home">
+    <section>
       <TrendingMovies />
       <TrendingPeople />
     </section>

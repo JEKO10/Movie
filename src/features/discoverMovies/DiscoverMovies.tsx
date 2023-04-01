@@ -3,6 +3,7 @@ import {
   getDiscoverMovies,
   toggleSort,
   toggleSortName,
+  toggleDiscover,
 } from "./discoverMoviesSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Link, useParams } from "react-router-dom";
@@ -17,12 +18,12 @@ const DiscoverMovies = () => {
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
-  const changeSort = (event) => {
-    const value = event.target.getAttribute("value");
-    const name = event.target.innerText;
+  const changeSort = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const value = event.currentTarget.getAttribute("value");
+    const name = event.currentTarget.textContent;
 
-    dispatch(toggleSort(value));
-    dispatch(toggleSortName(name));
+    if (value) dispatch(toggleSort(value));
+    if (name) dispatch(toggleSortName(name));
     dispatch(getDiscoverMovies(id));
     setIsSortOpen(false);
   };
@@ -30,6 +31,7 @@ const DiscoverMovies = () => {
   useEffect(() => {
     dispatch(getDiscoverMovies(id));
     dispatch(setQuery(""));
+    dispatch(toggleDiscover("keywords"));
   }, [id]);
 
   return (
@@ -53,10 +55,16 @@ const DiscoverMovies = () => {
                   <li value="primary_release_date.desc" onClick={changeSort}>
                     Release date
                   </li>
-                  <li value="original_title.desc" onClick={changeSort}>
+                  <li
+                    value="original_title.desc"
+                    onClick={(event) => changeSort(event)}
+                  >
                     Name
                   </li>
-                  <li value="revenue.desc" onClick={changeSort}>
+                  <li
+                    value="revenue.desc"
+                    onClick={(event) => changeSort(event)}
+                  >
                     Revenue
                   </li>
                 </ul>

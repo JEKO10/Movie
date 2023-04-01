@@ -1,7 +1,8 @@
+import React, { useEffect } from "react";
 import { toggleCategory, toggleCast } from "../singleMovieSlice";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { toggleDiscover } from "../../discoverMovies/discoverMoviesSlice";
 
 type CategoriesProps = {
   id?: string;
@@ -101,7 +102,10 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             <ul>
               {genres?.map((genre) => (
                 <li key={genre.id}>
-                  <Link to={`/discover/${genre?.id}/${genre?.name}`}>
+                  <Link
+                    to={`/discover/${genre?.id}/${genre?.name}`}
+                    onClick={() => dispatch(toggleDiscover("genres"))}
+                  >
                     {genre.name}
                   </Link>
                 </li>

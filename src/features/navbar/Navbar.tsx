@@ -2,17 +2,21 @@ import logo from "../../assets/images/logo.png";
 import { setQuery } from "./navbarSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Link } from "react-router-dom";
+import { Nav } from "../../assets/style/Navbar.style";
+import React from "react";
 
 const Navbar = () => {
   const { query } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
 
-  const setClicked = (e) => {
-    dispatch(setQuery(e.currentTarget.textContent));
+  const setClicked = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    dispatch(setQuery(event.currentTarget.text));
   };
 
   return (
-    <nav
+    <Nav
       style={{
         backgroundColor:
           query === "singleMovie"
@@ -27,7 +31,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/profile"}
-            onClick={(e) => setClicked(e)}
+            onClick={(event) => setClicked(event)}
             className={query === "Profile" ? "active" : ""}
           >
             Profile
@@ -36,7 +40,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/films"}
-            onClick={(e) => setClicked(e)}
+            onClick={(event) => setClicked(event)}
             className={query === "Films" ? "active" : ""}
           >
             Films
@@ -45,7 +49,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/likes"}
-            onClick={(e) => setClicked(e)}
+            onClick={(event) => setClicked(event)}
             className={query === "Likes" ? "active" : ""}
           >
             Likes
@@ -54,7 +58,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/lists"}
-            onClick={(e) => setClicked(e)}
+            onClick={(event) => setClicked(event)}
             className={query === "Lists" ? "active" : ""}
           >
             Lists
@@ -63,7 +67,7 @@ const Navbar = () => {
         <li>
           <Link
             to={"/reviews"}
-            onClick={(e) => setClicked(e)}
+            onClick={(event) => setClicked(event)}
             className={query === "Reviews" ? "active" : ""}
           >
             Reviews
@@ -72,19 +76,19 @@ const Navbar = () => {
         <li>
           <Link
             to={"/watchlist"}
-            onClick={(e) => setClicked(e)}
+            onClick={(event) => setClicked(event)}
             className={query === "Watchlist" ? "active" : ""}
           >
             Watchlist
           </Link>
         </li>
         <li>
-          <Link to={"/"} onClick={(e) => setClicked(e)}>
+          <Link to={"/"} onClick={(event) => setClicked(event)}>
             Search for movies
           </Link>
         </li>
       </ul>
-    </nav>
+    </Nav>
   );
 };
 
