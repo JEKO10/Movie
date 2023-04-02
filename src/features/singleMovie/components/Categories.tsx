@@ -3,6 +3,11 @@ import { toggleCategory, toggleCast } from "../singleMovieSlice";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { Link } from "react-router-dom";
 import { toggleDiscover } from "../../discoverMovies/discoverMoviesSlice";
+import {
+  CategoriesSection,
+  CategoriesOption,
+  Details,
+} from "../../../assets/style/Categories.style";
 
 type CategoriesProps = {
   id?: string;
@@ -60,8 +65,8 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
   }, [id]);
 
   return (
-    <article className="categories">
-      <ul className="options">
+    <CategoriesSection>
+      <CategoriesOption>
         <li
           onClick={(e) => {
             dispatch(toggleCategory(e.currentTarget.textContent));
@@ -94,7 +99,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
         >
           details
         </li>
-      </ul>
+      </CategoriesOption>
       {category === "genres" ? (
         <div>
           <div>
@@ -317,7 +322,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
           )}
         </div>
       ) : category === "details" ? (
-        <div className="details">
+        <Details>
           <div>
             <p>Budget</p>
             <ul>
@@ -370,11 +375,11 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
               ))}
             </ul>
           </div>
-        </div>
+        </Details>
       ) : (
         ""
       )}
-    </article>
+    </CategoriesSection>
   );
 };
 

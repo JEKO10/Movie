@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { toggleModal } from ".././singleMovieSlice";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { RxCross2 } from "react-icons/rx";
+import { PosterModal } from "../../../assets/style/PosterModal.style";
 
 type ModalProps = {
   id?: string;
@@ -27,10 +28,10 @@ const ImageModal: React.FC<ModalProps> = ({ id, posterUrl, poster_path }) => {
   };
 
   return (
-    <div className={`${isModalOpen ? "open" : ""} posterModal`}>
+    <PosterModal className={`${isModalOpen ? "open" : ""} posterModal`}>
       <RxCross2 onClick={() => dispatch(toggleModal(false))} />
       <img src={posterUrl + poster_path} alt="POSTER" ref={posterRef} />
-    </div>
+    </PosterModal>
   );
 };
 

@@ -8,6 +8,12 @@ import {
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Link, useParams } from "react-router-dom";
 import { setQuery } from "../navbar/navbarSlice";
+import {
+  Discover,
+  Sorting,
+  Underline,
+  DiscoverList,
+} from "../../assets/style/DiscoverMovies.style";
 
 const DiscoverMovies = () => {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
@@ -35,12 +41,12 @@ const DiscoverMovies = () => {
   }, [id]);
 
   return (
-    <section className="discover">
-      <article className="sorting">
+    <Discover>
+      <Sorting>
         <div>
           <h3>Films</h3>
           <div>
-            <ul>
+            <DiscoverList>
               <li onClick={() => setIsSortOpen(!isSortOpen)}>
                 Sort by {sortName}
               </li>
@@ -71,10 +77,10 @@ const DiscoverMovies = () => {
               ) : (
                 ""
               )}
-            </ul>
+            </DiscoverList>
           </div>
         </div>
-        <div className="underline"></div>
+        <Underline></Underline>
         <p>
           There are{" "}
           {totalItems.toString().slice(0, 2) +
@@ -83,7 +89,7 @@ const DiscoverMovies = () => {
           <span>{name}</span>
           films.
         </p>
-      </article>
+      </Sorting>
       <article>
         {discoverMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
@@ -91,7 +97,7 @@ const DiscoverMovies = () => {
           </Link>
         ))}
       </article>
-    </section>
+    </Discover>
   );
 };
 

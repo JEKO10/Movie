@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import { getTrendingPeople } from "./trendingPeopleSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { Link } from "react-router-dom";
+import {
+  Trend,
+  Title,
+  TrendInfo,
+  TrendLink,
+} from "../../assets/style/Trending.style";
+import { Underline } from "../../assets/style/DiscoverMovies.style";
 
 const Trending = () => {
   const { trendingPeople } = useAppSelector((store) => store.trendingPeople);
@@ -13,23 +19,23 @@ const Trending = () => {
   }, []);
 
   return (
-    <section className="trending">
-      <div className="title">
+    <Trend>
+      <Title>
         <h2>Popular people this week</h2>
-      </div>
-      <div className="underline"></div>
-      <article>
+      </Title>
+      <Underline></Underline>
+      <TrendInfo>
         {trendingPeople.slice(0, 5).map(({ id, name, profile_path }) => (
-          <Link to={`/person/${id}`} key={id} className="trendElement">
+          <TrendLink to={`/person/${id}`} key={id} className="trendElement">
             <img src={posterUrl + profile_path} alt="Poster" />
-            <div className="info">
+            <div>
               <h4>{name}</h4>
-              {name?.length > 17 ? <div className="fade"></div> : ""}
+              {name?.length > 17 ? <div></div> : ""}
             </div>
-          </Link>
+          </TrendLink>
         ))}
-      </article>
-    </section>
+      </TrendInfo>
+    </Trend>
   );
 };
 

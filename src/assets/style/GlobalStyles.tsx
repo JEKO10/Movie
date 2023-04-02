@@ -3,11 +3,10 @@ import { createGlobalStyle, css } from "styled-components";
 
 export const primaryColor = "#0f87be";
 export const secondaryColor = "#a7a1ae";
+export const primaryFont = "Hanken Grotesk, sans-serif";
 
 export const GlobalStyles = React.memo(
   createGlobalStyle`${css`
-    @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
     * {
       margin: 0;
       padding: 0;
@@ -17,7 +16,6 @@ export const GlobalStyles = React.memo(
 
     html {
       scroll-behavior: smooth;
-      font-family: "Hanken Grotesk", sans-serif;
     }
 
     body {
@@ -33,6 +31,7 @@ export const GlobalStyles = React.memo(
       max-width: 75vw;
       margin: 0 auto;
       color: #fff;
+      font-family: "Hanken Grotesk", sans-serif;
     }
   `}`
 );

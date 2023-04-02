@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { getPerson, toggleBio } from "./personInfoSlice";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { useParams } from "react-router-dom";
+import { Person, PersonImg } from "../../assets/style/Person.style";
 
 const PersonInfo = () => {
   const {
@@ -22,11 +23,11 @@ const PersonInfo = () => {
 
   useEffect(() => {
     dispatch(getPerson(id!));
-  }, [name]);
+  }, [id]);
 
   return (
-    <section className="person">
-      <img src={posterUrl + profile_path} alt="POSTER" />
+    <Person>
+      <PersonImg src={posterUrl + profile_path} alt="POSTER" />
       <h2>{name}</h2>
       <h4>Date of birth: {birthday}</h4>
       {deathday ? <h4>Date of death: {deathday}</h4> : ""}
@@ -41,7 +42,7 @@ const PersonInfo = () => {
       <h5 onClick={() => dispatch(toggleBio())}>
         {isBioOpen ? "Close" : "Open"} full biography
       </h5>
-    </section>
+    </Person>
   );
 };
 

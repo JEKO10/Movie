@@ -5,6 +5,7 @@ import { getMovie, toggleModal } from "./singleMovieSlice";
 import { setQuery } from "../navbar/navbarSlice";
 import Categories from "./components/Categories";
 import ImageModal from "./components/ImageModal";
+import { Movie, Banner, Wrapper } from "../../assets/style/SingleMovie.style";
 
 const SingleMovie = () => {
   const { movieInfo } = useAppSelector((store) => store.singleMovie);
@@ -34,12 +35,11 @@ const SingleMovie = () => {
 
   return (
     <>
-      <section className="singleMovie">
-        <div
-          className="banner"
+      <Movie>
+        <Banner
           style={{ backgroundImage: `url('${posterUrl + backdrop_path}')` }}
-        ></div>
-        <article className="wrapper">
+        ></Banner>
+        <Wrapper>
           <img
             src={posterUrl + poster_path}
             alt="POSTER"
@@ -60,9 +60,9 @@ const SingleMovie = () => {
               <h3>{runtime} min</h3>
             </div>
           </article>
-        </article>
+        </Wrapper>
         <Categories id={id} />
-      </section>
+      </Movie>
       <ImageModal id={id} posterUrl={posterUrl} poster_path={poster_path} />
     </>
   );
