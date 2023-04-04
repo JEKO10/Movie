@@ -1,7 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { primaryFont } from "./GlobalStyles";
-import { Link } from "react-router-dom";
 
 export const Trend = styled.section`
   margin: 5rem 0 8rem 0;

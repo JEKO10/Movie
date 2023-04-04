@@ -1,14 +1,14 @@
-import Home from "../pages/Home";
-import Profile from "../pages/Profile";
-import Films from "../pages/Films";
-import Watchlist from "../pages/Watchlist";
-import Lists from "../pages/Lists";
-import Reviews from "../pages/Reviews";
-import Likes from "../pages/Likes";
-import SingleMovie from "../features/singleMovie/SingleMovie";
-import PersonInfo from "../features/personInfo/PersonInfo";
-import Error from "../pages/Error";
 import DiscoverMovies from "../features/discoverMovies/DiscoverMovies";
+import PersonInfo from "../features/personInfo/PersonInfo";
+import SingleMovie from "../features/singleMovie/SingleMovie";
+import Error from "../pages/Error";
+import Films from "../pages/Films";
+import Home from "../pages/Home";
+import Likes from "../pages/Likes";
+import Lists from "../pages/Lists";
+import Profile from "../pages/Profile";
+import Reviews from "../pages/Reviews";
+import Watchlist from "../pages/Watchlist";
 
 const routes = [
   {

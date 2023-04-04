@@ -1,9 +1,10 @@
-import { useEffect } from "react";
-import TrendingMovies from "../features/trendingMovies/TrendingMovies";
-import TrendingPeople from "../features/trendingPeople/TrendingPeople";
+import React, { useEffect } from "react";
+
 import { useAppDispatch } from "../common/hooks";
 import { setQuery } from "../features/navbar/navbarSlice";
 import { toggleModal } from "../features/singleMovie/singleMovieSlice";
+import TrendingMovies from "../features/trendingMovies/TrendingMovies";
+import TrendingPeople from "../features/trendingPeople/TrendingPeople";
 
 const Home = () => {
   const dispatch = useAppDispatch();

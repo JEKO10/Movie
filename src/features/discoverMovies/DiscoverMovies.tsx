@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
-import {
-  getDiscoverMovies,
-  toggleSort,
-  toggleSortName,
-  toggleDiscover,
-} from "./discoverMoviesSlice";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Link, useParams } from "react-router-dom";
-import { setQuery } from "../navbar/navbarSlice";
+
 import {
   Discover,
+  DiscoverList,
   Sorting,
   Underline,
-  DiscoverList,
 } from "../../assets/style/DiscoverMovies.style";
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { setQuery } from "../navbar/navbarSlice";
+import {
+  getDiscoverMovies,
+  toggleDiscover,
+  toggleSort,
+  toggleSortName,
+} from "./discoverMoviesSlice";
 
 const DiscoverMovies = () => {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
   const { name, id } = useParams();
-  const { discoverMovies, totalItems, totalPages, sortName } = useAppSelector(
+  const { discoverMovies, totalItems, sortName } = useAppSelector(
     (store) => store.discoverMovies
   );
   const dispatch = useAppDispatch();
