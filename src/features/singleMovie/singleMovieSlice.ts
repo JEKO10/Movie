@@ -1,68 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios, { isAxiosError } from "axios";
 
-type MovieCollection = {
-  id: number;
-  backdrop_path: string;
-  name: string;
-  poster_path: string;
-};
-
-type GenresKeywords = {
-  id: number;
-  name: string;
-};
-
-type MovieCompanies = {
-  id: number;
-  logo_path: string;
-  name: string;
-  origin_country: string;
-};
-
-type MovieCast = {
-  id: number;
-  character: string;
-  known_for_department: string;
-  name: string;
-};
-
-type MovieCrew = {
-  id: number;
-  department: string;
-  job: string;
-  name: string;
-  profile_path: string;
-};
-
-type MovieCreditsType = {
-  cast: MovieCast[];
-  crew: MovieCrew[];
-};
-
-type MovieInfoType = {
-  title: string;
-  tagline: string;
-  backdrop_path: string;
-  belongs_to_collection: MovieCollection;
-  genres: GenresKeywords[];
-  budget: number;
-  imdb_id: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  production_companies: MovieCompanies[];
-  production_countries: [{ name: string }];
-  release_date: string;
-  revenue: number;
-  runtime: number;
-  spoken_languages: [{ english_name: string }];
-  vote_average: number;
-  credits: MovieCreditsType;
-  keywords: {
-    keywords: GenresKeywords[];
-  };
-};
+import { MovieInfoType } from "../../common/types/typesTS";
 
 type InitialStateType = {
   isLoading: boolean;
@@ -82,14 +21,16 @@ const initialState: InitialStateType = {
 
 export const getMovie = createAsyncThunk(
   "singleMovie/getMovie",
-  async (id: string, thunkAPI) => {
+  async (id: string | undefined, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,keywords&adult=false`
       );
       return resp.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        return rejectWithValue(error.response);
+      }
     }
   }
 );

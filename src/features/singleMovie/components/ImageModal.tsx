@@ -1,8 +1,9 @@
-import { useEffect, useRef } from "react";
-import { toggleModal } from ".././singleMovieSlice";
-import { useAppDispatch, useAppSelector } from "../../../common/hooks";
+import React, { useEffect, useRef } from "react";
 import { RxCross2 } from "react-icons/rx";
+
 import { PosterModal } from "../../../assets/style/PosterModal.style";
+import { useAppDispatch, useAppSelector } from "../../../common/hooks";
+import { toggleModal } from ".././singleMovieSlice";
 
 type ModalProps = {
   id?: string;
@@ -19,8 +20,8 @@ const ImageModal: React.FC<ModalProps> = ({ id, posterUrl, poster_path }) => {
     document.addEventListener("click", clickOutside, true);
   }, [id]);
 
-  const clickOutside = (e) => {
-    if (!posterRef.current?.contains(e.target)) {
+  const clickOutside = (e: MouseEvent) => {
+    if (!posterRef.current?.contains(e.target as Node)) {
       dispatch(toggleModal(false));
     } else {
       dispatch(toggleModal(true));

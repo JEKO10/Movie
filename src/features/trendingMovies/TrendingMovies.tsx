@@ -1,13 +1,14 @@
-import { useEffect } from "react";
-import { getTrending, changeTime } from "./trendingMoviesSlice";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import React, { useEffect } from "react";
+
+import { Underline } from "../../assets/style/DiscoverMovies.style";
 import {
-  Trend,
   Title,
+  Trend,
   TrendInfo,
   TrendLink,
 } from "../../assets/style/Trending.style";
-import { Underline } from "../../assets/style/DiscoverMovies.style";
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { changeTime, getTrending } from "./trendingMoviesSlice";
 
 const Trending = () => {
   const { trendingMovies, time } = useAppSelector(
@@ -35,7 +36,7 @@ const Trending = () => {
       </Title>
       <Underline></Underline>
       <TrendInfo>
-        {trendingMovies.slice(0, 5).map(({ id, title, name, poster_path }) => (
+        {trendingMovies?.slice(0, 5).map(({ id, title, name, poster_path }) => (
           <TrendLink to={`/movie/${id}`} key={id} className="trendElement">
             <img src={posterUrl + poster_path} alt="Poster" />
             <div>

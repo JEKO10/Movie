@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios, { isAxiosError } from "axios";
 
-import { PersonInfo, InitialPersonInfo } from "../../common/types/typesTS";
+import { InitialPersonInfo, PersonInfo } from "../../common/types/typesTS";
 
 const initialState: InitialPersonInfo = {
   isLoading: true,
@@ -11,14 +11,16 @@ const initialState: InitialPersonInfo = {
 
 export const getPerson = createAsyncThunk(
   "personInfo/getPerson",
-  async (id: string, thunkAPI) => {
+  async (id: string | undefined, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
       );
       return resp.data;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        return rejectWithValue(error.response);
+      }
     }
   }
 );

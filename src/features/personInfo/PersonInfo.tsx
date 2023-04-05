@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { getPerson, toggleBio } from "./personInfoSlice";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { useParams } from "react-router-dom";
+
 import { Person, PersonImg } from "../../assets/style/Person.style";
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { getPerson, toggleBio } from "./personInfoSlice";
 
 const PersonInfo = () => {
   const {
@@ -14,7 +15,7 @@ const PersonInfo = () => {
     known_for_department,
     place_of_birth,
     profile_path,
-    imdb_id,
+    // imdb_id,
   } = useAppSelector((store) => store.personInfo.personInfo);
   const { isBioOpen } = useAppSelector((store) => store.personInfo);
   const { id } = useParams();
@@ -22,7 +23,7 @@ const PersonInfo = () => {
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   useEffect(() => {
-    dispatch(getPerson(id!));
+    dispatch(getPerson(id));
   }, [id]);
 
   return (

@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import axios, { isAxiosError } from "axios";
 
-import { Trending, InitialTPeople } from "../../common/types/typesTS";
+import { InitialTPeople, Trending } from "../../common/types/typesTS";
 
 const initialState: InitialTPeople = {
   isLoading: true,
@@ -10,14 +10,18 @@ const initialState: InitialTPeople = {
 
 export const getTrendingPeople = createAsyncThunk(
   "trendingPeople/getTrending",
-  async (data, thunkAPI) => {
+  async (data, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/trending/person/week?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
+        `https://api.themoviedb.org/3/trending/person/week?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&adult=false`
       );
       return resp.data.results;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.response);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        return rejectWithValue(error.response);
+      }
     }
   }
 );

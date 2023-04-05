@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 
 import {
   DiscoverPayload,
@@ -29,8 +29,10 @@ export const getDiscoverMovies = createAsyncThunk(
         `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${discoverMovies.sortBy}&vote_count.gte=50&with_${discoverMovies.discover}=${id}&page=${discoverMovies.page}&with_original_language=en`
       );
       return resp.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response);
+    } catch (error) {
+      if (isAxiosError(error)) {
+        return rejectWithValue(error.response);
+      }
     }
   }
 );

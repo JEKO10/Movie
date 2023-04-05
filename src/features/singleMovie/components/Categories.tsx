@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { toggleCategory, toggleCast } from "../singleMovieSlice";
-import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { Link } from "react-router-dom";
-import { toggleDiscover } from "../../discoverMovies/discoverMoviesSlice";
+
 import {
-  CategoriesSection,
   CategoriesOption,
+  CategoriesSection,
   Details,
 } from "../../../assets/style/Categories.style";
+import { useAppDispatch, useAppSelector } from "../../../common/hooks";
+import { toggleDiscover } from "../../discoverMovies/discoverMoviesSlice";
+import { toggleCast, toggleCategory } from "../singleMovieSlice";
 
 type CategoriesProps = {
   id?: string;

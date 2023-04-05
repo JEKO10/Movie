@@ -1,11 +1,12 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+
+import { Banner, Movie, Wrapper } from "../../assets/style/SingleMovie.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { getMovie, toggleModal } from "./singleMovieSlice";
 import { setQuery } from "../navbar/navbarSlice";
 import Categories from "./components/Categories";
 import ImageModal from "./components/ImageModal";
-import { Movie, Banner, Wrapper } from "../../assets/style/SingleMovie.style";
+import { getMovie, toggleModal } from "./singleMovieSlice";
 
 const SingleMovie = () => {
   const { movieInfo } = useAppSelector((store) => store.singleMovie);
@@ -13,8 +14,8 @@ const SingleMovie = () => {
     title,
     tagline,
     backdrop_path,
-    belongs_to_collection,
-    imdb_id,
+    // belongs_to_collection,
+    // imdb_id,
     overview,
     poster_path,
     release_date,
@@ -28,7 +29,7 @@ const SingleMovie = () => {
   const director = credits?.crew.find((person) => person.job === "Director");
 
   useEffect(() => {
-    dispatch(getMovie(id!));
+    dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
     console.log(movieInfo);
   }, [id]);

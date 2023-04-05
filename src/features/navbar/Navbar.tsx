@@ -1,9 +1,10 @@
-import logo from "../../assets/images/logo.png";
-import { setQuery } from "./navbarSlice";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { Link } from "react-router-dom";
-import { Nav } from "../../assets/style/Navbar.style";
 import React from "react";
+import { Link } from "react-router-dom";
+
+import logo from "../../assets/images/logo.png";
+import { Nav } from "../../assets/style/Navbar.style";
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { setQuery } from "./navbarSlice";
 
 const Navbar = () => {
   const { query } = useAppSelector((store) => store.navbar);
