@@ -14,7 +14,9 @@ export const getPerson = createAsyncThunk(
   async (id: string | undefined, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_API_KEY}&adult=false`
+        `https://api.themoviedb.org/3/person/${id}?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&adult=false`
       );
       return resp.data;
     } catch (error) {

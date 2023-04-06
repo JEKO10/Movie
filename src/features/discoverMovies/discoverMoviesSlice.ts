@@ -26,7 +26,11 @@ export const getDiscoverMovies = createAsyncThunk(
 
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&sort_by=${discoverMovies.sortBy}&vote_count.gte=50&with_${discoverMovies.discover}=${id}&page=${discoverMovies.page}&with_original_language=en`
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&sort_by=${discoverMovies.sortBy}&vote_count.gte=50&with_${
+          discoverMovies.discover
+        }=${id}&page=${discoverMovies.page}&with_original_language=en`
       );
       return resp.data;
     } catch (error) {

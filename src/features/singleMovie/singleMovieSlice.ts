@@ -24,7 +24,9 @@ export const getMovie = createAsyncThunk(
   async (id: string | undefined, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=credits,keywords&adult=false`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&append_to_response=credits,keywords&adult=false`
       );
       return resp.data;
     } catch (error) {

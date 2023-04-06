@@ -1,9 +1,12 @@
 {
+  "homepage": "https://JEKO10.github.io/Moviexd",
   "name": "moviexd-vite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -62,7 +65,11 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-simple-import-sort": "^10.0.0",
+    "gh-pages": "^5.0.0",
     "typescript": "^5.0.3",
     "vite": "^4.2.0"
+  },
+  "overrides": {
+    "typescript": "^5.0.3"
   }
 }
