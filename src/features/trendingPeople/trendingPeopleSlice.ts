@@ -17,6 +17,7 @@ export const getTrendingPeople = createAsyncThunk(
           import.meta.env.VITE_API_KEY
         }&adult=false`
       );
+
       return resp.data.results;
     } catch (error) {
       if (isAxiosError(error)) {

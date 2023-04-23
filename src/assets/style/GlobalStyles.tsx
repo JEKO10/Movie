@@ -25,13 +25,13 @@ export const GlobalStyles = React.memo(
         rgba(19, 24, 28, 1) 70%,
         rgba(32, 38, 46, 1) 100%
       );
+      font-family: ${primaryFont};
     }
 
     main {
       max-width: 75vw;
       margin: 0 auto;
       color: #fff;
-      font-family: "Hanken Grotesk", sans-serif;
     }
   `}`
 );

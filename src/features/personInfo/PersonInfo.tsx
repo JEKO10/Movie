@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Person, PersonImg } from "../../assets/style/Person.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { setQuery } from "../navbar/navbarSlice";
 import { getPerson, toggleBio } from "./personInfoSlice";
 
 const PersonInfo = () => {
@@ -24,6 +25,7 @@ const PersonInfo = () => {
 
   useEffect(() => {
     dispatch(getPerson(id));
+    dispatch(setQuery("Person"));
   }, [id]);
 
   return (

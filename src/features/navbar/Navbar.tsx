@@ -17,14 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <Nav
-      style={{
-        backgroundColor:
-          query === "singleMovie"
-            ? "rgba(19, 24, 28, 0)"
-            : "rgba(19, 24, 28, 1)",
-      }}
-    >
+    <Nav query={query}>
       <Link to={"/"}>
         <img src={logo} alt="Logo" />
       </Link>

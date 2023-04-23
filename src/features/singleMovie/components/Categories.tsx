@@ -146,7 +146,7 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
                 onClick={() => dispatch(toggleCast(!isCastOpen))}
                 style={{ padding: "5px 10px" }}
               >
-                {!isCastOpen ? "Show All..." : "Hide All..."}
+                {!isCastOpen ? "Show All..." : "Hide..."}
               </li>
             ) : (
               ""

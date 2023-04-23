@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
-export const Nav = styled.nav`
+type NavProps = {
+  query: string;
+};
+
+export const Nav = styled.nav<NavProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #fff;
+  background-color: ${({ query }) =>
+    query === "singleMovie" ? `rgba(19, 24, 28, 0)` : `rgba(19, 24, 28, 1)`};
   padding: 20px 50px;
-  font-family: "Hanken Grotesk", sans-serif;
 
   img {
     height: 50px;
