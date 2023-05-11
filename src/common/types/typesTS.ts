@@ -37,6 +37,7 @@ export type InitialPersonInfo = {
   isLoading: boolean;
   personInfo: PersonInfo;
   isBioOpen: boolean;
+  page: number;
 };
 
 // discover movies
