@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Person, PersonImg } from "../../assets/style/Person.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { setQuery } from "../navbar/navbarSlice";
-import { getPerson, toggleBio } from "./personInfoSlice";
+import { getMovies, getPerson, toggleBio } from "./personInfoSlice";
 
 const PersonInfo = () => {
   const {
@@ -18,13 +18,16 @@ const PersonInfo = () => {
     profile_path,
     // imdb_id,
   } = useAppSelector((store) => store.personInfo.personInfo);
-  const { isBioOpen } = useAppSelector((store) => store.personInfo);
+  const { isBioOpen /* personMovies */ } = useAppSelector(
+    (store) => store.personInfo
+  );
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
   useEffect(() => {
     dispatch(getPerson(id));
+    dispatch(getMovies(id));
     dispatch(setQuery("Person"));
   }, [id]);
 
@@ -45,6 +48,9 @@ const PersonInfo = () => {
       <h5 onClick={() => dispatch(toggleBio())}>
         {isBioOpen ? "Close" : "Open"} full biography
       </h5>
+      {/* {personMovies.results?.map((movie) => (
+        <img key={movie.id} src={posterUrl + movie.poster_path} alt="" />
+      ))} */}
     </Person>
   );
 };

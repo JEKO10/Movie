@@ -8,12 +8,12 @@ export type Trending = {
   poster_path: string;
 };
 
-export type InitialTPeople = {
+export type InitialTrendPeople = {
   isLoading: boolean;
   trendingPeople: Trending[];
 };
 
-export type InitialTMovies = {
+export type InitialTrendMovies = {
   isLoading: boolean;
   trendingMovies: Trending[];
   time: string;
@@ -33,19 +33,27 @@ export type PersonInfo = {
   imdb_id: string;
 };
 
+type DiscoverMovies = {
+  id: number;
+  poster_path: string;
+};
+
+export type PersonMovies = {
+  page: number;
+  results: DiscoverMovies[];
+  total_pages: number;
+  total_results: number;
+};
+
 export type InitialPersonInfo = {
   isLoading: boolean;
   personInfo: PersonInfo;
+  personMovies: PersonMovies;
   isBioOpen: boolean;
   page: number;
 };
 
 // discover movies
-
-type DiscoverMovies = {
-  id: number;
-  poster_path: string;
-};
 
 export type InitialDiscoverMovies = {
   isLoading: boolean;

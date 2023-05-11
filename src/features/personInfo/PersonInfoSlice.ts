@@ -1,11 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import { InitialPersonInfo, PersonInfo } from "../../common/types/typesTS";
+import {
+  InitialPersonInfo,
+  PersonInfo,
+  PersonMovies,
+} from "../../common/types/typesTS";
 
 const initialState: InitialPersonInfo = {
   isLoading: true,
   personInfo: {} as PersonInfo,
+  personMovies: {} as PersonMovies,
   isBioOpen: false,
   page: 1,
 };
@@ -60,7 +65,7 @@ const personInfoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getPerson.pending, (state) => {
+      .addCase(getPerson.pending && getMovies.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
@@ -70,9 +75,16 @@ const personInfoSlice = createSlice({
           state.personInfo = action.payload;
         }
       )
-      .addCase(getPerson.rejected, (state) => {
+      .addCase(getPerson.rejected && getMovies.rejected, (state) => {
         state.isLoading = false;
-      });
+      })
+      .addCase(
+        getMovies.fulfilled,
+        (state, action: PayloadAction<PersonMovies>) => {
+          state.isLoading = false;
+          state.personMovies = action.payload;
+        }
+      );
   },
 });
 

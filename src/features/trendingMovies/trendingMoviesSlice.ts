@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import { InitialTMovies, Trending } from "../../common/types/typesTS";
+import { InitialTrendMovies, Trending } from "../../common/types/typesTS";
 
-const initialState: InitialTMovies = {
+const initialState: InitialTrendMovies = {
   isLoading: true,
   trendingMovies: [],
   time: "day",
