@@ -32,6 +32,7 @@ export const getDiscoverMovies = createAsyncThunk(
           discoverMovies.discover
         }=${id}&page=${discoverMovies.page}&with_original_language=en`
       );
+
       return resp.data;
     } catch (error) {
       if (isAxiosError(error)) {
@@ -75,7 +76,10 @@ const DiscoverMoviesSlice = createSlice({
   },
 });
 
-export const { toggleSort, toggleSortName, toggleDiscover } =
-  DiscoverMoviesSlice.actions;
+export const {
+  toggleSort,
+  toggleSortName,
+  toggleDiscover,
+} = DiscoverMoviesSlice.actions;
 
 export const { reducer } = DiscoverMoviesSlice;

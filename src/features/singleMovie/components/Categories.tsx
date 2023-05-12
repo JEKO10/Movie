@@ -123,7 +123,10 @@ const Categories: React.FC<CategoriesProps> = ({ id }) => {
             <ul>
               {keywords?.keywords?.map((keyword) => (
                 <li key={keyword.id}>
-                  <Link to={`/discover/${keyword?.id}/${keyword?.name}`}>
+                  <Link
+                    to={`/discover/${keyword?.id}/${keyword?.name}`}
+                    onClick={() => dispatch(toggleDiscover("keywords"))}
+                  >
                     {keyword.name}
                   </Link>
                 </li>

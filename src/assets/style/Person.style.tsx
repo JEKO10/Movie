@@ -8,7 +8,7 @@ export const Person = styled.section`
   margin: 3rem 0;
 
   article:first-of-type {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     margin: 0 1rem;
   }
 

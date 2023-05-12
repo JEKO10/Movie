@@ -13,7 +13,6 @@ import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
 import {
   getDiscoverMovies,
-  // toggleDiscover,
   toggleSort,
   toggleSortName,
 } from "./discoverMoviesSlice";
@@ -25,7 +24,7 @@ const DiscoverMovies = () => {
     (store) => store.discoverMovies
   );
   const dispatch = useAppDispatch();
-  const posterUrl = "https://image.tmdb.org/t/p/w1280/";
+  const posterUrl = "https://image.tmdb.org/t/p/w185/";
 
   const changeSort = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const value = event.currentTarget.getAttribute("value");
@@ -40,7 +39,6 @@ const DiscoverMovies = () => {
   useEffect(() => {
     dispatch(getDiscoverMovies(id));
     dispatch(setQuery(""));
-    // dispatch(toggleDiscover("keywords"));
   }, [id]);
 
   if (isLoading) {
@@ -93,9 +91,10 @@ const DiscoverMovies = () => {
         <Underline></Underline>
         <p>
           There are{" "}
-          {totalItems.toString().slice(0, 2) +
+          {/* {totalItems.toString().slice(0, 2) +
             "," +
-            totalItems.toString().slice(2)}
+            totalItems.toString().slice(2)} */}
+          {totalItems}
           <span>{name}</span>
           films.
         </p>
