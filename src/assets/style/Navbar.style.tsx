@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { primaryFont } from "./GlobalStyles";
+
 type NavProps = {
   query: string;
 };
@@ -26,7 +28,7 @@ export const Nav = styled.nav<NavProps>`
     width: 100%;
 
     li {
-      font-family: $primaryFont;
+      font-family: ${primaryFont};
       text-transform: uppercase;
       font-weight: 900;
       font-size: 0.8rem;

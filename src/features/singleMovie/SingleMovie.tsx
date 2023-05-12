@@ -3,13 +3,14 @@ import { Link, useParams } from "react-router-dom";
 
 import { Banner, Movie, Wrapper } from "../../assets/style/SingleMovie.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
 import Categories from "./components/Categories";
 import ImageModal from "./components/ImageModal";
 import { getMovie, toggleModal } from "./singleMovieSlice";
 
 const SingleMovie = () => {
-  const { movieInfo } = useAppSelector((store) => store.singleMovie);
+  const { isLoading, movieInfo } = useAppSelector((store) => store.singleMovie);
   const {
     title,
     tagline,
@@ -34,6 +35,13 @@ const SingleMovie = () => {
     console.log(movieInfo);
   }, [id]);
 
+  if (isLoading) {
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
+  }
   return (
     <>
       <Movie>

@@ -11,7 +11,9 @@ import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { getTrendingPeople } from "./trendingPeopleSlice";
 
 const Trending = () => {
-  const { trendingPeople } = useAppSelector((store) => store.trendingPeople);
+  const { isLoading, trendingPeople } = useAppSelector(
+    (store) => store.trendingPeople
+  );
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
 
@@ -19,6 +21,9 @@ const Trending = () => {
     dispatch(getTrendingPeople());
   }, []);
 
+  if (isLoading) {
+    return <></>;
+  }
   return (
     <Trend>
       <Title>

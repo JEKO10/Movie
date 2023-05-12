@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Person, PersonImg } from "../../assets/style/Person.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
 import { getMovies, getPerson, toggleBio } from "./personInfoSlice";
 
@@ -18,7 +19,7 @@ const PersonInfo = () => {
     profile_path,
     // imdb_id,
   } = useAppSelector((store) => store.personInfo.personInfo);
-  const { isBioOpen /* personMovies */ } = useAppSelector(
+  const { isLoading, isBioOpen, personMovies } = useAppSelector(
     (store) => store.personInfo
   );
   const { id } = useParams();
@@ -29,8 +30,16 @@ const PersonInfo = () => {
     dispatch(getPerson(id));
     dispatch(getMovies(id));
     dispatch(setQuery("Person"));
+    console.log(personMovies);
   }, [id]);
 
+  if (isLoading) {
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
+  }
   return (
     <Person>
       <PersonImg src={posterUrl + profile_path} alt="POSTER" />

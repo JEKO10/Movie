@@ -8,10 +8,11 @@ import {
   TrendLink,
 } from "../../assets/style/Trending.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Loader, LoaderWrapper } from "../../common/Loader";
 import { changeTime, getTrending } from "./trendingMoviesSlice";
 
 const Trending = () => {
-  const { trendingMovies, time } = useAppSelector(
+  const { isLoading, trendingMovies, time } = useAppSelector(
     (store) => store.trendingMovies
   );
   const dispatch = useAppDispatch();
@@ -21,6 +22,13 @@ const Trending = () => {
     dispatch(getTrending(time));
   }, [time]);
 
+  if (isLoading) {
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
+  }
   return (
     <Trend className="trending">
       <Title>

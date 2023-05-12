@@ -8,10 +8,11 @@ import {
   Underline,
 } from "../../assets/style/DiscoverMovies.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
 import {
   getDiscoverMovies,
-  toggleDiscover,
+  // toggleDiscover,
   toggleSort,
   toggleSortName,
 } from "./discoverMoviesSlice";
@@ -19,7 +20,7 @@ import {
 const DiscoverMovies = () => {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
   const { name, id } = useParams();
-  const { discoverMovies, totalItems, sortName } = useAppSelector(
+  const { discoverMovies, totalItems, sortName, isLoading } = useAppSelector(
     (store) => store.discoverMovies
   );
   const dispatch = useAppDispatch();
@@ -38,9 +39,16 @@ const DiscoverMovies = () => {
   useEffect(() => {
     dispatch(getDiscoverMovies(id));
     dispatch(setQuery(""));
-    dispatch(toggleDiscover("keywords"));
+    // dispatch(toggleDiscover("keywords"));
   }, [id]);
 
+  if (isLoading) {
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
+  }
   return (
     <Discover>
       <Sorting>

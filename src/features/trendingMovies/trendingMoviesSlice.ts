@@ -18,6 +18,7 @@ export const getTrending = createAsyncThunk(
           import.meta.env.VITE_API_KEY
         }`
       );
+
       return resp.data.results;
     } catch (error) {
       if (isAxiosError(error)) {

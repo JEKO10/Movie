@@ -8,9 +8,14 @@ const loader = keyframes`
   }
 `;
 
+export const LoaderWrapper = styled.section`
+  height: 100vh;
+  width: 100%;
+`;
+
 export const Loader = styled.div`
-  width: 6rem;
   height: 6rem;
+  width: 6rem;
   margin: 0 auto;
   margin-top: 10rem;
   border-radius: 50%;
