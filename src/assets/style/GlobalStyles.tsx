@@ -5,6 +5,17 @@ export const primaryColor = "#0f87be";
 export const secondaryColor = "#a7a1ae";
 export const primaryFont = "Hanken Grotesk, sans-serif";
 
+interface IFlexMixin {
+  justify: string;
+  align: string;
+}
+
+export const flexMixin = ({ justify, align }: IFlexMixin) => css`
+  display: flex;
+  justify-content: ${justify};
+  align-items: ${align};
+`;
+
 export const GlobalStyles = React.memo(
   createGlobalStyle`${css`
     * {

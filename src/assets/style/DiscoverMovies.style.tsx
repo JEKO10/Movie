@@ -1,18 +1,32 @@
 import styled from "styled-components";
 
+import { flexMixin } from "./GlobalStyles";
+
 export const Discover = styled.section`
   margin: 3rem 0;
+`;
 
-  article img {
-    width: 10%;
+export const MoviesList = styled.article`
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  /* grid-template-columns: repeat(auto-fit, minmax(12, 1fr)); */
+  grid-gap: 5px 10px;
+
+  img {
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    transition: all 200ms ease;
+
+    &:hover {
+      border: 2px solid #fff;
+    }
   }
 `;
 
 export const Sorting = styled.article`
   > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    ${flexMixin({ justify: "space-between", align: "center" })};
   }
 
   h3,
@@ -46,7 +60,7 @@ export const Underline = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const DiscoverList = styled.ul`
+export const SortList = styled.ul`
   list-style-type: none;
   text-transform: none;
   width: 200px;

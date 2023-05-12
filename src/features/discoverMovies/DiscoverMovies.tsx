@@ -3,8 +3,9 @@ import { Link, useParams } from "react-router-dom";
 
 import {
   Discover,
-  DiscoverList,
+  MoviesList,
   Sorting,
+  SortList,
   Underline,
 } from "../../assets/style/DiscoverMovies.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
@@ -55,7 +56,7 @@ const DiscoverMovies = () => {
         <div>
           <h3>Films</h3>
           <div>
-            <DiscoverList>
+            <SortList>
               <li onClick={() => setIsSortOpen(!isSortOpen)}>
                 Sort by {sortName}
               </li>
@@ -86,7 +87,7 @@ const DiscoverMovies = () => {
               ) : (
                 ""
               )}
-            </DiscoverList>
+            </SortList>
           </div>
         </div>
         <Underline></Underline>
@@ -99,13 +100,13 @@ const DiscoverMovies = () => {
           films.
         </p>
       </Sorting>
-      <article>
+      <MoviesList>
         {discoverMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
             <img src={posterUrl + movie.poster_path} alt="Poster" />
           </Link>
         ))}
-      </article>
+      </MoviesList>
     </Discover>
   );
 };

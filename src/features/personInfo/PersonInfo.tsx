@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import { Person, PersonImg } from "../../assets/style/Person.style";
+import { MoviesList } from "../../assets/style/DiscoverMovies.style";
+import { FullBio, Person, PersonImg } from "../../assets/style/Person.style";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
@@ -24,7 +25,7 @@ const PersonInfo = () => {
   );
   const { id } = useParams();
   const dispatch = useAppDispatch();
-  const posterUrl = "https://image.tmdb.org/t/p/w1280/";
+  const posterUrl = "https://image.tmdb.org/t/p/w342/";
 
   useEffect(() => {
     dispatch(getPerson(id));
@@ -42,24 +43,30 @@ const PersonInfo = () => {
   }
   return (
     <Person>
-      <PersonImg src={posterUrl + profile_path} alt="POSTER" />
-      <h2>{name}</h2>
-      <h4>Date of birth: {birthday}</h4>
-      {deathday ? <h4>Date of death: {deathday}</h4> : ""}
-      <h4>Gender: {gender === 2 ? "Male" : "Female"}</h4>
-      <h4>Known for: {known_for_department}</h4>
-      <h4>Place of birth: {place_of_birth}</h4>
-      {isBioOpen ? (
-        <p>{biography ? biography : `No credits for ${name}.`}</p>
-      ) : (
-        ""
-      )}
-      <h5 onClick={() => dispatch(toggleBio())}>
-        {isBioOpen ? "Close" : "Open"} full biography
-      </h5>
-      {/* {personMovies.results?.map((movie) => (
-        <img key={movie.id} src={posterUrl + movie.poster_path} alt="" />
-      ))} */}
+      <MoviesList>
+        {personMovies.results?.map((movie) => (
+          <Link to={`/movie/${movie.id}`} key={movie.id}>
+            <img src={posterUrl + movie.poster_path} alt="Poster" />
+          </Link>
+        ))}
+      </MoviesList>
+      <article>
+        <PersonImg src={posterUrl + profile_path} alt="POSTER" />
+        <h2>{name}</h2>
+        <h4>Date of birth: {birthday}</h4>
+        {deathday ? <h4>Date of death: {deathday}</h4> : ""}
+        <h4>Gender: {gender === 2 ? "Male" : "Female"}</h4>
+        <h4>Known for: {known_for_department}</h4>
+        <h4>Place of birth: {place_of_birth}</h4>
+        {isBioOpen ? (
+          <p>{biography ? biography : `No credits for ${name}.`}</p>
+        ) : (
+          ""
+        )}
+        <FullBio onClick={() => dispatch(toggleBio())}>
+          {isBioOpen ? "Close" : "Open"} full biography
+        </FullBio>
+      </article>
     </Person>
   );
 };
