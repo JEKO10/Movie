@@ -1,18 +1,13 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import {
-  InitialPersonInfo,
-  PersonInfo,
-  PersonMovies,
-} from "../../common/types/typesTS";
+import { InitialPersonInfo, PersonInfo } from "../../common/types/typesTS";
 
 const initialState: InitialPersonInfo = {
   isLoading: true,
   personInfo: {} as PersonInfo,
-  personMovies: {} as PersonMovies,
+  personMovies: [],
   isBioOpen: false,
-  page: 1,
 };
 
 export const getPerson = createAsyncThunk(
@@ -33,25 +28,50 @@ export const getPerson = createAsyncThunk(
   }
 );
 
+// export const getMovies = createAsyncThunk(
+//   "personInfo/getMovies",
+//   async (id: string | undefined, { getState, rejectWithValue }) => {
+//     const { total_pages } = getState() as {
+//       total_pages: PersonMovies;
+//     };
+
+//     try {
+//       const response = await axios.get(
+//         `https://api.themoviedb.org/3/discover/movie?api_key=${
+//           import.meta.env.VITE_API_KEY
+//         }&with_cast=${id}&page=${total_pages}`
+//       );
+//       return response.data;
+//     } catch (error) {
+//       if (isAxiosError(error)) {
+//         return rejectWithValue(error.response);
+//       }
+//     }
+//   }
+// );
+
 export const getMovies = createAsyncThunk(
   "personInfo/getMovies",
-  async (id: string | undefined, { getState, rejectWithValue }) => {
-    const { page } = getState() as {
-      page: number;
-    };
+  async (id: string | undefined, { rejectWithValue }) => {
+    const returnerData = [];
 
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&with_cast=${id}&page=${page}`
-      );
-      return response.data;
+      for (let i = 1; i <= 3; i++) {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&with_cast=${id}&page=${i}`
+        );
+
+        returnerData.push(...response.data.results);
+      }
     } catch (error) {
       if (isAxiosError(error)) {
         return rejectWithValue(error.response);
       }
     }
+
+    return returnerData;
   }
 );
 
@@ -65,26 +85,26 @@ const personInfoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getPerson.pending && getMovies.pending, (state) => {
+      .addCase(getPerson.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(
-        getPerson.fulfilled,
-        (state, action: PayloadAction<PersonInfo>) => {
-          state.isLoading = false;
-          state.personInfo = action.payload;
-        }
-      )
-      .addCase(getPerson.rejected && getMovies.rejected, (state) => {
+      .addCase(getMovies.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getPerson.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.personInfo = action.payload;
+      })
+      .addCase(getMovies.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.personMovies = action.payload;
+      })
+      .addCase(getPerson.rejected, (state) => {
         state.isLoading = false;
       })
-      .addCase(
-        getMovies.fulfilled,
-        (state, action: PayloadAction<PersonMovies>) => {
-          state.isLoading = false;
-          state.personMovies = action.payload;
-        }
-      );
+      .addCase(getMovies.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
 });
 
