@@ -11,15 +11,19 @@ const initialState: InitialDiscoverMovies = {
   discoverMovies: [],
   totalPages: 0,
   totalItems: 0,
-  page: 1,
   sortBy: "popularity.desc",
   sortName: "Popularity",
   discover: "genres",
 };
 
+export type DiscoverParams = {
+  id: string | undefined;
+  page?: number;
+};
+
 export const getDiscoverMovies = createAsyncThunk(
   "discoverMovies/getDiscoverMovies",
-  async (id: string | undefined, { getState, rejectWithValue }) => {
+  async ({ id, page }: DiscoverParams, { getState, rejectWithValue }) => {
     const { discoverMovies } = getState() as {
       discoverMovies: InitialDiscoverMovies;
     };
@@ -30,7 +34,7 @@ export const getDiscoverMovies = createAsyncThunk(
           import.meta.env.VITE_API_KEY
         }&sort_by=${discoverMovies.sortBy}&vote_count.gte=50&with_${
           discoverMovies.discover
-        }=${id}&page=${discoverMovies.page}&with_original_language=en`
+        }=${id}&page=${page}&with_original_language=en`
       );
 
       return resp.data;

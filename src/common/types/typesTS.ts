@@ -38,19 +38,11 @@ type DiscoverMovies = {
   poster_path: string;
 };
 
-export type PersonMovies = {
-  page: number;
-  results: DiscoverMovies[];
-  total_pages: number;
-  total_results: number;
-};
-
 export type InitialPersonInfo = {
   isLoading: boolean;
   personInfo: PersonInfo;
-  personMovies: PersonMovies;
+  personMovies: DiscoverMovies[];
   isBioOpen: boolean;
-  page: number;
 };
 
 // discover movies
@@ -60,7 +52,6 @@ export type InitialDiscoverMovies = {
   discoverMovies: DiscoverMovies[];
   totalPages: number;
   totalItems: number;
-  page: number;
   sortBy: string;
   sortName: string;
   discover: string;

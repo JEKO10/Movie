@@ -44,7 +44,7 @@ const PersonInfo = () => {
   return (
     <Person>
       <MoviesList>
-        {personMovies.results?.map((movie) => (
+        {personMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
             <img src={posterUrl + movie.poster_path} alt="Poster" />
           </Link>
