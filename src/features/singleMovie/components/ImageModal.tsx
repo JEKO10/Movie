@@ -31,7 +31,11 @@ const ImageModal: React.FC<ModalProps> = ({ id, posterUrl, poster_path }) => {
   return (
     <PosterModal className={`${isModalOpen ? "open" : ""} posterModal`}>
       <RxCross2 onClick={() => dispatch(toggleModal(false))} />
-      <img src={posterUrl + poster_path} alt="POSTER" ref={posterRef} />
+      <img
+        src={poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG}
+        alt="POSTER"
+        ref={posterRef}
+      />
     </PosterModal>
   );
 };

@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+type BannerProps = {
+  posterUrl: string;
+  backdrop_path: string;
+};
+
 export const Movie = styled.section`
   display: flex;
   justify-content: flex-start;
@@ -16,11 +21,15 @@ export const Movie = styled.section`
   z-index: -1;
 `;
 
-export const Banner = styled.div`
+export const Banner = styled.div<BannerProps>`
   width: 75vw;
   height: 650px;
   position: relative;
-  background-position: center center;
+  background-image: ${({ posterUrl, backdrop_path }) =>
+    backdrop_path
+      ? `url(${posterUrl + backdrop_path})`
+      : `url(https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png)`};
+  background-position: 0 -410px;
   background-size: cover;
   background-repeat: no-repeat;
 

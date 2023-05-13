@@ -25,6 +25,7 @@ const PersonInfo = () => {
   );
   const { id } = useParams();
   const dispatch = useAppDispatch();
+
   const posterUrl = "https://image.tmdb.org/t/p/w342/";
 
   useEffect(() => {
@@ -32,6 +33,7 @@ const PersonInfo = () => {
     dispatch(getMovies(id));
     dispatch(toggleBio(false));
     dispatch(setQuery("Person"));
+    console.log(personMovies);
   }, [id]);
 
   if (isLoading) {
@@ -46,7 +48,14 @@ const PersonInfo = () => {
       <MoviesList>
         {personMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
-            <img src={posterUrl + movie.poster_path} alt="Poster" />
+            <img
+              src={
+                movie.poster_path
+                  ? posterUrl + movie.poster_path
+                  : import.meta.env.VITE_IMG
+              }
+              alt="Poster"
+            />
           </Link>
         ))}
       </MoviesList>

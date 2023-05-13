@@ -45,12 +45,12 @@ const SingleMovie = () => {
   return (
     <>
       <Movie>
-        <Banner
-          style={{ backgroundImage: `url('${posterUrl + backdrop_path}')` }}
-        ></Banner>
+        <Banner posterUrl={posterUrl} backdrop_path={backdrop_path}></Banner>
         <Wrapper>
           <img
-            src={posterUrl + poster_path}
+            src={
+              poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG
+            }
             alt="POSTER"
             onClick={() => dispatch(toggleModal(true))}
           />
