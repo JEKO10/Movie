@@ -5,7 +5,7 @@ import {
   CategoriesOption,
   CategoriesSection,
   Details,
-} from "../../../assets/style/Categories.style";
+} from "../../../assets/style/Categories.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { toggleDiscover } from "../../discoverMovies/discoverMoviesSlice";
 import { toggleCast, toggleCategory } from "../singleMovieSlice";

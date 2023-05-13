@@ -14,6 +14,7 @@ export const MoviesList = styled.article`
 
   img {
     width: 100%;
+    height: 100%;
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 5px;
     transition: all 200ms ease;

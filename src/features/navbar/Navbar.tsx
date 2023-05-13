@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
-import { Nav } from "../../assets/style/Navbar.style";
+import { Nav } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { setQuery } from "./navbarSlice";
 

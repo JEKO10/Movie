@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { RxCross2 } from "react-icons/rx";
 
-import { PosterModal } from "../../../assets/style/PosterModal.style";
+import { PosterModal } from "../../../assets/style/PosterModal.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { toggleModal } from ".././singleMovieSlice";
 

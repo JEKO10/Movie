@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Banner, Movie, Wrapper } from "../../assets/style/SingleMovie.style";
+import { Banner, Movie, Wrapper } from "../../assets/style/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";

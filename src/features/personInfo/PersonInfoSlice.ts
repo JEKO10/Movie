@@ -59,8 +59,8 @@ const personInfoSlice = createSlice({
   name: "personInfo",
   initialState,
   reducers: {
-    toggleBio: (state) => {
-      state.isBioOpen = !state.isBioOpen;
+    toggleBio: (state, { payload }: { payload: boolean }) => {
+      state.isBioOpen = payload;
     },
   },
   extraReducers: (builder) => {

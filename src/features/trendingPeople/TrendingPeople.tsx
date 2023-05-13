@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 
-import { Underline } from "../../assets/style/DiscoverMovies.style";
+import { Underline } from "../../assets/style/DiscoverMovies.styled";
 import {
   Title,
   Trend,
   TrendInfo,
   TrendLink,
-} from "../../assets/style/Trending.style";
+} from "../../assets/style/Trending.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { getTrendingPeople } from "./trendingPeopleSlice";
 

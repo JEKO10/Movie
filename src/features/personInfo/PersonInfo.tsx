@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { MoviesList } from "../../assets/style/DiscoverMovies.style";
-import { FullBio, Person, PersonImg } from "../../assets/style/Person.style";
+import { MoviesList } from "../../assets/style/DiscoverMovies.styled";
+import { FullBio, Person, PersonImg } from "../../assets/style/Person.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
@@ -30,8 +30,8 @@ const PersonInfo = () => {
   useEffect(() => {
     dispatch(getPerson(id));
     dispatch(getMovies(id));
+    dispatch(toggleBio(false));
     dispatch(setQuery("Person"));
-    console.log(personMovies);
   }, [id]);
 
   if (isLoading) {
@@ -59,11 +59,15 @@ const PersonInfo = () => {
         <h4>Known for: {known_for_department}</h4>
         <h4>Place of birth: {place_of_birth}</h4>
         {isBioOpen ? (
-          <p>{biography ? biography : `No credits for ${name}.`}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: biography.replace(/\n/g, "<br>"),
+            }}
+          />
         ) : (
           ""
         )}
-        <FullBio onClick={() => dispatch(toggleBio())}>
+        <FullBio onClick={() => dispatch(toggleBio(!isBioOpen))}>
           {isBioOpen ? "Close" : "Open"} full biography
         </FullBio>
       </article>
