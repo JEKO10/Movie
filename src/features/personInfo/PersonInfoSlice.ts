@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
 import { InitialPersonInfo, PersonInfo } from "../../common/types/typesTS";
@@ -8,6 +8,7 @@ const initialState: InitialPersonInfo = {
   personInfo: {} as PersonInfo,
   personMovies: [],
   isBioOpen: false,
+  totalPages: 1,
 };
 
 export const getPerson = createAsyncThunk(
@@ -28,35 +29,19 @@ export const getPerson = createAsyncThunk(
   }
 );
 
-// export const getMovies = createAsyncThunk(
-//   "personInfo/getMovies",
-//   async (id: string | undefined, { getState, rejectWithValue }) => {
-//     const { total_pages } = getState() as {
-//       total_pages: PersonMovies;
-//     };
-
-//     try {
-//       const response = await axios.get(
-//         `https://api.themoviedb.org/3/discover/movie?api_key=${
-//           import.meta.env.VITE_API_KEY
-//         }&with_cast=${id}&page=${total_pages}`
-//       );
-//       return response.data;
-//     } catch (error) {
-//       if (isAxiosError(error)) {
-//         return rejectWithValue(error.response);
-//       }
-//     }
-//   }
-// );
-
 export const getMovies = createAsyncThunk(
   "personInfo/getMovies",
   async (id: string | undefined, { rejectWithValue }) => {
-    const returnerData = [];
-
     try {
-      for (let i = 1; i <= 3; i++) {
+      const firstResponse = await axios.get(
+        `https://api.themoviedb.org/3/discover/movie?api_key=${
+          import.meta.env.VITE_API_KEY
+        }&with_cast=${id}&page=1`
+      );
+      const totalPages = firstResponse.data.total_pages;
+      const returnerData = [];
+
+      for (let i = 1; i <= totalPages; i++) {
         const response = await axios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=${
             import.meta.env.VITE_API_KEY
@@ -65,13 +50,13 @@ export const getMovies = createAsyncThunk(
 
         returnerData.push(...response.data.results);
       }
+
+      return returnerData;
     } catch (error) {
       if (isAxiosError(error)) {
         return rejectWithValue(error.response);
       }
     }
-
-    return returnerData;
   }
 );
 
@@ -91,13 +76,16 @@ const personInfoSlice = createSlice({
       .addCase(getMovies.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getPerson.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.personInfo = action.payload;
-      })
+      .addCase(
+        getPerson.fulfilled,
+        (state, action: PayloadAction<PersonInfo>) => {
+          state.isLoading = false;
+          state.personInfo = action.payload;
+        }
+      )
       .addCase(getMovies.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.personMovies = action.payload;
+        state.personMovies = action.payload || [];
       })
       .addCase(getPerson.rejected, (state) => {
         state.isLoading = false;

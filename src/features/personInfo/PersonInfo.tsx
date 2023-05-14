@@ -33,7 +33,6 @@ const PersonInfo = () => {
     dispatch(getMovies(id));
     dispatch(toggleBio(false));
     dispatch(setQuery("Person"));
-    console.log(personMovies);
   }, [id]);
 
   if (isLoading) {

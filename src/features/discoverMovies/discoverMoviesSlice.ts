@@ -69,6 +69,8 @@ const DiscoverMoviesSlice = createSlice({
         getDiscoverMovies.fulfilled,
         (state, action: PayloadAction<DiscoverPayload>) => {
           state.isLoading = false;
+          console.log(action);
+
           state.discoverMovies = action.payload.results;
           state.totalPages = action.payload.total_pages;
           state.totalItems = action.payload.total_results;

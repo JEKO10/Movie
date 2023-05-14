@@ -33,7 +33,7 @@ export type PersonInfo = {
   imdb_id: string;
 };
 
-type DiscoverMovies = {
+export type DiscoverMovies = {
   id: number;
   poster_path: string;
 };
@@ -43,6 +43,7 @@ export type InitialPersonInfo = {
   personInfo: PersonInfo;
   personMovies: DiscoverMovies[];
   isBioOpen: boolean;
+  totalPages: number;
 };
 
 // discover movies
