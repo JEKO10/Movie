@@ -79,13 +79,12 @@ const personInfoSlice = createSlice({
       .addCase(
         getPerson.fulfilled,
         (state, action: PayloadAction<PersonInfo>) => {
-          state.isLoading = false;
           state.personInfo = action.payload;
         }
       )
       .addCase(getMovies.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.personMovies = action.payload || [];
+        state.isLoading = false;
       })
       .addCase(getPerson.rejected, (state) => {
         state.isLoading = false;

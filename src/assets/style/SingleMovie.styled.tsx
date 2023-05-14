@@ -29,7 +29,7 @@ export const Banner = styled.div<BannerProps>`
     backdrop_path
       ? `url(${posterUrl + backdrop_path})`
       : `url(https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png)`};
-  background-position: 0 -410px;
+  background-position: ${({ backdrop_path }) => !backdrop_path && `0 -410px`};
   background-size: cover;
   background-repeat: no-repeat;
 
