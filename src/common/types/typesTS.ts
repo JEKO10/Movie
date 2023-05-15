@@ -1,3 +1,18 @@
+// navbar
+
+type SearchData = {
+  id: number;
+  poster_path: string;
+  title: string;
+  release_date: string;
+};
+
+export type InitialNavbar = {
+  isLoading: boolean;
+  query: string;
+  searchData: SearchData[];
+};
+
 // trendingPeople
 
 export type Trending = {

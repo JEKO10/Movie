@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { Nav } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { setQuery } from "./navbarSlice";
+import { searchMovies, setQuery } from "./navbarSlice";
 
 const Navbar = () => {
   const { query } = useAppSelector((store) => store.navbar);
@@ -77,9 +77,12 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to={"/"} onClick={(event) => setClicked(event)}>
-            Search for movies
-          </Link>
+          <input
+            type="text"
+            onChange={(e) => {
+              dispatch(searchMovies(e.target.value));
+            }}
+          />
         </li>
       </ul>
     </Nav>

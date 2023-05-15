@@ -10,6 +10,10 @@ export const Person = styled.section`
   article:first-of-type {
     grid-template-columns: repeat(5, 1fr);
     margin: 0 1rem;
+
+    img {
+      border: none;
+    }
   }
 
   h2 {

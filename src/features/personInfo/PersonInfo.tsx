@@ -48,6 +48,7 @@ const PersonInfo = () => {
         {personMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
             <img
+              loading="lazy"
               src={
                 movie.poster_path
                   ? posterUrl + movie.poster_path

@@ -32,12 +32,12 @@ const DiscoverMovies = () => {
 
     if (value) dispatch(toggleSort(value));
     if (name) dispatch(toggleSortName(name));
-    dispatch(getDiscoverMovies(id));
+    dispatch(getDiscoverMovies({ id }));
     setIsSortOpen(false);
   };
 
   useEffect(() => {
-    dispatch(getDiscoverMovies(id));
+    dispatch(getDiscoverMovies({ id }));
     dispatch(setQuery(""));
   }, [id]);
 
