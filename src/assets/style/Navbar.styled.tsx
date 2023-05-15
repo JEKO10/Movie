@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { primaryFont } from "./GlobalStyles";
+import { primaryColor, primaryFont, secondaryColor } from "./GlobalStyles";
 
 type NavProps = {
   query: string;
@@ -47,5 +47,24 @@ export const Nav = styled.nav<NavProps>`
         }
       }
     }
+  }
+`;
+
+export const Input = styled.input`
+  background-color: #2c3440;
+  color: ${primaryColor};
+  font-family: ${primaryFont};
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+
+  &:is(:focus, :hover) {
+    outline: 2px solid ${primaryColor};
+    box-shadow: -2px 2px 5px ${primaryColor};
+  }
+
+  &::placeholder {
+    color: ${secondaryColor};
+    letter-spacing: 1px;
   }
 `;

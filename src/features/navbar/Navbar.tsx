@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
-import { Nav } from "../../assets/style/Navbar.styled";
+import { Input, Nav } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { searchMovies, setQuery } from "./navbarSlice";
 
@@ -77,8 +77,9 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <input
+          <Input
             type="text"
+            placeholder="Enter movie title..."
             onChange={(e) => {
               dispatch(searchMovies(e.target.value));
             }}
