@@ -1,9 +1,14 @@
+import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 
 import { primaryColor, primaryFont, secondaryColor } from "./GlobalStyles";
 
 type NavProps = {
   query: string;
+};
+
+type InputProps = {
+  isSearchOpen: boolean;
 };
 
 export const Nav = styled.nav<NavProps>`
@@ -50,7 +55,7 @@ export const Nav = styled.nav<NavProps>`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
   background-color: #2c3440;
   color: ${primaryColor};
   font-family: ${primaryFont};
@@ -67,4 +72,9 @@ export const Input = styled.input`
     color: ${secondaryColor};
     letter-spacing: 1px;
   }
+`;
+
+export const SearchIcon = styled(FaSearch)`
+  font-size: 1rem;
+  color: #99aabb;
 `;

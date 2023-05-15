@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { GrClose } from "react-icons/gr";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
-import { Input, Nav } from "../../assets/style/Navbar.styled";
+import { Input, Nav, SearchIcon } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { searchMovies, setQuery } from "./navbarSlice";
 
 const Navbar = () => {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { query } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
 
@@ -77,13 +79,21 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Input
-            type="text"
-            placeholder="Enter movie title..."
-            onChange={(e) => {
-              dispatch(searchMovies(e.target.value));
-            }}
-          />
+          {isSearchOpen ? (
+            <GrClose onClick={() => setIsSearchOpen(false)} />
+          ) : (
+            <SearchIcon onClick={() => setIsSearchOpen(true)} />
+          )}
+          {isSearchOpen && (
+            <Input
+              isSearchOpen={isSearchOpen}
+              type="text"
+              placeholder="Enter movie title..."
+              onChange={(e) => {
+                dispatch(searchMovies(e.target.value));
+              }}
+            />
+          )}
         </li>
       </ul>
     </Nav>
