@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { GrClose } from "react-icons/gr";
+import { FaSearch } from "react-icons/fa";
+import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
-import { Input, Nav, SearchIcon } from "../../assets/style/Navbar.styled";
+import { IconWrapper, Input, Nav } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { searchMovies, setQuery } from "./navbarSlice";
 
@@ -79,21 +80,17 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          {isSearchOpen ? (
-            <GrClose onClick={() => setIsSearchOpen(false)} />
-          ) : (
-            <SearchIcon onClick={() => setIsSearchOpen(true)} />
-          )}
-          {isSearchOpen && (
-            <Input
-              isSearchOpen={isSearchOpen}
-              type="text"
-              placeholder="Enter movie title..."
-              onChange={(e) => {
-                dispatch(searchMovies(e.target.value));
-              }}
-            />
-          )}
+          <IconWrapper onClick={() => setIsSearchOpen(!isSearchOpen)}>
+            {isSearchOpen ? <VscChromeClose /> : <FaSearch />}
+          </IconWrapper>
+          <Input
+            isSearchOpen={isSearchOpen}
+            type="text"
+            placeholder="Enter movie title..."
+            onChange={(e) => {
+              dispatch(searchMovies(e.target.value));
+            }}
+          />
         </li>
       </ul>
     </Nav>

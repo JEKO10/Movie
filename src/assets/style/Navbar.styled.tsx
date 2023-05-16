@@ -1,4 +1,3 @@
-import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 
 import { primaryColor, primaryFont, secondaryColor } from "./GlobalStyles";
@@ -51,6 +50,12 @@ export const Nav = styled.nav<NavProps>`
           color: #fff;
         }
       }
+
+      &:last-of-type {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
   }
 `;
@@ -62,6 +67,9 @@ export const Input = styled.input<InputProps>`
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
+  width: ${({ isSearchOpen }) => (isSearchOpen ? "100%" : "0")};
+  overflow: hidden;
+  transition: width 0.3s ease;
 
   &:is(:focus, :hover) {
     outline: 2px solid ${primaryColor};
@@ -74,7 +82,13 @@ export const Input = styled.input<InputProps>`
   }
 `;
 
-export const SearchIcon = styled(FaSearch)`
+export const IconWrapper = styled.div`
   font-size: 1rem;
   color: #99aabb;
+  margin-right: 1rem;
+  transform: translate(0%, 15%);
+
+  &:hover {
+    color: ${primaryColor};
+  }
 `;

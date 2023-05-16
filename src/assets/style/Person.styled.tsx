@@ -13,6 +13,10 @@ export const Person = styled.section`
 
     img {
       border: none;
+
+      &:hover {
+        border: 2px solid #fff;
+      }
     }
   }
 
