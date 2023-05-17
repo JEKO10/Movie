@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-import { primaryColor, primaryFont, secondaryColor } from "./GlobalStyles";
+import {
+  flexMixin,
+  primaryColor,
+  primaryFont,
+  secondaryColor,
+} from "./GlobalStyles";
 
 type NavProps = {
   query: string;
@@ -18,6 +23,7 @@ export const Nav = styled.nav<NavProps>`
   background-color: ${({ query }) =>
     query === "singleMovie" ? `rgba(19, 24, 28, 0)` : `rgba(19, 24, 28, 1)`};
   padding: 20px 50px;
+  overflow: hidden;
 
   img {
     height: 50px;
@@ -52,9 +58,8 @@ export const Nav = styled.nav<NavProps>`
       }
 
       &:last-of-type {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        ${flexMixin({ justify: "center", align: "center" })};
+        margin: 0;
       }
     }
   }
@@ -67,9 +72,10 @@ export const Input = styled.input<InputProps>`
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
+  transform: ${({ isSearchOpen }) =>
+    isSearchOpen ? "translate(0, -5%)" : "translateX(300px)"};
   width: ${({ isSearchOpen }) => (isSearchOpen ? "100%" : "0")};
-  overflow: hidden;
-  transition: width 0.3s ease;
+  transition: transform 500ms ease;
 
   &:is(:focus, :hover) {
     outline: 2px solid ${primaryColor};
@@ -85,8 +91,8 @@ export const Input = styled.input<InputProps>`
 export const IconWrapper = styled.div`
   font-size: 1rem;
   color: #99aabb;
-  margin-right: 1rem;
-  transform: translate(0%, 15%);
+  margin-right: 20px;
+  transform: translate(0%, 10%);
 
   &:hover {
     color: ${primaryColor};
