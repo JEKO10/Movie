@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { IconWrapper, Input, Nav } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import SearchModal from "./components/searchModal";
 import { searchMovies, setQuery } from "./navbarSlice";
 
 const Navbar = () => {
@@ -93,6 +94,7 @@ const Navbar = () => {
           />
         </li>
       </ul>
+      <SearchModal />
     </Nav>
   );
 };
