@@ -16,9 +16,7 @@ type InputProps = {
 };
 
 export const Nav = styled.nav<NavProps>`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${flexMixin({ justify: "space-between", align: "center" })};
   color: #fff;
   background-color: ${({ query }) =>
     query === "singleMovie" ? `rgba(19, 24, 28, 0)` : `rgba(19, 24, 28, 1)`};
@@ -31,10 +29,8 @@ export const Nav = styled.nav<NavProps>`
   }
 
   ul {
+    ${flexMixin({ justify: "flex-end", align: "center" })};
     list-style-type: none;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
     width: 100%;
 
     li {

@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
+import { flexMixin } from "./GlobalStyles";
+
 export const CategoriesSection = styled.section`
   width: 70vw;
   margin: 2rem 0 5rem 0;
 
   > div {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    ${flexMixin({ justify: "flex-start", align: "flex-start" })};
     margin: 2rem 0;
     width: 40%;
     flex-direction: column;
@@ -55,9 +55,7 @@ export const CategoriesSection = styled.section`
 `;
 
 export const CategoriesOption = styled.ul`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  ${flexMixin({ justify: "flex-start", align: "center" })};
   list-style-type: none;
   color: #dda804;
 

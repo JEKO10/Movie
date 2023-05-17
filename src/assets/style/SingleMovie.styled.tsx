@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
+import { flexMixin } from "./GlobalStyles";
+
 type BannerProps = {
   posterUrl: string;
   backdrop_path: string;
 };
 
 export const Movie = styled.section`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  ${flexMixin({ justify: "flex-start", align: "center" })};
   flex-direction: column;
   margin-bottom: 3rem;
   background: #13181c;
@@ -130,9 +130,7 @@ export const Banner = styled.div<BannerProps>`
 `;
 
 export const Wrapper = styled.article`
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  ${flexMixin({ justify: "flex-start", align: "flex-start" })};
   width: 70vw;
   margin-top: -2rem;
   margin-bottom: 4rem;
@@ -147,9 +145,7 @@ export const Wrapper = styled.article`
   }
 
   .info {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    ${flexMixin({ justify: "flex-start", align: "flex-start" })};
     flex-direction: column;
     height: 345px;
     width: 100%;
@@ -157,9 +153,7 @@ export const Wrapper = styled.article`
   }
 
   .name {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
+    ${flexMixin({ justify: "flex-start", align: "flex-end" })};
     flex-wrap: wrap;
     width: 100%;
     margin-bottom: 1rem;

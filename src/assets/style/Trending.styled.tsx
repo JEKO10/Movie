@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { primaryFont } from "./GlobalStyles";
+import { flexMixin, primaryFont } from "./GlobalStyles";
 
 export const Trend = styled.section`
   margin: 5rem 0 8rem 0;
 `;
 
 export const Title = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  ${flexMixin({ justify: "flex-start", align: "center" })};
   margin-bottom: 0.2rem;
 
   h2,
@@ -38,9 +36,7 @@ export const Title = styled.div`
 `;
 
 export const TrendInfo = styled.article`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  ${flexMixin({ justify: "space-between", align: "center" })};
   gap: 140px 10px;
 `;
 
