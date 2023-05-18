@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
@@ -6,11 +6,10 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { IconWrapper, Input, Nav } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { setQuery } from "./navbarSlice";
+import { setIsSearchOpen, setQuery } from "./navbarSlice";
 
 const Navbar = () => {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const { query } = useAppSelector((store) => store.navbar);
+  const { query, isSearchOpen } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
 
   const setClicked = (
@@ -80,7 +79,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <IconWrapper onClick={() => setIsSearchOpen(!isSearchOpen)}>
+          <IconWrapper onClick={() => dispatch(setIsSearchOpen())}>
             {isSearchOpen ? <VscChromeClose /> : <FaSearch />}
           </IconWrapper>
           <Input
