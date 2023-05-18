@@ -70,7 +70,7 @@ export const Input = styled.input<InputProps>`
   border-radius: 5px;
   transform: ${({ isSearchOpen }) =>
     isSearchOpen ? "translate(0, -5%)" : "translateX(300px)"};
-  width: ${({ isSearchOpen }) => (isSearchOpen ? "100%" : "0")};
+  width: ${({ isSearchOpen }) => (isSearchOpen ? "200px" : "0")};
   transition: transform 500ms ease;
 
   &:is(:focus, :hover) {

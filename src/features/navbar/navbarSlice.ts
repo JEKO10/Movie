@@ -18,9 +18,8 @@ export const searchMovies = createAsyncThunk(
           import.meta.env.VITE_API_KEY
         }&query=${inputValue}`
       );
-      console.log(resp.data);
 
-      return resp.data;
+      return resp.data.results;
     } catch (error) {
       if (isAxiosError(error)) {
         return rejectWithValue(error.response);
@@ -44,6 +43,7 @@ const navbarSlice = createSlice({
       })
       .addCase(searchMovies.fulfilled, (state, action) => {
         state.searchData = action.payload;
+        state.isLoading = false;
       })
       .addCase(searchMovies.rejected, (state) => {
         state.isLoading = false;

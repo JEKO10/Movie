@@ -6,8 +6,21 @@ export const secondaryColor = "#a7a1ae";
 export const primaryFont = "Hanken Grotesk, sans-serif";
 
 interface IFlexMixin {
-  justify: string;
-  align: string;
+  justify:
+    | "center"
+    | "space-between"
+    | "space-evenly"
+    | "space-around"
+    | "flex-start"
+    | "flex-end"
+    | "stretch";
+  align:
+    | "center"
+    | "flex-start"
+    | "flex-end"
+    | "stretch"
+    | "self-start"
+    | "self-end";
 }
 
 export const flexMixin = ({ justify, align }: IFlexMixin) => css`
