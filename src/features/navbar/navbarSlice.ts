@@ -5,6 +5,7 @@ import { InitialNavbar } from "../../common/types/typesTS";
 
 const initialState: InitialNavbar = {
   isLoading: true,
+  isSearchOpen: false,
   query: "",
   searchData: [],
 };
@@ -35,6 +36,9 @@ const navbarSlice = createSlice({
     setQuery: (state, { payload }: { payload: string }) => {
       state.query = payload;
     },
+    setIsSearchOpen: (state) => {
+      state.isSearchOpen = !state.isSearchOpen;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -51,5 +55,5 @@ const navbarSlice = createSlice({
   },
 });
 
-export const { setQuery } = navbarSlice.actions;
+export const { setQuery, setIsSearchOpen } = navbarSlice.actions;
 export const { reducer } = navbarSlice;
