@@ -1,21 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import {
   MovieInfo,
   SearchedData,
   SingleMovie,
 } from "../../../assets/style/SearchModal.styled";
-import { useAppDispatch, useAppSelector } from "../../../common/hooks";
-import { searchMovies } from "../navbarSlice";
+import { useAppSelector } from "../../../common/hooks";
 
 const SearchModal = () => {
-  const { searchData } = useAppSelector((store) => store.navbar);
-  const dispatch = useAppDispatch();
+  const { searchData, inputValue } = useAppSelector((store) => store.navbar);
   const posterUrl = "https://image.tmdb.org/t/p/w92/";
-
-  useEffect(() => {
-    dispatch(searchMovies("the godfather"));
-  }, []);
 
   return (
     <SearchedData>
@@ -28,6 +22,9 @@ const SearchModal = () => {
           </div>
         </SingleMovie>
       ))}
+      {searchData.length === 0 && inputValue && (
+        <p>There were no matches for your search term.</p>
+      )}
     </SearchedData>
   );
 };

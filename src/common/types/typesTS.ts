@@ -10,6 +10,7 @@ type SearchData = {
 export type InitialNavbar = {
   isLoading: boolean;
   isSearchOpen: boolean;
+  inputValue: string;
   query: string;
   searchData: SearchData[];
 };

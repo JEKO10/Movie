@@ -8,7 +8,7 @@ import TrendingMovies from "../features/trendingMovies/TrendingMovies";
 import TrendingPeople from "../features/trendingPeople/TrendingPeople";
 
 const Home = () => {
-  const { isSearchOpen } = useAppSelector((state) => state.navbar);
+  const { isSearchOpen, inputValue } = useAppSelector((state) => state.navbar);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Home = () => {
     <section>
       <TrendingMovies />
       <TrendingPeople />
-      {isSearchOpen && <SearchModal />}
+      {isSearchOpen && inputValue && <SearchModal />}
     </section>
   );
 };

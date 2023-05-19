@@ -6,18 +6,23 @@ import { InitialNavbar } from "../../common/types/typesTS";
 const initialState: InitialNavbar = {
   isLoading: true,
   isSearchOpen: false,
+  inputValue: "",
   query: "",
   searchData: [],
 };
 
 export const searchMovies = createAsyncThunk(
   "navbar/searchMovies",
-  async (inputValue: string, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    const { navbar } = getState() as {
+      navbar: InitialNavbar;
+    };
+
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${inputValue}`
+        }&query=${navbar.inputValue}`
       );
 
       return resp.data.results;
@@ -39,6 +44,9 @@ const navbarSlice = createSlice({
     setIsSearchOpen: (state) => {
       state.isSearchOpen = !state.isSearchOpen;
     },
+    setInputValue: (state, { payload }: { payload: string }) => {
+      state.inputValue = payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -55,5 +63,5 @@ const navbarSlice = createSlice({
   },
 });
 
-export const { setQuery, setIsSearchOpen } = navbarSlice.actions;
+export const { setQuery, setIsSearchOpen, setInputValue } = navbarSlice.actions;
 export const { reducer } = navbarSlice;

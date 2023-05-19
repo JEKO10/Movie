@@ -6,7 +6,12 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import { IconWrapper, Input, Nav } from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { setIsSearchOpen, setQuery } from "./navbarSlice";
+import {
+  searchMovies,
+  setInputValue,
+  setIsSearchOpen,
+  setQuery,
+} from "./navbarSlice";
 
 const Navbar = () => {
   const { query, isSearchOpen } = useAppSelector((store) => store.navbar);
@@ -16,6 +21,12 @@ const Navbar = () => {
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     dispatch(setQuery(event.currentTarget.text));
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    dispatch(setInputValue(value));
+    dispatch(searchMovies());
   };
 
   return (
@@ -86,9 +97,7 @@ const Navbar = () => {
             isSearchOpen={isSearchOpen}
             type="text"
             placeholder="Enter movie title..."
-            // onChange={(e) => {
-            //   dispatch(searchMovies(e.target.value));
-            // }}
+            onChange={handleInputChange}
           />
         </li>
       </ul>
