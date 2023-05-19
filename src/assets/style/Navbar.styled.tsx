@@ -68,10 +68,10 @@ export const Input = styled.input<InputProps>`
   padding: 5px 10px;
   border: none;
   border-radius: 5px;
+  transition: all 500ms ease;
   transform: ${({ isSearchOpen }) =>
     isSearchOpen ? "translate(0, -5%)" : "translateX(300px)"};
   width: ${({ isSearchOpen }) => (isSearchOpen ? "200px" : "0")};
-  transition: transform 500ms ease;
 
   &:is(:focus, :hover) {
     outline: 2px solid ${primaryColor};

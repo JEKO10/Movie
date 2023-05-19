@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
@@ -14,7 +14,9 @@ import {
 } from "./navbarSlice";
 
 const Navbar = () => {
-  const { query, isSearchOpen } = useAppSelector((store) => store.navbar);
+  const { query, isSearchOpen, inputValue } = useAppSelector(
+    (store) => store.navbar
+  );
   const dispatch = useAppDispatch();
 
   const setClicked = (
@@ -28,6 +30,12 @@ const Navbar = () => {
     dispatch(setInputValue(value));
     dispatch(searchMovies());
   };
+
+  useEffect(() => {
+    if (isSearchOpen) {
+      dispatch(setInputValue(""));
+    }
+  }, [isSearchOpen]);
 
   return (
     <Nav query={query}>
@@ -95,6 +103,7 @@ const Navbar = () => {
           </IconWrapper>
           <Input
             isSearchOpen={isSearchOpen}
+            value={inputValue}
             type="text"
             placeholder="Enter movie title..."
             onChange={handleInputChange}
