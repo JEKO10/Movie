@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { flexMixin } from "./GlobalStyles";
@@ -198,10 +199,14 @@ export const Overview = styled.div`
   }
 `;
 
-export const Collection = styled.article`
-  p {
-    font-weight: 700;
-    margin-bottom: 1rem;
+export const Collection = styled(Link)`
+  color: #e1e1ff99;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 200ms ease;
+
+  &:hover {
+    color: #fff;
   }
 `;
 

@@ -24,7 +24,7 @@ const SingleMovie = () => {
     title,
     tagline,
     backdrop_path,
-    belongs_to_collection,
+    belongs_to_collection: collection,
     // imdb_id,
     overview,
     poster_path,
@@ -41,7 +41,7 @@ const SingleMovie = () => {
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
-    console.log(belongs_to_collection);
+    console.log(collection);
   }, [id]);
 
   if (isLoading) {
@@ -78,13 +78,12 @@ const SingleMovie = () => {
               <h3>{runtime} min</h3>
             </Overview>
           </Info>
-          {belongs_to_collection && (
-            <Collection>
-              <Poster
-                src={posterUrl + belongs_to_collection.poster_path}
-                alt="POSTER"
-              />
-              <p>{belongs_to_collection.name}</p>
+          {collection && (
+            <Collection
+              to={`/collection/${collection?.id}/${collection?.name}`}
+            >
+              <Poster src={posterUrl + collection.poster_path} alt="POSTER" />
+              <p>{collection.name}</p>
             </Collection>
           )}
         </Wrapper>

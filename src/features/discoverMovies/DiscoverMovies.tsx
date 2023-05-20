@@ -90,11 +90,7 @@ const DiscoverMovies = () => {
         </div>
         <Underline></Underline>
         <p>
-          There are{" "}
-          {/* {totalItems.toString().slice(0, 2) +
-            "," +
-            totalItems.toString().slice(2)} */}
-          {totalItems}
+          There are {totalItems}
           <span>{name}</span>
           films.
         </p>

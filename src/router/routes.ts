@@ -1,3 +1,4 @@
+import Collection from "../features/discoverMovies/components/Collection";
 import DiscoverMovies from "../features/discoverMovies/DiscoverMovies";
 import PersonInfo from "../features/personInfo/PersonInfo";
 import SingleMovie from "../features/singleMovie/SingleMovie";
@@ -63,6 +64,11 @@ const routes = [
   },
   {
     id: 10,
+    path: "/collection/:id/:name",
+    element: Collection,
+  },
+  {
+    id: 11,
     path: "/*",
     element: Error,
   },

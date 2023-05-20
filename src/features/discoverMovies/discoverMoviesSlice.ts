@@ -4,11 +4,13 @@ import axios, { isAxiosError } from "axios";
 import {
   DiscoverPayload,
   InitialDiscoverMovies,
+  MovieCollection,
 } from "../../common/types/typesTS";
 
 const initialState: InitialDiscoverMovies = {
   isLoading: true,
   discoverMovies: [],
+  collection: {} as MovieCollection,
   totalPages: 0,
   totalItems: 0,
   sortBy: "popularity.desc",
@@ -46,6 +48,25 @@ export const getDiscoverMovies = createAsyncThunk(
   }
 );
 
+export const getCollection = createAsyncThunk(
+  "discoverMovies/getCollection",
+  async (id: number, { rejectWithValue }) => {
+    try {
+      const resp = await axios.get(
+        `https://api.themoviedb.org/3/collection/${id}?api_key=${
+          import.meta.env.VITE_API_KEY
+        }`
+      );
+
+      return resp.data;
+    } catch (error) {
+      if (isAxiosError(error)) {
+        return rejectWithValue(error.response);
+      }
+    }
+  }
+);
+
 const DiscoverMoviesSlice = createSlice({
   name: "discoverMovies",
   initialState,
@@ -62,23 +83,33 @@ const DiscoverMoviesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getDiscoverMovies.pending, (state) => {
+      .addCase(getDiscoverMovies.pending || getCollection.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(
         getDiscoverMovies.fulfilled,
         (state, action: PayloadAction<DiscoverPayload>) => {
-          state.isLoading = false;
-          console.log(action);
-
           state.discoverMovies = action.payload.results;
           state.totalPages = action.payload.total_pages;
           state.totalItems = action.payload.total_results;
+          state.isLoading = false;
         }
       )
-      .addCase(getDiscoverMovies.rejected, (state) => {
-        state.isLoading = false;
-      });
+      .addCase(
+        getCollection.fulfilled,
+        (state, action: PayloadAction<MovieCollection>) => {
+          state.collection = action.payload;
+          console.log(action.payload);
+
+          state.isLoading = false;
+        }
+      )
+      .addCase(
+        getDiscoverMovies.rejected || getCollection.rejected,
+        (state) => {
+          state.isLoading = false;
+        }
+      );
   },
 });
 

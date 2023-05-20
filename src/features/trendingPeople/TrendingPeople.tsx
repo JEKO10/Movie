@@ -27,7 +27,7 @@ const Trending = () => {
   }
   return (
     <Trend>
-      <Title>
+      <Title time="">
         <h2>Popular people this week</h2>
       </Title>
       <Underline></Underline>

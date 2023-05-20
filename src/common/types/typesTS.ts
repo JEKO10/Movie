@@ -64,9 +64,18 @@ export type InitialPersonInfo = {
 
 // discover movies
 
+export type MovieCollection = {
+  id: number;
+  name: string;
+  poster_path: string;
+  overview: string;
+  parts: DiscoverMovies[];
+};
+
 export type InitialDiscoverMovies = {
   isLoading: boolean;
   discoverMovies: DiscoverMovies[];
+  collection: MovieCollection;
   totalPages: number;
   totalItems: number;
   sortBy: string;
@@ -82,12 +91,11 @@ export type DiscoverPayload = {
 
 // singleMovie
 
-type MovieCollection = {
-  id: number;
-  backdrop_path: string;
-  name: string;
-  poster_path: string;
-};
+// type MovieCollection = {
+//   id: number;
+//   name: string;
+//   poster_path: string;
+// };
 
 type GenresKeywords = {
   id: number;
