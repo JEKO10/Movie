@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Underline } from "../../assets/style/DiscoverMovies.styled";
+import { Fade } from "../../assets/style/Fade.styled";
 import {
   Title,
   Trend,
@@ -49,7 +50,7 @@ const Trending = () => {
             <img src={posterUrl + poster_path} alt="Poster" />
             <div>
               <h4>{title ? title : name}</h4>
-              {title?.length > 17 || name?.length > 17 ? <div></div> : ""}
+              {title?.length > 17 && <Fade isTrending={true} />}
             </div>
           </TrendLink>
         ))}

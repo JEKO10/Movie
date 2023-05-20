@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Fade } from "../../../assets/style/Fade.styled";
 import {
   MovieInfo,
   SearchedData,
@@ -14,11 +15,12 @@ const SearchModal = () => {
   return (
     <SearchedData>
       {searchData?.map((movie) => (
-        <SingleMovie key={movie.id}>
+        <SingleMovie key={movie.id} to={`/movie/${movie.id}`}>
           <img src={posterUrl + movie.poster_path} alt="POSTER" />
           <div>
             <MovieInfo>{movie.title}</MovieInfo>
             <MovieInfo>{movie.release_date.slice(0, 4)}</MovieInfo>
+            {movie.title.length > 13 && <Fade isTrending={false} />}
           </div>
         </SingleMovie>
       ))}

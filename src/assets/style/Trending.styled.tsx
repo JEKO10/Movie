@@ -77,18 +77,5 @@ export const TrendLink = styled(Link)`
     border: solid 2px;
     border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
     border-top: none;
-
-    > div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0) 90%,
-        rgba(68, 85, 102, 1) 100%
-      );
-    }
   }
 `;

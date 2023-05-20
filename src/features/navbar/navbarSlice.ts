@@ -4,7 +4,6 @@ import axios, { isAxiosError } from "axios";
 import { InitialNavbar } from "../../common/types/typesTS";
 
 const initialState: InitialNavbar = {
-  isLoading: true,
   isSearchOpen: false,
   inputValue: "",
   query: "",
@@ -49,17 +48,9 @@ const navbarSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(searchMovies.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(searchMovies.fulfilled, (state, action) => {
-        state.searchData = action.payload;
-        state.isLoading = false;
-      })
-      .addCase(searchMovies.rejected, (state) => {
-        state.isLoading = false;
-      });
+    builder.addCase(searchMovies.fulfilled, (state, action) => {
+      state.searchData = action.payload;
+    });
   },
 });
 

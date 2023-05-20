@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { flexMixin, secondaryColor } from "./GlobalStyles";
@@ -30,8 +31,10 @@ export const SearchedData = styled.section`
   }
 `;
 
-export const SingleMovie = styled.article`
+export const SingleMovie = styled(Link)`
   ${flexMixin({ justify: "flex-start", align: "center" })};
+  color: #fff;
+  text-decoration: none;
   position: relative;
   border: 0.1px solid ${secondaryColor};
   cursor: pointer;
