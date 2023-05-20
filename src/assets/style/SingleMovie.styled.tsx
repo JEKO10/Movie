@@ -130,78 +130,85 @@ export const Banner = styled.div<BannerProps>`
 `;
 
 export const Wrapper = styled.article`
-  ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+  ${flexMixin({ justify: "space-between", align: "flex-start" })};
   width: 70vw;
   margin-top: -2rem;
   margin-bottom: 4rem;
   z-index: 2;
+`;
 
-  > img {
-    width: 230px;
-    height: 345px;
-    border: 1.5px solid #e1e1ff99;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+export const Info = styled.article`
+  ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+  flex-direction: column;
+  flex: 2;
+  height: 345px;
+  width: 100%;
+  margin: 0 2rem;
+`;
 
-  .info {
-    ${flexMixin({ justify: "flex-start", align: "flex-start" })};
-    flex-direction: column;
-    height: 345px;
-    width: 100%;
-    margin: 0 2rem;
-  }
+export const Name = styled.div`
+  ${flexMixin({ justify: "flex-start", align: "flex-end" })};
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 1rem;
 
-  .name {
-    ${flexMixin({ justify: "flex-start", align: "flex-end" })};
-    flex-wrap: wrap;
-    width: 100%;
+  > * {
+    margin-right: 1rem;
     margin-bottom: 1rem;
-
-    > * {
-      margin-right: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: 2rem;
-      line-height: 32px;
-    }
-
-    h4 {
-      color: #e1e1ff99;
-      font-weight: 400;
-      font-size: 1.2rem;
-
-      a {
-        color: rgba(255, 255, 255, 0.8);
-        margin-left: 0.5rem;
-      }
-    }
   }
 
-  .overview {
+  h2 {
+    font-size: 2rem;
+    line-height: 32px;
+  }
+
+  h4 {
     color: #e1e1ff99;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    font-weight: 400;
+    font-size: 1.2rem;
 
-    h4 {
-      margin-bottom: 1rem;
-      font-weight: 400;
-      text-transform: uppercase;
-    }
-
-    p {
-      max-width: 430px;
-      line-height: 25px;
-      margin-bottom: 2rem;
-    }
-
-    h3 {
-      font-weight: 400;
-      font-size: 1rem;
-      margin-top: auto;
+    a {
+      color: rgba(255, 255, 255, 0.8);
+      margin-left: 0.5rem;
     }
   }
+`;
+
+export const Overview = styled.div`
+  color: #e1e1ff99;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  h4 {
+    margin-bottom: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  p {
+    line-height: 25px;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-weight: 400;
+    font-size: 1rem;
+    margin-top: auto;
+  }
+`;
+
+export const Collection = styled.article`
+  p {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+`;
+
+export const Poster = styled.img`
+  width: 230px;
+  height: 345px;
+  border: 1.5px solid #e1e1ff99;
+  border-radius: 5px;
+  cursor: pointer;
 `;

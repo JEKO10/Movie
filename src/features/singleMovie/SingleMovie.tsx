@@ -1,7 +1,16 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Banner, Movie, Wrapper } from "../../assets/style/SingleMovie.styled";
+import {
+  Banner,
+  Collection,
+  Info,
+  Movie,
+  Name,
+  Overview,
+  Poster,
+  Wrapper,
+} from "../../assets/style/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
@@ -15,7 +24,7 @@ const SingleMovie = () => {
     title,
     tagline,
     backdrop_path,
-    // belongs_to_collection,
+    belongs_to_collection,
     // imdb_id,
     overview,
     poster_path,
@@ -32,7 +41,7 @@ const SingleMovie = () => {
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
-    console.log(movieInfo);
+    console.log(belongs_to_collection);
   }, [id]);
 
   if (isLoading) {
@@ -47,28 +56,37 @@ const SingleMovie = () => {
       <Movie>
         <Banner posterUrl={posterUrl} backdrop_path={backdrop_path}></Banner>
         <Wrapper>
-          <img
+          <Poster
             src={
               poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG
             }
             alt="POSTER"
             onClick={() => dispatch(toggleModal(true))}
           />
-          <article className="info">
-            <div className="name">
+          <Info>
+            <Name>
               <h2>{title}</h2>
               <h4>{release_date?.slice(0, 4)}</h4>
               <h4>
                 Directed by
                 <Link to={`/person/${director?.id}/`}>{director?.name}</Link>
               </h4>
-            </div>
-            <div className="overview">
+            </Name>
+            <Overview>
               <h4>{tagline}</h4>
               <p>{overview}</p>
               <h3>{runtime} min</h3>
-            </div>
-          </article>
+            </Overview>
+          </Info>
+          {belongs_to_collection && (
+            <Collection>
+              <Poster
+                src={posterUrl + belongs_to_collection.poster_path}
+                alt="POSTER"
+              />
+              <p>{belongs_to_collection.name}</p>
+            </Collection>
+          )}
         </Wrapper>
         <Categories id={id} />
       </Movie>
