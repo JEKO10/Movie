@@ -32,12 +32,12 @@ const Trending = () => {
   }
   return (
     <Trend className="trending">
-      <Title>
+      <Title time={time}>
         <h2>Popular movies</h2>
         <select
           name="time"
           onChange={(e) => dispatch(changeTime(e.currentTarget.value))}
-          style={{ width: time === "day" ? "80px" : "120px" }}
+          value={time}
         >
           <option value="day">Today</option>
           <option value="week">This week</option>

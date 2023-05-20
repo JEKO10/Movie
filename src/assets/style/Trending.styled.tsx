@@ -3,11 +3,15 @@ import styled from "styled-components";
 
 import { flexMixin, primaryFont } from "./GlobalStyles";
 
+type TitleProps = {
+  time: string;
+};
+
 export const Trend = styled.section`
   margin: 5rem 0 8rem 0;
 `;
 
-export const Title = styled.div`
+export const Title = styled.div<TitleProps>`
   ${flexMixin({ justify: "flex-start", align: "center" })};
   margin-bottom: 0.2rem;
 
@@ -21,6 +25,7 @@ export const Title = styled.div`
   }
 
   select {
+    width: ${({ time }) => (time === "day" ? "80px" : "120px")};
     margin-left: 0.3rem;
     background: none;
     border: none;
