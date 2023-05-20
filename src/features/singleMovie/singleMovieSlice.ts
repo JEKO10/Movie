@@ -43,6 +43,7 @@ const singleMovieSlice = createSlice({
   reducers: {
     toggleModal: (state, { payload }) => {
       state.isModalOpen = payload;
+
       if (payload) {
         document.body.style.overflow = "hidden";
       } else {
@@ -74,7 +75,10 @@ const singleMovieSlice = createSlice({
   },
 });
 
-export const { toggleModal, toggleCategory, toggleCast } =
-  singleMovieSlice.actions;
+export const {
+  toggleModal,
+  toggleCategory,
+  toggleCast,
+} = singleMovieSlice.actions;
 
 export const { reducer } = singleMovieSlice;

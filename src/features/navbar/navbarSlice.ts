@@ -39,6 +39,7 @@ const navbarSlice = createSlice({
   reducers: {
     setQuery: (state, { payload }: { payload: string }) => {
       state.query = payload;
+      state.isSearchOpen = false;
     },
     setIsSearchOpen: (state) => {
       state.isSearchOpen = !state.isSearchOpen;
