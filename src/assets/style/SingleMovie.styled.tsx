@@ -201,6 +201,7 @@ export const Overview = styled.div`
 
 export const Collection = styled(Link)`
   color: #e1e1ff99;
+  width: min-content;
   text-decoration: none;
   font-weight: 700;
   transition: all 200ms ease;
