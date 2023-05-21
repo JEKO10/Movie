@@ -50,7 +50,7 @@ export const getDiscoverMovies = createAsyncThunk(
 
 export const getCollection = createAsyncThunk(
   "discoverMovies/getCollection",
-  async (id: number, { rejectWithValue }) => {
+  async (id: string | undefined, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/collection/${id}?api_key=${
@@ -99,8 +99,6 @@ const DiscoverMoviesSlice = createSlice({
         getCollection.fulfilled,
         (state, action: PayloadAction<MovieCollection>) => {
           state.collection = action.payload;
-          console.log(action.payload);
-
           state.isLoading = false;
         }
       )

@@ -40,6 +40,22 @@ export const GlobalStyles = React.memo(
 
     html {
       scroll-behavior: smooth;
+
+      ::-webkit-scrollbar {
+        width: 5px;
+
+        &-track {
+          background: #555;
+        }
+
+        &-thumb {
+          background: ${secondaryColor};
+
+          &:hover {
+            background: ${primaryColor};
+          }
+        }
+      }
     }
 
     body {

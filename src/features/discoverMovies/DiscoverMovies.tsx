@@ -95,7 +95,7 @@ const DiscoverMovies = () => {
           films.
         </p>
       </Sorting>
-      <MoviesList>
+      <MoviesList isCollection={false}>
         {discoverMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
             <img src={posterUrl + movie.poster_path} alt="Poster" />

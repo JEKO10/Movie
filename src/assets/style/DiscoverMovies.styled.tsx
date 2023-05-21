@@ -2,13 +2,19 @@ import styled from "styled-components";
 
 import { flexMixin } from "./GlobalStyles";
 
+type MoviesListProps = {
+  isCollection: boolean;
+};
+
 export const Discover = styled.section`
   margin: 3rem 0;
+  min-height: 76.5vh;
 `;
 
-export const MoviesList = styled.article`
+export const MoviesList = styled.article<MoviesListProps>`
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: ${({ isCollection }) =>
+    isCollection ? `repeat(8, 1fr)` : `repeat(12, 1fr)`};
   /* grid-template-columns: repeat(auto-fit, minmax(12, 1fr)); */
   grid-gap: 5px 10px;
 
@@ -51,6 +57,14 @@ export const Sorting = styled.article`
       text-transform: lowercase;
       margin: 0 4px;
     }
+  }
+
+  h4 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    margin-bottom: 3rem;
   }
 `;
 

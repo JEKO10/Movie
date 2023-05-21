@@ -41,7 +41,6 @@ const SingleMovie = () => {
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
-    console.log(collection);
   }, [id]);
 
   if (isLoading) {
@@ -81,6 +80,7 @@ const SingleMovie = () => {
           {collection && (
             <Collection
               to={`/collection/${collection?.id}/${collection?.name}`}
+              onClick={() => dispatch(setQuery("collection"))}
             >
               <Poster src={posterUrl + collection.poster_path} alt="POSTER" />
               <p>{collection.name}</p>
