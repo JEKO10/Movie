@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import { InitialPersonInfo, PersonInfo } from "../../common/types/typesTS";
+import {
+  DiscoverMovies,
+  InitialPersonInfo,
+  PersonInfo,
+} from "../../common/types/typesTS";
 
 const initialState: InitialPersonInfo = {
   isLoading: true,
@@ -20,6 +24,7 @@ export const getPerson = createAsyncThunk(
           import.meta.env.VITE_API_KEY
         }&adult=false`
       );
+
       return resp.data;
     } catch (error) {
       if (isAxiosError(error)) {
@@ -50,6 +55,8 @@ export const getMovies = createAsyncThunk(
 
         returnerData.push(...response.data.results);
       }
+
+      // console.log(returnerData);
 
       return returnerData;
     } catch (error) {
@@ -82,10 +89,13 @@ const personInfoSlice = createSlice({
           state.personInfo = action.payload;
         }
       )
-      .addCase(getMovies.fulfilled, (state, action) => {
-        state.personMovies = action.payload || [];
-        state.isLoading = false;
-      })
+      .addCase(
+        getMovies.fulfilled,
+        (state, action: PayloadAction<DiscoverMovies[] | undefined>) => {
+          state.personMovies = action.payload || [];
+          state.isLoading = false;
+        }
+      )
       .addCase(getPerson.rejected, (state) => {
         state.isLoading = false;
       })

@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import { InitialNavbar } from "../../common/types/typesTS";
+import { InitialNavbar, SearchData } from "../../common/types/typesTS";
 
 const initialState: InitialNavbar = {
   isSearchOpen: false,
@@ -19,7 +19,7 @@ export const searchMovies = createAsyncThunk(
 
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${
+        `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
         }&query=${navbar.inputValue}`
       );
@@ -49,9 +49,12 @@ const navbarSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(searchMovies.fulfilled, (state, action) => {
-      state.searchData = action.payload;
-    });
+    builder.addCase(
+      searchMovies.fulfilled,
+      (state, action: PayloadAction<SearchData[]>) => {
+        state.searchData = action.payload;
+      }
+    );
   },
 });
 

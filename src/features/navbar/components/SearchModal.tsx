@@ -7,6 +7,7 @@ import {
   SingleMovie,
 } from "../../../assets/style/SearchModal.styled";
 import { useAppSelector } from "../../../common/hooks";
+import { SearchData } from "../../../common/types/typesTS";
 
 const SearchModal = () => {
   const { searchData, inputValue } = useAppSelector((store) => store.navbar);
@@ -14,13 +15,18 @@ const SearchModal = () => {
 
   return (
     <SearchedData>
-      {searchData?.map((movie) => (
+      {searchData?.map((movie: SearchData) => (
         <SingleMovie key={movie.id} to={`/movie/${movie.id}`}>
-          <img src={posterUrl + movie.poster_path} alt="POSTER" />
+          <img
+            src={posterUrl + (movie.profile_path || movie.poster_path)}
+            alt="POSTER"
+          />
           <div>
-            <MovieInfo>{movie.title}</MovieInfo>
-            <MovieInfo>{movie.release_date.slice(0, 4)}</MovieInfo>
-            {movie.title.length > 13 && <Fade isTrending={false} />}
+            <MovieInfo>{movie.title || movie.name}</MovieInfo>
+            <MovieInfo>{movie.release_date?.slice(0, 4)}</MovieInfo>
+            {movie.title && movie.title.length > 13 && (
+              <Fade isTrending={false} />
+            )}
           </div>
         </SingleMovie>
       ))}

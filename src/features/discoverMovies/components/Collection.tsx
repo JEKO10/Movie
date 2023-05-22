@@ -7,7 +7,7 @@ import {
   Sorting,
 } from "../../../assets/style/DiscoverMovies.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
-import { Loader } from "../../../common/Loader";
+import { Loader, LoaderWrapper } from "../../../common/Loader";
 import { getCollection } from "../discoverMoviesSlice";
 
 const Collection = () => {
@@ -23,9 +23,12 @@ const Collection = () => {
   }, []);
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
   }
-
   return (
     <Discover>
       <Sorting>

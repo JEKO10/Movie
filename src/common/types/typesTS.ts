@@ -1,10 +1,12 @@
 // navbar
 
-type SearchData = {
+export type SearchData = {
   id: number;
   poster_path: string;
-  title: string;
-  release_date: string;
+  profile_path: string;
+  title?: string;
+  name: string;
+  release_date?: string;
 };
 
 export type InitialNavbar = {

@@ -44,7 +44,7 @@ const PersonInfo = () => {
   }
   return (
     <Person>
-      <MoviesList>
+      <MoviesList isCollection={false}>
         {personMovies.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
             <img
