@@ -7,6 +7,7 @@ export type SearchData = {
   title?: string;
   name: string;
   release_date?: string;
+  media_type: string;
 };
 
 export type InitialNavbar = {

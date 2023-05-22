@@ -21,10 +21,15 @@ export const searchMovies = createAsyncThunk(
       const resp = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${navbar.inputValue}`
+        }&query=${navbar.inputValue}&media_type=movie,person`
       );
 
-      return resp.data.results;
+      const filteredResults = resp.data.results.filter(
+        (result: SearchData) =>
+          result.media_type === "movie" || result.media_type === "person"
+      );
+
+      return filteredResults;
     } catch (error) {
       if (isAxiosError(error)) {
         return rejectWithValue(error.response);
