@@ -11,6 +11,7 @@ type BannerProps = {
 export const Movie = styled.section`
   ${flexMixin({ justify: "flex-start", align: "center" })};
   flex-direction: column;
+  min-height: 76.5vh;
   margin-bottom: 3rem;
   background: #13181c;
   width: 100vw;

@@ -25,21 +25,33 @@ export type DiscoverParams = {
 
 export const getDiscoverMovies = createAsyncThunk(
   "discoverMovies/getDiscoverMovies",
-  async ({ id, page }: DiscoverParams, { getState, rejectWithValue }) => {
+  async ({ id, page = 1 }: DiscoverParams, { getState, rejectWithValue }) => {
     const { discoverMovies } = getState() as {
       discoverMovies: InitialDiscoverMovies;
     };
 
-    try {
-      const resp = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${
-          import.meta.env.VITE_API_KEY
-        }&sort_by=${discoverMovies.sortBy}&vote_count.gte=50&with_${
-          discoverMovies.discover
-        }=${id}&page=${page}&with_original_language=en`
-      );
+    const returnedData: DiscoverPayload = {
+      results: [],
+      total_pages: 0,
+      total_results: 0,
+    };
 
-      return resp.data;
+    try {
+      for (let i = page; i <= page + 3; i++) {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/discover/movie?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&sort_by=${discoverMovies.sortBy}&vote_count.gte=50&with_${
+            discoverMovies.discover
+          }=${id}&page=${i}&with_original_language=en`
+        );
+
+        returnedData.results.push(...response.data.results);
+        returnedData.total_pages = response.data.total_pages;
+        returnedData.total_results = response.data.total_results;
+      }
+
+      return returnedData;
     } catch (error) {
       if (isAxiosError(error)) {
         return rejectWithValue(error.response);
@@ -88,10 +100,10 @@ const DiscoverMoviesSlice = createSlice({
       })
       .addCase(
         getDiscoverMovies.fulfilled,
-        (state, action: PayloadAction<DiscoverPayload>) => {
-          state.discoverMovies = action.payload.results;
-          state.totalPages = action.payload.total_pages;
-          state.totalItems = action.payload.total_results;
+        (state, action: PayloadAction<DiscoverPayload | undefined>) => {
+          state.discoverMovies = action.payload?.results;
+          state.totalPages = action.payload?.total_pages;
+          state.totalItems = action.payload?.total_results;
           state.isLoading = false;
         }
       )

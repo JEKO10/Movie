@@ -4,6 +4,7 @@ import { flexMixin } from "./GlobalStyles";
 
 export const Person = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-start" })};
+  min-height: 76.5vh;
   color: rgba(255, 255, 255, 0.5);
   margin: 3rem 0;
 

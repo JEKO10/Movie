@@ -44,7 +44,7 @@ export const getMovies = createAsyncThunk(
         }&with_cast=${id}&page=1`
       );
       const totalPages = firstResponse.data.total_pages;
-      const returnerData = [];
+      const returnedData = [];
 
       for (let i = 1; i <= totalPages; i++) {
         const response = await axios.get(
@@ -53,12 +53,10 @@ export const getMovies = createAsyncThunk(
           }&with_cast=${id}&page=${i}`
         );
 
-        returnerData.push(...response.data.results);
+        returnedData.push(...response.data.results);
       }
 
-      // console.log(returnerData);
-
-      return returnerData;
+      return returnedData;
     } catch (error) {
       if (isAxiosError(error)) {
         return rejectWithValue(error.response);

@@ -33,6 +33,7 @@ const PersonInfo = () => {
     dispatch(getMovies(id));
     dispatch(toggleBio(false));
     dispatch(setQuery("Person"));
+    console.log(personMovies);
   }, [id]);
 
   if (isLoading) {
@@ -45,22 +46,31 @@ const PersonInfo = () => {
   return (
     <Person>
       <MoviesList isCollection={false}>
-        {personMovies.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id}>
-            <img
-              loading="lazy"
-              src={
-                movie.poster_path
-                  ? posterUrl + movie.poster_path
-                  : import.meta.env.VITE_IMG
-              }
-              alt="Poster"
-            />
-          </Link>
-        ))}
+        {personMovies.length !== 0 ? (
+          personMovies.map((movie) => (
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <img
+                loading="lazy"
+                src={
+                  movie.poster_path
+                    ? posterUrl + movie.poster_path
+                    : import.meta.env.VITE_IMG
+                }
+                alt="Poster"
+              />
+            </Link>
+          ))
+        ) : (
+          <p>No movies found for this person.</p>
+        )}
       </MoviesList>
       <article>
-        <PersonImg src={posterUrl + profile_path} alt="POSTER" />
+        <PersonImg
+          src={
+            profile_path ? posterUrl + profile_path : import.meta.env.VITE_IMG
+          }
+          alt="POSTER"
+        />
         <h2>{name}</h2>
         <h4>Date of birth: {birthday}</h4>
         {deathday ? <h4>Date of death: {deathday}</h4> : ""}

@@ -77,10 +77,10 @@ export type MovieCollection = {
 
 export type InitialDiscoverMovies = {
   isLoading: boolean;
-  discoverMovies: DiscoverMovies[];
+  discoverMovies: DiscoverMovies[] | undefined;
   collection: MovieCollection;
-  totalPages: number;
-  totalItems: number;
+  totalPages: number | undefined;
+  totalItems: number | undefined;
   sortBy: string;
   sortName: string;
   discover: string;

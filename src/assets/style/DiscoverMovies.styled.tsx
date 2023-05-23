@@ -18,6 +18,12 @@ export const MoviesList = styled.article<MoviesListProps>`
   /* grid-template-columns: repeat(auto-fit, minmax(12, 1fr)); */
   grid-gap: 5px 10px;
 
+  > p {
+    font-size: 2rem;
+    max-width: 100% !important;
+    grid-area: 1/-1;
+  }
+
   img {
     width: 100%;
     height: 100%;

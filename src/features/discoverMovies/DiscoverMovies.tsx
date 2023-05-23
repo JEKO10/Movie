@@ -32,12 +32,12 @@ const DiscoverMovies = () => {
 
     if (value) dispatch(toggleSort(value));
     if (name) dispatch(toggleSortName(name));
-    dispatch(getDiscoverMovies({ id }));
+    dispatch(getDiscoverMovies({ id, page: 1 }));
     setIsSortOpen(false);
   };
 
   useEffect(() => {
-    dispatch(getDiscoverMovies({ id }));
+    dispatch(getDiscoverMovies({ id, page: 1 }));
     dispatch(setQuery(""));
   }, [id]);
 
@@ -96,9 +96,16 @@ const DiscoverMovies = () => {
         </p>
       </Sorting>
       <MoviesList isCollection={false}>
-        {discoverMovies.map((movie) => (
+        {discoverMovies?.map((movie) => (
           <Link to={`/movie/${movie.id}`} key={movie.id}>
-            <img src={posterUrl + movie.poster_path} alt="Poster" />
+            <img
+              src={
+                movie.poster_path
+                  ? posterUrl + movie.poster_path
+                  : import.meta.env.VITE_IMG
+              }
+              alt="Poster"
+            />
           </Link>
         ))}
       </MoviesList>
