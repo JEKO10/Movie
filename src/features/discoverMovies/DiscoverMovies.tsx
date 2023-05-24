@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 
 import {
@@ -19,6 +20,7 @@ import {
 
 const DiscoverMovies = () => {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
+  const [selectedSort, setSelectedSort] = useState<string>(""); // Added state for selected sort
   const { name, id } = useParams();
   const { discoverMovies, totalItems, sortName, isLoading } = useAppSelector(
     (store) => store.discoverMovies
@@ -33,6 +35,7 @@ const DiscoverMovies = () => {
     if (value) dispatch(toggleSort(value));
     if (name) dispatch(toggleSortName(name));
     dispatch(getDiscoverMovies({ id, page: 1 }));
+    setSelectedSort(value || "");
     setIsSortOpen(false);
   };
 
@@ -41,13 +44,6 @@ const DiscoverMovies = () => {
     dispatch(setQuery(""));
   }, [id]);
 
-  if (isLoading) {
-    return (
-      <LoaderWrapper>
-        <Loader />
-      </LoaderWrapper>
-    );
-  }
   return (
     <Discover>
       <Sorting>
@@ -56,34 +52,60 @@ const DiscoverMovies = () => {
           <div>
             <SortList>
               <li onClick={() => setIsSortOpen(!isSortOpen)}>
-                Sort by {sortName}
+                Sort by {sortName} <MdOutlineKeyboardArrowDown />
               </li>
-              {isSortOpen ? (
+              {isSortOpen && (
                 <ul>
-                  <li value="popularity.desc" onClick={changeSort}>
+                  <li
+                    value="popularity.desc"
+                    onClick={changeSort}
+                    style={{
+                      color: selectedSort === "popularity.desc" ? "#fff" : "",
+                    }}
+                  >
                     Popularity
                   </li>
-                  <li value="vote_average.desc" onClick={changeSort}>
+                  <li
+                    value="vote_average.desc"
+                    onClick={changeSort}
+                    style={{
+                      color: selectedSort === "vote_average.desc" ? "#fff" : "",
+                    }}
+                  >
                     Average Rating
                   </li>
-                  <li value="primary_release_date.desc" onClick={changeSort}>
+                  <li
+                    value="primary_release_date.desc"
+                    onClick={changeSort}
+                    style={{
+                      color:
+                        selectedSort === "primary_release_date.desc"
+                          ? "#fff"
+                          : "",
+                    }}
+                  >
                     Release date
                   </li>
                   <li
                     value="original_title.desc"
-                    onClick={(event) => changeSort(event)}
+                    onClick={changeSort}
+                    style={{
+                      color:
+                        selectedSort === "original_title.desc" ? "#fff" : "",
+                    }}
                   >
                     Name
                   </li>
                   <li
                     value="revenue.desc"
-                    onClick={(event) => changeSort(event)}
+                    onClick={changeSort}
+                    style={{
+                      color: selectedSort === "revenue.desc" ? "#fff" : "",
+                    }}
                   >
                     Revenue
                   </li>
                 </ul>
-              ) : (
-                ""
               )}
             </SortList>
           </div>
@@ -95,20 +117,26 @@ const DiscoverMovies = () => {
           films.
         </p>
       </Sorting>
-      <MoviesList isCollection={false}>
-        {discoverMovies?.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id}>
-            <img
-              src={
-                movie.poster_path
-                  ? posterUrl + movie.poster_path
-                  : import.meta.env.VITE_IMG
-              }
-              alt="Poster"
-            />
-          </Link>
-        ))}
-      </MoviesList>
+      {!isLoading ? (
+        <MoviesList isCollection={false}>
+          {discoverMovies?.map((movie) => (
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <img
+                src={
+                  movie.poster_path
+                    ? posterUrl + movie.poster_path
+                    : import.meta.env.VITE_IMG
+                }
+                alt="Poster"
+              />
+            </Link>
+          ))}
+        </MoviesList>
+      ) : (
+        <LoaderWrapper>
+          <Loader />
+        </LoaderWrapper>
+      )}
     </Discover>
   );
 };

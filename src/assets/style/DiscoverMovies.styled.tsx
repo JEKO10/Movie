@@ -19,6 +19,7 @@ export const MoviesList = styled.article<MoviesListProps>`
   grid-gap: 5px 10px;
 
   > p {
+    margin-top: 10rem;
     font-size: 2rem;
     max-width: 100% !important;
     grid-area: 1/-1;
@@ -84,10 +85,16 @@ export const Underline = styled.div`
 export const SortList = styled.ul`
   list-style-type: none;
   text-transform: none;
-  width: 200px;
+  width: max-content;
 
   li {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
     cursor: pointer;
+
+    svg {
+      font-size: 1.5rem;
+      transform: translateY(-1px);
+    }
 
     &:hover {
       color: #fff;

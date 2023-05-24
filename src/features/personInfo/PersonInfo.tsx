@@ -77,18 +77,18 @@ const PersonInfo = () => {
         <h4>Gender: {gender === 2 ? "Male" : "Female"}</h4>
         <h4>Known for: {known_for_department}</h4>
         <h4>Place of birth: {place_of_birth}</h4>
-        {isBioOpen ? (
+        {isBioOpen && (
           <p
             dangerouslySetInnerHTML={{
               __html: biography.replace(/\n/g, "<br>"),
             }}
           />
-        ) : (
-          ""
         )}
-        <FullBio onClick={() => dispatch(toggleBio(!isBioOpen))}>
-          {isBioOpen ? "Close" : "Open"} full biography
-        </FullBio>
+        {isBioOpen && (
+          <FullBio onClick={() => dispatch(toggleBio(!isBioOpen))}>
+            {isBioOpen ? "Close" : "Open"} full biography
+          </FullBio>
+        )}
       </article>
     </Person>
   );
