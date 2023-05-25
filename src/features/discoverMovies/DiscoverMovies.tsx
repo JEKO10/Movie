@@ -12,6 +12,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
+import Pagination from "./components/Pagination";
 import {
   getDiscoverMovies,
   toggleSort,
@@ -20,7 +21,7 @@ import {
 
 const DiscoverMovies = () => {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
-  const [selectedSort, setSelectedSort] = useState<string>(""); // Added state for selected sort
+  const [selectedSort, setSelectedSort] = useState<string>("popularity.desc"); // Added state for selected sort
   const { name, id } = useParams();
   const { discoverMovies, totalItems, sortName, isLoading } = useAppSelector(
     (store) => store.discoverMovies
@@ -34,13 +35,13 @@ const DiscoverMovies = () => {
 
     if (value) dispatch(toggleSort(value));
     if (name) dispatch(toggleSortName(name));
-    dispatch(getDiscoverMovies({ id, page: 1 }));
+    dispatch(getDiscoverMovies({ id }));
     setSelectedSort(value || "");
     setIsSortOpen(false);
   };
 
   useEffect(() => {
-    dispatch(getDiscoverMovies({ id, page: 1 }));
+    dispatch(getDiscoverMovies({ id }));
     dispatch(setQuery(""));
   }, [id]);
 
@@ -137,6 +138,7 @@ const DiscoverMovies = () => {
           <Loader />
         </LoaderWrapper>
       )}
+      <Pagination id={id} />
     </Discover>
   );
 };
