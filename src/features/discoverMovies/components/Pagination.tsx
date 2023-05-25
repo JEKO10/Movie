@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+import { PaginationList } from "../../../assets/style/Pagination.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { getDiscoverMovies } from "../discoverMoviesSlice";
 
@@ -21,26 +22,18 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
   }, []);
 
   return (
-    <section>
-      {pages
-        // .slice(
-        //   ...(page === 2
-        //     ? [page - 1, page + 4]
-        //     : page === 1
-        //     ? [page, page + 5]
-        //     : [page - 2, page + 3])
-        // )
-        .map((page: number) => {
-          return (
-            <p
-              key={page}
-              onClick={() => dispatch(getDiscoverMovies({ id, page }))}
-            >
-              {page}
-            </p>
-          );
-        })}
-    </section>
+    <PaginationList>
+      {pages.map((page: number) => {
+        return (
+          <li
+            key={page}
+            onClick={() => dispatch(getDiscoverMovies({ id, page }))}
+          >
+            {page}
+          </li>
+        );
+      })}
+    </PaginationList>
   );
 };
 

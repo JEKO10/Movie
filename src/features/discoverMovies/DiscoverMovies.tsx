@@ -21,7 +21,7 @@ import {
 
 const DiscoverMovies = () => {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
-  const [selectedSort, setSelectedSort] = useState<string>("popularity.desc"); // Added state for selected sort
+  const [selectedSort, setSelectedSort] = useState<string>("popularity.desc");
   const { name, id } = useParams();
   const { discoverMovies, totalItems, sortName, isLoading } = useAppSelector(
     (store) => store.discoverMovies
