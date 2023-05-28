@@ -21,14 +21,13 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
   const pages = [];
   const dispatch = useAppDispatch();
 
-  for (let i = 0; i <= totalPages; i++) {
+  for (let i = 0; i <= totalPages - 5; i++) {
     pages.push(i);
   }
 
   const handlePageClick = (page: number) => {
     window.scrollTo(0, 0);
     dispatch(getDiscoverMovies({ id, page }));
-    setCurrentPage(page);
   };
 
   if (isLoading) {
@@ -61,7 +60,10 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
                 background: currentPage === page ? "#dda824" : "",
               }}
               key={page}
-              onClick={() => handlePageClick(page)}
+              onClick={() => {
+                handlePageClick(page);
+                setCurrentPage(page);
+              }}
             >
               {page}
             </li>
