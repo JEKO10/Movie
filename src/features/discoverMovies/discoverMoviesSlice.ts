@@ -37,7 +37,12 @@ export const getDiscoverMovies = createAsyncThunk(
     };
 
     try {
-      for (let i = page; i <= page + 5; i++) {
+      for (
+        let i = page === 1 ? page : page - 3;
+        page === 1 ? i <= page + 5 : i < page + 3;
+        i++
+      ) {
+        // for (let i = page; i <= page; i++) {
         const response = await axios.get(
           `https://api.themoviedb.org/3/discover/movie?api_key=${
             import.meta.env.VITE_API_KEY

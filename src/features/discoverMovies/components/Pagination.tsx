@@ -15,18 +15,19 @@ type PaginationProps = {
 
 const Pagination: React.FC<PaginationProps> = ({ id }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const { totalPages = 1, isLoading } = useAppSelector(
+  const { totalItems = 1, isLoading } = useAppSelector(
     (store) => store.discoverMovies
   );
   const pages = [];
   const dispatch = useAppDispatch();
-
-  for (let i = 0; i <= totalPages - 5; i++) {
+  const totalPages = Math.ceil(totalItems / 120) + 1;
+  for (let i = 0; i <= totalPages; i++) {
     pages.push(i);
   }
 
   const handlePageClick = (page: number) => {
     window.scrollTo(0, 0);
+    setCurrentPage(page);
     dispatch(getDiscoverMovies({ id, page }));
   };
 
@@ -39,8 +40,7 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
     <PaginationList>
       <li
         onClick={() => {
-          dispatch(getDiscoverMovies({ id, page: 1 }));
-          setCurrentPage(1);
+          handlePageClick(1);
         }}
       >
         <MdKeyboardDoubleArrowLeft />
@@ -61,7 +61,7 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
               }}
               key={page}
               onClick={() => {
-                handlePageClick(page);
+                handlePageClick(page * 5);
                 setCurrentPage(page);
               }}
             >
@@ -71,8 +71,7 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
         })}
       <li
         onClick={() => {
-          dispatch(getDiscoverMovies({ id, page: pages.length - 1 }));
-          setCurrentPage(pages.length - 1);
+          handlePageClick(pages.length - 1);
         }}
       >
         <MdKeyboardDoubleArrowRight />
