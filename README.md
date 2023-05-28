@@ -18,6 +18,8 @@ This a movie app that is written in React and created with Vite. The TMDP API po
 ## Project overview
 
 
+I created home page, discover (by genre and keyword) page, single movie, and single person page. I plan to use express to connect react with database so user can stay signed in and see other profiles.
+
 
 ## Built with
 
