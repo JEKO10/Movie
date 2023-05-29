@@ -46,8 +46,8 @@ const navbarSlice = createSlice({
       state.query = payload;
       state.isSearchOpen = false;
     },
-    setIsSearchOpen: (state) => {
-      state.isSearchOpen = !state.isSearchOpen;
+    setIsSearchOpen: (state, { payload }: { payload: boolean }) => {
+      state.isSearchOpen = !payload;
     },
     setInputValue: (state, { payload }: { payload: string }) => {
       state.inputValue = payload;

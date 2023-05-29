@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
@@ -18,6 +18,7 @@ const Navbar = () => {
     (store) => store.navbar
   );
   const dispatch = useAppDispatch();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const setClicked = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -36,6 +37,18 @@ const Navbar = () => {
       dispatch(setInputValue(""));
     }
   }, [isSearchOpen]);
+
+  useEffect(() => {
+    document.addEventListener("click", clickOutside, true);
+  }, [query]);
+
+  const clickOutside = (e: MouseEvent) => {
+    if (!inputRef.current?.contains(e.target as Node)) {
+      dispatch(setIsSearchOpen(true));
+    } else {
+      dispatch(setIsSearchOpen(false));
+    }
+  };
 
   return (
     <Nav query={query}>
@@ -98,10 +111,11 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <IconWrapper onClick={() => dispatch(setIsSearchOpen())}>
+          <IconWrapper onClick={() => dispatch(setIsSearchOpen(isSearchOpen))}>
             {isSearchOpen ? <VscChromeClose /> : <FaSearch />}
           </IconWrapper>
           <Input
+            ref={inputRef}
             isSearchOpen={isSearchOpen}
             value={inputValue}
             type="text"

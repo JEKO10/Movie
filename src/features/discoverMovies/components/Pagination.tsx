@@ -20,7 +20,7 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
   );
   const pages = [];
   const dispatch = useAppDispatch();
-  const totalPages = Math.ceil(totalItems / 120) + 1;
+  const totalPages = Math.ceil(totalItems / 100);
   for (let i = 0; i <= totalPages; i++) {
     pages.push(i);
   }
