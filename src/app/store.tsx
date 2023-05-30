@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { reducer as discoverReducer } from "../features/discoverMovies/discoverMoviesSlice";
-import { reducer as navbarReducer } from "../features/navbar/navbarSlice";
-import { reducer as personInfoReducer } from "../features/personInfo/personInfoSlice";
-import { reducer as singleMovieReducer } from "../features/singleMovie/singleMovieSlice";
-import { reducer as trendingMoviesReducer } from "../features/trendingMovies/trendingMoviesSlice";
-import { reducer as trendingPeopleReducer } from "../features/trendingPeople/trendingPeopleSlice";
+import { reducer as discoverReducer } from "../redux/discoverMovies/discoverMoviesSlice";
+import { reducer as navbarReducer } from "../redux/navbar/navbarSlice";
+import { reducer as personInfoReducer } from "../redux/personInfo/personInfoSlice";
+import { reducer as singleMovieReducer } from "../redux/singleMovie/singleMovieSlice";
+import { reducer as trendingMoviesReducer } from "../redux/trendingMovies/trendingMoviesSlice";
+import { reducer as trendingPeopleReducer } from "../redux/trendingPeople/trendingPeopleSlice";
 
 export const store = configureStore({
   reducer: {

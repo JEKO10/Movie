@@ -1,15 +1,15 @@
-import Collection from "../features/discoverMovies/components/Collection";
-import DiscoverMovies from "../features/discoverMovies/DiscoverMovies";
-import PersonInfo from "../features/personInfo/PersonInfo";
-import SingleMovie from "../features/singleMovie/SingleMovie";
 import Error from "../pages/Error";
 import Films from "../pages/Films";
 import Home from "../pages/Home";
 import Likes from "../pages/Likes";
 import Lists from "../pages/Lists";
-import Profile from "../pages/Profile";
 import Reviews from "../pages/Reviews";
 import Watchlist from "../pages/Watchlist";
+import Collection from "../redux/discoverMovies/components/Collection";
+import DiscoverMovies from "../redux/discoverMovies/DiscoverMovies";
+import PersonInfo from "../redux/personInfo/PersonInfo";
+import Profile from "../redux/profile/Profile";
+import SingleMovie from "../redux/singleMovie/SingleMovie";
 
 const routes = [
   {

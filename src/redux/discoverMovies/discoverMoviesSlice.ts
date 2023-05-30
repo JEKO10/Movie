@@ -39,7 +39,7 @@ export const getDiscoverMovies = createAsyncThunk(
     try {
       for (
         let i = page === 1 ? page : page - 3;
-        page === 1 ? i <= page + 5 : i < page + 2;
+        page === 1 ? i <= page + 5 : i < page + 3;
         i++
       ) {
         // for (let i = page; i <= page; i++) {
