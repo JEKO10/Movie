@@ -1,17 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import { MovieInfoType } from "../../common/types/typesTS";
+import { InitialSingleMovie, MovieInfoType } from "../../common/types/typesTS";
 
-type InitialStateType = {
-  isLoading: boolean;
-  movieInfo: MovieInfoType;
-  isModalOpen: boolean;
-  category: string;
-  isCastOpen: boolean;
-};
-
-const initialState: InitialStateType = {
+const initialState: InitialSingleMovie = {
   isLoading: true,
   movieInfo: <MovieInfoType>{},
   isModalOpen: false,

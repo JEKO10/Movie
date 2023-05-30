@@ -73,14 +73,18 @@ export const Input = styled.input<InputProps>`
     isSearchOpen ? "translate(0, -5%)" : "translateX(300px)"};
   width: ${({ isSearchOpen }) => (isSearchOpen ? "200px" : "0")};
 
-  &:is(:focus, :hover) {
-    outline: 2px solid ${primaryColor};
-    box-shadow: -2px 2px 5px ${primaryColor};
-  }
-
   &::placeholder {
     color: ${secondaryColor};
     letter-spacing: 1px;
+  }
+
+  &:hover {
+    box-shadow: inset 0 -1px 0 ${primaryColor};
+  }
+
+  &:focus {
+    outline: 2px solid ${primaryColor};
+    box-shadow: -2px 2px 5px ${primaryColor};
   }
 `;
 

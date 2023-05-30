@@ -18,7 +18,7 @@ const initialState: InitialDiscoverMovies = {
   discover: "genres",
 };
 
-export type DiscoverParams = {
+type DiscoverParams = {
   id: string | undefined;
   page?: number;
 };

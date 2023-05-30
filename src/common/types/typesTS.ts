@@ -94,11 +94,13 @@ export type DiscoverPayload = {
 
 // singleMovie
 
-// type MovieCollection = {
-//   id: number;
-//   name: string;
-//   poster_path: string;
-// };
+export type InitialSingleMovie = {
+  isLoading: boolean;
+  movieInfo: MovieInfoType;
+  isModalOpen: boolean;
+  category: string;
+  isCastOpen: boolean;
+};
 
 type GenresKeywords = {
   id: number;
@@ -154,4 +156,14 @@ export type MovieInfoType = {
   keywords: {
     keywords: GenresKeywords[];
   };
+};
+
+// profile
+
+export type InitialProfile = {
+  username: string;
+  name: string;
+  lastName: string;
+  email: string;
+  bio: string;
 };
