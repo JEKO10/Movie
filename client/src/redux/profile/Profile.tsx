@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 import {
@@ -20,8 +21,18 @@ const Profile = () => {
   );
   const dispatch = useAppDispatch();
 
-  const submit = () => {
-    console.log(name, lastName, email, username, bio);
+  const addUser = () => {
+    axios
+      .post("http://localhost:3001/create", {
+        name,
+        lastName,
+        email,
+        username,
+        bio,
+      })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
@@ -68,7 +79,7 @@ const Profile = () => {
             ></textarea>
           </label>
         </div>
-        <button type="submit" onClick={submit}>
+        <button type="submit" onClick={addUser}>
           Create account
         </button>
       </ProfileForm>
