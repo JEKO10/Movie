@@ -12,7 +12,11 @@ export const ProfileWrapper = styled.section`
   }
 `;
 
-export const ProfileForm = styled.section`
+export const FormContainer = styled.section`
+  ${flexMixin({ justify: "space-between", align: "flex-start" })}
+`;
+
+export const ProfileForm = styled.article`
   width: 30%;
 
   label {
@@ -59,5 +63,14 @@ export const ProfileName = styled.div`
 
   label {
     width: 48%;
+  }
+`;
+
+export const People = styled.article`
+  img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    margin: 10px;
   }
 `;
