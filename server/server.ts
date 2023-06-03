@@ -1,8 +1,8 @@
-import express from "express";
+import express, { Express, Request, Response } from "express";
 import mysql from "mysql";
 import cors from "cors";
 
-const app = express();
+const app: Express = express();
 app.use(cors());
 app.use(express.json());
 
@@ -13,7 +13,7 @@ const db = mysql.createConnection({
   database: "moviexd_profile_system",
 });
 
-app.post("/create", (req, res) => {
+app.post("/create", (req: Request, res: Response) => {
   const name = req.body.name;
   const username = req.body.username;
   const lastName = req.body.lastName;
