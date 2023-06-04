@@ -32,8 +32,8 @@ const Profile = () => {
         username,
         bio,
       })
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        console.log("success");
       });
   };
 
@@ -68,7 +68,7 @@ const Profile = () => {
           <label>
             Email address
             <input
-              type="text"
+              type="email"
               onChange={(event) => dispatch(setEmail(event.target.value))}
             />
           </label>

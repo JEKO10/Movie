@@ -1,15 +1,17 @@
 import express, { Express, Request, Response } from "express";
 import mysql from "mysql";
 import cors from "cors";
+import dotenv from "dotenv";
 
 const app: Express = express();
 app.use(cors());
 app.use(express.json());
+dotenv.config();
 
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "",
+  password: process.env.VITE_MYSQL_PASS,
   database: "moviexd_profile_system",
 });
 
@@ -27,9 +29,13 @@ app.post("/create", (req: Request, res: Response) => {
       if (err) {
         console.log(err);
       }
-      res.send("Radi posalto je");
+      res.send("Radi poslato je");
     }
   );
+});
+
+app.get("/hi", (req, res) => {
+  res.send("HELLO ");
 });
 
 app.listen(3001, () => {
