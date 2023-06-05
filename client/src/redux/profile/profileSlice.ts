@@ -1,47 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { InitialProfile } from "../../common/types/typesTS";
+import { InitialProfile, RegisterInfo } from "../../common/types/typesTS";
 
 const initialState: InitialProfile = {
-  username: "",
-  name: "",
-  lastName: "",
-  email: "",
-  bio: "",
-};
-
-type ProfilePayload = {
-  payload: string;
+  registerInfo: {
+    username: "",
+    name: "",
+    lastName: "",
+    email: "",
+    bio: "",
+  },
 };
 
 const profileSlice = createSlice({
   name: "profile",
   initialState,
   reducers: {
-    setUsername: (state, { payload }: ProfilePayload) => {
-      state.username = payload;
-    },
-    setName: (state, { payload }: ProfilePayload) => {
-      state.name = payload;
-    },
-    setLastName: (state, { payload }: ProfilePayload) => {
-      state.lastName = payload;
-    },
-    setEmail: (state, { payload }: ProfilePayload) => {
-      state.email = payload;
-    },
-    setBio: (state, { payload }: ProfilePayload) => {
-      state.bio = payload;
+    setRegister: (state, action: PayloadAction<RegisterInfo>) => {
+      state.registerInfo = action.payload;
     },
   },
 });
 
-export const {
-  setUsername,
-  setName,
-  setLastName,
-  setEmail,
-  setBio,
-} = profileSlice.actions;
+export const { setRegister } = profileSlice.actions;
 
 export const { reducer } = profileSlice;

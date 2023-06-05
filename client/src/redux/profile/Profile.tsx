@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 
 import {
   FormContainer,
@@ -7,32 +7,27 @@ import {
   ProfileName,
   ProfileWrapper,
 } from "../../assets/style/Profile.styled";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import {
-  setBio,
-  setEmail,
-  setLastName,
-  setName,
-  setUsername,
-} from "./profileSlice";
 
 const Profile = () => {
-  const { name, lastName, email, username, bio } = useAppSelector(
-    (store) => store.profile
-  );
-  const dispatch = useAppDispatch();
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [bio, setBio] = useState("");
 
   const addUser = () => {
     axios
-      .post("http://localhost:3001/create", {
+      .post("http://localhost:3001/register", {
         name,
+        username,
         lastName,
         email,
-        username,
+        password,
         bio,
       })
-      .then(() => {
-        console.log("success");
+      .then((response) => {
+        console.log(response);
       });
   };
 
@@ -45,7 +40,7 @@ const Profile = () => {
             Username
             <input
               type="text"
-              onChange={(event) => dispatch(setUsername(event.target.value))}
+              onChange={(event) => setUsername(event.target.value)}
             />
           </label>
           <ProfileName>
@@ -53,14 +48,14 @@ const Profile = () => {
               Name
               <input
                 type="text"
-                onChange={(event) => dispatch(setName(event.target.value))}
+                onChange={(event) => setName(event.target.value)}
               />
             </label>
             <label>
               Last name
               <input
                 type="text"
-                onChange={(event) => dispatch(setLastName(event.target.value))}
+                onChange={(event) => setLastName(event.target.value)}
               />
             </label>
           </ProfileName>
@@ -68,19 +63,22 @@ const Profile = () => {
             Email address
             <input
               type="email"
-              onChange={(event) => dispatch(setEmail(event.target.value))}
+              onChange={(event) => setEmail(event.target.value)}
             />
           </label>
           <label>
             Password
-            <input type="text" />
+            <input
+              type="text"
+              onChange={(event) => setPassword(event.target.value)}
+            />
           </label>
           <label>
             Bio
             <textarea
               cols={30}
               rows={10}
-              onChange={(event) => dispatch(setBio(event.target.value))}
+              onChange={(event) => setBio(event.target.value)}
             ></textarea>
           </label>
           <button type="submit" onClick={addUser}>

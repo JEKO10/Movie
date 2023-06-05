@@ -160,10 +160,14 @@ export type MovieInfoType = {
 
 // profile
 
-export type InitialProfile = {
+export type RegisterInfo = {
   username: string;
   name: string;
   lastName: string;
   email: string;
   bio: string;
+};
+
+export type InitialProfile = {
+  registerInfo: RegisterInfo;
 };
