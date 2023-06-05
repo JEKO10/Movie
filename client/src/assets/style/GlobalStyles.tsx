@@ -59,12 +59,7 @@ export const GlobalStyles = React.memo(
     }
 
     body {
-      background: #13181c;
-      background: linear-gradient(
-        0deg,
-        rgba(19, 24, 28, 1) 70%,
-        rgba(32, 38, 46, 1) 100%
-      );
+      background: linear-gradient(to bottom, #1f232a, #11161d);
       font-family: ${primaryFont};
     }
 

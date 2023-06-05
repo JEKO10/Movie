@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { flexMixin, primaryColor, primaryFont } from "./GlobalStyles";
 
 export const ProfileWrapper = styled.section`
-  min-height: 85vh;
+  min-height: 88vh;
 
   h2 {
     color: rgba(255, 255, 255, 0.7);
@@ -14,6 +14,15 @@ export const ProfileWrapper = styled.section`
 
 export const FormContainer = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-start" })}
+
+  > p {
+    color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+  }
 `;
 
 export const ProfileForm = styled.article`
@@ -24,7 +33,7 @@ export const ProfileForm = styled.article`
     flex-direction: column;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
-    margin: 0.5rem 0;
+    margin: 0 0 1rem;
   }
 
   input,
@@ -35,7 +44,6 @@ export const ProfileForm = styled.article`
     margin-top: 0.2rem;
     background-color: #2c3440;
     color: #89a;
-    /* color: ${primaryColor}; */
     width: 100%;
     padding: 9px 9px 8px;
     border: none;
@@ -63,14 +71,5 @@ export const ProfileName = styled.div`
 
   label {
     width: 48%;
-  }
-`;
-
-export const People = styled.article`
-  img {
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-    margin: 10px;
   }
 `;

@@ -38,6 +38,6 @@ app.get("/hi", (req, res) => {
   res.send("HELLO ");
 });
 
-app.listen(3001, () => {
+app.listen(process.env.VITE_PORT, () => {
   console.log("Radi");
 });
