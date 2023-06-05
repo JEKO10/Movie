@@ -16,6 +16,9 @@ const Profile = () => {
   const [password, setPassword] = useState("");
   const [bio, setBio] = useState("");
 
+  const [logName, setLogName] = useState("");
+  const [logPassword, setLogPassword] = useState("");
+
   const addUser = () => {
     axios
       .post("http://localhost:3001/register", {
@@ -25,6 +28,18 @@ const Profile = () => {
         email,
         password,
         bio,
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
+  const login = () => {
+    axios
+      .post("http://localhost:3001/login", {
+        username: logName,
+        email: logName,
+        password: logPassword,
       })
       .then((response) => {
         console.log(response);
@@ -69,7 +84,7 @@ const Profile = () => {
           <label>
             Password
             <input
-              type="text"
+              // type="password"
               onChange={(event) => setPassword(event.target.value)}
             />
           </label>
@@ -90,12 +105,21 @@ const Profile = () => {
           <h2>Log in</h2>
           <label>
             Email or username
-            <input type="text" />
+            <input
+              type="text"
+              onChange={(event) => setLogName(event.target.value)}
+            />
           </label>
           <label>
             Password
-            <input type="text" />
+            <input
+              // type="password"
+              onChange={(event) => setLogPassword(event.target.value)}
+            />
           </label>
+          <button type="submit" onClick={login}>
+            Log in
+          </button>
         </ProfileForm>
       </FormContainer>
     </ProfileWrapper>

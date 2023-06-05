@@ -36,10 +36,26 @@ app.post("/register", (req: Request, res: Response) => {
   );
 });
 
-// app.post("/login", (req: Request, res: Response) => {
-//   db.query("SELECT * FROM users WHERE username = ? AND password = ?");
-// });
+app.post("/login", (req: Request, res: Response) => {
+  const username = req.body.username;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  db.query(
+    "SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?",
+    [username, email, password],
+    (err, result) => {
+      if (err) res.send({ err: err });
+
+      if (result.length > 0) {
+        res.send(result);
+      } else {
+        res.send({ message: "No user found" });
+      }
+    }
+  );
+});
 
 app.listen(process.env.VITE_PORT, () => {
-  console.log("Working");
+  console.log("Working on VITE_PORT");
 });
