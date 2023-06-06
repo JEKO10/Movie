@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 import { flexMixin, primaryColor, primaryFont } from "./GlobalStyles";
 
+type WrongInfoProps = {
+  invalidCredentials: boolean;
+};
+
 export const ProfileWrapper = styled.section`
   min-height: 88vh;
 
@@ -13,19 +17,16 @@ export const ProfileWrapper = styled.section`
 `;
 
 export const FormContainer = styled.section`
-  ${flexMixin({ justify: "space-between", align: "flex-start" })}
+  ${flexMixin({ justify: "space-between", align: "center" })}
 
   > p {
     color: rgba(255, 255, 255, 0.7);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     text-transform: uppercase;
   }
 `;
 
 export const ProfileForm = styled.article`
+  align-self: flex-start;
   width: 30%;
 
   label {
@@ -72,4 +73,11 @@ export const ProfileName = styled.div`
   label {
     width: 48%;
   }
+`;
+
+export const WrongInfo = styled.p<WrongInfoProps>`
+  margin-top: 1rem;
+  color: red;
+  opacity: ${({ invalidCredentials }) => (invalidCredentials ? 1 : 0)};
+  transition: opacity 0.3s ease-in-out;
 `;

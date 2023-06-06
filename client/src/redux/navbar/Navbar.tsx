@@ -58,7 +58,7 @@ const Navbar = () => {
       <ul>
         <li>
           <Link
-            to={"/profile"}
+            to={"/account"}
             onClick={(event) => setClicked(event)}
             className={query === "Profile" ? "active" : ""}
           >

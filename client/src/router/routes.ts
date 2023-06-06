@@ -1,3 +1,4 @@
+import Account from "../pages/Account";
 import Error from "../pages/Error";
 import Films from "../pages/Films";
 import Home from "../pages/Home";
@@ -19,56 +20,61 @@ const routes = [
   },
   {
     id: 1,
+    path: "/account",
+    element: Account,
+  },
+  {
+    id: 2,
     path: "/profile",
     element: Profile,
   },
   {
-    id: 2,
+    id: 3,
     path: "/reviews",
     element: Reviews,
   },
   {
-    id: 3,
+    id: 4,
     path: "/likes",
     element: Likes,
   },
   {
-    id: 4,
+    id: 5,
     path: "/watchlist",
     element: Watchlist,
   },
   {
-    id: 5,
+    id: 6,
     path: "/films",
     element: Films,
   },
   {
-    id: 6,
+    id: 7,
     path: "/lists",
     element: Lists,
   },
   {
-    id: 7,
+    id: 8,
     path: "/movie/:id",
     element: SingleMovie,
   },
   {
-    id: 8,
+    id: 9,
     path: "/person/:id",
     element: PersonInfo,
   },
   {
-    id: 9,
+    id: 10,
     path: "/discover/:id/:name",
     element: DiscoverMovies,
   },
   {
-    id: 10,
+    id: 11,
     path: "/collection/:id/:name",
     element: Collection,
   },
   {
-    id: 11,
+    id: 12,
     path: "/*",
     element: Error,
   },
