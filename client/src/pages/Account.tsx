@@ -35,6 +35,12 @@ const Profile = () => {
       })
       .then((response) => {
         console.log(response);
+
+        if (response.data.err) {
+          console.log("error");
+        } else {
+          console.log("working");
+        }
       });
   };
 
@@ -46,11 +52,16 @@ const Profile = () => {
         password: logPassword,
       })
       .then((response) => {
-        if (response.data.message === "No user found") {
+        if (
+          response.data.message === "No user found" ||
+          response.data.message === "Your credentials don`t match."
+        ) {
           setInvalidCredentials(true);
+
           setTimeout(() => {
             setInvalidCredentials(false);
           }, 2000);
+
           console.log(response);
         } else {
           navigate("/profile");
@@ -65,7 +76,7 @@ const Profile = () => {
         <ProfileForm>
           <h2>Create an account</h2>
           <label>
-            Username
+            Username *
             <input
               type="text"
               onChange={(event) => setUsername(event.target.value)}
@@ -88,14 +99,14 @@ const Profile = () => {
             </label>
           </ProfileName>
           <label>
-            Email address
+            Email address *
             <input
               type="email"
               onChange={(event) => setEmail(event.target.value)}
             />
           </label>
           <label>
-            Password
+            Password *
             <input
               // type="password"
               onChange={(event) => setPassword(event.target.value)}

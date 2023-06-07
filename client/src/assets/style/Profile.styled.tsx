@@ -77,7 +77,7 @@ export const ProfileName = styled.div`
 
 export const WrongInfo = styled.p<WrongInfoProps>`
   margin-top: 1rem;
-  color: red;
+  color: #ff0000;
   opacity: ${({ invalidCredentials }) => (invalidCredentials ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
 `;
