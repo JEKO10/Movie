@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -23,6 +23,8 @@ const Profile = () => {
   const [logPassword, setLogPassword] = useState("");
   const [invalidCredentials, setInvalidCredentials] = useState(false); // New state variable
 
+  axios.defaults.withCredentials = true;
+
   const addUser = () => {
     axios
       .post("http://localhost:3001/register", {
@@ -43,6 +45,14 @@ const Profile = () => {
         }
       });
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/login").then((response) => {
+      if (response.data.loggedIn == true) {
+        console.log("Logged in");
+      }
+    });
+  }, []);
 
   const login = () => {
     axios
