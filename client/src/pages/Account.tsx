@@ -46,14 +46,6 @@ const Profile = () => {
       });
   };
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/login").then((response) => {
-      if (response.data.loggedIn == true) {
-        console.log("Logged in");
-      }
-    });
-  }, []);
-
   const login = () => {
     axios
       .post("http://localhost:3001/login", {
@@ -79,6 +71,14 @@ const Profile = () => {
         }
       });
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/login").then((response) => {
+      if (response.data.loggedIn == true) {
+        console.log(response);
+      }
+    });
+  }, []);
 
   return (
     <ProfileWrapper>

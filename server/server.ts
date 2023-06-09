@@ -18,8 +18,7 @@ app.use(
     credentials: true,
   })
 );
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+
 app.use(
   session({
     secret: process.env.VITE_SECRET as string,
@@ -30,6 +29,8 @@ app.use(
     },
   })
 );
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 const db = mysql.createConnection({
   user: "root",
@@ -85,7 +86,7 @@ app.post("/login", (req: Request, res: Response) => {
         bcrypt.compare(password, result[0].password, (err, response) => {
           if (response) {
             req.session.cookie = result;
-            console.log(req.session);
+            // console.log(req.session.cookie);
             res.send(response);
           } else {
             res.send({ message: "Your credentials don`t match." });
