@@ -200,6 +200,49 @@ export const Overview = styled.div`
   }
 `;
 
+export const Poster = styled.img`
+  width: 230px;
+  height: 345px;
+  border: 1.5px solid #e1e1ff99;
+  border-radius: 5px;
+  cursor: pointer;
+`;
+
+export const Actions = styled.article`
+  background-color: #445566;
+  color: #e1e1ff99;
+  height: 345px;
+  padding: 15px 10px;
+  border-radius: 5px;
+`;
+
+export const OptionsHeader = styled.header`
+  ${flexMixin({ justify: "space-between", align: "center" })};
+
+  div {
+    ${flexMixin({ justify: "center", align: "center" })};
+    flex-direction: column;
+    margin: 0 1rem;
+
+    svg {
+      font-size: 2.5rem;
+      margin-bottom: 0.3rem;
+      cursor: pointer;
+
+      path,
+      circle,
+      polyline {
+        stroke-width: 1px;
+      }
+    }
+
+    p {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+`;
+
 export const Collection = styled(Link)`
   color: #e1e1ff99;
   width: min-content;
@@ -210,12 +253,4 @@ export const Collection = styled(Link)`
   &:hover {
     color: #fff;
   }
-`;
-
-export const Poster = styled.img`
-  width: 230px;
-  height: 345px;
-  border: 1.5px solid #e1e1ff99;
-  border-radius: 5px;
-  cursor: pointer;
 `;

@@ -16,6 +16,7 @@ import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
 import Categories from "./components/Categories";
 import ImageModal from "./components/ImageModal";
+import Options from "./components/Options";
 import { getMovie, toggleModal } from "./singleMovieSlice";
 
 const SingleMovie = () => {
@@ -77,17 +78,18 @@ const SingleMovie = () => {
               <h3>{runtime} min</h3>
             </Overview>
           </Info>
-          {collection && (
-            <Collection
-              to={`/collection/${collection?.id}/${collection?.name}`}
-              onClick={() => dispatch(setQuery("collection"))}
-            >
-              <Poster src={posterUrl + collection.poster_path} alt="POSTER" />
-              <p>{collection.name}</p>
-            </Collection>
-          )}
+          <Options></Options>
         </Wrapper>
         <Categories id={id} />
+        {collection && (
+          <Collection
+            to={`/collection/${collection?.id}/${collection?.name}`}
+            onClick={() => dispatch(setQuery("collection"))}
+          >
+            <Poster src={posterUrl + collection.poster_path} alt="POSTER" />
+            <p>{collection.name}</p>
+          </Collection>
+        )}
       </Movie>
       <ImageModal id={id} posterUrl={posterUrl} poster_path={poster_path} />
     </>
