@@ -8,6 +8,10 @@ type BannerProps = {
   backdrop_path: string;
 };
 
+type UnderlineProps = {
+  margin: string;
+};
+
 export const Movie = styled.section`
   ${flexMixin({ justify: "flex-start", align: "center" })};
   flex-direction: column;
@@ -212,8 +216,27 @@ export const Actions = styled.article`
   background-color: #445566;
   color: #e1e1ff99;
   height: 345px;
-  padding: 15px 10px;
+  padding: 10px 5px;
   border-radius: 5px;
+
+  > p {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  svg {
+    font-size: 2.5rem;
+    stroke-width: 1px;
+    margin-bottom: 0.3rem;
+    cursor: pointer;
+
+    path,
+    circle,
+    polyline {
+      stroke-width: 1px;
+    }
+  }
 `;
 
 export const OptionsHeader = styled.header`
@@ -224,21 +247,24 @@ export const OptionsHeader = styled.header`
     flex-direction: column;
     margin: 0 1rem;
 
-    svg {
-      font-size: 2.5rem;
-      margin-bottom: 0.3rem;
-      cursor: pointer;
-
-      path,
-      circle,
-      polyline {
-        stroke-width: 1px;
-      }
-    }
-
     p {
       font-size: 0.9rem;
       font-weight: 500;
+    }
+  }
+`;
+
+export const Rating = styled.article`
+  ${flexMixin({ justify: "space-evenly", align: "center" })};
+  padding: 0 20px;
+
+  svg {
+    color: #334455;
+
+    path {
+      &:first-of-type {
+        display: none;
+      }
     }
   }
 `;
@@ -253,4 +279,11 @@ export const Collection = styled(Link)`
   &:hover {
     color: #fff;
   }
+`;
+
+export const Underline = styled.div<UnderlineProps>`
+  width: calc(100% + 10px);
+  height: 2px;
+  background-color: rgba(0, 0, 0, 1);
+  margin: ${({ margin }) => margin};
 `;

@@ -78,7 +78,7 @@ const SingleMovie = () => {
               <h3>{runtime} min</h3>
             </Overview>
           </Info>
-          <Options></Options>
+          <Options />
         </Wrapper>
         <Categories id={id} />
         {collection && (
