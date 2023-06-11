@@ -213,16 +213,24 @@ export const Poster = styled.img`
 `;
 
 export const Actions = styled.article`
+  ${flexMixin({ justify: "space-between", align: "center" })};
+  flex-direction: column;
   background-color: #445566;
   color: #e1e1ff99;
-  height: 345px;
+  text-align: center;
   padding: 10px 5px;
   border-radius: 5px;
 
-  > p {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+  > div {
+    padding: 5px 0;
+
+    p {
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+      }
+    }
   }
 
   svg {
@@ -247,15 +255,21 @@ export const OptionsHeader = styled.header`
     flex-direction: column;
     margin: 0 1rem;
 
+    svg:hover ~ p {
+      color: ${primaryColor};
+    }
+
     p {
       font-size: 0.9rem;
       font-weight: 500;
+      cursor: pointer;
     }
   }
 `;
 
 export const Rating = styled.article`
   ${flexMixin({ justify: "space-evenly", align: "center" })};
+  flex-direction: column;
   padding: 0 20px;
   direction: rtl;
 
@@ -289,8 +303,9 @@ export const Collection = styled(Link)`
 `;
 
 export const Underline = styled.div<UnderlineProps>`
+  height: 0.5px;
   width: calc(100% + 10px);
-  height: 2px;
+  padding: 0 !important;
   background-color: rgba(0, 0, 0, 1);
   margin: ${({ margin }) => margin};
 `;

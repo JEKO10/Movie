@@ -27,15 +27,28 @@ const Options = () => {
         </div>
       </OptionsHeader>
       <Underline margin={`1rem -5px 0.5rem`} />
-      <p>Rate</p>
       <Rating>
-        <RiStarSFill />
-        <RiStarSFill />
-        <RiStarSFill />
-        <RiStarSFill />
-        <RiStarSFill />
+        <p>Rate</p>
+        <div>
+          <RiStarSFill />
+          <RiStarSFill />
+          <RiStarSFill />
+          <RiStarSFill />
+          <RiStarSFill />
+        </div>
       </Rating>
       <Underline margin={`0.5rem -5px`} />
+      <div>
+        <p>Review or log</p>
+      </div>
+      <Underline margin={`0.5rem -5px`} />
+      <div>
+        <p>Add to lists</p>
+      </div>
+      <Underline margin={`0.5rem -5px`} />
+      <div>
+        <p>Share</p>
+      </div>
     </Actions>
   );
 };
