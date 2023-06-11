@@ -35,7 +35,7 @@ const Options = () => {
         <RiStarSFill />
         <RiStarSFill />
       </Rating>
-      <Underline margin={`0.5rem 0`} />
+      <Underline margin={`0.5rem -5px`} />
     </Actions>
   );
 };

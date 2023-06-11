@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { flexMixin } from "./GlobalStyles";
+import { flexMixin, primaryColor } from "./GlobalStyles";
 
 type BannerProps = {
   posterUrl: string;
@@ -257,9 +257,16 @@ export const OptionsHeader = styled.header`
 export const Rating = styled.article`
   ${flexMixin({ justify: "space-evenly", align: "center" })};
   padding: 0 20px;
+  direction: rtl;
 
   svg {
     color: #334455;
+
+    &:hover,
+    &:hover ~ svg,
+    &:hover ~ svg path {
+      color: ${primaryColor};
+    }
 
     path {
       &:first-of-type {
