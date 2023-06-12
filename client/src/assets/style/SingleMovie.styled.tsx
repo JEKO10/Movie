@@ -1,3 +1,4 @@
+import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -217,6 +218,7 @@ export const Actions = styled.article`
   flex-direction: column;
   background-color: #445566;
   color: #e1e1ff99;
+  width: 240px;
   text-align: center;
   padding: 10px 5px;
   border-radius: 5px;
@@ -253,16 +255,17 @@ export const OptionsHeader = styled.header`
   div {
     ${flexMixin({ justify: "center", align: "center" })};
     flex-direction: column;
+    position: relative;
     margin: 0 1rem;
+    cursor: pointer;
 
-    svg:hover ~ p {
+    &:hover p {
       color: ${primaryColor};
     }
 
     p {
       font-size: 0.9rem;
       font-weight: 500;
-      cursor: pointer;
     }
   }
 `;
@@ -298,6 +301,20 @@ export const Rating = styled.article`
       }
     }
   }
+`;
+
+export const AddWatchlist = styled(AiFillPlusCircle)`
+  font-size: 1rem !important;
+  position: absolute;
+  top: 1.6rem;
+  right: 7px;
+`;
+
+export const RemoveWatchlist = styled(AiFillMinusCircle)`
+  font-size: 1rem !important;
+  position: absolute;
+  top: 1.6rem;
+  right: 2px;
 `;
 
 export const Collection = styled(Link)`

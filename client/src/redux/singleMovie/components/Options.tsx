@@ -4,14 +4,17 @@ import { RiStarSFill } from "react-icons/ri";
 
 import {
   Actions,
+  AddWatchlist,
   OptionsHeader,
   Rating,
+  RemoveWatchlist,
   Underline,
 } from "../../../assets/style/SingleMovie.styled";
 
 const Options = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
+  const [watchlist, setWatchlist] = useState(false);
 
   return (
     <Actions>
@@ -24,9 +27,10 @@ const Options = () => {
           <FiHeart />
           <p>Like</p>
         </div>
-        <div>
+        <div onClick={() => setWatchlist(!watchlist)}>
           <FiClock />
-          <p>Watchlist</p>
+          {watchlist ? <RemoveWatchlist /> : <AddWatchlist />}
+          <p> {watchlist ? "Remove" : "Watchlist"}</p>
         </div>
       </OptionsHeader>
       <Underline margin={`1rem -5px 0.5rem`} />
@@ -46,7 +50,9 @@ const Options = () => {
                   onClick={() => setRating(ratingValue)}
                 />
                 <RiStarSFill
-                  color={ratingValue <= (hover || rating) ? "#0f87be" : ""}
+                  color={
+                    ratingValue <= (hover || rating) ? "#0f87be" : "#334455"
+                  }
                   onMouseEnter={() => setHover(ratingValue)}
                   onMouseLeave={() => setHover(0)}
                 />
