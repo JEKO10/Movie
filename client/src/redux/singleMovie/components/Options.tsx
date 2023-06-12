@@ -1,5 +1,5 @@
-import React from "react";
-import { FiClock, FiEye, FiHeart } from "react-icons/fi";
+import React, { useState } from "react";
+import { FiClock, FiEye, FiHeart, FiX } from "react-icons/fi";
 import { RiStarSFill } from "react-icons/ri";
 
 import {
@@ -10,6 +10,9 @@ import {
 } from "../../../assets/style/SingleMovie.styled";
 
 const Options = () => {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+
   return (
     <Actions>
       <OptionsHeader>
@@ -30,11 +33,26 @@ const Options = () => {
       <Rating>
         <p>Rate</p>
         <div>
-          <RiStarSFill />
-          <RiStarSFill />
-          <RiStarSFill />
-          <RiStarSFill />
-          <RiStarSFill />
+          {rating ? <FiX onClick={() => setRating(0)} /> : ""}
+          {[...Array(5)].map((_, index) => {
+            const ratingValue = index + 1;
+
+            return (
+              <label key={index}>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={ratingValue}
+                  onClick={() => setRating(ratingValue)}
+                />
+                <RiStarSFill
+                  color={ratingValue <= (hover || rating) ? "#0f87be" : ""}
+                  onMouseEnter={() => setHover(ratingValue)}
+                  onMouseLeave={() => setHover(0)}
+                />
+              </label>
+            );
+          })}
         </div>
       </Rating>
       <Underline margin={`0.5rem -5px`} />

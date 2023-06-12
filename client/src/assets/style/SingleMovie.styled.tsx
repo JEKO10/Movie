@@ -270,17 +270,27 @@ export const OptionsHeader = styled.header`
 export const Rating = styled.article`
   ${flexMixin({ justify: "space-evenly", align: "center" })};
   flex-direction: column;
-  padding: 0 20px;
-  direction: rtl;
+  padding: 0 10px;
+
+  div {
+    position: relative;
+
+    > svg {
+      color: #fff;
+      font-size: 1rem;
+      position: absolute;
+      top: 0.5rem;
+      left: -1rem;
+    }
+  }
+
+  input[type="radio"] {
+    display: none;
+  }
 
   svg {
     color: #334455;
-
-    &:hover,
-    &:hover ~ svg,
-    &:hover ~ svg path {
-      color: ${primaryColor};
-    }
+    transition: all 200ms ease;
 
     path {
       &:first-of-type {
