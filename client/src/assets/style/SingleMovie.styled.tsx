@@ -255,6 +255,7 @@ export const OptionsHeader = styled.header`
   div {
     ${flexMixin({ justify: "center", align: "center" })};
     flex-direction: column;
+    width: 45px;
     position: relative;
     margin: 0 1rem;
     cursor: pointer;
@@ -266,6 +267,7 @@ export const OptionsHeader = styled.header`
     p {
       font-size: 0.9rem;
       font-weight: 500;
+      user-select: none;
     }
   }
 `;
@@ -307,14 +309,14 @@ export const AddWatchlist = styled(AiFillPlusCircle)`
   font-size: 1rem !important;
   position: absolute;
   top: 1.6rem;
-  right: 7px;
+  right: -1px;
 `;
 
 export const RemoveWatchlist = styled(AiFillMinusCircle)`
   font-size: 1rem !important;
   position: absolute;
   top: 1.6rem;
-  right: 2px;
+  right: -1px;
 `;
 
 export const Collection = styled(Link)`

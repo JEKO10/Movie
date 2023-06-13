@@ -15,16 +15,21 @@ const Options = () => {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [watchlist, setWatchlist] = useState(false);
+  const [isLike, setIsLike] = useState(false);
+  const [isWatched, setIsWatched] = useState(false);
 
   return (
     <Actions>
       <OptionsHeader>
-        <div>
-          <FiEye />
+        <div onClick={() => setIsWatched(!isWatched)}>
+          <FiEye color={isWatched ? "#0f87be" : ""} />
           <p>Watch</p>
         </div>
-        <div>
-          <FiHeart />
+        <div onClick={() => setIsLike(!isLike)}>
+          <FiHeart
+            color={isLike ? "#ff9023" : ""}
+            fill={isLike ? "#ff9023" : "none"}
+          />
           <p>Like</p>
         </div>
         <div onClick={() => setWatchlist(!watchlist)}>

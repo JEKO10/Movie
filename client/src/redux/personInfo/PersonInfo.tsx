@@ -84,11 +84,9 @@ const PersonInfo = () => {
             }}
           />
         )}
-        {isBioOpen && (
-          <FullBio onClick={() => dispatch(toggleBio(!isBioOpen))}>
-            {isBioOpen ? "Close" : "Open"} full biography
-          </FullBio>
-        )}
+        <FullBio onClick={() => dispatch(toggleBio(!isBioOpen))}>
+          {isBioOpen ? "Close" : "Open"} full biography
+        </FullBio>
       </article>
     </Person>
   );
