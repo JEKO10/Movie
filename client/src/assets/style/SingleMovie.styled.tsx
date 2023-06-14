@@ -224,14 +224,15 @@ export const Actions = styled.article`
   border-radius: 5px;
 
   > div {
+    width: 100%;
     padding: 5px 0;
+
+    &:hover p {
+      color: #fff;
+    }
 
     p {
       cursor: pointer;
-
-      &:hover {
-        color: #fff;
-      }
     }
   }
 
