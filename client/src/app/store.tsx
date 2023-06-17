@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { reducer as discoverReducer } from "../redux/discoverMovies/discoverMoviesSlice";
+import { reducer as ListsReducer } from "../redux/lists/listsSlice";
 import { reducer as navbarReducer } from "../redux/navbar/navbarSlice";
 import { reducer as personInfoReducer } from "../redux/personInfo/personInfoSlice";
 import { reducer as profileReducer } from "../redux/profile/profileSlice";
@@ -17,6 +18,7 @@ export const store = configureStore({
     navbar: navbarReducer,
     discoverMovies: discoverReducer,
     profile: profileReducer,
+    lists: ListsReducer,
   },
 });
 
