@@ -174,7 +174,7 @@ export type InitialProfile = {
 
 // reviews & lists
 
-type ReviewsResult = {
+export type ReviewsResult = {
   author_details: {
     username: string;
     avatar_path: string;
@@ -186,10 +186,11 @@ type ReviewsResult = {
 };
 
 export type InitialReviews = {
+  isLoading: boolean;
   reviews: ReviewsResult[];
 };
 
-type ListsResult = {
+export type ListsResult = {
   description: string;
   id: number;
   item_count: number;
@@ -198,5 +199,6 @@ type ListsResult = {
 };
 
 export type InitialLists = {
+  isLoading: boolean;
   lists: ListsResult[];
 };

@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import { InitialLists } from "../../common/types/typesTS";
+import { InitialLists, ListsResult } from "../../common/types/typesTS";
 
 const initialState: InitialLists = {
+  isLoading: true,
   lists: [],
 };
 
@@ -30,6 +31,22 @@ const listsSlice = createSlice({
   name: "lists",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getLists.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(
+        getLists.fulfilled,
+        (state, action: PayloadAction<ListsResult[]>) => {
+          state.isLoading = false;
+          state.lists = action.payload;
+        }
+      )
+      .addCase(getLists.rejected, (state) => {
+        state.isLoading = false;
+      });
+  },
 });
 
 export const { reducer } = listsSlice;

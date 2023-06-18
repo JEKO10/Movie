@@ -16,6 +16,7 @@ import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
 import Categories from "./components/Categories";
 import ImageModal from "./components/ImageModal";
+import MovieReviews from "./components/MovieReviews";
 import Options from "./components/Options";
 import { getMovie, toggleModal } from "./singleMovieSlice";
 
@@ -90,6 +91,7 @@ const SingleMovie = () => {
             <p>{collection.name}</p>
           </Collection>
         )}
+        <MovieReviews />
       </Movie>
       <ImageModal id={id} posterUrl={posterUrl} poster_path={poster_path} />
     </>
