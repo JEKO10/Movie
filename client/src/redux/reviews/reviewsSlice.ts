@@ -10,14 +10,13 @@ const initialState: InitialReviews = {
 
 export const getReviews = createAsyncThunk(
   "reviews/getReviews",
-  async (id: number, { rejectWithValue }) => {
+  async (id: string | undefined, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${
           import.meta.env.VITE_API_KEY
         }&adult=false`
       );
-      console.log(resp.data.results);
 
       return resp.data.results;
     } catch (error) {
