@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import { MoviesList } from "../../assets/style/DiscoverMovies.styled";
 import {
   Banner,
-  Collection,
+  // Collection,
   Info,
   Movie,
   Name,
@@ -13,6 +14,7 @@ import {
 } from "../../assets/style/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
+import { getCollection } from "../discoverMovies/discoverMoviesSlice";
 import { setQuery } from "../navbar/navbarSlice";
 import Categories from "./components/Categories";
 import ImageModal from "./components/ImageModal";
@@ -21,12 +23,13 @@ import Options from "./components/Options";
 import { getMovie, toggleModal } from "./singleMovieSlice";
 
 const SingleMovie = () => {
+  const { collection } = useAppSelector((store) => store.discoverMovies);
   const { isLoading, movieInfo } = useAppSelector((store) => store.singleMovie);
   const {
     title,
     tagline,
     backdrop_path,
-    belongs_to_collection: collection,
+    // belongs_to_collection: collection,
     // imdb_id,
     overview,
     poster_path,
@@ -43,6 +46,7 @@ const SingleMovie = () => {
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
+    dispatch(getCollection(id));
   }, [id]);
 
   if (isLoading) {
@@ -82,7 +86,7 @@ const SingleMovie = () => {
           <Options />
         </Wrapper>
         <Categories id={id} />
-        {collection && (
+        {/* {collection && (
           <Collection
             to={`/collection/${collection?.id}/${collection?.name}`}
             onClick={() => dispatch(setQuery("collection"))}
@@ -90,7 +94,21 @@ const SingleMovie = () => {
             <Poster src={posterUrl + collection.poster_path} alt="POSTER" />
             <p>{collection.name}</p>
           </Collection>
-        )}
+        )} */}
+        <MoviesList isCollection={true}>
+          {collection.parts?.map((movie) => (
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <img
+                src={
+                  movie.poster_path
+                    ? posterUrl + movie.poster_path
+                    : import.meta.env.VITE_IMG
+                }
+                alt="Poster"
+              />
+            </Link>
+          ))}
+        </MoviesList>
         <MovieReviews />
       </Movie>
       <ImageModal id={id} posterUrl={posterUrl} poster_path={poster_path} />
