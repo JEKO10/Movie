@@ -1,18 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 
-import { InitialLists } from "../../common/types/typesTS";
+import { InitialReviews } from "../../common/types/typesTS";
 
-const initialState: InitialLists = {
-  lists: [],
+const initialState: InitialReviews = {
+  reviews: [],
 };
 
-export const getLists = createAsyncThunk(
-  "lists/getLists",
+export const getReviews = createAsyncThunk(
+  "reviews/getReviews",
   async (id: string | undefined, { rejectWithValue }) => {
     try {
       const resp = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}/lists?api_key=${
+        `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${
           import.meta.env.VITE_API_KEY
         }&adult=false`
       );
@@ -26,10 +26,10 @@ export const getLists = createAsyncThunk(
   }
 );
 
-const listsSlice = createSlice({
-  name: "lists",
+const reviewsSlice = createSlice({
+  name: "reviews",
   initialState,
   reducers: {},
 });
 
-export const { reducer } = listsSlice;
+export const { reducer } = reviewsSlice;

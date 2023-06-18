@@ -171,3 +171,32 @@ export type RegisterInfo = {
 export type InitialProfile = {
   registerInfo: RegisterInfo;
 };
+
+// reviews & lists
+
+type ReviewsResult = {
+  author_details: {
+    username: string;
+    avatar_path: string;
+    rating: number;
+  };
+  content: string;
+  created_at: string;
+  id: string;
+};
+
+export type InitialReviews = {
+  reviews: ReviewsResult[];
+};
+
+type ListsResult = {
+  description: string;
+  id: number;
+  item_count: number;
+  iso_639_1: string;
+  name: string;
+};
+
+export type InitialLists = {
+  lists: ListsResult[];
+};

@@ -92,7 +92,7 @@ const Navbar = () => {
             Lists
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             to={"/reviews"}
             onClick={(event) => setClicked(event)}
@@ -100,7 +100,7 @@ const Navbar = () => {
           >
             Reviews
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             to={"/watchlist"}
