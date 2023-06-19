@@ -339,3 +339,33 @@ export const Underline = styled.div<UnderlineProps>`
   background-color: rgba(0, 0, 0, 1);
   margin: ${({ margin }) => margin};
 `;
+
+export const Review = styled.article`
+  ${flexMixin({ justify: "center", align: "center" })};
+  flex-direction: column;
+  color: #e1e1ff99;
+  margin: 3rem 0;
+
+  div {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+    width: 80%;
+
+    img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 2rem;
+    }
+  }
+
+  h4 {
+    text-align: start;
+    width: 80%;
+    margin: 1rem 0;
+  }
+
+  p {
+    max-width: 80%;
+    margin: 1rem 0;
+  }
+`;
