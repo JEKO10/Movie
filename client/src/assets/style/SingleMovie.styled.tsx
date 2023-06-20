@@ -343,12 +343,16 @@ export const Underline = styled.div<UnderlineProps>`
 export const Review = styled.article`
   ${flexMixin({ justify: "center", align: "center" })};
   flex-direction: column;
+  max-width: 70vw;
+  background-color: rgba(0, 0, 0, 0.4);
   color: #e1e1ff99;
   margin: 3rem 0;
+  padding: 30px 40px;
+  border-radius: 5px;
 
   div {
     ${flexMixin({ justify: "flex-start", align: "center" })};
-    width: 80%;
+    width: 100%;
 
     img {
       height: 50px;
@@ -360,12 +364,12 @@ export const Review = styled.article`
 
   h4 {
     text-align: start;
-    width: 80%;
+    width: 100%;
     margin: 1rem 0;
   }
 
   p {
-    max-width: 80%;
+    max-width: 95%;
     margin: 1rem 0;
   }
 `;

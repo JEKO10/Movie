@@ -44,7 +44,12 @@ const MovieReviews = () => {
               <h2>{username}</h2>
             </div>
             <h4>Created at: {review.created_at.slice(0, 10)}</h4>
-            <p>{review.content}</p>
+            <p>{}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: review.content.replace(/\n/g, "<br>"),
+              }}
+            />
             {rating && <p>Rating: {rating}</p>}
           </Review>
         );

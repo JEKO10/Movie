@@ -1,10 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { VscChromeClose } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
-import { IconWrapper, Input, Nav } from "../../assets/style/Navbar.styled";
+import {
+  IconWrapper,
+  Input,
+  Nav,
+  NavMenu,
+  ProfileModal,
+} from "../../assets/style/Navbar.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import {
   searchMovies,
@@ -14,6 +20,7 @@ import {
 } from "./navbarSlice";
 
 const Navbar = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { query, isSearchOpen, inputValue } = useAppSelector(
     (store) => store.navbar
   );
@@ -55,15 +62,15 @@ const Navbar = () => {
       <Link to={"/"}>
         <img src={logo} alt="Logo" />
       </Link>
-      <ul>
-        <li>
-          <Link
+      <NavMenu>
+        <li onClick={() => setIsModalOpen(!isModalOpen)} className={""}>
+          {/* <Link
             to={"/account"}
             onClick={(event) => setClicked(event)}
             className={query === "Profile" ? "active" : ""}
-          >
-            Profile
-          </Link>
+          > */}
+          Profile
+          {/* </Link> */}
         </li>
         <li>
           <Link
@@ -123,7 +130,21 @@ const Navbar = () => {
             onChange={handleInputChange}
           />
         </li>
-      </ul>
+      </NavMenu>
+      {isModalOpen && (
+        <ProfileModal>
+          <li>Home</li>
+          <li>Profile</li>
+          <li>Films</li>
+          <li>Reviews</li>
+          <li>Likes</li>
+          <li>Watchlist</li>
+          <li>Lists</li>
+
+          <li>Settings</li>
+          <li>Sign Out</li>
+        </ProfileModal>
+      )}
     </Nav>
   );
 };
