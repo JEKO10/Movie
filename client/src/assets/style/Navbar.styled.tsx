@@ -15,13 +15,16 @@ type InputProps = {
   isSearchOpen: boolean;
 };
 
+type ProfileMenuProps = {
+  isModalOpen: boolean;
+};
+
 export const Nav = styled.nav<NavProps>`
   ${flexMixin({ justify: "space-between", align: "center" })};
   color: #99aabb;
   background-color: ${({ query }) =>
     query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 1)`};
   padding: 20px 50px;
-  overflow: hidden;
 
   img {
     height: 50px;
@@ -40,7 +43,7 @@ export const NavMenu = styled.ul`
     font-weight: 900;
     font-size: 0.8rem;
     letter-spacing: 1.5px;
-    margin: 0 20px;
+    margin: 0 30px;
     cursor: pointer;
     transition: all 200ms ease;
 
@@ -95,26 +98,51 @@ export const IconWrapper = styled.div`
   }
 `;
 
-export const ProfileModal = styled.ul`
+export const ProfileMenu = styled.li`
+  position: relative;
+`;
+
+export const ProfileModal = styled.ul<ProfileMenuProps>`
   list-style-type: none;
-  ${flexMixin({ justify: "flex-start", align: "flex-start" })};
-  flex-direction: column;
   position: absolute;
-  top: 4rem;
-  left: 63%;
-  background-color: #667788;
-  padding: 5px 20px 5px 5px;
+  top: -5px;
+  left: -10px;
+  background-color: #8899aa;
+  min-width: 120px;
+  padding: 0 20px 5px 5px; // top right bottom left
+  box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.35), 0 0 10px #000;
   border-radius: 2px;
 
   li {
-    color: #000;
-    width: 100%;
+    text-transform: none;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 500;
     margin: 5px;
+    padding: 5px 10px;
     cursor: pointer;
+    margin: 5px -20px 5px -5px;
 
     &:hover {
       color: #fff;
-      background-color: ${secondaryColor};
+      background-color: #667788;
+    }
+
+    &:first-of-type {
+      padding: 0;
+      padding-left: 10px;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+
+      &:hover {
+        background-color: #8899aa;
+      }
+    }
+
+    &:last-of-type {
+      display: block;
+      margin: 5px -20px 3px -5px;
     }
   }
 `;

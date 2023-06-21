@@ -9,8 +9,10 @@ import {
   Input,
   Nav,
   NavMenu,
+  ProfileMenu,
   ProfileModal,
 } from "../../assets/style/Navbar.styled";
+import { Underline } from "../../assets/style/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import {
   searchMovies,
@@ -39,6 +41,16 @@ const Navbar = () => {
     dispatch(searchMovies());
   };
 
+  const handleMouseEnter = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 500);
+  };
+
   useEffect(() => {
     if (isSearchOpen) {
       dispatch(setInputValue(""));
@@ -47,6 +59,7 @@ const Navbar = () => {
 
   useEffect(() => {
     document.addEventListener("click", clickOutside, true);
+    setIsModalOpen(false);
   }, [query]);
 
   const clickOutside = (e: MouseEvent) => {
@@ -63,15 +76,29 @@ const Navbar = () => {
         <img src={logo} alt="Logo" />
       </Link>
       <NavMenu>
-        <li onClick={() => setIsModalOpen(!isModalOpen)} className={""}>
-          {/* <Link
-            to={"/account"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Profile" ? "active" : ""}
-          > */}
+        <ProfileMenu onMouseEnter={handleMouseEnter}>
           Profile
-          {/* </Link> */}
-        </li>
+          {isModalOpen && (
+            <ProfileModal
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              isModalOpen={isModalOpen}
+            >
+              <li>Profile</li>
+              <Underline margin="0" />
+              <li>Home</li>
+              <li>Profile</li>
+              <li>Films</li>
+              <li>Reviews</li>
+              <li>Likes</li>
+              <li>Watchlist</li>
+              <li>Lists</li>
+              <Underline margin="0" />
+              <li>Settings</li>
+              <li>Sign Out</li>
+            </ProfileModal>
+          )}
+        </ProfileMenu>
         <li>
           <Link
             to={"/films"}
@@ -131,22 +158,19 @@ const Navbar = () => {
           />
         </li>
       </NavMenu>
-      {isModalOpen && (
-        <ProfileModal>
-          <li>Home</li>
-          <li>Profile</li>
-          <li>Films</li>
-          <li>Reviews</li>
-          <li>Likes</li>
-          <li>Watchlist</li>
-          <li>Lists</li>
-
-          <li>Settings</li>
-          <li>Sign Out</li>
-        </ProfileModal>
-      )}
     </Nav>
   );
 };
 
 export default Navbar;
+
+{
+  /* <Link
+            to={"/account"}
+            onClick={(event) => setClicked(event)}
+            className={query === "Profile" ? "active" : ""}
+          > */
+}
+{
+  /* </Link> */
+}
