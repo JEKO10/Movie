@@ -43,7 +43,7 @@ const Options = () => {
             <p> {watchlist ? "Remove" : "Watchlist"}</p>
           </div>
         </OptionsHeader>
-        <Underline margin={`1rem -5px 0.5rem`} />
+        <Underline margin={`1rem -5px 0.5rem`} width="calc(100% + 10px)" />
         <Rating>
           <p>Rate</p>
           <div>
@@ -71,15 +71,15 @@ const Options = () => {
             })}
           </div>
         </Rating>
-        <Underline margin={`0.5rem -5px`} />
+        <Underline margin={`0.5rem -5px`} width="calc(100% + 10px)" />
         <div onClick={() => setReview(!review)}>
           <p>Review or log</p>
         </div>
-        <Underline margin={`0.5rem -5px`} />
+        <Underline margin={`0.5rem -5px`} width="calc(100% + 10px)" />
         <div onClick={() => setList(!list)}>
           <p>Add to lists</p>
         </div>
-        <Underline margin={`0.5rem -5px`} />
+        <Underline margin={`0.5rem -5px`} width="calc(100% + 10px)" />
         <div onClick={() => setShare(!share)}>
           <p>Share</p>
         </div>

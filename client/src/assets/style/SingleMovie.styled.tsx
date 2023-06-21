@@ -11,6 +11,7 @@ type BannerProps = {
 
 type UnderlineProps = {
   margin: string;
+  width: string;
 };
 
 export const Movie = styled.section`
@@ -334,9 +335,9 @@ export const Collection = styled(Link)`
 
 export const Underline = styled.div<UnderlineProps>`
   height: 0.5px;
-  width: calc(100% + 10px) !important;
+  width: ${({ width }) => width} !important;
   padding: 0 !important;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.3);
   margin: ${({ margin }) => margin};
 `;
 

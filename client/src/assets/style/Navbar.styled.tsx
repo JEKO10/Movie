@@ -108,7 +108,7 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
   top: -5px;
   left: -10px;
   background-color: #8899aa;
-  min-width: 120px;
+  min-width: 110px;
   padding: 0 20px 5px 5px; // top right bottom left
   box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.35), 0 0 10px #000;
   border-radius: 2px;

@@ -85,7 +85,10 @@ const Navbar = () => {
               isModalOpen={isModalOpen}
             >
               <li>Profile</li>
-              <Underline margin="0" />
+              <Underline
+                margin="5px -20px 5px -5px"
+                width="calc(100% + 25px)"
+              />
               <li>Home</li>
               <li>Profile</li>
               <li>Films</li>
@@ -93,7 +96,10 @@ const Navbar = () => {
               <li>Likes</li>
               <li>Watchlist</li>
               <li>Lists</li>
-              <Underline margin="0" />
+              <Underline
+                margin="5px -20px 5px -5px"
+                width="calc(100% + 25px)"
+              />
               <li>Settings</li>
               <li>Sign Out</li>
             </ProfileModal>
