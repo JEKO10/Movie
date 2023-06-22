@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import {
   flexMixin,
@@ -19,12 +19,17 @@ type ProfileMenuProps = {
   isModalOpen: boolean;
 };
 
+type NavMenuItemProps = {
+  active: boolean;
+};
+
 export const Nav = styled.nav<NavProps>`
   ${flexMixin({ justify: "space-between", align: "center" })};
   color: #99aabb;
   background-color: ${({ query }) =>
     query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 1)`};
   padding: 20px 50px;
+  overflow: hidden;
 
   img {
     height: 50px;
@@ -36,31 +41,36 @@ export const NavMenu = styled.ul`
   ${flexMixin({ justify: "flex-end", align: "center" })};
   list-style-type: none;
   width: 100%;
+`;
 
-  li {
-    font-family: ${primaryFont};
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 0.8rem;
-    letter-spacing: 1.5px;
-    margin: 0 30px;
-    cursor: pointer;
-    transition: all 200ms ease;
+export const NavMenuItem = styled.li<NavMenuItemProps>`
+  font-family: ${primaryFont};
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  margin: 0 30px;
+  cursor: pointer;
+  transition: all 200ms ease;
 
-    a {
-      color: #99aabb;
-      text-decoration: none;
-
-      &:hover,
-      &.active {
+  a {
+    color: #99aabb;
+    text-decoration: none;
+    ${({ active }) =>
+      active &&
+      css`
         color: #fff;
-      }
-    }
+      `}
 
-    &:last-of-type {
-      ${flexMixin({ justify: "center", align: "center" })};
-      margin: 0;
+    &:hover,
+    &.active {
+      color: #fff;
     }
+  }
+
+  &:last-of-type {
+    ${flexMixin({ justify: "center", align: "center" })};
+    margin: 0;
   }
 `;
 

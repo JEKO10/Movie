@@ -9,6 +9,7 @@ import {
   Input,
   Nav,
   NavMenu,
+  NavMenuItem,
   ProfileMenu,
   ProfileModal,
 } from "../../assets/style/Navbar.styled";
@@ -76,81 +77,58 @@ const Navbar = () => {
         <img src={logo} alt="Logo" />
       </Link>
       <NavMenu>
-        <ProfileMenu onMouseEnter={handleMouseEnter}>
-          Profile
-          {isModalOpen && (
-            <ProfileModal
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              isModalOpen={isModalOpen}
-            >
-              <li>Profile</li>
-              <Underline
-                margin="5px -20px 5px -5px"
-                width="calc(100% + 25px)"
-              />
-              <li>Home</li>
-              <li>Profile</li>
-              <li>Films</li>
-              <li>Reviews</li>
-              <li>Likes</li>
-              <li>Watchlist</li>
-              <li>Lists</li>
-              <Underline
-                margin="5px -20px 5px -5px"
-                width="calc(100% + 25px)"
-              />
-              <li>Settings</li>
-              <li>Sign Out</li>
-            </ProfileModal>
-          )}
-        </ProfileMenu>
-        <li>
-          <Link
-            to={"/films"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Films" ? "active" : ""}
-          >
+        <NavMenuItem active={false}>
+          <ProfileMenu onMouseEnter={handleMouseEnter}>
+            Profile
+            {isModalOpen && (
+              <ProfileModal
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                isModalOpen={isModalOpen}
+              >
+                <li>Profile</li>
+                <Underline
+                  margin="5px -20px 5px -5px"
+                  width="calc(100% + 25px)"
+                />
+                <li>Home</li>
+                <li>Profile</li>
+                <li>Films</li>
+                <li>Reviews</li>
+                <li>Likes</li>
+                <li>Watchlist</li>
+                <li>Lists</li>
+                <Underline
+                  margin="5px -20px 5px -5px"
+                  width="calc(100% + 25px)"
+                />
+                <li>Settings</li>
+                <li>Sign Out</li>
+              </ProfileModal>
+            )}
+          </ProfileMenu>
+        </NavMenuItem>
+        <NavMenuItem active={query === "Films"}>
+          <Link to={"/films"} onClick={(event) => setClicked(event)}>
             Films
           </Link>
-        </li>
-        <li>
-          <Link
-            to={"/likes"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Likes" ? "active" : ""}
-          >
+        </NavMenuItem>
+        <NavMenuItem active={query === "Likes"}>
+          <Link to={"/likes"} onClick={(event) => setClicked(event)}>
             Likes
           </Link>
-        </li>
-        <li>
-          <Link
-            to={"/lists"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Lists" ? "active" : ""}
-          >
+        </NavMenuItem>
+        <NavMenuItem active={query === "Lists"}>
+          <Link to={"/lists"} onClick={(event) => setClicked(event)}>
             Lists
           </Link>
-        </li>
-        {/* <li>
-          <Link
-            to={"/reviews"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Reviews" ? "active" : ""}
-          >
-            Reviews
-          </Link>
-        </li> */}
-        <li>
-          <Link
-            to={"/watchlist"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Watchlist" ? "active" : ""}
-          >
+        </NavMenuItem>
+        <NavMenuItem active={query === "Watchlist"}>
+          <Link to={"/watchlist"} onClick={(event) => setClicked(event)}>
             Watchlist
           </Link>
-        </li>
-        <li>
+        </NavMenuItem>
+        <NavMenuItem active={false}>
           <IconWrapper onClick={() => dispatch(setIsSearchOpen(isSearchOpen))}>
             {isSearchOpen ? <VscChromeClose /> : <FaSearch />}
           </IconWrapper>
@@ -162,7 +140,7 @@ const Navbar = () => {
             placeholder="Enter movie title..."
             onChange={handleInputChange}
           />
-        </li>
+        </NavMenuItem>
       </NavMenu>
     </Nav>
   );
@@ -179,4 +157,16 @@ export default Navbar;
 }
 {
   /* </Link> */
+}
+
+{
+  /* <li>
+          <Link
+            to={"/reviews"}
+            onClick={(event) => setClicked(event)}
+            className={query === "Reviews" ? "active" : ""}
+          >
+            Reviews
+          </Link>
+        </li> */
 }
