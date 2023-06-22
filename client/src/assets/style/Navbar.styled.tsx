@@ -29,7 +29,6 @@ export const Nav = styled.nav<NavProps>`
   background-color: ${({ query }) =>
     query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 1)`};
   padding: 20px 50px;
-  overflow: hidden;
 
   img {
     height: 50px;
@@ -124,17 +123,21 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
   border-radius: 2px;
 
   li {
-    text-transform: none;
-    color: rgba(0, 0, 0, 0.8);
-    font-weight: 500;
     margin: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
     margin: 5px -20px 5px -5px;
+    cursor: pointer;
 
-    &:hover {
-      color: #fff;
-      background-color: #667788;
+    a {
+      display: block;
+      text-transform: none;
+      font-weight: 500;
+      padding: 5px 10px;
+      color: rgba(0, 0, 0, 0.8);
+
+      &:hover {
+        color: #fff;
+        background-color: #667788;
+      }
     }
 
     &:first-of-type {

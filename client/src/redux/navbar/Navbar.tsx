@@ -91,18 +91,34 @@ const Navbar = () => {
                   margin="5px -20px 5px -5px"
                   width="calc(100% + 25px)"
                 />
-                <li>Home</li>
-                <li>Profile</li>
-                <li>Films</li>
-                <li>Reviews</li>
-                <li>Likes</li>
-                <li>Watchlist</li>
-                <li>Lists</li>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/profile">Profile</Link>
+                </li>
+                <li>
+                  <Link to="/profile/films">Films</Link>
+                </li>
+                <li>
+                  <Link to="/profile/reviews">Reviews</Link>
+                </li>
+                <li>
+                  <Link to="/profile/likes">Likes</Link>
+                </li>
+                <li>
+                  <Link to="/profile/watchlist">Watchlist</Link>
+                </li>
+                <li>
+                  <Link to="/profile/lists">Lists</Link>
+                </li>
                 <Underline
                   margin="5px -20px 5px -5px"
                   width="calc(100% + 25px)"
                 />
-                <li>Settings</li>
+                <li>
+                  <Link to="/profile/settings">Settings</Link>
+                </li>
                 <li>Sign Out</li>
               </ProfileModal>
             )}
