@@ -10,6 +10,8 @@ import {
   RemoveWatchlist,
   Underline,
 } from "../../../assets/style/SingleMovie.styled";
+import { useAppDispatch } from "../../../common/hooks";
+import { toggleList, toggleReview, toggleShare } from "../singleMovieSlice";
 import Modals from "./Modals";
 
 const Options = () => {
@@ -18,9 +20,7 @@ const Options = () => {
   const [watchlist, setWatchlist] = useState(false);
   const [isLike, setIsLike] = useState(false);
   const [isWatched, setIsWatched] = useState(false);
-  const [review, setReview] = useState(false);
-  const [list, setList] = useState(false);
-  const [share, setShare] = useState(false);
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -72,19 +72,19 @@ const Options = () => {
           </div>
         </Rating>
         <Underline margin={`0.5rem -5px`} width="calc(100% + 10px)" />
-        <div onClick={() => setReview(!review)}>
+        <div onClick={() => dispatch(toggleReview(true))}>
           <p>Review or log</p>
         </div>
         <Underline margin={`0.5rem -5px`} width="calc(100% + 10px)" />
-        <div onClick={() => setList(!list)}>
+        <div onClick={() => dispatch(toggleList(true))}>
           <p>Add to lists</p>
         </div>
         <Underline margin={`0.5rem -5px`} width="calc(100% + 10px)" />
-        <div onClick={() => setShare(!share)}>
+        <div onClick={() => dispatch(toggleShare(true))}>
           <p>Share</p>
         </div>
       </Actions>
-      <Modals review={review} list={list} share={share} />
+      <Modals />
     </>
   );
 };

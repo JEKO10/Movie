@@ -9,6 +9,9 @@ const initialState: InitialSingleMovie = {
   isModalOpen: false,
   category: "cast",
   isCastOpen: false,
+  review: false,
+  list: false,
+  share: false,
 };
 
 export const getMovie = createAsyncThunk(
@@ -33,20 +36,47 @@ const singleMovieSlice = createSlice({
   name: "singleMovie",
   initialState,
   reducers: {
-    toggleModal: (state, { payload }) => {
-      state.isModalOpen = payload;
+    toggleModal: (state, action: PayloadAction<boolean>) => {
+      state.isModalOpen = action.payload;
 
-      if (payload) {
+      if (action.payload) {
         document.body.style.overflow = "hidden";
       } else {
         document.body.style.overflow = "auto";
       }
     },
-    toggleCategory: (state, { payload }) => {
-      state.category = payload;
+    toggleCategory: (state, action: PayloadAction<string>) => {
+      state.category = action.payload;
     },
-    toggleCast: (state, { payload }) => {
-      state.isCastOpen = payload;
+    toggleCast: (state, action: PayloadAction<boolean>) => {
+      state.isCastOpen = action.payload;
+    },
+    toggleReview: (state, action: PayloadAction<boolean>) => {
+      state.review = action.payload;
+
+      // if (action.payload) {
+      //   document.body.style.overflow = "hidden";
+      // } else {
+      //   document.body.style.overflow = "auto";
+      // }
+    },
+    toggleList: (state, action: PayloadAction<boolean>) => {
+      state.list = action.payload;
+
+      // if (action.payload) {
+      //   document.body.style.overflow = "hidden";
+      // } else {
+      //   document.body.style.overflow = "auto";
+      // }
+    },
+    toggleShare: (state, action: PayloadAction<boolean>) => {
+      state.share = action.payload;
+
+      // if (action.payload) {
+      //   document.body.style.overflow = "hidden";
+      // } else {
+      //   document.body.style.overflow = "auto";
+      // }
     },
   },
   extraReducers: (builder) => {
@@ -71,6 +101,9 @@ export const {
   toggleModal,
   toggleCategory,
   toggleCast,
+  toggleReview,
+  toggleList,
+  toggleShare,
 } = singleMovieSlice.actions;
 
 export const { reducer } = singleMovieSlice;

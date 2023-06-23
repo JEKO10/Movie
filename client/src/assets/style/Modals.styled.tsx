@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const PosterModal = styled.div`
+type PosterModalProps = {
+  isModalOpen: boolean;
+};
+
+export const PosterModal = styled.div<PosterModalProps>`
   height: 100%;
   width: 100%;
   text-align: center;
@@ -13,10 +17,12 @@ export const PosterModal = styled.div`
   opacity: 0;
   transition: all 500ms ease;
 
-  &.open {
-    visibility: visible;
-    opacity: 1;
-  }
+  ${({ isModalOpen }) =>
+    isModalOpen &&
+    css`
+      visibility: visible;
+      opacity: 1;
+    `}
 
   img {
     position: relative;
@@ -39,4 +45,18 @@ export const PosterModal = styled.div`
       color: #fff;
     }
   }
+`;
+
+export const ModalReview = styled.section`
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  /* visibility: hidden;
+  opacity: 0; */
+  transition: all 500ms ease;
 `;

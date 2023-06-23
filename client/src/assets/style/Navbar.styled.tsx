@@ -29,6 +29,7 @@ export const Nav = styled.nav<NavProps>`
   background-color: ${({ query }) =>
     query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 1)`};
   padding: 20px 50px;
+  overflow: hidden;
 
   img {
     height: 50px;

@@ -15,7 +15,7 @@ import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";
 import Categories from "./components/Categories";
-import ImageModal from "./components/ImageModal";
+import ImageModal from "./components/modals/ImageModal";
 import MovieReviews from "./components/MovieReviews";
 import Options from "./components/Options";
 import { getMovie, toggleModal } from "./singleMovieSlice";
@@ -37,7 +37,6 @@ const SingleMovie = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w1280/";
-
   const director = credits?.crew.find((person) => person.job === "Director");
 
   useEffect(() => {

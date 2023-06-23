@@ -1,15 +1,14 @@
 import React from "react";
 
-type ModalsProsp = {
-  review: boolean;
-  list: boolean;
-  share: boolean;
-};
+import { useAppSelector } from "../../../common/hooks";
+import ReviewModal from "./modals/ReviewModal";
 
-const Modals: React.FC<ModalsProsp> = ({ review, list, share }) => {
+const Modals = () => {
+  const { review, list, share } = useAppSelector((store) => store.singleMovie);
+
   return (
     <section>
-      {review && <article>Add a review</article>}
+      {review && <ReviewModal />}
       {list && <article>Add to lists</article>}
       {share && <article>Share</article>}
     </section>
