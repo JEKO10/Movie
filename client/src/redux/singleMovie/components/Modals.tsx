@@ -1,6 +1,7 @@
 import React from "react";
 
 import { useAppSelector } from "../../../common/hooks";
+import ListsModal from "./modals/ListsModal";
 import ReviewModal from "./modals/ReviewModal";
 
 const Modals = () => {
@@ -9,7 +10,7 @@ const Modals = () => {
   return (
     <section>
       {review && <ReviewModal />}
-      {list && <article>Add to lists</article>}
+      {list && <ListsModal />}
       {share && <article>Share</article>}
     </section>
   );

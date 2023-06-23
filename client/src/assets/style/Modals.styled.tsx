@@ -47,7 +47,7 @@ export const PosterModal = styled.div<PosterModalProps>`
   }
 `;
 
-export const ModalReview = styled.section`
+export const Modal = styled.section`
   height: 100%;
   width: 100%;
   text-align: center;

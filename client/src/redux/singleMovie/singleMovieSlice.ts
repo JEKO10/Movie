@@ -54,29 +54,29 @@ const singleMovieSlice = createSlice({
     toggleReview: (state, action: PayloadAction<boolean>) => {
       state.review = action.payload;
 
-      // if (action.payload) {
-      //   document.body.style.overflow = "hidden";
-      // } else {
-      //   document.body.style.overflow = "auto";
-      // }
+      if (action.payload) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     },
     toggleList: (state, action: PayloadAction<boolean>) => {
       state.list = action.payload;
 
-      // if (action.payload) {
-      //   document.body.style.overflow = "hidden";
-      // } else {
-      //   document.body.style.overflow = "auto";
-      // }
+      if (action.payload) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     },
     toggleShare: (state, action: PayloadAction<boolean>) => {
       state.share = action.payload;
 
-      // if (action.payload) {
-      //   document.body.style.overflow = "hidden";
-      // } else {
-      //   document.body.style.overflow = "auto";
-      // }
+      if (action.payload) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     },
   },
   extraReducers: (builder) => {

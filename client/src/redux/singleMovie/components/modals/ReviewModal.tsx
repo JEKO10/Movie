@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ModalReview } from "../../../../assets/style/Modals.styled";
+import { Modal } from "../../../../assets/style/Modals.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { toggleReview } from "../../singleMovieSlice";
 
@@ -12,7 +12,7 @@ const ReviewModal = () => {
   const posterUrl = "https://image.tmdb.org/t/p/w300/";
 
   return (
-    <ModalReview>
+    <Modal>
       <h3 onClick={() => dispatch(toggleReview(false))}>Close</h3>
       <h1>Title</h1>
       <img src={posterUrl + poster_path} alt="POSTER" />
@@ -32,7 +32,7 @@ const ReviewModal = () => {
         Contains spoilers
       </label>
       <button>Save</button>
-    </ModalReview>
+    </Modal>
   );
 };
 
