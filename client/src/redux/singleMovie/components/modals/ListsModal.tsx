@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 import { Modal } from "../../../../assets/style/Modals.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
@@ -7,22 +7,9 @@ import { toggleList } from "../../singleMovieSlice";
 const ListsModal = () => {
   const { title } = useAppSelector((store) => store.singleMovie.movieInfo);
   const dispatch = useAppDispatch();
-  const listsRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    document.addEventListener("click", clickOutside, true);
-  }, [title]);
-
-  const clickOutside = (e: MouseEvent) => {
-    if (!listsRef.current?.contains(e.target as Node)) {
-      dispatch(toggleList(false));
-    } else {
-      dispatch(toggleList(true));
-    }
-  };
 
   return (
-    <Modal ref={listsRef}>
+    <Modal>
       <h3 onClick={() => dispatch(toggleList(false))}>Close</h3>
       <h1>Add ‘{title}’ to lists</h1>
       <div>
