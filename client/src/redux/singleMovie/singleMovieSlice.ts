@@ -45,7 +45,7 @@ const singleMovieSlice = createSlice({
         document.body.style.overflow = "auto";
       }
     },
-    toggleCategory: (state, action: PayloadAction<string>) => {
+    toggleCategory: (state, action: PayloadAction<string | null>) => {
       state.category = action.payload;
     },
     toggleCast: (state, action: PayloadAction<boolean>) => {

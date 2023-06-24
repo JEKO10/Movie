@@ -98,7 +98,7 @@ export type InitialSingleMovie = {
   isLoading: boolean;
   movieInfo: MovieInfoType;
   isModalOpen: boolean;
-  category: string;
+  category: string | null;
   isCastOpen: boolean;
   review: boolean;
   list: boolean;
