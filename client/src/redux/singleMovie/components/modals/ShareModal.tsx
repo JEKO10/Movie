@@ -1,7 +1,9 @@
 import React from "react";
-import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import { BsFacebook, BsInstagram, BsSnapchat, BsTwitter } from "react-icons/bs";
+import { HiOutlineClipboardCopy } from "react-icons/hi";
+import { RxCross1 } from "react-icons/rx";
 
-import { Modal } from "../../../../assets/style/Modals.styled";
+import { Modal, ModalShare } from "../../../../assets/style/Modals.styled";
 import { useAppDispatch } from "../../../../common/hooks";
 import { toggleShare } from "../../singleMovieSlice";
 
@@ -10,11 +12,17 @@ const ShareModal = () => {
 
   return (
     <Modal>
-      <h3 onClick={() => dispatch(toggleShare(false))}>Close</h3>
-      <p>https://Moviexd.com/movie/id</p>
-      <BsTwitter />
-      <BsFacebook />
-      <BsInstagram />
+      <ModalShare>
+        <RxCross1 onClick={() => dispatch(toggleShare(false))} />
+        <div>
+          <p>https://Moviexd.com/movie/id</p>
+          <HiOutlineClipboardCopy />
+        </div>
+        <BsTwitter />
+        <BsFacebook />
+        <BsInstagram />
+        <BsSnapchat />
+      </ModalShare>
     </Modal>
   );
 };
