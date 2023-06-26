@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { flexMixin } from "./GlobalStyles";
+import { flexMixin, primaryColor } from "./GlobalStyles";
 
 type PosterModalProps = {
   isModalOpen: boolean;
@@ -115,3 +115,60 @@ export const ModalShare = styled.article`
     }
   }
 `;
+
+
+export const ModalLists = styled.article`
+  padding: 20px;
+  background-color: gray;
+  border-radius: 5px;
+
+  svg:first-child {
+    font-size: 2rem;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #e1e1ff99;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  > div {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+    width: 100%;
+    margin-bottom: 2rem;
+    background-color: #667788;
+    padding: 5px 25px;
+    border-radius: 50px;
+
+    p {
+      color: #fff;
+      cursor: pointer;
+      transition: all 200ms ease;
+  
+      &:hover {
+        color: #e1e1ff99;
+      }
+    }
+  }
+
+  button {
+    background-color: ${primaryColor};
+    padding: 10px 15px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 200ms ease;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+`
