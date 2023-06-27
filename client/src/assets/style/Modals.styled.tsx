@@ -6,6 +6,10 @@ type PosterModalProps = {
   isModalOpen: boolean;
 };
 
+type ToggleOptionProps = {
+  active: boolean;
+}
+
 export const PosterModal = styled.div<PosterModalProps>`
   height: 100%;
   width: 100%;
@@ -118,8 +122,9 @@ export const ModalShare = styled.article`
 
 
 export const ModalLists = styled.article`
-  padding: 20px;
   background-color: gray;
+  min-width: 700px;
+  padding: 20px;
   border-radius: 5px;
 
   svg:first-child {
@@ -138,6 +143,7 @@ export const ModalLists = styled.article`
   h2 {
     font-size: 1.5rem;
     margin-bottom: 3rem;
+    text-align: start;
   }
 
   > div {
@@ -147,16 +153,6 @@ export const ModalLists = styled.article`
     background-color: #667788;
     padding: 5px 25px;
     border-radius: 50px;
-
-    p {
-      color: #fff;
-      cursor: pointer;
-      transition: all 200ms ease;
-  
-      &:hover {
-        color: #e1e1ff99;
-      }
-    }
   }
 
   button {
@@ -172,3 +168,75 @@ export const ModalLists = styled.article`
     }
   }
 `
+
+// export const ToggleOption = styled.p<ToggleOptionProps>`
+//   background-color: ${({ active }) => (active ? "blue" : "none")};
+//   color: #fff;
+//   cursor: pointer;
+//   transition: all 200ms ease;
+
+//   &:hover {
+//     color: #e1e1ff99;
+//   }
+  
+//   ${({ active }) => active && `
+//     font-weight: bold;
+//     text-decoration: underline;
+//   `}
+// `;
+
+export const ToggleContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ToggleLabel = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+`;
+
+export const ToggleInput = styled.input`
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked + span {
+    background-color: #52c41a;
+  }
+
+  &:focus + span {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  }
+
+  &:checked + span:before {
+    transform: translateX(16px);
+  }
+`;
+
+export const ToggleSlider = styled.span`
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f0f0f0;
+  transition: 0.2s;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.2s;
+  }
+`;
+
+export const ToggleText = styled.span`
+  margin-left: 8px;
+`;
