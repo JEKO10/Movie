@@ -6,9 +6,9 @@ type PosterModalProps = {
   isModalOpen: boolean;
 };
 
-type ToggleOptionProps = {
-  active: boolean;
-}
+type PublicToggle = {
+  isPublic: boolean;
+};
 
 export const PosterModal = styled.div<PosterModalProps>`
   height: 100%;
@@ -120,11 +120,10 @@ export const ModalShare = styled.article`
   }
 `;
 
-
 export const ModalLists = styled.article`
-  background-color: gray;
-  min-width: 700px;
-  padding: 20px;
+  background-color: #445566;
+  min-width: 600px;
+  padding: 20px 40px;
   border-radius: 5px;
 
   svg:first-child {
@@ -150,8 +149,8 @@ export const ModalLists = styled.article`
     ${flexMixin({ justify: "space-between", align: "center" })};
     width: 100%;
     margin-bottom: 2rem;
-    background-color: #667788;
-    padding: 5px 25px;
+    background-color: #334455;
+    padding: 5px;
     border-radius: 50px;
   }
 
@@ -167,76 +166,21 @@ export const ModalLists = styled.article`
       color: #fff;
     }
   }
-`
-
-// export const ToggleOption = styled.p<ToggleOptionProps>`
-//   background-color: ${({ active }) => (active ? "blue" : "none")};
-//   color: #fff;
-//   cursor: pointer;
-//   transition: all 200ms ease;
-
-//   &:hover {
-//     color: #e1e1ff99;
-//   }
-  
-//   ${({ active }) => active && `
-//     font-weight: bold;
-//     text-decoration: underline;
-//   `}
-// `;
-
-export const ToggleContainer = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
-export const ToggleLabel = styled.label`
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 24px;
-`;
-
-export const ToggleInput = styled.input`
-  opacity: 0;
-  width: 0;
-  height: 0;
-
-  &:checked + span {
-    background-color: #52c41a;
-  }
-
-  &:focus + span {
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-  }
-
-  &:checked + span:before {
-    transform: translateX(16px);
-  }
-`;
-
-export const ToggleSlider = styled.span`
-  position: absolute;
+export const PublicToggle = styled.p<PublicToggle>`
+  background-color: ${({ isPublic }) => isPublic && "#99AABB"};
+  color: ${({ isPublic }) =>
+    isPublic ? "#334455" : "rgba(225, 225, 225, 0.5)"};
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  width: 50%;
+  padding: 5px 25px;
+  border-radius: 50px;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #f0f0f0;
-  transition: 0.2s;
 
-  &:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.2s;
+  &:hover {
+    color: ${({ isPublic }) => isPublic && "#fff"};
+    border: ${({ isPublic }) => isPublic && "3px solid #445566"};
   }
-`;
-
-export const ToggleText = styled.span`
-  margin-left: 8px;
 `;
