@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { RxCross1 } from "react-icons/rx";
+import { FaSearch } from "react-icons/fa";
+import { RxCross1, RxPlus } from "react-icons/rx";
 
 import {
+  AddToList,
   Modal,
   ModalLists,
   PublicToggle,
 } from "../../../../assets/style/Modals.styled";
+import { Underline } from "../../../../assets/style/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { toggleList } from "../../singleMovieSlice";
 
@@ -27,10 +30,17 @@ const ListsModal = () => {
             Private
           </PublicToggle>
         </div>
-        <div>
-          <p>+ New list...</p>
-          <p>Search...</p>
-        </div>
+        <Underline margin={`0 -40px`} width="calc(100% + 80px)" />
+        <AddToList>
+          <div>
+            <RxPlus />
+            <p>New list...</p>
+          </div>
+          <label>
+            <input type="text" placeholder="Search..." />
+            <FaSearch />
+          </label>
+        </AddToList>
         <button onClick={() => dispatch(toggleList(false))}>Add</button>
       </ModalLists>
     </Modal>

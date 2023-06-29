@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import { flexMixin, primaryColor } from "./GlobalStyles";
+import { flexMixin, primaryColor, primaryFont } from "./GlobalStyles";
 
 type PosterModalProps = {
   isModalOpen: boolean;
@@ -123,10 +123,11 @@ export const ModalShare = styled.article`
 export const ModalLists = styled.article`
   background-color: #445566;
   min-width: 600px;
+  max-width: 600px;
   padding: 20px 40px;
   border-radius: 5px;
 
-  svg:first-child {
+  > svg:first-child {
     font-size: 2rem;
     position: absolute;
     top: 15px;
@@ -141,17 +142,21 @@ export const ModalLists = styled.article`
 
   h2 {
     font-size: 1.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     text-align: start;
   }
 
   > div {
     ${flexMixin({ justify: "space-between", align: "center" })};
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     background-color: #334455;
-    padding: 5px;
+    padding: 2px;
     border-radius: 50px;
+
+    p {
+      cursor: pointer;
+    }
   }
 
   button {
@@ -172,15 +177,59 @@ export const PublicToggle = styled.p<PublicToggle>`
   background-color: ${({ isPublic }) => isPublic && "#99AABB"};
   color: ${({ isPublic }) =>
     isPublic ? "#334455" : "rgba(225, 225, 225, 0.5)"};
+  font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0.5px;
   width: 50%;
-  padding: 5px 25px;
+  padding: 2px 15px;
+  border: 2px solid transparent;
   border-radius: 50px;
-  cursor: pointer;
+  transition: all 500ms ease;
 
   &:hover {
-    color: ${({ isPublic }) => isPublic && "#fff"};
-    border: ${({ isPublic }) => isPublic && "3px solid #445566"};
+    color: ${({ isPublic }) => !isPublic && "#fff"};
+    border: ${({ isPublic }) => !isPublic && "2px solid #445566"};
+  }
+`;
+
+export const AddToList = styled.div`
+  background: transparent !important;
+  color: #e1e1ff99;
+
+  div {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+
+    svg {
+      margin-right: 0.3rem;
+    }
+
+    &:hover {
+      color: #fff;
+    }
+
+    p {
+      font-weight: 600;
+    }
+  }
+
+  label {
+    ${flexMixin({ justify: "center", align: "center" })};
+
+    input {
+      background: none;
+      color: #fff;
+      font-family: ${primaryFont};
+      text-align: right;
+      margin-right: 0.5rem;
+      outline: none;
+
+      &::placeholder {
+        color: #e1e1ff99;
+      }
+
+      &:is(:hover, :active)::placeholder {
+        color: #fff;
+      }
+    }
   }
 `;

@@ -47,7 +47,12 @@ const Trending = () => {
       <TrendInfo>
         {trendingMovies?.slice(0, 5).map(({ id, title, name, poster_path }) => (
           <TrendLink to={`/movie/${id}`} key={id} className="trendElement">
-            <img src={posterUrl + poster_path} alt="Poster" />
+            <img
+              src={
+                poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG
+              }
+              alt="Poster"
+            />
             <div>
               <h4>{title ? title : name}</h4>
               {title?.length > 17 && <Fade isTrending={true} />}
