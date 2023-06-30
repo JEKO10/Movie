@@ -7,6 +7,7 @@ import {
   Modal,
   ModalLists,
   PublicToggle,
+  Submit,
 } from "../../../../assets/style/Modals.styled";
 import { Underline } from "../../../../assets/style/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
@@ -41,7 +42,9 @@ const ListsModal = () => {
             <FaSearch />
           </label>
         </AddToList>
-        <button onClick={() => dispatch(toggleList(false))}>Add</button>
+        <Submit>
+          <button onClick={() => dispatch(toggleList(false))}>Add</button>
+        </Submit>
       </ModalLists>
     </Modal>
   );

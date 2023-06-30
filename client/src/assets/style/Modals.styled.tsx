@@ -122,7 +122,7 @@ export const ModalShare = styled.article`
 
 export const ModalLists = styled.article`
   background-color: #445566;
-  min-width: 600px;
+  min-width: 500px;
   max-width: 600px;
   padding: 20px 40px;
   border-radius: 5px;
@@ -156,19 +156,6 @@ export const ModalLists = styled.article`
 
     p {
       cursor: pointer;
-    }
-  }
-
-  button {
-    background-color: ${primaryColor};
-    padding: 10px 15px;
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 200ms ease;
-
-    &:hover {
-      color: #fff;
     }
   }
 `;
@@ -230,6 +217,33 @@ export const AddToList = styled.div`
       &:is(:hover, :active)::placeholder {
         color: #fff;
       }
+    }
+  }
+`;
+
+export const Submit = styled.article`
+  background-color: #334455;
+  width: calc(100% + 80px);
+  margin: 0 -40px -20px;
+  border-radius: 0 0 5px 5px;
+  text-align: end;
+
+  button {
+    background-color: ${primaryColor};
+    color: #e1e1ff99;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 15px 35px;
+    padding: 8px 25px;
+    border-radius: 5px;
+    box-shadow: inset 0 -1px 0 #456;
+    cursor: pointer;
+    transition: all 200ms ease;
+
+    &:hover {
+      color: #fff;
+      box-shadow: inset 0 1px 0 #fff;
     }
   }
 `;
