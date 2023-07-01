@@ -73,8 +73,8 @@ export const Modal = styled.section`
 `;
 
 export const ModalShare = styled.article`
+  background-color: #445566;
   padding: 20px 40px;
-  background-color: gray;
 
   svg:first-child {
     font-size: 2rem;
@@ -245,5 +245,37 @@ export const Submit = styled.article`
       color: #fff;
       box-shadow: inset 0 1px 0 #fff;
     }
+  }
+`;
+
+export const ModalReview = styled.article`
+  background-color: #445566;
+  ${flexMixin({ justify: "space-between", align: "center" })};
+  min-width: 500px;
+  padding: 20px 40px;
+  border-radius: 5px;
+
+  svg:first-child {
+    font-size: 2rem;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #e1e1ff99;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  div {
+    text-align: start;
+  }
+
+  img {
+    height: 223px;
+    width: 150px;
+    border-radius: 5px;
+    margin-right: 2rem;
   }
 `;
