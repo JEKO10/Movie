@@ -1098,10 +1098,14 @@ Error generating stack: `+i.message+`
   }
 `,_S=D.article`
   background-color: #445566;
+  min-width: 500px;
+  max-width: 600px;
   padding: 20px 40px;
+  border-radius: 5px;
 
   svg:first-child {
     font-size: 2rem;
+    margin: 0;
     position: absolute;
     top: 15px;
     right: 20px;
@@ -1115,20 +1119,30 @@ Error generating stack: `+i.message+`
 
   > div {
     ${q({justify:"center",align:"center"})};
-    width: 100%;
-    margin-bottom: 2rem;
     background-color: #667788;
+    width: min-content;
+    margin: 0 auto 2rem;
+    border-radius: 5px;
+    box-shadow: inset 0 1.5px 0 #e1e1ff99;
+    transition: all 200ms ease;
 
     p {
-      background-color: black;
-      flex-grow: 1;
-      padding: 2px 0;
+      background-color: #2c3440;
+      padding: 5px 10px;
+      user-select: none;
     }
 
     svg {
       font-size: 1.5rem;
-      margin-left: 0.5rem;
-      margin-right: 0;
+      margin: 0 0.5rem;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &:hover {
+      background-color: #708191;
     }
   }
 
