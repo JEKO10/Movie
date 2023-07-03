@@ -100,9 +100,9 @@ export type InitialSingleMovie = {
   isModalOpen: boolean;
   category: string | null;
   isCastOpen: boolean;
-  review: boolean;
-  list: boolean;
-  share: boolean;
+  isReview: boolean;
+  isLists: boolean;
+  isShare: boolean;
 };
 
 type GenresKeywords = {

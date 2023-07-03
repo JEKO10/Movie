@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { RxCross1, RxPlus } from "react-icons/rx";
 
@@ -14,15 +14,28 @@ import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { toggleList } from "../../singleMovieSlice";
 
 const ListsModal = () => {
-  const { title } = useAppSelector((store) => store.singleMovie.movieInfo);
+  const { movieInfo, isLists } = useAppSelector((store) => store.singleMovie);
   const dispatch = useAppDispatch();
   const [isPublic, setIsPublic] = useState(true);
+  const listsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.addEventListener("click", clickOutside, true);
+  }, []);
+
+  const clickOutside = (e: MouseEvent) => {
+    if (!listsRef.current?.contains(e.target as Node)) {
+      dispatch(toggleList(false));
+    } else {
+      dispatch(toggleList(true));
+    }
+  };
 
   return (
-    <Modal>
-      <ModalLists>
+    <Modal isShare={false} isReview={false} isLists={isLists}>
+      <ModalLists ref={listsRef}>
         <RxCross1 onClick={() => dispatch(toggleList(false))} />
-        <h2>Add ‘{title}’ to lists</h2>
+        <h2>Add ‘{movieInfo.title}’ to lists</h2>
         <div>
           <PublicToggle onClick={() => setIsPublic(true)} isPublic={isPublic}>
             Public

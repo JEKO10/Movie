@@ -6,13 +6,15 @@ import ReviewModal from "./modals/ReviewModal";
 import ShareModal from "./modals/ShareModal";
 
 const Modals = () => {
-  const { review, list, share } = useAppSelector((store) => store.singleMovie);
+  const { isReview, isLists, isShare } = useAppSelector(
+    (store) => store.singleMovie
+  );
 
   return (
     <section>
-      {review && <ReviewModal />}
-      {list && <ListsModal />}
-      {share && <ShareModal />}
+      {isReview && <ReviewModal />}
+      {isLists && <ListsModal />}
+      {isShare && <ShareModal />}
     </section>
   );
 };

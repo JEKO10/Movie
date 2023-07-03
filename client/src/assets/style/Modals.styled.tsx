@@ -6,6 +6,12 @@ type PosterModalProps = {
   isModalOpen: boolean;
 };
 
+type ModalProps = {
+  isShare: boolean;
+  isReview: boolean;
+  isLists: boolean;
+};
+
 type PublicToggle = {
   isPublic: boolean;
 };
@@ -36,7 +42,7 @@ export const PosterModal = styled.div<PosterModalProps>`
     margin-top: 1rem;
     border: 1.5px solid #e1e1ff99;
     border-radius: 5px;
-    z-index: 4;
+    z-index: 1;
   }
 
   svg {
@@ -53,7 +59,7 @@ export const PosterModal = styled.div<PosterModalProps>`
   }
 `;
 
-export const Modal = styled.section`
+export const Modal = styled.section<ModalProps>`
   ${flexMixin({ justify: "center", align: "center" })};
   height: 100%;
   width: 100%;
@@ -63,9 +69,18 @@ export const Modal = styled.section`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.8);
-  /* visibility: hidden;
-  opacity: 0; */
   transition: all 500ms ease;
+
+  ${({ isShare, isReview, isLists }) =>
+    isShare || isReview || isLists
+      ? css`
+          visibility: visible;
+          opacity: 1;
+        `
+      : css`
+          visibility: hidden;
+          opacity: 0;
+        `}
 
   svg {
     cursor: pointer;
@@ -78,6 +93,7 @@ export const ModalShare = styled.article`
   max-width: 600px;
   padding: 20px 40px;
   border-radius: 5px;
+  z-index: 1;
 
   svg:first-child {
     font-size: 2rem;
@@ -263,11 +279,12 @@ export const Submit = styled.article`
 `;
 
 export const ModalReview = styled.article`
-  background-color: #445566;
   ${flexMixin({ justify: "space-between", align: "center" })};
+  background-color: #445566;
   min-width: 500px;
   padding: 20px 40px;
   border-radius: 5px;
+  z-index: 1;
 
   svg:first-child {
     font-size: 2rem;

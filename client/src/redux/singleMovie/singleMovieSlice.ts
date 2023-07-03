@@ -9,9 +9,9 @@ const initialState: InitialSingleMovie = {
   isModalOpen: false,
   category: "cast",
   isCastOpen: false,
-  review: false,
-  list: false,
-  share: false,
+  isReview: false,
+  isLists: false,
+  isShare: false,
 };
 
 export const getMovie = createAsyncThunk(
@@ -52,7 +52,7 @@ const singleMovieSlice = createSlice({
       state.isCastOpen = action.payload;
     },
     toggleReview: (state, action: PayloadAction<boolean>) => {
-      state.review = action.payload;
+      state.isReview = action.payload;
 
       if (action.payload) {
         document.body.style.overflow = "hidden";
@@ -61,7 +61,7 @@ const singleMovieSlice = createSlice({
       }
     },
     toggleList: (state, action: PayloadAction<boolean>) => {
-      state.list = action.payload;
+      state.isLists = action.payload;
 
       if (action.payload) {
         document.body.style.overflow = "hidden";
@@ -70,7 +70,7 @@ const singleMovieSlice = createSlice({
       }
     },
     toggleShare: (state, action: PayloadAction<boolean>) => {
-      state.share = action.payload;
+      state.isShare = action.payload;
 
       if (action.payload) {
         document.body.style.overflow = "hidden";
