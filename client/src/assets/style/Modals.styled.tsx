@@ -299,14 +299,66 @@ export const ModalReview = styled.article`
     }
   }
 
-  div {
+  h2 {
+    span {
+      color: #e1e1ff99;
+      font-weight: 400;
+      font-size: 1.1rem;
+      margin: 0 0.5rem;
+    }
+  }
+
+  > div {
     text-align: start;
+
+    > * {
+      padding: 10px 0;
+    }
+
+    > div {
+      ${flexMixin({ justify: "space-between", align: "center" })};
+
+      label {
+        ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+
+        input[type="checkbox"] {
+          font-size: 1rem;
+          height: 20px;
+          width: 20px;
+          border-radius: 5px;
+        }
+      }
+    }
+
+    textarea {
+      font-family: ${primaryFont};
+      background-color: #ccddee;
+      font-size: 0.8rem;
+      line-height: 19.6px;
+      color: #556677;
+      padding: 10px;
+      outline: none;
+      border-radius: 5px;
+      transition: all 500ms ease;
+
+      &:focus {
+        background-color: #fff;
+        box-shadow: -1px 2px 5px #000;
+      }
+    }
   }
 
   img {
-    height: 223px;
-    width: 150px;
+    height: 230px;
+    width: 160px;
     border-radius: 5px;
     margin-right: 2rem;
+    border: 3px solid transparent;
+    transition: all 500ms ease;
+    cursor: pointer;
+
+    &:hover {
+      border: 3px solid #fff;
+    }
   }
 `;

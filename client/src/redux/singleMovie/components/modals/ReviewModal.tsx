@@ -29,7 +29,10 @@ const ReviewModal = () => {
         <RxCross1 onClick={() => dispatch(toggleReview(false))} />
         <img src={posterUrl + movieInfo.poster_path} alt="POSTER" />
         <div>
-          <h2>{movieInfo.title}</h2>
+          <h2>
+            {movieInfo.title}
+            <span>{movieInfo.release_date.slice(0, 4)}</span>
+          </h2>
           <div>
             <label>
               <input type="checkbox" />
@@ -40,7 +43,7 @@ const ReviewModal = () => {
               I`ve watched this film before
             </label>
           </div>
-          <textarea placeholder="Add a review" cols={45} rows={10} />
+          <textarea placeholder="Add a review..." cols={65} rows={5} />
           <div>
             <label>
               <input type="checkbox" />
