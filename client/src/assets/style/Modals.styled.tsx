@@ -279,7 +279,7 @@ export const Submit = styled.article`
 `;
 
 export const ModalReview = styled.article`
-  ${flexMixin({ justify: "space-between", align: "center" })};
+  ${flexMixin({ justify: "space-between", align: "flex-start" })};
   background-color: #445566;
   min-width: 500px;
   padding: 20px 40px;
@@ -320,12 +320,21 @@ export const ModalReview = styled.article`
 
       label {
         ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+        color: #ccddee;
+        font-size: 0.9rem;
 
         input[type="checkbox"] {
-          font-size: 1rem;
+          font-size: 22rem;
           height: 20px;
           width: 20px;
           border-radius: 5px;
+          margin-right: 0.5rem;
+          accent-color: #ccddee;
+          cursor: pointer;
+
+          &:hover {
+            color: #000;
+          }
         }
       }
     }
@@ -333,12 +342,15 @@ export const ModalReview = styled.article`
     textarea {
       font-family: ${primaryFont};
       background-color: #ccddee;
-      font-size: 0.8rem;
-      line-height: 19.6px;
       color: #556677;
+      min-height: 50px;
+      max-height: 300px;
+      font-size: 0.8rem;
+      margin: 0.5rem 0;
       padding: 10px;
-      outline: none;
       border-radius: 5px;
+      outline: none;
+      resize: vertical;
       transition: all 500ms ease;
 
       &:focus {
