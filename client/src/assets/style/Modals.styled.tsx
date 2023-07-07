@@ -322,19 +322,16 @@ export const ModalReview = styled.article`
         ${flexMixin({ justify: "flex-start", align: "flex-start" })};
         color: #ccddee;
         font-size: 0.9rem;
+        user-select: none;
 
         input[type="checkbox"] {
           font-size: 22rem;
-          height: 20px;
+          height: 18px;
           width: 20px;
           border-radius: 5px;
           margin-right: 0.5rem;
           accent-color: #ccddee;
           cursor: pointer;
-
-          &:hover {
-            color: #000;
-          }
         }
       }
     }
@@ -346,7 +343,7 @@ export const ModalReview = styled.article`
       min-height: 50px;
       max-height: 300px;
       font-size: 0.8rem;
-      margin: 0.5rem 0;
+      margin: 0.2rem 0;
       padding: 10px;
       border-radius: 5px;
       outline: none;
