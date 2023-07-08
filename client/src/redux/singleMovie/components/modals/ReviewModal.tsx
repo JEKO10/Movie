@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 
-import { Modal, ModalReview } from "../../../../assets/style/Modals.styled";
+import {
+  Modal,
+  ModalReview,
+  SaveButton,
+} from "../../../../assets/style/Modals.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { toggleReview } from "../../singleMovieSlice";
 
@@ -67,7 +71,7 @@ const ReviewModal = () => {
               />
               Contains spoilers
             </label>
-            <button>Save</button>
+            <SaveButton>Save</SaveButton>
           </div>
         </div>
       </ModalReview>

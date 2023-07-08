@@ -371,3 +371,21 @@ export const ModalReview = styled.article`
     }
   }
 `;
+
+export const SaveButton = styled.button`
+  background-color: ${primaryColor};
+  color: #e1e1ff99;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 8px 25px;
+  border-radius: 5px;
+  box-shadow: inset 0 -1px 0 #456;
+  cursor: pointer;
+  transition: all 200ms ease;
+
+  &:hover {
+    color: #fff;
+    box-shadow: inset 0 1px 0 #fff;
+  }
+`;
