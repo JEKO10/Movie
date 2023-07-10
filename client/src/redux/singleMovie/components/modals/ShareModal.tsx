@@ -13,16 +13,18 @@ const ShareModal = () => {
   const shareRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.addEventListener("click", clickOutside, true);
-  }, []);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (shareRef.current && !shareRef.current.contains(e.target as Node)) {
+        dispatch(toggleShare(false));
+      }
+    };
 
-  const clickOutside = (e: MouseEvent) => {
-    if (!shareRef.current?.contains(e.target as Node)) {
-      dispatch(toggleShare(false));
-    } else {
-      dispatch(toggleShare(true));
-    }
-  };
+    document.addEventListener("click", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
 
   return (
     <Modal isShare={isShare} isReview={false} isLists={false}>

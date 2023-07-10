@@ -53,30 +53,12 @@ const singleMovieSlice = createSlice({
     },
     toggleReview: (state, action: PayloadAction<boolean>) => {
       state.isReview = action.payload;
-
-      if (action.payload) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
     },
     toggleList: (state, action: PayloadAction<boolean>) => {
       state.isLists = action.payload;
-
-      if (action.payload) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
     },
     toggleShare: (state, action: PayloadAction<boolean>) => {
       state.isShare = action.payload;
-
-      if (action.payload) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
     },
   },
   extraReducers: (builder) => {

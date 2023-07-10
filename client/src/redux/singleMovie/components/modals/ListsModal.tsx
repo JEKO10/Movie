@@ -20,16 +20,18 @@ const ListsModal = () => {
   const listsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    document.addEventListener("click", clickOutside, true);
-  }, []);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (listsRef.current && !listsRef.current.contains(e.target as Node)) {
+        dispatch(toggleList(false));
+      }
+    };
 
-  const clickOutside = (e: MouseEvent) => {
-    if (!listsRef.current?.contains(e.target as Node)) {
-      dispatch(toggleList(false));
-    } else {
-      dispatch(toggleList(true));
-    }
-  };
+    document.addEventListener("click", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
 
   return (
     <Modal isShare={false} isReview={false} isLists={isLists}>

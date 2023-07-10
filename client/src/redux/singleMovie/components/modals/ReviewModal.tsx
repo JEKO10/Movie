@@ -21,16 +21,18 @@ const ReviewModal = () => {
   const date = new Date();
 
   useEffect(() => {
-    document.addEventListener("click", clickOutside, true);
-  }, []);
+    const handleClickOutside = (e: MouseEvent) => {
+      if (reviewRef.current && !reviewRef.current.contains(e.target as Node)) {
+        dispatch(toggleReview(false));
+      }
+    };
 
-  const clickOutside = (e: MouseEvent) => {
-    if (!reviewRef.current?.contains(e.target as Node)) {
-      dispatch(toggleReview(false));
-    } else {
-      dispatch(toggleReview(true));
-    }
-  };
+    document.addEventListener("click", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, []);
 
   return (
     <Modal isShare={false} isReview={isReview} isLists={false}>
