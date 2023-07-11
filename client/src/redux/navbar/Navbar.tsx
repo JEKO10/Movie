@@ -24,11 +24,33 @@ import {
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const { query, isSearchOpen, inputValue } = useAppSelector(
     (store) => store.navbar
   );
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
+  let theEnd = 0;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > theEnd) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+      theEnd = scrollTop;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const setClicked = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -40,16 +62,6 @@ const Navbar = () => {
     const value = e.target.value;
     dispatch(setInputValue(value));
     dispatch(searchMovies());
-  };
-
-  const handleMouseEnter = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    setTimeout(() => {
-      setIsModalOpen(false);
-    }, 500);
   };
 
   useEffect(() => {
@@ -72,18 +84,22 @@ const Navbar = () => {
   };
 
   return (
-    <Nav query={query}>
+    <Nav query={query} isVisible={isVisible}>
       <Link to={"/"}>
         <img src={logo} alt="Logo" />
       </Link>
       <NavMenu>
         <NavMenuItem active={false}>
-          <ProfileMenu onMouseEnter={handleMouseEnter}>
+          <ProfileMenu onMouseEnter={() => setIsModalOpen(true)}>
             Profile
             {isModalOpen && (
               <ProfileModal
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={() => setIsModalOpen(true)}
+                onMouseLeave={() => {
+                  setTimeout(() => {
+                    setIsModalOpen(false);
+                  }, 500);
+                }}
                 isModalOpen={isModalOpen}
               >
                 <li>Profile</li>

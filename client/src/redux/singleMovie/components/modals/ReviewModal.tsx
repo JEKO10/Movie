@@ -27,10 +27,10 @@ const ReviewModal = () => {
       }
     };
 
-    document.addEventListener("click", handleClickOutside, true);
+    document.addEventListener("mouseup", handleClickOutside);
 
     return () => {
-      document.removeEventListener("click", handleClickOutside, true);
+      document.removeEventListener("mouseup", handleClickOutside);
     };
   }, []);
 

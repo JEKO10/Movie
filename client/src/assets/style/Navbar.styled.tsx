@@ -9,6 +9,7 @@ import {
 
 type NavProps = {
   query: string;
+  isVisible: boolean;
 };
 
 type InputProps = {
@@ -29,7 +30,19 @@ export const Nav = styled.nav<NavProps>`
   background-color: ${({ query }) =>
     query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 1)`};
   padding: 20px 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   overflow: hidden;
+  ${({ isVisible }) =>
+    !isVisible
+      ? css`
+          top: -95px;
+        `
+      : css`
+          top: 0;
+        `}
 
   img {
     height: 50px;
