@@ -16,13 +16,16 @@ const ShareModal = () => {
     const handleClickOutside = (e: MouseEvent) => {
       if (shareRef.current && !shareRef.current.contains(e.target as Node)) {
         dispatch(toggleShare(false));
+        document.body.style.overflow = "auto";
       }
     };
 
     document.addEventListener("click", handleClickOutside, true);
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
+      document.body.style.overflow = "auto";
     };
   }, []);
 

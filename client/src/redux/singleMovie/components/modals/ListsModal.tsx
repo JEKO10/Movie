@@ -23,13 +23,16 @@ const ListsModal = () => {
     const handleClickOutside = (e: MouseEvent) => {
       if (listsRef.current && !listsRef.current.contains(e.target as Node)) {
         dispatch(toggleList(false));
+        document.body.style.overflow = "auto";
       }
     };
 
     document.addEventListener("click", handleClickOutside, true);
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
+      document.body.style.overflow = "auto";
     };
   }, []);
 

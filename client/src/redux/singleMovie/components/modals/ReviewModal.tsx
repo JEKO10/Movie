@@ -24,13 +24,16 @@ const ReviewModal = () => {
     const handleClickOutside = (e: MouseEvent) => {
       if (reviewRef.current && !reviewRef.current.contains(e.target as Node)) {
         dispatch(toggleReview(false));
+        document.body.style.overflow = "auto";
       }
     };
 
     document.addEventListener("mouseup", handleClickOutside);
+    document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("mouseup", handleClickOutside);
+      document.body.style.overflow = "auto";
     };
   }, []);
 
