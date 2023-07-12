@@ -76,7 +76,9 @@ const ReviewModal = () => {
               />
               Contains spoilers
             </label>
-            <SaveButton>Save</SaveButton>
+            <SaveButton onClick={() => dispatch(toggleReview(false))}>
+              Save
+            </SaveButton>
           </div>
         </div>
       </ModalReview>

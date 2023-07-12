@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 
 import { useAppDispatch } from "../common/hooks";
 import { setQuery } from "../redux/navbar/navbarSlice";
-import { toggleModal } from "../redux/singleMovie/singleMovieSlice";
+import { togglePoster } from "../redux/singleMovie/singleMovieSlice";
 import TrendingMovies from "../redux/trendingMovies/TrendingMovies";
 import TrendingPeople from "../redux/trendingPeople/TrendingPeople";
 
@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(setQuery(""));
-    dispatch(toggleModal(false));
+    dispatch(togglePoster(false));
   }, []);
 
   return (

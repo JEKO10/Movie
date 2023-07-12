@@ -6,7 +6,7 @@ import { InitialSingleMovie, MovieInfoType } from "../../common/types/typesTS";
 const initialState: InitialSingleMovie = {
   isLoading: true,
   movieInfo: <MovieInfoType>{},
-  isModalOpen: false,
+  isPosterOpen: false,
   category: "cast",
   isCastOpen: false,
   isReview: false,
@@ -36,14 +36,8 @@ const singleMovieSlice = createSlice({
   name: "singleMovie",
   initialState,
   reducers: {
-    toggleModal: (state, action: PayloadAction<boolean>) => {
-      state.isModalOpen = action.payload;
-
-      if (action.payload) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
+    togglePoster: (state, action: PayloadAction<boolean>) => {
+      state.isPosterOpen = action.payload;
     },
     toggleCategory: (state, action: PayloadAction<string | null>) => {
       state.category = action.payload;
@@ -80,7 +74,7 @@ const singleMovieSlice = createSlice({
 });
 
 export const {
-  toggleModal,
+  togglePoster,
   toggleCategory,
   toggleCast,
   toggleReview,

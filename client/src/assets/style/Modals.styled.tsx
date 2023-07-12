@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { flexMixin, primaryColor, primaryFont } from "./GlobalStyles";
 
 type PosterModalProps = {
-  isModalOpen: boolean;
+  isPosterOpen: boolean;
 };
 
 type ModalProps = {
@@ -29,8 +29,8 @@ export const PosterModal = styled.div<PosterModalProps>`
   opacity: 0;
   transition: all 500ms ease;
 
-  ${({ isModalOpen }) =>
-    isModalOpen &&
+  ${({ isPosterOpen }) =>
+    isPosterOpen &&
     css`
       visibility: visible;
       opacity: 1;

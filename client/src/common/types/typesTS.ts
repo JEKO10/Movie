@@ -97,7 +97,7 @@ export type DiscoverPayload = {
 export type InitialSingleMovie = {
   isLoading: boolean;
   movieInfo: MovieInfoType;
-  isModalOpen: boolean;
+  isPosterOpen: boolean;
   category: string | null;
   isCastOpen: boolean;
   isReview: boolean;

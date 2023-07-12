@@ -18,7 +18,13 @@ import Categories from "./components/Categories";
 import ImageModal from "./components/modals/ImageModal";
 import MovieReviews from "./components/MovieReviews";
 import Options from "./components/Options";
-import { getMovie, toggleModal } from "./singleMovieSlice";
+import {
+  getMovie,
+  toggleList,
+  togglePoster,
+  toggleReview,
+  toggleShare,
+} from "./singleMovieSlice";
 
 const SingleMovie = () => {
   const { isLoading, movieInfo } = useAppSelector((store) => store.singleMovie);
@@ -42,6 +48,10 @@ const SingleMovie = () => {
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(setQuery("singleMovie"));
+    dispatch(togglePoster(false));
+    dispatch(toggleReview(false));
+    dispatch(toggleList(false));
+    dispatch(toggleShare(false));
   }, [id]);
 
   if (isLoading) {
@@ -61,7 +71,7 @@ const SingleMovie = () => {
               poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG
             }
             alt="POSTER"
-            onClick={() => dispatch(toggleModal(true))}
+            onClick={() => dispatch(togglePoster(true))}
           />
           <Info>
             <Name>
