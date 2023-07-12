@@ -16,6 +16,10 @@ type PublicToggle = {
   isPublic: boolean;
 };
 
+type CopyModalProps = {
+  isCopied?: boolean;
+};
+
 export const PosterModal = styled.div<PosterModalProps>`
   height: 100%;
   width: 100%;
@@ -148,6 +152,20 @@ export const ModalShare = styled.article`
       color: #e1e1ff99;
     }
   }
+`;
+
+export const CopyModal = styled.p<CopyModalProps>`
+  background-color: #334455;
+  color: #fff;
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  padding: 5px 15px;
+  border-radius: 3px;
+  font-weight: 800;
+  text-shadow: 1px 1px 2px #000;
+  opacity: ${({ isCopied }) => (isCopied ? 1 : 0)};
+  transition: all 500ms ease;
 `;
 
 export const ModalLists = styled.article`

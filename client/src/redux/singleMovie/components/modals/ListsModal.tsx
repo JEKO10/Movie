@@ -14,9 +14,10 @@ import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { toggleList } from "../../singleMovieSlice";
 
 const ListsModal = () => {
+  const [isPublic, setIsPublic] = useState(true);
+
   const { movieInfo, isLists } = useAppSelector((store) => store.singleMovie);
   const dispatch = useAppDispatch();
-  const [isPublic, setIsPublic] = useState(true);
   const listsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

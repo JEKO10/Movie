@@ -135,7 +135,9 @@ const Navbar = () => {
                 <li>
                   <Link to="/profile/settings">Settings</Link>
                 </li>
-                <li>Sign Out</li>
+                <li>
+                  <Link to="/">Sign Out</Link>
+                </li>
               </ProfileModal>
             )}
           </ProfileMenu>
