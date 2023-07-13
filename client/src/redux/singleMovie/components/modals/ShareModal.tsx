@@ -23,23 +23,14 @@ const ShareModal = () => {
     if (linkRef.current) {
       const text = linkRef.current.innerText;
 
-      // Create a temporary textarea element
-      const tempTextArea = document.createElement("textarea");
-      tempTextArea.value = text;
-
-      // Append the textarea element to the body
-      document.body.appendChild(tempTextArea);
-
-      // Select the text in the textarea
-      tempTextArea.select();
-
-      // Copy the selected text to the clipboard
-      document.execCommand("copy");
-
-      // Remove the temporary textarea element
-      document.body.removeChild(tempTextArea);
-
-      console.log("Paragraph text:", text);
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          console.log("Text copied to clipboard!");
+        })
+        .catch((error) => {
+          console.error("Failed to copy text to clipboard:", error);
+        });
     }
 
     setIsCopied(true);
