@@ -28,21 +28,15 @@ export const Nav = styled.nav<NavProps>`
   ${flexMixin({ justify: "space-between", align: "center" })};
   color: #99aabb;
   background-color: ${({ query }) =>
-    query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 1)`};
+    query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 0.95)`};
   padding: 20px 50px;
-  /* position: fixed; */
-  top: 0;
-  left: 0;
   width: 100%;
+  position: fixed;
+  top: ${({ isVisible }) => (isVisible ? "0" : "-95px")};
+  left: 0;
   overflow: hidden;
-  ${({ isVisible }) =>
-    !isVisible
-      ? css`
-          top: -95px;
-        `
-      : css`
-          top: 0;
-        `}
+  z-index: 1;
+  transition: all 500ms ease;
 
   img {
     height: 50px;

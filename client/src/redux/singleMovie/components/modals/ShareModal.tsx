@@ -37,7 +37,7 @@ const ShareModal = () => {
 
     setTimeout(() => {
       setIsCopied(false);
-    }, 1500);
+    }, 2000);
   };
 
   useEffect(() => {

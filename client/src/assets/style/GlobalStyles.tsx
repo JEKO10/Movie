@@ -66,6 +66,7 @@ export const GlobalStyles = React.memo(
     main {
       max-width: 75vw;
       margin: 0 auto;
+      padding-top: 70px;
       color: #fff;
     }
   `}`
