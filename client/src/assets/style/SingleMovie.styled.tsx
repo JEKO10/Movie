@@ -167,13 +167,26 @@ export const Name = styled.div`
 
   h2 {
     font-size: 2rem;
-    line-height: 32px;
+    line-height: 30px;
+    margin-bottom: 0.5rem;
+
+    span {
+      color: #e1e1ff99;
+      font-weight: 400;
+      font-size: 1.2rem;
+
+      a {
+        color: rgba(255, 255, 255, 0.8);
+        margin-left: 0.5rem;
+      }
+    }
   }
 
   h4 {
     color: #e1e1ff99;
-    font-weight: 400;
     font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.65rem;
 
     a {
       color: rgba(255, 255, 255, 0.8);
@@ -183,26 +196,31 @@ export const Name = styled.div`
 `;
 
 export const Overview = styled.div`
-  color: #e1e1ff99;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  ${flexMixin({ justify: "center", align: "flex-start" })};
 
-  h4 {
-    margin-bottom: 1rem;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
+  article:first-child {
+    color: #e1e1ff99;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
-  p {
-    line-height: 25px;
-    margin-bottom: 2rem;
-  }
+    h4 {
+      margin-bottom: 1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
 
-  h3 {
-    font-weight: 400;
-    font-size: 1rem;
-    margin-top: auto;
+    p {
+      line-height: 25px;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: auto;
+    }
   }
 `;
 

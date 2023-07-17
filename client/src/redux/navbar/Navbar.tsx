@@ -24,7 +24,7 @@ import {
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const { query, isSearchOpen, inputValue } = useAppSelector(
     (store) => store.navbar
   );

@@ -75,20 +75,23 @@ const SingleMovie = () => {
           />
           <Info>
             <Name>
-              <h2>{title}</h2>
-              <h4>{release_date?.slice(0, 4)}</h4>
+              <h2>
+                {title} <span>{release_date?.slice(0, 4)}</span>
+              </h2>
               <h4>
                 Directed by
                 <Link to={`/person/${director?.id}/`}>{director?.name}</Link>
               </h4>
             </Name>
             <Overview>
-              <h4>{tagline}</h4>
-              <p>{overview}</p>
-              <h3>{runtime} min</h3>
+              <article>
+                <h4>{tagline}</h4>
+                <p>{overview}</p>
+                <h3>{runtime} min</h3>
+              </article>
+              <Options />
             </Overview>
           </Info>
-          <Options />
         </Wrapper>
         <Categories id={id} />
         {collection && (
