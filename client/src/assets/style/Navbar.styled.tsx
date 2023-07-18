@@ -10,6 +10,7 @@ import {
 type NavProps = {
   query: string;
   isVisible: boolean;
+  scrollTop: number;
 };
 
 type InputProps = {
@@ -27,8 +28,10 @@ type NavMenuItemProps = {
 export const Nav = styled.nav<NavProps>`
   ${flexMixin({ justify: "space-between", align: "center" })};
   color: #99aabb;
-  background-color: ${({ query }) =>
-    query === "singleMovie" ? `rgba(17, 22, 29, 0)` : `rgba(17, 22, 29, 0.95)`};
+  background-color: ${({ scrollTop, query }) =>
+    scrollTop === 0 && query === "singleMovie"
+      ? "rgba(17, 22, 29, 0)"
+      : "rgba(17, 22, 29, 0.95)"};
   padding: 20px 50px;
   width: 100%;
   position: fixed;

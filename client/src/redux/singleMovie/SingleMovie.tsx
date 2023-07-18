@@ -94,6 +94,7 @@ const SingleMovie = () => {
           </Info>
         </Wrapper>
         <Categories id={id} />
+        <MovieReviews />
         {collection && (
           <Collection
             to={`/collection/${collection?.id}/${collection?.name}`}
@@ -103,7 +104,6 @@ const SingleMovie = () => {
             <p>{collection.name}</p>
           </Collection>
         )}
-        <MovieReviews />
       </Movie>
       <ImageModal id={id} posterUrl={posterUrl} poster_path={poster_path} />
     </>

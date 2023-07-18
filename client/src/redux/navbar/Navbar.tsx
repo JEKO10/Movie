@@ -25,24 +25,25 @@ import {
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [scrollTop, setScrollTop] = useState(0);
   const { query, isSearchOpen, inputValue } = useAppSelector(
     (store) => store.navbar
   );
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
-  let theEnd = 0;
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop =
+      const newScrollTop =
         window.pageYOffset || document.documentElement.scrollTop;
 
-      if (scrollTop > theEnd) {
+      if (newScrollTop > scrollTop) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
       }
-      theEnd = scrollTop;
+
+      setScrollTop(newScrollTop);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -50,7 +51,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrollTop]);
 
   const setClicked = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -84,7 +85,7 @@ const Navbar = () => {
   };
 
   return (
-    <Nav query={query} isVisible={isVisible}>
+    <Nav query={query} isVisible={isVisible} scrollTop={scrollTop}>
       <Link to={"/"}>
         <img src={logo} alt="Logo" />
       </Link>

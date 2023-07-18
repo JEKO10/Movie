@@ -344,6 +344,7 @@ export const Collection = styled(Link)`
   width: min-content;
   text-decoration: none;
   font-weight: 700;
+  margin-bottom: 3rem;
   transition: all 200ms ease;
 
   &:hover {
@@ -365,7 +366,7 @@ export const Review = styled.article`
   max-width: 70vw;
   background-color: rgba(0, 0, 0, 0.4);
   color: #e1e1ff99;
-  margin: 3rem 0;
+  margin-bottom: 3rem;
   padding: 30px 40px;
   border-radius: 5px;
 
