@@ -71,19 +71,6 @@ const Navbar = () => {
     }
   }, [isSearchOpen]);
 
-  useEffect(() => {
-    document.addEventListener("click", clickOutside, true);
-    setIsModalOpen(false);
-  }, [query]);
-
-  const clickOutside = (e: MouseEvent) => {
-    if (!inputRef.current?.contains(e.target as Node)) {
-      dispatch(setIsSearchOpen(true));
-    } else {
-      dispatch(setIsSearchOpen(false));
-    }
-  };
-
   return (
     <Nav query={query} isVisible={isVisible} scrollTop={scrollTop}>
       <Link to={"/"}>

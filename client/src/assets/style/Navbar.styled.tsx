@@ -37,7 +37,6 @@ export const Nav = styled.nav<NavProps>`
   position: fixed;
   top: ${({ isVisible }) => (isVisible ? "0" : "-95px")};
   left: 0;
-  overflow: hidden;
   z-index: 1;
   transition: all 500ms ease;
 

@@ -13,6 +13,7 @@ export const SearchedData = styled.section`
   position: absolute;
   top: 4rem;
   right: 3.1rem;
+  z-index: 2;
 
   &::-webkit-scrollbar {
     width: 1px;
