@@ -1,14 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import logo from "../assets/images/logo.png";
+import { ErrorPage } from "../assets/style/ErrorPage.styled";
 
 const Error = () => {
   return (
-    <section>
+    <ErrorPage>
+      <Link to="/">
+        <img src={logo} alt="LOGO" />
+      </Link>
       <p>
-        Sorry, we can’t find the page you’ve requested. Perhaps you imagined it?
-        Please contact us if the problem persists.
+        &quot;I can`t find it.&quot;{"  "}
+        <span>
+          Get back on <Link to="/">safe</Link>.
+        </span>
       </p>
-      <h5>Still from David Fincher’s Fight Club (1999)</h5>
-    </section>
+      <h3>
+        Please <Link to="/account">contact</Link> us if the problem persists.
+      </h3>
+      <h4>Sergio Leone’s Once Upon a Time in America (1984)</h4>
+    </ErrorPage>
   );
 };
 

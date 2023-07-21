@@ -64,6 +64,7 @@ export const GlobalStyles = React.memo(
     }
 
     main {
+      background: url("../images/onceAmerica.jpg") center/cover no-repeat;
       max-width: 75vw;
       margin: 0 auto;
       padding-top: 70px;
