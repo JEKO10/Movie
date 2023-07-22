@@ -1,15 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-import onceAmericaImage from "../images/onceAmerica.jpg";
+import casablanca from "../images/Casablanca.webp";
+import onceAmerica from "../images/onceAmerica.jpg";
+import wonder from "../images/w.jpg";
 import { primaryColor, secondaryColor } from "./GlobalStyles";
 
-export const ErrorPage = styled.section`
+const commonStyles = css`
   height: 100vh;
-  background: url(${onceAmericaImage}) center/cover no-repeat;
-  padding-top: 70px;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 120px 70px;
 
   img {
-    height: 100px;
+    height: 80px;
   }
 
   p {
@@ -34,9 +39,51 @@ export const ErrorPage = styled.section`
     font-size: 1rem;
     margin: 1rem 0;
     font-weight: 400;
+
+    a {
+      color: ${primaryColor};
+      transition: all 200ms ease;
+
+      &:hover {
+        color: #8146c5;
+      }
+    }
   }
 
   h4 {
     color: ${secondaryColor};
   }
 `;
+
+export const ErrorPage = styled.section`
+  ${commonStyles};
+  background: url(${casablanca}) center/cover no-repeat;
+`;
+
+export const ErrorPageA = styled.section`
+  ${commonStyles};
+  background: url(${onceAmerica}) center/cover no-repeat;
+`;
+
+export const ErrorPageB = styled.section`
+  ${commonStyles};
+  background: url(${wonder}) center/cover no-repeat;
+`;
+
+const getRandomStyle = () => {
+  const randomIndex = Math.floor(Math.random() * 3);
+  switch (randomIndex) {
+    case 0:
+      return ErrorPage;
+    case 1:
+      return ErrorPageA;
+    case 2:
+      return ErrorPageB;
+    default:
+      return ErrorPage;
+  }
+};
+
+const RandomStyledError = getRandomStyle();
+
+export default RandomStyledError;
