@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 import casablanca from "../images/Casablanca.webp";
 import onceAmerica from "../images/onceAmerica.jpg";
-import wonder from "../images/w.jpg";
+import wonderfulLife from "../images/wonderfulLife.jpg";
 import { primaryColor, secondaryColor } from "./GlobalStyles";
 
 const commonStyles = css`
@@ -55,32 +55,38 @@ const commonStyles = css`
   }
 `;
 
-export const ErrorPage = styled.section`
+export const ErrorPageCasablanca = styled.section`
   ${commonStyles};
   background: url(${casablanca}) center/cover no-repeat;
 `;
 
-export const ErrorPageA = styled.section`
+export const ErrorPageAmerica = styled.section`
   ${commonStyles};
   background: url(${onceAmerica}) center/cover no-repeat;
 `;
 
-export const ErrorPageB = styled.section`
+export const ErrorPageWonderfulLife = styled.section`
   ${commonStyles};
-  background: url(${wonder}) center/cover no-repeat;
+  background: url(${wonderfulLife}) center/cover no-repeat;
 `;
 
-const getRandomStyle = () => {
+export const getRandomStyle = () => {
   const randomIndex = Math.floor(Math.random() * 3);
+  let movie: number;
+
   switch (randomIndex) {
     case 0:
-      return ErrorPage;
+      movie = 0;
+      return { component: ErrorPageCasablanca, movie };
     case 1:
-      return ErrorPageA;
+      movie = 1;
+      return { component: ErrorPageAmerica, movie };
     case 2:
-      return ErrorPageB;
+      movie = 2;
+      return { component: ErrorPageWonderfulLife, movie };
     default:
-      return ErrorPage;
+      movie = 1;
+      return { component: ErrorPageAmerica, movie };
   }
 };
 
