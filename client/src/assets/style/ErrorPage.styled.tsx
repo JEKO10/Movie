@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 
 import casablanca from "../images/Casablanca.webp";
 import onceAmerica from "../images/onceAmerica.jpg";
+import toyStory from "../images/toyStory.webp";
+import trainingDay from "../images/training.jpg";
 import wonderfulLife from "../images/wonderfulLife.jpg";
 import { primaryColor, secondaryColor } from "./GlobalStyles";
 
@@ -26,6 +28,7 @@ const commonStyles = css`
 
       a {
         color: ${primaryColor};
+        text-decoration: none;
         transition: all 200ms ease;
 
         &:hover {
@@ -42,6 +45,7 @@ const commonStyles = css`
 
     a {
       color: ${primaryColor};
+      text-decoration: none;
       transition: all 200ms ease;
 
       &:hover {
@@ -70,6 +74,16 @@ export const ErrorPageWonderfulLife = styled.section`
   background: url(${wonderfulLife}) center/cover no-repeat;
 `;
 
+export const ErrorPageTrainingDay = styled.section`
+  ${commonStyles};
+  background: url(${trainingDay}) center/cover no-repeat;
+`;
+
+export const ErrorPageToyStory = styled.section`
+  ${commonStyles};
+  background: url(${toyStory}) center/cover no-repeat;
+`;
+
 export const getRandomStyle = () => {
   const randomIndex = Math.floor(Math.random() * 3);
   let movie: number;
@@ -84,6 +98,12 @@ export const getRandomStyle = () => {
     case 2:
       movie = 2;
       return { component: ErrorPageWonderfulLife, movie };
+    case 3:
+      movie = 3;
+      return { component: ErrorPageTrainingDay, movie };
+    case 4:
+      movie = 4;
+      return { component: ErrorPageToyStory, movie };
     default:
       movie = 1;
       return { component: ErrorPageAmerica, movie };

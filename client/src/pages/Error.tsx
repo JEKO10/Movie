@@ -8,28 +8,49 @@ const Error = () => {
   const { component: ErrorComponent, movie } = RandomStyledError;
 
   const getMovieTitle = (movie: number) => {
+    const text = {
+      intro: "",
+      movieName: "",
+    };
     switch (movie) {
       case 0:
-        return "Casablanca (1942)";
+        text.intro = "I can't find her. She checked out of the hotel. ";
+        text.movieName = "Michael Curtiz’s Casablanca (1942)";
+        return text;
       case 1:
-        return "Sergio Leone’s Once Upon a Time in America (1984)";
+        text.intro = "I can't find it. ";
+        text.movieName = "Sergio Leone’s Once Upon a Time in America (1984)";
+        return text;
       case 2:
-        return "It's a Wonderful Life (1946)";
+        text.intro = "I can't find it anywhere. ";
+        text.movieName = "Frank Capra’s It’s a Wonderful Life (1946)";
+        return text;
+      case 3:
+        text.intro = "Where is it? I can't even find it. ";
+        text.movieName = "Antoine Fuqua’s Training Day (2001)";
+        return text;
+      case 4:
+        text.intro =
+          "But, Mom, I can't find him! - Honey, just grab some other link. ";
+        text.movieName = "John Lasseter’s Toy Story (1995)";
+        return text;
       default:
-        return "Sergio Leone’s Once Upon a Time in America (1984)";
+        text.intro = "I can't find it. ";
+        text.movieName = "Sergio Leone’s Once Upon a Time in America (1984)";
+        return text;
     }
   };
 
   const text = {
-    intro: "ASD",
-    movie: getMovieTitle(movie),
+    intro: getMovieTitle(movie).intro,
+    movie: getMovieTitle(movie).movieName,
   };
 
   return (
     <ErrorComponent>
       <img src={logo} alt="LOGO" />
       <p>
-        {text.intro}{" "}
+        {text.intro}
         <span>
           Get back on <Link to="/">safe</Link>.
         </span>
