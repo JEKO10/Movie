@@ -14,28 +14,28 @@ const Error = () => {
     };
     switch (movie) {
       case 0:
-        text.intro = "I can't find her. She checked out of the hotel. ";
+        text.intro = "'I can't find her. She checked out of the hotel.' ";
         text.movieName = "Michael Curtiz’s Casablanca (1942)";
         return text;
       case 1:
-        text.intro = "I can't find it. ";
+        text.intro = "'I can't find it.' ";
         text.movieName = "Sergio Leone’s Once Upon a Time in America (1984)";
         return text;
       case 2:
-        text.intro = "I can't find it anywhere. ";
+        text.intro = "'I can't find it anywhere.' ";
         text.movieName = "Frank Capra’s It’s a Wonderful Life (1946)";
         return text;
       case 3:
-        text.intro = "Where is it? I can't even find it. ";
+        text.intro = "'Where is it? I can't even find it.' ";
         text.movieName = "Antoine Fuqua’s Training Day (2001)";
         return text;
       case 4:
         text.intro =
-          "But, Mom, I can't find him! - Honey, just grab some other link. ";
+          "'But, Mom, I can't find him!\nHoney, just grab some other' link. ";
         text.movieName = "John Lasseter’s Toy Story (1995)";
         return text;
       default:
-        text.intro = "I can't find it. ";
+        text.intro = "'I can't find it.' ";
         text.movieName = "Sergio Leone’s Once Upon a Time in America (1984)";
         return text;
     }
@@ -48,17 +48,25 @@ const Error = () => {
 
   return (
     <ErrorComponent>
-      <img src={logo} alt="LOGO" />
-      <p>
-        {text.intro}
-        <span>
-          Get back on <Link to="/">safe</Link>.
-        </span>
-      </p>
-      <h3>
-        Please <Link to="/account">contact</Link> us if the problem persists.
-      </h3>
-      <h4>{text.movie}</h4>
+      <article>
+        <Link to="/">
+          <img src={logo} alt="LOGO" />
+        </Link>
+        <p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: text.intro.replace(/\n/g, "<br>"),
+            }}
+          />
+          <span>
+            Get back on <Link to="/">safe</Link>.
+          </span>
+        </p>
+        <h3>
+          Please <Link to="/account">contact</Link> us if the problem persists.
+        </h3>
+        <h4>{text.movie}</h4>
+      </article>
     </ErrorComponent>
   );
 };

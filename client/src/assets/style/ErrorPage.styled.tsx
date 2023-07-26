@@ -13,10 +13,18 @@ const commonStyles = css`
   position: absolute;
   top: 0;
   left: 0;
-  padding: 120px 70px;
+  padding: 120px 30px;
+
+  > article {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: max-content;
+    padding: 25px 40px;
+  }
 
   img {
-    height: 80px;
+    display: block;
+    margin: 0 auto 2rem;
+    height: 65px;
   }
 
   p {
@@ -28,7 +36,6 @@ const commonStyles = css`
 
       a {
         color: ${primaryColor};
-        text-decoration: none;
         transition: all 200ms ease;
 
         &:hover {
@@ -45,7 +52,6 @@ const commonStyles = css`
 
     a {
       color: ${primaryColor};
-      text-decoration: none;
       transition: all 200ms ease;
 
       &:hover {
@@ -85,7 +91,7 @@ export const ErrorPageToyStory = styled.section`
 `;
 
 export const getRandomStyle = () => {
-  const randomIndex = Math.floor(Math.random() * 3);
+  const randomIndex = Math.floor(Math.random() * 5);
   let movie: number;
 
   switch (randomIndex) {
