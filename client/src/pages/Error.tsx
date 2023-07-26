@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import logo from "../assets/images/logo.png";
 import RandomStyledError from "../assets/style/ErrorPage.styled";
+import { Loader, LoaderWrapper } from "../common/Loader";
 
 const Error = () => {
   const { component: ErrorComponent, movie } = RandomStyledError;
@@ -45,6 +46,14 @@ const Error = () => {
     intro: getMovieTitle(movie).intro,
     movie: getMovieTitle(movie).movieName,
   };
+
+  if (!ErrorComponent || !movie) {
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
+  }
 
   return (
     <ErrorComponent>

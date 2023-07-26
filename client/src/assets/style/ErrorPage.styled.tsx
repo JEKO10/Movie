@@ -94,7 +94,7 @@ export const getRandomStyle = () => {
   const randomIndex = Math.floor(Math.random() * 5);
   let movie: number;
 
-  switch (randomIndex) {
+  switch (randomIndex + 1) {
     case 0:
       movie = 0;
       return { component: ErrorPageCasablanca, movie };
