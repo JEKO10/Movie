@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../assets/images/logo.png";
 import RandomStyledError from "../assets/style/ErrorPage.styled";
+import { useAppDispatch } from "../common/hooks";
 import { Loader, LoaderWrapper } from "../common/Loader";
+import { setQuery } from "../redux/navbar/navbarSlice";
 
 const Error = () => {
   const { component: ErrorComponent, movie } = RandomStyledError;
+  const dispatch = useAppDispatch();
 
   const getMovieTitle = (movie: number) => {
     const text = {
@@ -47,6 +50,10 @@ const Error = () => {
     movie: getMovieTitle(movie).movieName,
   };
 
+  useEffect(() => {
+    dispatch(setQuery("error"));
+  }, []);
+
   if (!ErrorComponent || !movie) {
     return (
       <LoaderWrapper>
@@ -54,7 +61,6 @@ const Error = () => {
       </LoaderWrapper>
     );
   }
-
   return (
     <ErrorComponent>
       <article>

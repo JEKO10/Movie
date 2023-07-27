@@ -13,7 +13,7 @@ const commonStyles = css`
   position: absolute;
   top: 0;
   left: 0;
-  padding: 120px 30px;
+  padding: 30px;
 
   > article {
     background-color: rgba(0, 0, 0, 0.8);
@@ -23,7 +23,7 @@ const commonStyles = css`
 
   img {
     display: block;
-    margin: 0 auto 2rem;
+    margin: 0 auto 1rem;
     height: 65px;
   }
 

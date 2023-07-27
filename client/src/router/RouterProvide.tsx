@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  HashRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 import { useAppSelector } from "../common/hooks";
 import ScrollToTop from "../common/ScrollTop";
@@ -14,12 +9,10 @@ import routes from "./routes";
 
 function RouterProvider() {
   const { isSearchOpen, inputValue } = useAppSelector((state) => state.navbar);
-  const location = useLocation();
-  const isOnErrorPage = location.pathname === "/*";
 
   return (
     <Router>
-      {!isOnErrorPage && <Navbar />}
+      <Navbar />
       {isSearchOpen && inputValue && <SearchModal />}
       <ScrollToTop />
       <main>

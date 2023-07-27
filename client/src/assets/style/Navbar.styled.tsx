@@ -34,6 +34,7 @@ export const Nav = styled.nav<NavProps>`
       : "rgba(17, 22, 29, 0.95)"};
   padding: 20px 50px;
   width: 100%;
+  display: ${({ query }) => (query === "error" ? "none" : "flex")};
   position: fixed;
   top: ${({ isVisible }) => (isVisible ? "0" : "-95px")};
   left: 0;
