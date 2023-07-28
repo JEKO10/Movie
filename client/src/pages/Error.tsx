@@ -67,18 +67,16 @@ const Error = () => {
         <Link to="/">
           <img src={logo} alt="LOGO" />
         </Link>
+        <p
+          dangerouslySetInnerHTML={{
+            __html: text.intro.replace(/\n/g, "<br>"),
+          }}
+        />
         <p>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: text.intro.replace(/\n/g, "<br>"),
-            }}
-          />
-          <span>
-            Get back on <Link to="/">safe</Link>.
-          </span>
+          Get back on <Link to="/">safe</Link>.
         </p>
         <h3>
-          Please <Link to="/account">contact</Link> us if the problem persists.
+          Please <Link to="/contact">contact</Link> us if the problem persists.
         </h3>
         <h4>{text.movie}</h4>
       </article>

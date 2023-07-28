@@ -33,14 +33,14 @@ const commonStyles = css`
 
     span {
       color: ${primaryColor};
+    }
 
-      a {
-        color: ${primaryColor};
-        transition: all 200ms ease;
+    a {
+      color: ${primaryColor};
+      transition: all 200ms ease;
 
-        &:hover {
-          color: #8146c5;
-        }
+      &:hover {
+        color: #8146c5;
       }
     }
   }

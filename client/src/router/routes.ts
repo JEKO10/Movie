@@ -5,6 +5,7 @@ import Films from "../pages/Films";
 import Home from "../pages/Home";
 import Likes from "../pages/Likes";
 import Watchlist from "../pages/Watchlist";
+import Contact from "../redux/contact/Contact";
 import Collection from "../redux/discoverMovies/components/Collection";
 import DiscoverMovies from "../redux/discoverMovies/DiscoverMovies";
 import Lists from "../redux/lists/Lists";
@@ -83,6 +84,11 @@ const routes = [
     id: 13,
     path: "/*",
     element: ScrollToTop,
+  },
+  {
+    id: 14,
+    path: "/contact",
+    element: Contact,
   },
 ];
 
