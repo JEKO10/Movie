@@ -13,6 +13,22 @@ export const ContactPage = styled.section`
     color: ${secondaryColor};
   }
 
+  > article {
+    ${flexMixin({ justify: "space-between", align: "flex-start" })};
+    width: 100%;
+  }
+`;
+
+export const ContactPoster = styled.article`
+  img {
+    height: 410px;
+    border: 1.5px solid #e1e1ff99;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+`;
+
+export const ContactForm = styled.article`
   label {
     ${flexMixin({ justify: "center", align: "flex-start" })};
     flex-direction: column;
@@ -24,7 +40,8 @@ export const ContactPage = styled.section`
     textarea {
       background-color: #2c3440;
       color: #89a;
-      width: 100%;
+      width: 150%;
+      max-height: 200px;
       margin-top: 0.5rem;
       padding: 9px 9px 8px;
       font-family: ${primaryFont};
@@ -33,12 +50,13 @@ export const ContactPage = styled.section`
       outline: none;
       border-radius: 3px;
       box-shadow: inset 0 -1px 0 #456;
+      resize: vertical;
     }
   }
 
   button {
     background-color: #2c3440;
-    width: 100%;
+    width: 150%;
     color: #89a;
     margin-top: 2rem;
     padding: 9px 9px 8px;
