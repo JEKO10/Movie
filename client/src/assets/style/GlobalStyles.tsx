@@ -59,7 +59,9 @@ export const GlobalStyles = React.memo(
     }
 
     body {
-      background: linear-gradient(to bottom, #1f232a, #11161d);
+      background-color: #222222;
+      color: #fff;
+      /* background: linear-gradient(to bottom, #1f232a, #11161d); */
       font-family: ${primaryFont};
     }
 
