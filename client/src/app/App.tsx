@@ -3,6 +3,7 @@ import React from "react";
 import { GlobalStyles } from "../assets/style/GlobalStyles";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import Friends from "./Friends";
 // import RouterProvider from "../router/RouterProvide";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       {/* <RouterProvider /> */}
       <Navbar />
       <Sidebar />
+      <Friends />
     </>
   );
 }

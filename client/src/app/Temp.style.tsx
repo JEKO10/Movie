@@ -64,11 +64,18 @@ export const Nav = styled.nav`
 `;
 
 export const Side = styled.aside`
+  width: fit-content;
   padding: 20px 50px;
+
+  h3 {
+    color: #949494;
+    font-weight: 200;
+  }
 
   div {
     ${flexMixin({ justify: "flex-start", align: "center" })};
-    margin-bottom: 1rem;
+    width: fit-content;
+    margin-bottom: 0.8rem;
     cursor: pointer;
 
     &:hover p {
