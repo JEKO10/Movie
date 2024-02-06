@@ -3,7 +3,7 @@ import { createGlobalStyle, css } from "styled-components";
 
 export const primaryColor = "#0f87be";
 export const secondaryColor = "#a7a1ae";
-export const primaryFont = "Hanken Grotesk, sans-serif";
+export const primaryFont = "Jockey One, sans-serif";
 
 interface IFlexMixin {
   justify:

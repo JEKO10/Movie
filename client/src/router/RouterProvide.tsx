@@ -11,18 +11,18 @@ function RouterProvider() {
   const { isSearchOpen, inputValue } = useAppSelector((state) => state.navbar);
 
   return (
-    // <Router>
-    //   <Navbar />
-    //   {isSearchOpen && inputValue && <SearchModal />}
-    //   <ScrollToTop />
-    //   <main>
-    //     <Routes>
-    //       {routes.map(({ id, path, element: Component }) => (
-    //         <Route key={id} path={path} element={<Component />} />
-    //       ))}
-    //     </Routes>
-    //   </main>
-    // </Router>
+    <Router>
+      <Navbar />
+      {isSearchOpen && inputValue && <SearchModal />}
+      <ScrollToTop />
+      <main>
+        <Routes>
+          {routes.map(({ id, path, element: Component }) => (
+            <Route key={id} path={path} element={<Component />} />
+          ))}
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
