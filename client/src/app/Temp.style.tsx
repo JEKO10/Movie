@@ -62,3 +62,26 @@ export const Nav = styled.nav`
     cursor: pointer;
   }
 `;
+
+export const Side = styled.aside`
+  padding: 20px 50px;
+
+  div {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+    margin-bottom: 1rem;
+    cursor: pointer;
+
+    &:hover p {
+      color: #fff;
+    }
+
+    img {
+      margin-right: 0.8rem;
+    }
+
+    p {
+      font-size: 20px;
+      color: #949494;
+    }
+  }
+`;
