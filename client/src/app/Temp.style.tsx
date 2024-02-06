@@ -65,7 +65,7 @@ export const Nav = styled.nav`
 
 export const Side = styled.aside`
   width: fit-content;
-  padding: 20px 50px;
+  padding: 15px 50px;
 
   h3 {
     color: #949494;
