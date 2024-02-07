@@ -353,10 +353,10 @@ export const Collection = styled(Link)`
 `;
 
 export const Underline = styled.div<UnderlineProps>`
-  height: 0.5px;
+  height: 1px;
   width: ${({ width }) => width} !important;
   padding: 0 !important;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #606060;
   margin: ${({ margin }) => margin};
 `;
 

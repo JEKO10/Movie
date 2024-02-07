@@ -4,7 +4,8 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useAppSelector } from "../common/hooks";
 import ScrollToTop from "../common/ScrollTop";
 import SearchModal from "../redux/navbar/components/SearchModal";
-import Navbar from "../redux/navbar/Navbar";
+// import Navbar from "../redux/navbar/Navbar";
+import Navbar from "../app/Navbar";
 import routes from "./routes";
 
 function RouterProvider() {
@@ -15,13 +16,13 @@ function RouterProvider() {
       <Navbar />
       {isSearchOpen && inputValue && <SearchModal />}
       <ScrollToTop />
-      <main>
+      {/* <main>
         <Routes>
           {routes.map(({ id, path, element: Component }) => (
             <Route key={id} path={path} element={<Component />} />
           ))}
         </Routes>
-      </main>
+      </main> */}
     </Router>
   );
 }

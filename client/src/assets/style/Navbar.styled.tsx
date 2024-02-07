@@ -123,15 +123,15 @@ export const ProfileMenu = styled.li`
 `;
 
 export const ProfileModal = styled.ul<ProfileMenuProps>`
+  background-color: #292929;
   list-style-type: none;
   position: absolute;
   top: -5px;
   left: -10px;
-  background-color: #8899aa;
   min-width: 110px;
   padding: 0 20px 5px 5px; // top right bottom left
   box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.35), 0 0 10px #000;
-  border-radius: 2px;
+  border-radius: 5px;
 
   li {
     margin: 5px;
@@ -139,15 +139,15 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
     cursor: pointer;
 
     a {
+      color: #fff;
       display: block;
-      text-transform: none;
+      text-decoration: none;
       font-weight: 500;
       padding: 5px 10px;
-      color: rgba(0, 0, 0, 0.8);
 
       &:hover {
         color: #fff;
-        background-color: #667788;
+        background-color: #606060;
       }
     }
 
@@ -160,7 +160,7 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
       letter-spacing: 1.5px;
 
       &:hover {
-        background-color: #8899aa;
+        background-color: #606060;
       }
     }
 
