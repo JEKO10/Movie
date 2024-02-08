@@ -9,7 +9,7 @@ import {
   PublicToggle,
   Submit,
 } from "../../../../assets/style/Modals.styled";
-import { Underline } from "../../../../assets/style/SingleMovie.styled";
+import { Underline } from "../../SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { toggleList } from "../../singleMovieSlice";
 

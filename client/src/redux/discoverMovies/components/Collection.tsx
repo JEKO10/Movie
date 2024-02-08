@@ -1,11 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import {
-  Discover,
-  MoviesList,
-  Sorting,
-} from "../../../assets/style/DiscoverMovies.styled";
+import { Discover, MoviesList, Sorting } from "../DiscoverMovies.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { Loader, LoaderWrapper } from "../../../common/Loader";
 import { getCollection } from "../discoverMoviesSlice";

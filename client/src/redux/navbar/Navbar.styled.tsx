@@ -5,7 +5,7 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
-} from "./GlobalStyles";
+} from "../../assets/style/GlobalStyles";
 
 type NavProps = {
   query: string;

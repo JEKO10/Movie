@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 
-import { Underline } from "../../assets/style/DiscoverMovies.styled";
+import { Underline } from "../discoverMovies/DiscoverMovies.styled";
 import { Fade } from "../../assets/style/Fade.styled";
 import {
   Title,
   Trend,
   TrendInfo,
   TrendLink,
-} from "../../assets/style/Trending.styled";
+} from "../trendingMovies/Trending.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { getTrendingPeople } from "./trendingPeopleSlice";
 

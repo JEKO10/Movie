@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { flexMixin, primaryFont } from "./GlobalStyles";
+import { flexMixin, primaryFont } from "../../assets/style/GlobalStyles";
 
 type TitleProps = {
   time: string;

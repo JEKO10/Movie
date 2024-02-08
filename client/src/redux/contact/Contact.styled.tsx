@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import { flexMixin, primaryFont, secondaryColor } from "./GlobalStyles";
+import {
+  flexMixin,
+  primaryFont,
+  secondaryColor,
+} from "../../assets/style/GlobalStyles";
 
 export const ContactPage = styled.section`
   ${flexMixin({ justify: "flex-start", align: "flex-start" })};

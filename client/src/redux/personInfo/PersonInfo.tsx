@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { MoviesList } from "../../assets/style/DiscoverMovies.styled";
-import { FullBio, Person, PersonImg } from "../../assets/style/Person.styled";
+import { MoviesList } from "../discoverMovies/DiscoverMovies.styled";
+import { FullBio, Person, PersonImg } from "./Person.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";

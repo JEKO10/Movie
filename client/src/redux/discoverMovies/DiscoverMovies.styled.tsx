@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { flexMixin } from "./GlobalStyles";
+import { flexMixin } from "../../assets/style/GlobalStyles";
 
 type MoviesListProps = {
   isCollection: boolean;

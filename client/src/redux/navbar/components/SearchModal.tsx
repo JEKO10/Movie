@@ -1,11 +1,7 @@
 import React from "react";
 
 import { Fade } from "../../../assets/style/Fade.styled";
-import {
-  MovieInfo,
-  SearchedData,
-  SingleMovie,
-} from "../../../assets/style/SearchModal.styled";
+import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 import { useAppSelector } from "../../../common/hooks";
 import { SearchData } from "../../../common/types/typesTS";
 

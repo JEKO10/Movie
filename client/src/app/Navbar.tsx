@@ -3,8 +3,8 @@ import account from "../assets/images/icons/profile.svg";
 import serach from "../assets/images/icons/search.svg";
 import arrow from "../assets/images/icons/arrow.svg";
 import { Nav } from "./Temp.style";
-import { ProfileMenu, ProfileModal } from "../assets/style/Navbar.styled";
-import { Underline } from "../assets/style/SingleMovie.styled";
+import { ProfileMenu, ProfileModal } from "../redux/navbar/Navbar.styled";
+import { Underline } from "../redux/singleMovie/SingleMovie.styled";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

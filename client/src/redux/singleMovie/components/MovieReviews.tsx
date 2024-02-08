@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { Review } from "../../../assets/style/SingleMovie.styled";
+import { Review } from "../SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { Loader, LoaderWrapper } from "../../../common/Loader";
 import { getReviews } from "../../reviews/reviewsSlice";

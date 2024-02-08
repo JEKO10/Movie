@@ -2,7 +2,7 @@ import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { flexMixin, primaryColor } from "./GlobalStyles";
+import { flexMixin, primaryColor } from "../../assets/style/GlobalStyles";
 
 type BannerProps = {
   posterUrl: string;

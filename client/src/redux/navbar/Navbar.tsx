@@ -12,8 +12,8 @@ import {
   NavMenuItem,
   ProfileMenu,
   ProfileModal,
-} from "../../assets/style/Navbar.styled";
-import { Underline } from "../../assets/style/SingleMovie.styled";
+} from "./Navbar.styled";
+import { Underline } from "../singleMovie/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import {
   searchMovies,

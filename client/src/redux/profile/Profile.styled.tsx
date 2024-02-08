@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import { flexMixin, primaryColor, primaryFont } from "./GlobalStyles";
+import {
+  flexMixin,
+  primaryColor,
+  primaryFont,
+} from "../../assets/style/GlobalStyles";
 
 type WrongInfoProps = {
   invalidCredentials: boolean;

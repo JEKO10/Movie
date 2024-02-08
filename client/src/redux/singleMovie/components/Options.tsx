@@ -9,7 +9,7 @@ import {
   Rating,
   RemoveWatchlist,
   Underline,
-} from "../../../assets/style/SingleMovie.styled";
+} from "../SingleMovie.styled";
 import { useAppDispatch } from "../../../common/hooks";
 import { toggleList, toggleReview, toggleShare } from "../singleMovieSlice";
 import Modals from "./Modals";

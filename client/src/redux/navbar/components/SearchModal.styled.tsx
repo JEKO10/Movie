@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { flexMixin, secondaryColor } from "./GlobalStyles";
+import { flexMixin, secondaryColor } from "../../../assets/style/GlobalStyles";
 
 export const SearchedData = styled.section`
   background-color: rgb(19, 24, 28);

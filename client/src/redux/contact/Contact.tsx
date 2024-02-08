@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import contactImg from "../../assets/images/contact.jpg";
-import {
-  ContactForm,
-  ContactPage,
-  ContactPoster,
-} from "../../assets/style/Contact.styled";
+import { ContactForm, ContactPage, ContactPoster } from "./Contact.styled";
 import { useAppDispatch } from "../../common/hooks";
 import { setQuery } from "../navbar/navbarSlice";
 

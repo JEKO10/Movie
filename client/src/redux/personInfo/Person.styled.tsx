@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { flexMixin } from "./GlobalStyles";
+import { flexMixin } from "../../assets/style/GlobalStyles";
 
 export const Person = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-start" })};

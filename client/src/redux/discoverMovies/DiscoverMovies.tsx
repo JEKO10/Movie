@@ -8,7 +8,7 @@ import {
   Sorting,
   SortList,
   Underline,
-} from "../../assets/style/DiscoverMovies.styled";
+} from "./DiscoverMovies.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";

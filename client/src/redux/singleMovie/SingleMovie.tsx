@@ -10,7 +10,7 @@ import {
   Overview,
   Poster,
   Wrapper,
-} from "../../assets/style/SingleMovie.styled";
+} from "./SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { setQuery } from "../navbar/navbarSlice";

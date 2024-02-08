@@ -8,7 +8,7 @@ import {
   ProfileName,
   ProfileWrapper,
   WrongInfo,
-} from "../assets/style/Profile.styled";
+} from "../redux/profile/Profile.styled";
 
 const Profile = () => {
   const navigate = useNavigate();
