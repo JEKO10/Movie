@@ -1,11 +1,11 @@
 import React from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
+// import Navbar from "../app/Navbar";
 import { useAppSelector } from "../common/hooks";
 import ScrollToTop from "../common/ScrollTop";
 import SearchModal from "../redux/navbar/components/SearchModal";
-// import Navbar from "../redux/navbar/Navbar";
-import Navbar from "../app/Navbar";
+import Navbar from "../redux/navbar/Navbar";
 import routes from "./routes";
 
 function RouterProvider() {

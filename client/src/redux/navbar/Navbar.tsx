@@ -1,63 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import { VscChromeClose } from "react-icons/vsc";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../../assets/images/logo.png";
+import arrow from "../../assets/images/icons/arrow.svg";
+import account from "../../assets/images/icons/profile.svg";
+import search from "../../assets/images/icons/search.svg";
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Underline } from "../singleMovie/SingleMovie.styled";
 import {
-  IconWrapper,
   Input,
   Nav,
-  NavMenu,
-  NavMenuItem,
+  ProfileHeader,
   ProfileMenu,
   ProfileModal,
 } from "./Navbar.styled";
-import { Underline } from "../singleMovie/SingleMovie.styled";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import {
-  searchMovies,
-  setInputValue,
-  setIsSearchOpen,
-  setQuery,
-} from "./navbarSlice";
+import { searchMovies, setInputValue } from "./navbarSlice";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [scrollTop, setScrollTop] = useState(0);
-  const { query, isSearchOpen, inputValue } = useAppSelector(
-    (store) => store.navbar
-  );
+  const { inputValue } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const newScrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      if (newScrollTop > scrollTop) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-
-      setScrollTop(newScrollTop);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrollTop]);
-
-  const setClicked = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    dispatch(setQuery(event.currentTarget.text));
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -65,110 +27,97 @@ const Navbar = () => {
     dispatch(searchMovies());
   };
 
-  useEffect(() => {
-    if (isSearchOpen) {
-      dispatch(setInputValue(""));
-    }
-  }, [isSearchOpen]);
-
   return (
-    <Nav query={query} isVisible={isVisible} scrollTop={scrollTop}>
+    <Nav>
       <Link to={"/"}>
-        <img src={logo} alt="Logo" />
+        <h1>
+          <span>Movie</span>xd
+        </h1>
       </Link>
-      <NavMenu>
-        <NavMenuItem active={false}>
-          <ProfileMenu onMouseEnter={() => setIsModalOpen(true)}>
-            Profile
-            {isModalOpen && (
-              <ProfileModal
-                onMouseEnter={() => setIsModalOpen(true)}
-                onMouseLeave={() => {
-                  setTimeout(() => {
-                    setIsModalOpen(false);
-                  }, 500);
-                }}
-                isModalOpen={isModalOpen}
-              >
-                <li>Profile</li>
-                <Underline
-                  margin="5px -20px 5px -5px"
-                  width="calc(100% + 25px)"
-                />
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/profile">Profile</Link>
-                </li>
-                <li>
-                  <Link to="/profile/films">Films</Link>
-                </li>
-                <li>
-                  <Link to="/profile/reviews">Reviews</Link>
-                </li>
-                <li>
-                  <Link to="/profile/likes">Likes</Link>
-                </li>
-                <li>
-                  <Link to="/profile/watchlist">Watchlist</Link>
-                </li>
-                <li>
-                  <Link to="/profile/lists">Lists</Link>
-                </li>
-                <Underline
-                  margin="5px -20px 5px -5px"
-                  width="calc(100% + 25px)"
-                />
-                <li>
-                  <Link to="/profile/settings">Settings</Link>
-                </li>
-                <li>
-                  <Link to="/">Sign Out</Link>
-                </li>
-              </ProfileModal>
-            )}
-          </ProfileMenu>
-        </NavMenuItem>
-        <NavMenuItem active={query === "Films"}>
-          <Link to={"/films"} onClick={(event) => setClicked(event)}>
-            Films
-          </Link>
-        </NavMenuItem>
-        <NavMenuItem active={query === "Likes"}>
-          <Link to={"/likes"} onClick={(event) => setClicked(event)}>
-            Likes
-          </Link>
-        </NavMenuItem>
-        <NavMenuItem active={query === "Lists"}>
-          <Link to={"/lists"} onClick={(event) => setClicked(event)}>
-            Lists
-          </Link>
-        </NavMenuItem>
-        <NavMenuItem active={query === "Watchlist"}>
-          <Link to={"/watchlist"} onClick={(event) => setClicked(event)}>
-            Watchlist
-          </Link>
-        </NavMenuItem>
-        <NavMenuItem active={false}>
-          <IconWrapper onClick={() => dispatch(setIsSearchOpen(isSearchOpen))}>
-            {isSearchOpen ? <VscChromeClose /> : <FaSearch />}
-          </IconWrapper>
-          <Input
-            ref={inputRef}
-            isSearchOpen={isSearchOpen}
-            value={inputValue}
-            type="text"
-            placeholder="Enter movie title..."
-            onChange={handleInputChange}
-          />
-        </NavMenuItem>
-      </NavMenu>
+      <ProfileMenu>
+        <ProfileHeader onClick={() => setIsModalOpen(!isModalOpen)}>
+          <img src={account} alt="accountImg" />
+          <p>JEKO10</p>
+          <img src={arrow} alt="arrow" />
+        </ProfileHeader>
+        {isModalOpen && (
+          <ProfileModal isModalOpen={isModalOpen}>
+            <li>Profile</li>
+            <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <li>
+              <Link to="/profile/films">Films</Link>
+            </li>
+            <li>
+              <Link to="/profile/reviews">Reviews</Link>
+            </li>
+            <li>
+              <Link to="/profile/likes">Likes</Link>
+            </li>
+            <li>
+              <Link to="/profile/watchlist">Watchlist</Link>
+            </li>
+            <li>
+              <Link to="/profile/lists">Lists</Link>
+            </li>
+            <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
+            <li>
+              <Link to="/profile/settings">Settings</Link>
+            </li>
+            <li>
+              <Link to="/">Sign Out</Link>
+            </li>
+          </ProfileModal>
+        )}
+      </ProfileMenu>
+      <Input>
+        <input
+          type="text"
+          value={inputValue}
+          ref={inputRef}
+          placeholder="Enter movie title..."
+          onChange={handleInputChange}
+        />
+        <img src={search} alt="searchImg" />
+      </Input>
+      <article>
+        <button>Log in</button>
+        <button>Sign up</button>
+      </article>
     </Nav>
   );
 };
 
 export default Navbar;
+
+// const [isVisible, setIsVisible] = useState(true);
+// const [scrollTop, setScrollTop] = useState(0);
+
+// useEffect(() => {
+//   const handleScroll = () => {
+//     const newScrollTop =
+//       window.pageYOffset || document.documentElement.scrollTop;
+
+//     if (newScrollTop > scrollTop) {
+//       setIsVisible(false);
+//     } else {
+//       setIsVisible(true);
+//     }
+
+//     setScrollTop(newScrollTop);
+//   };
+
+//   window.addEventListener("scroll", handleScroll);
+
+//   return () => {
+//     window.removeEventListener("scroll", handleScroll);
+//   };
+// }, [scrollTop]);
 
 {
   /* <Link

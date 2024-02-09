@@ -1,8 +1,9 @@
 import React from "react";
 import { createGlobalStyle, css } from "styled-components";
 
-export const primaryColor = "#0f87be";
-export const secondaryColor = "#a7a1ae";
+export const primaryColor = "#292929";
+export const secondaryColor = "#00AF51";
+export const tertiaryColor = "#606060";
 export const primaryFont = "Jockey One, sans-serif";
 
 interface IFlexMixin {

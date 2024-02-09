@@ -4,7 +4,6 @@ import axios, { isAxiosError } from "axios";
 import { InitialNavbar, SearchData } from "../../common/types/typesTS";
 
 const initialState: InitialNavbar = {
-  isSearchOpen: false,
   inputValue: "",
   query: "",
   searchData: [],
@@ -44,10 +43,6 @@ const navbarSlice = createSlice({
   reducers: {
     setQuery: (state, { payload }: { payload: string }) => {
       state.query = payload;
-      state.isSearchOpen = false;
-    },
-    setIsSearchOpen: (state, { payload }: { payload: boolean }) => {
-      state.isSearchOpen = !payload;
     },
     setInputValue: (state, { payload }: { payload: string }) => {
       state.inputValue = payload;
@@ -63,5 +58,5 @@ const navbarSlice = createSlice({
   },
 });
 
-export const { setQuery, setIsSearchOpen, setInputValue } = navbarSlice.actions;
+export const { setQuery, setInputValue } = navbarSlice.actions;
 export const { reducer } = navbarSlice;
