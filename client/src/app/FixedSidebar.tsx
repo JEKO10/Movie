@@ -1,6 +1,7 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+
 import Friends from "./Friends";
+import Sidebar from "./Sidebar";
 
 const FixedSidebar = () => {
   return (

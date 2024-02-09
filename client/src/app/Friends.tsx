@@ -1,4 +1,5 @@
 import React from "react";
+
 import friend from "../assets/images/icons/friend.svg";
 import { Side } from "./Temp.style";
 

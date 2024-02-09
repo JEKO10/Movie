@@ -1,6 +1,7 @@
 import React from "react";
-import home from "../assets/images/icons/home.svg";
+
 import community from "../assets/images/icons/community.svg";
+import home from "../assets/images/icons/home.svg";
 import list from "../assets/images/icons/list.svg";
 import play from "../assets/images/icons/play.svg";
 import { Side } from "./Temp.style";
