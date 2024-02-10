@@ -2,6 +2,7 @@ import React from "react";
 
 import { GlobalStyles } from "../assets/style/GlobalStyles";
 import RouterProvider from "../router/RouterProvide";
+import Features from "./Features";
 import FixedSidebar from "./FixedSidebar";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <GlobalStyles />
       <RouterProvider />
       <FixedSidebar />
+      <Features />
     </>
   );
 }

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import { flexMixin } from "../assets/style/GlobalStyles";
+import {
+  flexMixin,
+  primaryColor,
+  tertiaryColor,
+} from "../assets/style/GlobalStyles";
 
 export const Side = styled.aside`
   width: fit-content;
@@ -28,6 +32,36 @@ export const Side = styled.aside`
     p {
       font-size: 20px;
       color: #949494;
+    }
+  }
+`;
+
+export const Features = styled.section`
+  padding: 15px 50px;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 200;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+    background-color: ${primaryColor};
+    margin-bottom: 2rem;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    img {
+      margin-right: 2rem;
+    }
+
+    p {
+      color: ${tertiaryColor};
+      font-size: 30px;
+      text-transform: uppercase;
+      max-width: 550px;
     }
   }
 `;
