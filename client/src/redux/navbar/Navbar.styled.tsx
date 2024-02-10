@@ -32,13 +32,13 @@ export const Nav = styled.nav`
     }
   }
 
-  button {
+  article button {
     background-color: ${secondaryColor};
     color: #fff;
     font-size: 30px;
     font-family: ${primaryFont};
     text-transform: uppercase;
-    margin: 0 2rem;
+    margin-left: 1rem;
     padding: 5px 40px;
     border-radius: 10px;
     cursor: pointer;
@@ -92,24 +92,22 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
       }
     }
 
-    &:first-of-type {
-      padding: 0;
-      padding-left: 10px;
-      color: #fff;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      letter-spacing: 1.5px;
-
-      &:hover {
-        background-color: ${tertiaryColor};
-      }
-    }
-
     &:last-of-type {
-      display: block;
       margin: 5px -20px 3px -5px;
     }
   }
+`;
+
+export const LogButton = styled.button`
+  background-color: ${primaryColor};
+  color: #fff;
+  font-size: 30px;
+  font-family: ${primaryFont};
+  text-transform: uppercase;
+  padding: 5px 40px;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
+  cursor: pointer;
 `;
 
 export const Input = styled.div`

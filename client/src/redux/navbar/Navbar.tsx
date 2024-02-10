@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Underline } from "../singleMovie/SingleMovie.styled";
 import {
   Input,
+  LogButton,
   Nav,
   ProfileHeader,
   ProfileMenu,
@@ -27,6 +28,10 @@ const Navbar = () => {
     dispatch(searchMovies());
   };
 
+  const onLinkChange = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Nav>
       <Link to={"/"}>
@@ -42,39 +47,39 @@ const Navbar = () => {
         </ProfileHeader>
         {isModalOpen && (
           <ProfileModal isModalOpen={isModalOpen}>
-            <li>Profile</li>
-            <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
+            <li onClick={onLinkChange}>
               <Link to="/profile">Profile</Link>
             </li>
-            <li>
+            <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
+            <li onClick={onLinkChange}>
+              <Link to="/">Home</Link>
+            </li>
+            <li onClick={onLinkChange}>
               <Link to="/profile/films">Films</Link>
             </li>
-            <li>
+            <li onClick={onLinkChange}>
               <Link to="/profile/reviews">Reviews</Link>
             </li>
-            <li>
+            <li onClick={onLinkChange}>
               <Link to="/profile/likes">Likes</Link>
             </li>
-            <li>
+            <li onClick={onLinkChange}>
               <Link to="/profile/watchlist">Watchlist</Link>
             </li>
-            <li>
+            <li onClick={onLinkChange}>
               <Link to="/profile/lists">Lists</Link>
             </li>
             <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
-            <li>
+            <li onClick={onLinkChange}>
               <Link to="/profile/settings">Settings</Link>
             </li>
-            <li>
+            <li onClick={onLinkChange}>
               <Link to="/">Sign Out</Link>
             </li>
           </ProfileModal>
         )}
       </ProfileMenu>
+      <LogButton>Log +</LogButton>
       <Input>
         <input
           type="text"

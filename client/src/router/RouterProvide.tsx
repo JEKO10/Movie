@@ -9,12 +9,12 @@ import Navbar from "../redux/navbar/Navbar";
 import routes from "./routes";
 
 function RouterProvider() {
-  const { isSearchOpen, inputValue } = useAppSelector((state) => state.navbar);
+  const { inputValue } = useAppSelector((state) => state.navbar);
 
   return (
     <Router>
       <Navbar />
-      {isSearchOpen && inputValue && <SearchModal />}
+      {inputValue && <SearchModal />}
       <ScrollToTop />
       {/* <main>
         <Routes>
