@@ -37,7 +37,8 @@ export const Side = styled.aside`
 `;
 
 export const Features = styled.section`
-  padding: 15px 50px;
+  max-width: 75vw;
+  margin: 1rem auto;
 
   h2 {
     font-size: 40px;
@@ -51,6 +52,7 @@ export const Features = styled.section`
     margin-bottom: 2rem;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
     cursor: pointer;
 
     img {
@@ -62,6 +64,26 @@ export const Features = styled.section`
       font-size: 30px;
       text-transform: uppercase;
       max-width: 550px;
+    }
+  }
+`;
+
+export const Oscar = styled.section`
+  max-width: 75vw;
+  margin: 1rem auto;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 200;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    img {
+      border-radius: 13px;
     }
   }
 `;
