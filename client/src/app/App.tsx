@@ -5,6 +5,7 @@ import RouterProvider from "../router/RouterProvide";
 import Features from "./Features";
 import FixedSidebar from "./FixedSidebar";
 import Oscar from "./Oscar";
+import RatePopUp from "./RatePopUp";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <FixedSidebar />
       <Features />
       <Oscar />
+      <RatePopUp />
     </>
   );
 }

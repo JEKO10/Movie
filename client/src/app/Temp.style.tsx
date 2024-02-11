@@ -3,6 +3,8 @@ import styled from "styled-components";
 import {
   flexMixin,
   primaryColor,
+  primaryFont,
+  secondaryColor,
   tertiaryColor,
 } from "../assets/style/GlobalStyles";
 
@@ -85,5 +87,33 @@ export const Oscar = styled.section`
     img {
       border-radius: 13px;
     }
+  }
+`;
+
+export const RatePopUp = styled.aside`
+  background-color: rgba(0, 175, 81, 0.2);
+  width: 324px;
+  padding: 30px 0;
+  border-radius: 12px;
+  text-align: center;
+
+  p {
+    font-size: 28px;
+    text-transform: uppercase;
+    max-width: 260px;
+    margin: 1rem auto 2rem;
+    text-align: center;
+  }
+
+  button {
+    background-color: ${secondaryColor};
+    color: #fff;
+    font-size: 30px;
+    font-family: ${primaryFont};
+    text-transform: uppercase;
+    margin-left: 1rem;
+    padding: 5px 60px;
+    border-radius: 10px;
+    cursor: pointer;
   }
 `;
