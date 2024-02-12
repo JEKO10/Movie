@@ -8,6 +8,17 @@ import {
   tertiaryColor,
 } from "../assets/style/GlobalStyles";
 
+type SidebarProp = {
+  isScrolled: boolean;
+};
+
+export const FixedSidebar = styled.aside<SidebarProp>`
+  position: fixed;
+  transform: ${({ isScrolled }) =>
+    isScrolled ? " translateY(-80px)" : " translateY(0)"};
+  transition: transform 200ms ease;
+`;
+
 export const Side = styled.aside`
   width: fit-content;
   padding: 15px 50px;
@@ -39,7 +50,7 @@ export const Side = styled.aside`
 `;
 
 export const Features = styled.section`
-  max-width: 75vw;
+  max-width: 70vw;
   margin: 1rem auto;
 
   h2 {
@@ -51,6 +62,7 @@ export const Features = styled.section`
   article {
     ${flexMixin({ justify: "flex-start", align: "center" })};
     background-color: ${primaryColor};
+    width: 801px;
     margin-bottom: 2rem;
     padding: 20px;
     border-radius: 10px;
@@ -71,7 +83,7 @@ export const Features = styled.section`
 `;
 
 export const Oscar = styled.section`
-  max-width: 75vw;
+  max-width: 70vw;
   margin: 1rem auto;
 
   h2 {
