@@ -50,8 +50,9 @@ export const Side = styled.aside`
 `;
 
 export const Features = styled.section`
-  max-width: 70vw;
-  margin: 1rem auto;
+  ${flexMixin({ justify: "space-between", align: "flex-end" })};
+  max-width: 83vw;
+  margin: 1rem 50px 1rem auto; /* top | right | bottom | left */
 
   h2 {
     font-size: 40px;
@@ -59,7 +60,7 @@ export const Features = styled.section`
     margin-bottom: 1rem;
   }
 
-  article {
+  div {
     ${flexMixin({ justify: "flex-start", align: "center" })};
     background-color: ${primaryColor};
     width: 801px;
@@ -69,8 +70,14 @@ export const Features = styled.section`
     box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
     cursor: pointer;
 
-    &:hover p {
-      color: ${secondaryColor};
+    & {
+      :hover p {
+        color: ${secondaryColor};
+      }
+
+      :last-of-type {
+        margin-bottom: 0;
+      }
     }
 
     img {
@@ -87,8 +94,8 @@ export const Features = styled.section`
 `;
 
 export const Oscar = styled.section`
-  max-width: 70vw;
-  margin: 1rem auto;
+  max-width: 83vw;
+  margin: 1rem 50px 1rem auto;
 
   h2 {
     font-size: 40px;
@@ -98,7 +105,7 @@ export const Oscar = styled.section`
 
   article {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
     img {
       border: 2px solid transparent;
@@ -115,7 +122,7 @@ export const Oscar = styled.section`
 export const RatePopUp = styled.aside`
   background-color: rgba(0, 175, 81, 0.2);
   width: 324px;
-  padding: 30px 0;
+  padding: 25px 0;
   border-radius: 12px;
   text-align: center;
 
@@ -136,6 +143,12 @@ export const RatePopUp = styled.aside`
     margin-left: 1rem;
     padding: 5px 60px;
     border-radius: 10px;
+    transition: all 300ms ease;
     cursor: pointer;
+
+    &:hover {
+      background-color: ${primaryColor};
+      color: ${secondaryColor};
+    }
   }
 `;
