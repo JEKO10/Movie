@@ -51,11 +51,16 @@ export const ProfileHeader = styled.header`
   padding: 10px 15px;
   border-radius: 10px;
   box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
+  transition: background-color 200ms ease;
   cursor: pointer;
 
   p {
     font-size: 25px;
     margin: 0 0.5rem;
+  }
+
+  &:hover {
+    background-color: ${secondaryColor};
   }
 `;
 
@@ -107,7 +112,12 @@ export const LogButton = styled.button`
   padding: 5px 40px;
   border-radius: 10px;
   box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
+  transition: background-color 200ms ease;
   cursor: pointer;
+
+  &:hover {
+    background-color: ${secondaryColor};
+  }
 `;
 
 export const Input = styled.div`

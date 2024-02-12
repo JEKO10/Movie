@@ -35,7 +35,7 @@ export const Side = styled.aside`
     cursor: pointer;
 
     &:hover p {
-      color: #fff;
+      color: ${secondaryColor};
     }
 
     img {
@@ -69,6 +69,10 @@ export const Features = styled.section`
     box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
     cursor: pointer;
 
+    &:hover p {
+      color: ${secondaryColor};
+    }
+
     img {
       margin-right: 2rem;
     }
@@ -97,7 +101,13 @@ export const Oscar = styled.section`
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 
     img {
-      border-radius: 13px;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      cursor: pointer;
+
+      &:hover {
+        border: 2px solid ${secondaryColor};
+      }
     }
   }
 `;
