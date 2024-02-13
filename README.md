@@ -32,4 +32,4 @@
 
 ## Live preview
 
-[Click for live preview](https://jeko10.github.io/Moviexd/)
+[Click for live preview]()
