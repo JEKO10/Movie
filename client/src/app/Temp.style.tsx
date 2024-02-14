@@ -152,3 +152,64 @@ export const RatePopUp = styled.aside`
     }
   }
 `;
+
+export const TrendingMovies = styled.section`
+  max-width: 73vw;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 200;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+
+    > div {
+      ${flexMixin({ justify: "space-between", align: "flex-start" })};
+      flex-direction: column;
+      background-color: #292929;
+      position: relative;
+      height: 325px;
+      width: 245px;
+      padding: 10px 10px;
+      border-radius: 12px;
+
+      h2 {
+        max-width: 150px;
+        font-size: 30px;
+        text-transform: uppercase;
+        line-height: 30px;
+        margin-bottom: 5px;
+      }
+
+      h3 {
+        font-size: 30px;
+        color: ${secondaryColor};
+        position: absolute;
+        top: 0;
+        right: 10px;
+      }
+
+      p {
+        max-width: 108px;
+        color: #fff;
+        font-size: 20px;
+        line-height: 20px;
+        opacity: 0.5;
+      }
+
+      button {
+        background-color: ${secondaryColor};
+        color: #fff;
+        font-size: 40px;
+        font-family: ${primaryFont};
+        text-transform: uppercase;
+        padding: 1px 35px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+`;

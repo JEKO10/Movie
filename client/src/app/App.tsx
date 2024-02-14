@@ -6,6 +6,7 @@ import Features from "./Features";
 import FixedSidebar from "./FixedSidebar";
 import Oscar from "./Oscar";
 import RatePopUp from "./RatePopUp";
+import TrendingMovies from "./TrendingMovies";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <GlobalStyles />
       <RouterProvider />
       <FixedSidebar />
+      <TrendingMovies />
       <Features />
       <Oscar />
     </>
