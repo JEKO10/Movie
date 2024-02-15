@@ -184,6 +184,12 @@ export const TrendingMovies = styled.section`
         margin-bottom: 5px;
       }
 
+      img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+
       h3 {
         font-size: 30px;
         color: ${secondaryColor};
@@ -206,9 +212,10 @@ export const TrendingMovies = styled.section`
         font-size: 40px;
         font-family: ${primaryFont};
         text-transform: uppercase;
-        padding: 1px 35px;
+        padding: 0 30px;
         border-radius: 10px;
         cursor: pointer;
+        z-index: 2;
       }
     }
   }

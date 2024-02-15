@@ -1,5 +1,8 @@
 import React from "react";
 import { TrendingMovies as Container } from "./Temp.style";
+import noCountry from "../assets/images/noCountry.png";
+import eyesWideShut from "../assets/images/eyesWide.png";
+import forestGump from "../assets/images/forestGump.png";
 
 const TrendingMovies = () => {
   return (
@@ -11,6 +14,7 @@ const TrendingMovies = () => {
           <div>
             <h2>No country for old men</h2>
             <p>In the last month, this movie was searched 32,121 times!</p>
+            <img src={noCountry} alt="noCountry" />
           </div>
           <button>Rate</button>
         </div>
@@ -19,6 +23,7 @@ const TrendingMovies = () => {
           <div>
             <h2>Eyes wide shut</h2>
             <p>In the last month, this movie was searched 18,010 times!</p>
+            <img src={eyesWideShut} alt="eyesWideShut" />
           </div>
           <button>Rate</button>
         </div>
@@ -27,6 +32,7 @@ const TrendingMovies = () => {
           <div>
             <h2>Forest Gump</h2>
             <p>In the last month, this movie was searched 12,223 times!</p>
+            <img src={forestGump} alt="forestGump" />
           </div>
           <button>Rate</button>
         </div>
