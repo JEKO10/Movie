@@ -5,7 +5,6 @@ import RouterProvider from "../router/RouterProvide";
 import Features from "./Features";
 import FixedSidebar from "./FixedSidebar";
 import Oscar from "./Oscar";
-import RatePopUp from "./RatePopUp";
 import TrendingMovies from "./TrendingMovies";
 
 function App() {

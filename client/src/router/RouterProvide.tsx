@@ -16,13 +16,13 @@ function RouterProvider() {
       <Navbar />
       {inputValue && <SearchModal />}
       <ScrollToTop />
-      {/* <main>
+      <main>
         <Routes>
           {routes.map(({ id, path, element: Component }) => (
             <Route key={id} path={path} element={<Component />} />
           ))}
         </Routes>
-      </main> */}
+      </main>
     </Router>
   );
 }

@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 import contactImg from "../../assets/images/contact.jpg";
 import { useAppDispatch } from "../../common/hooks";
@@ -12,9 +13,27 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    dispatch(setQuery(""));
-  }, []);
+  const form = useRef();
+
+  const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_PUBLIC_KEY
+      )
+      .then(
+        (result: { text: string }) => {
+          console.log(result.text);
+        },
+        (error: { text: string }) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   return (
     <ContactPage>
@@ -25,7 +44,7 @@ const Contact = () => {
             <img src={contactImg} alt="contactImg" />
           </Link>
         </ContactPoster>
-        <ContactForm>
+        <ContactForm ref={form} onSubmit={sendEmail}>
           <label>
             Your name
             <input
@@ -59,3 +78,7 @@ const Contact = () => {
 };
 
 export default Contact;
+
+// useEffect(() => {
+//   dispatch(setQuery(""));
+// }, []);
