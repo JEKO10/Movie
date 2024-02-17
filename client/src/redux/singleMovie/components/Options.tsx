@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiClock, FiEye, FiHeart, FiX } from "react-icons/fi";
 import { RiStarSFill } from "react-icons/ri";
 
+import { useAppDispatch } from "../../../common/hooks";
 import {
   Actions,
   AddWatchlist,
@@ -10,7 +11,6 @@ import {
   RemoveWatchlist,
   Underline,
 } from "../SingleMovie.styled";
-import { useAppDispatch } from "../../../common/hooks";
 import { toggleList, toggleReview, toggleShare } from "../singleMovieSlice";
 import Modals from "./Modals";
 

@@ -1,4 +1,5 @@
 import React from "react";
+
 import ratePopUp from "../assets/images/icons/ratePopUp.svg";
 import { RatePopUp as Container } from "./Temp.style";
 

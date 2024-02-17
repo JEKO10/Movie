@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-import { Underline } from "../discoverMovies/DiscoverMovies.styled";
 import { Fade } from "../../assets/style/Fade.styled";
-import { Title, Trend, TrendInfo, TrendLink } from "./Trending.styled";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
+import { Underline } from "../discoverMovies/DiscoverMovies.styled";
+import { Title, Trend, TrendInfo, TrendLink } from "./Trending.styled";
 import { changeTime, getTrending } from "./trendingMoviesSlice";
 
 const Trending = () => {

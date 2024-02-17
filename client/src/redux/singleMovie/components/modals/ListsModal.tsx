@@ -9,8 +9,8 @@ import {
   PublicToggle,
   Submit,
 } from "../../../../assets/style/Modals.styled";
-import { Underline } from "../../SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
+import { Underline } from "../../SingleMovie.styled";
 import { toggleList } from "../../singleMovieSlice";
 
 const ListsModal = () => {

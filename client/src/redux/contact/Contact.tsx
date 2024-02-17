@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
+import React, { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 import contactImg from "../../assets/images/contact.jpg";
 import { useAppDispatch } from "../../common/hooks";
-import { setQuery } from "../navbar/navbarSlice";
+// import { setQuery } from "../navbar/navbarSlice";
 import { ContactForm, ContactPage, ContactPoster } from "./Contact.styled";
 
 const Contact = () => {

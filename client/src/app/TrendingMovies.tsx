@@ -1,8 +1,9 @@
 import React from "react";
-import { TrendingMovies as Container } from "./Temp.style";
-import noCountry from "../assets/images/noCountry.png";
+
 import eyesWideShut from "../assets/images/eyesWide.png";
 import forestGump from "../assets/images/forestGump.png";
+import noCountry from "../assets/images/noCountry.png";
+import { TrendingMovies as Container } from "./Temp.style";
 
 const TrendingMovies = () => {
   return (

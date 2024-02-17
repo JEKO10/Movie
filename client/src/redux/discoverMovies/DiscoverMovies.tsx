@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Loader, LoaderWrapper } from "../../common/Loader";
+import { setQuery } from "../navbar/navbarSlice";
+import Pagination from "./components/Pagination";
 import {
   Discover,
   MoviesList,
@@ -9,10 +13,6 @@ import {
   SortList,
   Underline,
 } from "./DiscoverMovies.styled";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { Loader, LoaderWrapper } from "../../common/Loader";
-import { setQuery } from "../navbar/navbarSlice";
-import Pagination from "./components/Pagination";
 import {
   getDiscoverMovies,
   toggleSort,

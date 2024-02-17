@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Loader, LoaderWrapper } from "../../common/Loader";
+import { setQuery } from "../navbar/navbarSlice";
+import Categories from "./components/Categories";
+import ImageModal from "./components/modals/ImageModal";
+import MovieReviews from "./components/MovieReviews";
+import Options from "./components/Options";
 import {
   Banner,
   Collection,
@@ -11,13 +18,6 @@ import {
   Poster,
   Wrapper,
 } from "./SingleMovie.styled";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { Loader, LoaderWrapper } from "../../common/Loader";
-import { setQuery } from "../navbar/navbarSlice";
-import Categories from "./components/Categories";
-import ImageModal from "./components/modals/ImageModal";
-import MovieReviews from "./components/MovieReviews";
-import Options from "./components/Options";
 import {
   getMovie,
   toggleList,

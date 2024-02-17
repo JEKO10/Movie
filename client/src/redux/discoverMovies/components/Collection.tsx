@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Discover, MoviesList, Sorting } from "../DiscoverMovies.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { Loader, LoaderWrapper } from "../../../common/Loader";
+import { Discover, MoviesList, Sorting } from "../DiscoverMovies.styled";
 import { getCollection } from "../discoverMoviesSlice";
 
 const Collection = () => {

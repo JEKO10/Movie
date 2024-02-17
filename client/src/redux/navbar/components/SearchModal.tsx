@@ -1,9 +1,9 @@
 import React from "react";
 
 import { Fade } from "../../../assets/style/Fade.styled";
-import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 import { useAppSelector } from "../../../common/hooks";
 import { SearchData } from "../../../common/types/typesTS";
+import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
 const SearchModal = () => {
   const { searchData, inputValue } = useAppSelector((store) => store.navbar);

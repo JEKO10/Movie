@@ -4,8 +4,8 @@ import dash from "../assets/images/icons/dash.svg";
 import eye from "../assets/images/icons/eye.svg";
 import heart from "../assets/images/icons/heart.svg";
 import star from "../assets/images/icons/star.svg";
-import { Features as Container } from "./Temp.style";
 import RatePopUp from "./RatePopUp";
+import { Features as Container } from "./Temp.style";
 
 const Features = () => {
   return (
