@@ -9,26 +9,27 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const form = useRef<HTMLFormElement>();
+  const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
-        form.current,
-        import.meta.env.VITE_PUBLIC_KEY
-      )
-      .then(
+    const serviceId = import.meta.env.VITE_APP_SERVICE_ID;
+    const templateId = import.meta.env.VITE_APP_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_APP_PUBLIC_KEY;
+
+    if (form.current) {
+      emailjs.sendForm(serviceId, templateId, form.current, publicKey).then(
         (result: { text: string }) => {
           console.log(result.text);
         },
         (error: { text: string }) => {
-          console.log(error.text);
+          console.error("Email sending failed:", error.text);
         }
       );
+    } else {
+      console.error("Form reference is null or undefined.");
+    }
   };
 
   return (
@@ -45,7 +46,10 @@ const Contact = () => {
             Your name
             <input
               type="text"
+              name="from_name"
+              value={name}
               placeholder="Enter your name"
+              autoComplete="off"
               onChange={(event) => setName(event.target.value)}
             />
           </label>
@@ -53,8 +57,11 @@ const Contact = () => {
             Your email address
             <input
               type="email"
+              name="email_id"
+              value={email}
               placeholder="Enter your email address"
               onChange={(event) => setEmail(event.target.value)}
+              autoComplete="off"
             />
           </label>
           <label>
@@ -64,6 +71,8 @@ const Contact = () => {
               rows={5}
               placeholder="Your message"
               onChange={(event) => setMessage(event.target.value)}
+              name="message"
+              value={message}
             />
           </label>
           <button type="submit">Send</button>

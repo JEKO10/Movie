@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import casablanca from "../images/Casablanca.webp";
+import casablanca from "../images/casablanca.webp";
 import onceAmerica from "../images/onceAmerica.jpg";
 import toyStory from "../images/toyStory.webp";
 import trainingDay from "../images/training.jpg";
