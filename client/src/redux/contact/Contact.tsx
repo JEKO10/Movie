@@ -1,19 +1,15 @@
 import emailjs from "@emailjs/browser";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import contactImg from "../../assets/images/contact.jpg";
-import { useAppDispatch } from "../../common/hooks";
-// import { setQuery } from "../navbar/navbarSlice";
 import { ContactForm, ContactPage, ContactPoster } from "./Contact.styled";
 
 const Contact = () => {
-  const dispatch = useAppDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
-  const form = useRef();
+  const form = useRef<HTMLFormElement>();
 
   const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
