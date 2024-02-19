@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   flexMixin,
   primaryFont,
-  secondaryColor,
+  secondaryColor
 } from "../../assets/style/GlobalStyles";
 
 export const ContactPage = styled.section`
@@ -32,7 +32,7 @@ export const ContactPoster = styled.article`
   }
 `;
 
-export const ContactForm = styled.article`
+export const ContactForm = styled.form`
   label {
     ${flexMixin({ justify: "center", align: "flex-start" })};
     flex-direction: column;
@@ -44,7 +44,7 @@ export const ContactForm = styled.article`
     textarea {
       background-color: #2c3440;
       color: #89a;
-      width: 150%;
+      width: 350px;
       max-height: 200px;
       margin-top: 0.5rem;
       padding: 9px 9px 8px;
@@ -60,7 +60,7 @@ export const ContactForm = styled.article`
 
   button {
     background-color: #2c3440;
-    width: 150%;
+    width: 350px;
     color: #89a;
     margin-top: 2rem;
     padding: 9px 9px 8px;
@@ -76,5 +76,13 @@ export const ContactForm = styled.article`
     &:hover {
       color: #f4fcf0;
     }
+  }
+
+  p {
+    color: ${secondaryColor};
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
   }
 `;

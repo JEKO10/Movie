@@ -9,10 +9,16 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [contactStatus, setContactStatus] = useState("");
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!name || !email || !message) {
+      setContactStatus("Please fill in all fields.");
+      return;
+    }
 
     const serviceId = import.meta.env.VITE_APP_SERVICE_ID;
     const templateId = import.meta.env.VITE_APP_TEMPLATE_ID;
@@ -27,8 +33,6 @@ const Contact = () => {
           console.error("Email sending failed:", error.text);
         }
       );
-    } else {
-      console.error("Form reference is null or undefined.");
     }
   };
 
@@ -76,6 +80,7 @@ const Contact = () => {
             />
           </label>
           <button type="submit">Send</button>
+          <p>{contactStatus}</p>
         </ContactForm>
       </article>
     </ContactPage>
