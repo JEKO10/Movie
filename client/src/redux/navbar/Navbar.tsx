@@ -12,9 +12,13 @@ import {
   Nav,
   ProfileHeader,
   ProfileMenu,
-  ProfileModal,
+  ProfileModal
 } from "./Navbar.styled";
-import { searchMovies, setInputValue } from "./navbarSlice";
+import {
+  searchMovies,
+  setInputValue,
+  setIsModalOpen as setIsSearchOpen
+} from "./navbarSlice";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -87,6 +91,7 @@ const Navbar = () => {
           ref={inputRef}
           placeholder="Enter movie title..."
           onChange={handleInputChange}
+          onClick={() => dispatch(setIsSearchOpen(true))}
         />
         <img src={search} alt="searchImg" />
       </Input>

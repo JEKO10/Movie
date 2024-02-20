@@ -5,7 +5,7 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
-  tertiaryColor,
+  tertiaryColor
 } from "../../assets/style/GlobalStyles";
 
 type ProfileMenuProps = {
@@ -50,7 +50,9 @@ export const ProfileHeader = styled.header`
   background-color: ${primaryColor};
   padding: 10px 15px;
   border-radius: 10px;
-  box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
+  box-shadow:
+    inset 0 1px 0 #000,
+    0 0 10px #000;
   transition: background-color 200ms ease;
   cursor: pointer;
 
@@ -72,12 +74,15 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
   background-color: ${primaryColor};
   list-style-type: none;
   position: absolute;
-  top: 60px;
+  top: 55px;
   left: 0;
   min-width: 155px;
   padding: 0 20px 5px 5px; // top right bottom left
   border-radius: 5px;
-  box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.35), 0 0 10px #000;
+  box-shadow:
+    inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+    0 0 10px #000;
+  z-index: 3;
 
   li {
     margin: 5px;
@@ -111,7 +116,9 @@ export const LogButton = styled.button`
   text-transform: uppercase;
   padding: 5px 40px;
   border-radius: 10px;
-  box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
+  box-shadow:
+    inset 0 1px 0 #000,
+    0 0 10px #000;
   transition: background-color 200ms ease;
   cursor: pointer;
 

@@ -1,19 +1,24 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { flexMixin, secondaryColor } from "../../../assets/style/GlobalStyles";
+import {
+  flexMixin,
+  secondaryColor,
+  tertiaryColor
+} from "../../../assets/style/GlobalStyles";
 
 export const SearchedData = styled.section`
   background-color: rgb(19, 24, 28);
-  overflow-x: hidden;
-  height: fit-content;
-  max-height: 260px;
-  width: 200px;
-  border-bottom: 0.1px solid ${secondaryColor};
   position: absolute;
-  top: 4rem;
-  right: 3.1rem;
-  z-index: 2;
+  top: 4.5rem;
+  right: 27rem;
+  height: fit-content;
+  width: 524px;
+  max-height: 260px;
+  overflow-x: hidden;
+  border-bottom: 0.1px solid ${secondaryColor};
+  border-radius: 10px;
+  z-index: 5;
 
   &::-webkit-scrollbar {
     width: 1px;
@@ -37,7 +42,7 @@ export const SingleMovie = styled(Link)`
   color: #fff;
   text-decoration: none;
   position: relative;
-  border: 0.1px solid ${secondaryColor};
+  border: 0.1px solid ${tertiaryColor};
   cursor: pointer;
 
   img {

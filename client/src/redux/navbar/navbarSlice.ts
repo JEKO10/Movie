@@ -7,6 +7,7 @@ const initialState: InitialNavbar = {
   inputValue: "",
   query: "",
   searchData: [],
+  isModalOpen: false
 };
 
 export const searchMovies = createAsyncThunk(
@@ -47,6 +48,9 @@ const navbarSlice = createSlice({
     setInputValue: (state, { payload }: { payload: string }) => {
       state.inputValue = payload;
     },
+    setIsModalOpen: ((state, {payload}) => {
+      state.isModalOpen = payload;
+    })
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -58,5 +62,5 @@ const navbarSlice = createSlice({
   },
 });
 
-export const { setQuery, setInputValue } = navbarSlice.actions;
+export const { setQuery, setInputValue, setIsModalOpen } = navbarSlice.actions;
 export const { reducer } = navbarSlice;

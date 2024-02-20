@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import { Fade } from "../../../assets/style/Fade.styled";
-import { useAppSelector } from "../../../common/hooks";
+import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { SearchData } from "../../../common/types/typesTS";
+import { setIsModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
 const SearchModal = () => {
   const { searchData, inputValue } = useAppSelector((store) => store.navbar);
+  const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w92/";
+  const searchModalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const clickOutside = (e: MouseEvent) => {
+      if (!searchModalRef.current?.contains(e.target as Node)) {
+        dispatch(setIsModalOpen(false));
+      }
+    };
+
+    document.addEventListener("mousedown", clickOutside, true);
+
+    return () => {
+      document.removeEventListener("mousedown", clickOutside, true);
+    };
+  }, []);
 
   return (
-    <SearchedData>
+    <SearchedData ref={searchModalRef}>
       {searchData?.map((movie: SearchData) => {
         const {
           id,
@@ -19,7 +36,7 @@ const SearchModal = () => {
           title,
           name,
           release_date,
-          media_type,
+          media_type
         } = movie;
 
         return (
