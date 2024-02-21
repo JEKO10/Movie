@@ -15,6 +15,7 @@ export type InitialNavbar = {
   query: string;
   searchData: SearchData[];
   isModalOpen: boolean;
+  isLogOpen: boolean;
 };
 
 // trendingPeople

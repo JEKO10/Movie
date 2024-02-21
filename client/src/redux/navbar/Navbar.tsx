@@ -17,6 +17,7 @@ import {
 import {
   searchMovies,
   setInputValue,
+  setIsLogOpen,
   setIsModalOpen as setIsSearchOpen
 } from "./navbarSlice";
 
@@ -83,7 +84,7 @@ const Navbar = () => {
           </ProfileModal>
         )}
       </ProfileMenu>
-      <LogButton>Log +</LogButton>
+      <LogButton onClick={() => dispatch(setIsLogOpen(true))}>Log +</LogButton>
       <Input>
         <input
           type="text"
