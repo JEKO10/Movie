@@ -54,6 +54,11 @@ const navbarSlice = createSlice({
     }),
     setIsLogOpen: ((state, {payload}: { payload: boolean }) => {
       state.isLogOpen = payload;
+      if (state.isLogOpen) {
+        document.body.style.overflow= "hidden";
+      } else {
+        document.body.style.overflow= "auto";
+      }
     })
   },
   extraReducers: (builder) => {

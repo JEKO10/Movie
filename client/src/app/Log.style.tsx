@@ -3,8 +3,20 @@ import styled from "styled-components";
 import {
   flexMixin,
   primaryFont,
+  secondaryColor,
   tertiaryColor
 } from "../assets/style/GlobalStyles";
+
+export const FixedContainer = styled.div`
+  ${flexMixin({ justify: "center", align: "center" })};
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+`;
 
 export const LogModal = styled.section`
   ${flexMixin({ justify: "center", align: "flex-start" })};
@@ -54,5 +66,9 @@ export const LogModal = styled.section`
     top: 0.5rem;
     right: 0.5rem;
     cursor: pointer;
+
+    &:hover {
+      color: ${secondaryColor};
+    }
   }
 `;
