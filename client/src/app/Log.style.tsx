@@ -21,13 +21,14 @@ export const FixedContainer = styled.div`
 export const LogModal = styled.section`
   ${flexMixin({ justify: "center", align: "flex-start" })};
   flex-direction: column;
+  position: relative;
+  top: -5rem;
   background-color: #292929;
   color: #fff;
   width: 668px;
   font-family: ${primaryFont};
   padding: 20px;
   border-radius: 3px;
-  position: relative;
 
   h3 {
     text-transform: uppercase;

@@ -8,7 +8,7 @@ const initialState: InitialNavbar = {
   query: "",
   searchData: [],
   isModalOpen: false,
-  isLogOpen:false,
+  isLogOpen: false,
 };
 
 export const searchMovies = createAsyncThunk(
@@ -54,6 +54,7 @@ const navbarSlice = createSlice({
     }),
     setIsLogOpen: ((state, {payload}: { payload: boolean }) => {
       state.isLogOpen = payload;
+      
       if (state.isLogOpen) {
         document.body.style.overflow= "hidden";
       } else {
