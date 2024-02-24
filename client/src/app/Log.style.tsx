@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import {
   flexMixin,
@@ -6,6 +6,28 @@ import {
   secondaryColor,
   tertiaryColor
 } from "../assets/style/GlobalStyles";
+
+type LogModalProps = {
+  isClosing: boolean;
+};
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
 
 export const FixedContainer = styled.div`
   ${flexMixin({ justify: "center", align: "center" })};
@@ -18,7 +40,7 @@ export const FixedContainer = styled.div`
   z-index: 5;
 `;
 
-export const LogModal = styled.section`
+export const LogModal = styled.section<LogModalProps>`
   ${flexMixin({ justify: "center", align: "flex-start" })};
   flex-direction: column;
   position: relative;
@@ -29,6 +51,7 @@ export const LogModal = styled.section`
   font-family: ${primaryFont};
   padding: 20px;
   border-radius: 3px;
+  animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s;
 
   h3 {
     text-transform: uppercase;

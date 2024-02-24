@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch } from "../common/hooks";
@@ -7,12 +7,20 @@ import { FixedContainer, LogModal as Container } from "./Log.style";
 
 const LogModal = () => {
   const dispatch = useAppDispatch();
+  const [isClosing, setIsClosing] = useState(false);
   const logModalRef = useRef<HTMLDivElement>(null);
+
+  const handleExit = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      dispatch(setIsLogOpen(false));
+    }, 300);
+  };
 
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
       if (!logModalRef.current?.contains(e.target as Node)) {
-        dispatch(setIsLogOpen(false));
+        handleExit();
       }
     };
 
@@ -21,13 +29,13 @@ const LogModal = () => {
     return () => {
       document.removeEventListener("mousedown", clickOutside, true);
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <FixedContainer>
-      <Container ref={logModalRef}>
+      <Container ref={logModalRef} isClosing={isClosing}>
         <h3>Add to your films…</h3>
-        <IoMdClose onClick={() => dispatch(setIsLogOpen(false))} />
+        <IoMdClose onClick={() => handleExit()} />
         <form>
           <label>Name of Film</label>
           <input type="text" />
