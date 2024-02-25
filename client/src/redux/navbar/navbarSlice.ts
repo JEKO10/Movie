@@ -9,6 +9,7 @@ const initialState: InitialNavbar = {
   searchData: [],
   isModalOpen: false,
   isLogOpen: false,
+  isLogSearchOpen: false,
 };
 
 export const searchMovies = createAsyncThunk(
@@ -60,6 +61,9 @@ const navbarSlice = createSlice({
       } else {
         document.body.style.overflow= "auto";
       }
+    }),
+    setIsLogSearchOpen:((state, { payload } : { payload: boolean }) => {
+      state.isLogSearchOpen = payload;
     })
   },
   extraReducers: (builder) => {
@@ -72,5 +76,5 @@ const navbarSlice = createSlice({
   },
 });
 
-export const { setQuery, setInputValue, setIsModalOpen, setIsLogOpen } = navbarSlice.actions;
+export const { setQuery, setInputValue, setIsModalOpen, setIsLogOpen, setIsLogSearchOpen } = navbarSlice.actions;
 export const { reducer } = navbarSlice;

@@ -5,7 +5,7 @@ import {
   primaryFont,
   secondaryColor,
   tertiaryColor
-} from "../assets/style/GlobalStyles";
+} from "../../assets/style/GlobalStyles";
 
 type LogModalProps = {
   isClosing: boolean;
