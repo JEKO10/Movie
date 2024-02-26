@@ -1,35 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 import { Fade } from "../../../assets/style/Fade.styled";
-import { useAppDispatch, useAppSelector } from "../../../common/hooks";
+import { useAppSelector } from "../../../common/hooks";
 import { SearchData } from "../../../common/types/typesTS";
-import { setIsModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
 const SearchModal = () => {
   const { searchData, inputValue, isLogOpen } = useAppSelector(
     (store) => store.navbar
   );
-  const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w92/";
-  const searchModalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const clickOutside = (e: MouseEvent) => {
-      if (!searchModalRef.current?.contains(e.target as Node)) {
-        dispatch(setIsModalOpen(false));
-      }
-    };
-
-    document.addEventListener("mousedown", clickOutside, true);
-
-    return () => {
-      document.removeEventListener("mousedown", clickOutside, true);
-    };
-  }, []);
 
   return (
-    <SearchedData ref={searchModalRef} isLogOpen={isLogOpen}>
+    <SearchedData isLogOpen={isLogOpen}>
       {searchData?.map((movie: SearchData) => {
         const {
           id,

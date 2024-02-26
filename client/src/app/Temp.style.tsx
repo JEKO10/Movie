@@ -178,6 +178,7 @@ export const TrendingMovies = styled.section`
       padding: 10px 10px;
       border-radius: 12px;
       transition: all 200ms ease;
+      cursor: pointer;
 
       &:hover {
         box-shadow:

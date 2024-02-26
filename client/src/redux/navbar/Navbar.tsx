@@ -1,38 +1,25 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import arrow from "../../assets/images/icons/arrow.svg";
 import account from "../../assets/images/icons/profile.svg";
-import search from "../../assets/images/icons/search.svg";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Underline } from "../singleMovie/SingleMovie.styled";
+import Input from "./components/Input";
 import {
-  Input,
+  Input as InputContainer,
   LogButton,
   Nav,
   ProfileHeader,
   ProfileMenu,
   ProfileModal
 } from "./Navbar.styled";
-import {
-  searchMovies,
-  setInputValue,
-  setIsLogOpen,
-  setIsModalOpen as setIsSearchOpen
-} from "./navbarSlice";
+import { setIsLogOpen } from "./navbarSlice";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { inputValue, isLogOpen } = useAppSelector((store) => store.navbar);
+  const { isLogOpen, inputValue } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-
-    dispatch(setInputValue(value));
-    dispatch(searchMovies());
-  };
 
   const onLinkChange = () => {
     setIsModalOpen(false);
@@ -86,17 +73,9 @@ const Navbar = () => {
         )}
       </ProfileMenu>
       <LogButton onClick={() => dispatch(setIsLogOpen(true))}>Log +</LogButton>
-      <Input>
-        <input
-          type="text"
-          value={isLogOpen ? "" : inputValue}
-          ref={inputRef}
-          placeholder="Enter movie title..."
-          onChange={handleInputChange}
-          onClick={() => dispatch(setIsSearchOpen(true))}
-        />
-        <img src={search} alt="searchImg" />
-      </Input>
+      <InputContainer>
+        <Input value={isLogOpen ? "" : inputValue} />
+      </InputContainer>
       <article>
         <button>Log in</button>
         <button>Sign up</button>

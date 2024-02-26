@@ -72,7 +72,7 @@ export const MovieInfo = styled.p`
   padding: 0 10px;
   white-space: nowrap;
 
-  &:nth-child(2) {
+  &:last-of-type {
     color: ${secondaryColor};
   }
 `;

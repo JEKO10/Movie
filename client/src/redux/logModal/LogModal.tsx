@@ -2,12 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import {
-  searchMovies,
-  setInputValue,
-  setIsLogOpen,
-  setIsModalOpen
-} from "../navbar/navbarSlice";
+import Input from "../navbar/components/Input";
+import { setIsLogOpen } from "../navbar/navbarSlice";
 import { FixedContainer, LogModal as Container } from "./Log.style";
 
 const LogModal = () => {
@@ -15,13 +11,6 @@ const LogModal = () => {
   const { inputValue } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
   const logModalRef = useRef<HTMLDivElement>(null);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-
-    dispatch(setInputValue(value));
-    dispatch(searchMovies());
-  };
 
   const handleExit = () => {
     setIsClosing(true);
@@ -51,13 +40,7 @@ const LogModal = () => {
         <IoMdClose onClick={() => handleExit()} />
         <form>
           <label>Name of Film</label>
-          <input
-            type="text"
-            value={inputValue}
-            placeholder="Enter movie title..."
-            onChange={handleInputChange}
-            onClick={() => dispatch(setIsModalOpen(true))}
-          />
+          <Input value={inputValue} />
         </form>
       </Container>
     </FixedContainer>

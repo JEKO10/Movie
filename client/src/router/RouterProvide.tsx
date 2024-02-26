@@ -1,24 +1,14 @@
 import React from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
-// import Navbar from "../app/Navbar";
-import { useAppSelector } from "../common/hooks";
+import Header from "../common/Header";
 import ScrollToTop from "../common/ScrollTop";
-import LogModal from "../redux/logModal/LogModal";
-import SearchModal from "../redux/navbar/components/SearchModal";
-import Navbar from "../redux/navbar/Navbar";
 import routes from "./routes";
 
 function RouterProvider() {
-  const { inputValue, isModalOpen, isLogOpen } = useAppSelector(
-    (state) => state.navbar
-  );
-
   return (
     <Router>
-      <Navbar />
-      {inputValue && isModalOpen && <SearchModal />}
-      {isLogOpen && <LogModal />}
+      <Header />
       <ScrollToTop />
       {/* <main>
         <Routes>
