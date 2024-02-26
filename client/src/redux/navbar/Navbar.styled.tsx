@@ -50,9 +50,6 @@ export const ProfileHeader = styled.header`
   background-color: ${primaryColor};
   padding: 10px 15px;
   border-radius: 10px;
-  box-shadow:
-    inset 0 1px 0 #000,
-    0 0 10px #000;
   transition: background-color 200ms ease;
   cursor: pointer;
 
@@ -116,9 +113,6 @@ export const LogButton = styled.button`
   text-transform: uppercase;
   padding: 5px 40px;
   border-radius: 10px;
-  box-shadow:
-    inset 0 1px 0 #000,
-    0 0 10px #000;
   transition: background-color 200ms ease;
   cursor: pointer;
 

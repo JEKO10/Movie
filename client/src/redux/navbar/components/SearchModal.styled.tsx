@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import {
   flexMixin,
@@ -7,18 +7,22 @@ import {
   tertiaryColor
 } from "../../../assets/style/GlobalStyles";
 
-export const SearchedData = styled.section`
+type SearchedDataProps = {
+  isLogOpen: boolean;
+};
+
+export const SearchedData = styled.section<SearchedDataProps>`
   background-color: rgb(19, 24, 28);
   position: absolute;
-  top: 4.5rem;
-  right: 27rem;
+  top: ${({ isLogOpen }) => (isLogOpen ? "20rem" : "4.5rem")};
+  right: ${({ isLogOpen }) => (isLogOpen ? "30.85rem" : "27rem")};
   height: fit-content;
-  width: 524px;
+  width: ${({ isLogOpen }) => (isLogOpen ? "588px" : "524px")};
   max-height: 260px;
   overflow-x: hidden;
   border-bottom: 0.1px solid ${secondaryColor};
-  border-radius: 10px;
-  z-index: 5;
+  border-radius: ${({ isLogOpen }) => (isLogOpen ? "3px" : "10px")};
+  z-index: 10;
 
   &::-webkit-scrollbar {
     width: 1px;
@@ -37,7 +41,7 @@ export const SearchedData = styled.section`
   }
 `;
 
-export const SingleMovie = styled(Link)`
+export const SingleMovie = styled(Link)<SearchedDataProps>`
   ${flexMixin({ justify: "flex-start", align: "center" })};
   color: #fff;
   text-decoration: none;
@@ -49,6 +53,16 @@ export const SingleMovie = styled(Link)`
     width: 50px;
   }
 
+  ${({ isLogOpen }) =>
+    isLogOpen &&
+    css`
+      div {
+        display: flex;
+        width: 100%;
+        padding: 10px 0;
+      }
+    `}
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }
@@ -58,7 +72,7 @@ export const MovieInfo = styled.p`
   padding: 0 10px;
   white-space: nowrap;
 
-  &:last-of-type {
+  &:nth-child(2) {
     color: ${secondaryColor};
   }
 `;

@@ -23,12 +23,13 @@ import {
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { inputValue } = useAppSelector((store) => store.navbar);
+  const { inputValue, isLogOpen } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
+
     dispatch(setInputValue(value));
     dispatch(searchMovies());
   };
@@ -88,7 +89,7 @@ const Navbar = () => {
       <Input>
         <input
           type="text"
-          value={inputValue}
+          value={isLogOpen ? "" : inputValue}
           ref={inputRef}
           placeholder="Enter movie title..."
           onChange={handleInputChange}

@@ -5,7 +5,7 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
-  tertiaryColor,
+  tertiaryColor
 } from "../assets/style/GlobalStyles";
 
 type SidebarProp = {
@@ -67,7 +67,9 @@ export const Features = styled.section`
     margin-bottom: 2rem;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: inset 0 1px 0 #000, 0 0 10px #000;
+    box-shadow:
+      inset 0 1px 0 #000,
+      0 0 10px #000;
     cursor: pointer;
 
     & {
@@ -175,6 +177,14 @@ export const TrendingMovies = styled.section`
       width: 245px;
       padding: 10px 10px;
       border-radius: 12px;
+      transition: all 200ms ease;
+
+      &:hover {
+        box-shadow:
+          inset 0 1px 0 #292929,
+          0 0 10px #000;
+        transform: translateY(-10px);
+      }
 
       h2 {
         max-width: 150px;

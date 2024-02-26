@@ -7,7 +7,9 @@ import { setIsModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
 const SearchModal = () => {
-  const { searchData, inputValue } = useAppSelector((store) => store.navbar);
+  const { searchData, inputValue, isLogOpen } = useAppSelector(
+    (store) => store.navbar
+  );
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w92/";
   const searchModalRef = useRef<HTMLDivElement>(null);
@@ -27,7 +29,7 @@ const SearchModal = () => {
   }, []);
 
   return (
-    <SearchedData ref={searchModalRef}>
+    <SearchedData ref={searchModalRef} isLogOpen={isLogOpen}>
       {searchData?.map((movie: SearchData) => {
         const {
           id,
@@ -42,16 +44,19 @@ const SearchModal = () => {
         return (
           <SingleMovie
             key={id}
+            isLogOpen={isLogOpen}
             to={media_type === "movie" ? `/movie/${id}` : `/person/${id}`}
           >
-            <img
-              src={
-                poster_path || profile_path
-                  ? posterUrl + (profile_path || poster_path)
-                  : import.meta.env.VITE_IMG
-              }
-              alt="POSTER"
-            />
+            {!isLogOpen && (
+              <img
+                src={
+                  poster_path || profile_path
+                    ? posterUrl + (profile_path || poster_path)
+                    : import.meta.env.VITE_IMG
+                }
+                alt="POSTER"
+              />
+            )}
             <div>
               <MovieInfo>{title || name}</MovieInfo>
               <MovieInfo>{release_date?.slice(0, 4)}</MovieInfo>
