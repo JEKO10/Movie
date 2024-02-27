@@ -16,14 +16,14 @@ import {
   Name,
   Overview,
   Poster,
-  Wrapper,
+  Wrapper
 } from "./SingleMovie.styled";
 import {
   getMovie,
   toggleList,
   togglePoster,
   toggleReview,
-  toggleShare,
+  toggleShare
 } from "./singleMovieSlice";
 
 const SingleMovie = () => {
@@ -38,7 +38,7 @@ const SingleMovie = () => {
     poster_path,
     release_date,
     runtime,
-    credits,
+    credits
   } = movieInfo;
   const { id } = useParams();
   const dispatch = useAppDispatch();
