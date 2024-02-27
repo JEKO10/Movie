@@ -1,14 +1,14 @@
 import React from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
-import Header from "../common/Header";
+import Modals from "../common/Modals";
 import ScrollToTop from "../common/ScrollTop";
 import routes from "./routes";
 
 function RouterProvider() {
   return (
     <Router>
-      <Header />
+      <Modals />
       <ScrollToTop />
       {/* <main>
         <Routes>

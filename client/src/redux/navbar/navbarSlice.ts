@@ -7,6 +7,7 @@ const initialState: InitialNavbar = {
   inputValue: "",
   query: "",
   searchData: [],
+  selectedMovieId: 0,
   isModalOpen: false,
   isLogOpen: false,
   isMovieModalOpen: false
@@ -57,21 +58,19 @@ const navbarSlice = createSlice({
       state.isLogOpen = payload;
       state.inputValue = "";
 
-      if (state.isLogOpen) {
+      if (state.isLogOpen || state.isMovieModalOpen) {
         document.body.style.overflow = "hidden";
       } else {
         document.body.style.overflow = "auto";
       }
     },
-    setIsMovieModalOpen: (state, { payload }: { payload: boolean }) => {
+    setIsMovieModalOpen: (
+      state,
+      action: PayloadAction<{ isOpen: boolean; id: number }>
+    ) => {
       state.isLogOpen = false;
-      state.isMovieModalOpen = payload;
-
-      if (state.isLogOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
-      }
+      state.isMovieModalOpen = action.payload.isOpen;
+      state.selectedMovieId = action.payload.id;
     }
   },
   extraReducers: (builder) => {

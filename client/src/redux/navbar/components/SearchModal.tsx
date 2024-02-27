@@ -38,7 +38,9 @@ const SearchModal = () => {
                   : `/person/${id}`
             }
             onClick={
-              isLogOpen ? () => dispatch(setIsMovieModalOpen(true)) : () => {}
+              isLogOpen
+                ? () => dispatch(setIsMovieModalOpen({ isOpen: true, id }))
+                : () => {}
             }
           >
             {!isLogOpen && (

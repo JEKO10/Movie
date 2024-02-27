@@ -18,78 +18,78 @@ const routes = [
   {
     id: 0,
     path: "/",
-    element: Home,
+    element: Home
   },
   {
     id: 1,
     path: "/account",
-    element: Account,
+    element: Account
   },
   {
     id: 2,
     path: "/profile",
-    element: Profile,
+    element: Profile
   },
   {
     id: 3,
     path: "/reviews",
-    element: Reviews,
+    element: Reviews
   },
   {
     id: 4,
     path: "/likes",
-    element: Likes,
+    element: Likes
   },
   {
     id: 5,
     path: "/watchlist",
-    element: Watchlist,
+    element: Watchlist
   },
   {
     id: 6,
     path: "/films",
-    element: Films,
+    element: Films
   },
   {
     id: 7,
     path: "/lists",
-    element: Lists,
+    element: Lists
   },
   {
     id: 8,
     path: "/movie/:id",
-    element: SingleMovie,
+    element: SingleMovie
   },
   {
     id: 9,
     path: "/person/:id",
-    element: PersonInfo,
+    element: PersonInfo
   },
   {
     id: 10,
     path: "/discover/:id/:name",
-    element: DiscoverMovies,
+    element: DiscoverMovies
   },
   {
     id: 11,
     path: "/collection/:id/:name",
-    element: Collection,
+    element: Collection
   },
   {
     id: 12,
     path: "/*",
-    element: Error,
+    element: Error
   },
   {
     id: 13,
     path: "/*",
-    element: ScrollToTop,
+    element: ScrollToTop
   },
   {
     id: 14,
     path: "/contact",
-    element: Contact,
-  },
+    element: Contact
+  }
 ];
 
 export default routes;

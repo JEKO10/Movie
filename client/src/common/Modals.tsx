@@ -7,15 +7,15 @@ import Navbar from "../redux/navbar/Navbar";
 import { setIsModalOpen } from "../redux/navbar/navbarSlice";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
-const Header = () => {
+const Modals = () => {
   const { inputValue, isModalOpen, isLogOpen, isMovieModalOpen } =
     useAppSelector((state) => state.navbar);
   const dispatch = useAppDispatch();
-  const headerRef = useRef<HTMLElement>(null);
+  const modalRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
-      if (!headerRef.current?.contains(e.target as Node)) {
+      if (!modalRef.current?.contains(e.target as Node)) {
         dispatch(setIsModalOpen(false));
       }
     };
@@ -28,13 +28,13 @@ const Header = () => {
   }, []);
 
   return (
-    <header ref={headerRef}>
+    <section ref={modalRef}>
       <Navbar />
       {inputValue && isModalOpen && !isMovieModalOpen && <SearchModal />}
       {isLogOpen && <LogModal />}
       {isMovieModalOpen && <MovieModal />}
-    </header>
+    </section>
   );
 };
 
-export default Header;
+export default Modals;

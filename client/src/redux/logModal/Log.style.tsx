@@ -8,7 +8,7 @@ import {
 } from "../../assets/style/GlobalStyles";
 
 type LogModalProps = {
-  isClosing: boolean;
+  isClosing?: boolean;
 };
 
 const fadeIn = keyframes`
