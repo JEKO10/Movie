@@ -1,14 +1,16 @@
 import React from "react";
 
 import { Fade } from "../../../assets/style/Fade.styled";
-import { useAppSelector } from "../../../common/hooks";
+import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { SearchData } from "../../../common/types/typesTS";
+import { setIsMovieModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
 const SearchModal = () => {
   const { searchData, inputValue, isLogOpen } = useAppSelector(
     (store) => store.navbar
   );
+  const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w92/";
 
   return (
@@ -28,7 +30,16 @@ const SearchModal = () => {
           <SingleMovie
             key={id}
             isLogOpen={isLogOpen}
-            to={media_type === "movie" ? `/movie/${id}` : `/person/${id}`}
+            to={
+              isLogOpen
+                ? "#"
+                : media_type === "movie"
+                  ? `/movie/${id}`
+                  : `/person/${id}`
+            }
+            onClick={
+              isLogOpen ? () => dispatch(setIsMovieModalOpen(true)) : () => {}
+            }
           >
             {!isLogOpen && (
               <img

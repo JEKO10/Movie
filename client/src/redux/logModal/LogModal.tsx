@@ -3,7 +3,7 @@ import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import Input from "../navbar/components/Input";
-import { setIsLogOpen } from "../navbar/navbarSlice";
+import { setIsLogOpen, setIsMovieModalOpen } from "../navbar/navbarSlice";
 import { FixedContainer, LogModal as Container } from "./Log.style";
 
 const LogModal = () => {
@@ -14,6 +14,8 @@ const LogModal = () => {
 
   const handleExit = () => {
     setIsClosing(true);
+    dispatch(setIsMovieModalOpen(true));
+
     setTimeout(() => {
       dispatch(setIsLogOpen(false));
     }, 300);

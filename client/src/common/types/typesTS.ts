@@ -16,6 +16,7 @@ export type InitialNavbar = {
   searchData: SearchData[];
   isModalOpen: boolean;
   isLogOpen: boolean;
+  isMovieModalOpen: boolean;
 };
 
 // trendingPeople
