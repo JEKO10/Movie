@@ -2,9 +2,13 @@ import React, { useEffect, useRef } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
-import { setIsMovieModalOpen } from "../navbar/navbarSlice";
+import {
+  setInputValue,
+  setIsLogOpen,
+  setIsMovieModalOpen
+} from "../navbar/navbarSlice";
 import { getMovie } from "../singleMovie/singleMovieSlice";
-import { FixedContainer, LogModal } from "./Log.style";
+import { FixedContainer, LogModal, MovieModal as Container } from "./Log.style";
 
 const MovieModal = () => {
   const { movieInfo, isLoading } = useAppSelector((store) => store.singleMovie);
@@ -12,10 +16,16 @@ const MovieModal = () => {
     (state) => state.navbar.selectedMovieId
   );
   const dispatch = useAppDispatch();
-  const posterUrl = "https://image.tmdb.org/t/p/w300/";
+  const posterUrl = "https://image.tmdb.org/t/p/w154/";
   const movieRef = useRef<HTMLElement>(null);
 
   const { title, poster_path, release_date } = movieInfo;
+
+  const backHandle = () => {
+    dispatch(setIsMovieModalOpen({ isOpen: false, id: selectedMovieId }));
+    dispatch(setIsLogOpen(true));
+    dispatch(setInputValue(title));
+  };
 
   useEffect(() => {
     dispatch(getMovie(selectedMovieId.toString()));
@@ -46,14 +56,17 @@ const MovieModal = () => {
   }
   return (
     <FixedContainer>
-      <LogModal ref={movieRef}>
+      <Container ref={movieRef}>
+        <button onClick={() => backHandle()}>Back</button>
         <img
           src={poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG}
           alt="POSTER"
         />
-        <p>{title}</p>
-        <p>{release_date}</p>
-      </LogModal>
+        <article>
+          <p>{title}</p>
+          <p>{release_date}</p>
+        </article>
+      </Container>
     </FixedContainer>
   );
 };

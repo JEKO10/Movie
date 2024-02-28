@@ -77,6 +77,9 @@ export const LogModal = styled.section<LogModalProps>`
       border: none;
       border-radius: 3px;
       outline: none;
+      box-shadow:
+        inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+        0 0 10px #000;
 
       &:focus {
         background-color: #ccddee;
@@ -96,3 +99,5 @@ export const LogModal = styled.section<LogModalProps>`
     }
   }
 `;
+
+export const MovieModal = styled.section``;
