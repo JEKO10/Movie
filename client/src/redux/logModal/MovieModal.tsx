@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { CiHeart, CiStar } from "react-icons/ci";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
@@ -8,7 +9,16 @@ import {
   setIsMovieModalOpen
 } from "../navbar/navbarSlice";
 import { getMovie } from "../singleMovie/singleMovieSlice";
-import { FixedContainer, LogModal, MovieModal as Container } from "./Log.style";
+import {
+  BackButton,
+  FixedContainer,
+  LogHeader,
+  LogModal,
+  MovieModal as Container,
+  Rating,
+  Review,
+  Submit
+} from "./Log.style";
 
 const MovieModal = () => {
   const { movieInfo, isLoading } = useAppSelector((store) => store.singleMovie);
@@ -57,15 +67,57 @@ const MovieModal = () => {
   return (
     <FixedContainer>
       <Container ref={movieRef}>
-        <button onClick={() => backHandle()}>Back</button>
-        <img
-          src={poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG}
-          alt="POSTER"
-        />
-        <article>
-          <p>{title}</p>
-          <p>{release_date}</p>
-        </article>
+        <BackButton onClick={() => backHandle()}>Back</BackButton>
+        <section>
+          <img
+            src={
+              poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG
+            }
+            alt="POSTER"
+          />
+          <article style={{ width: "100%" }}>
+            <LogHeader>
+              <h3>I Watched...</h3>
+              <div>
+                <h2>{title}</h2>
+                <h4>{release_date.slice(0, 4)}</h4>
+              </div>
+            </LogHeader>
+            <Review>
+              <label>
+                <input type="checkbox" />
+                Watched on
+                <span>28.2.2024.</span>
+              </label>
+              <label>
+                <input type="checkbox" />
+                I’ve watched this film before
+              </label>
+            </Review>
+            <textarea cols={30} rows={10} />
+            <Rating>
+              <div>
+                <p>Rating</p>
+                <CiStar />
+                <CiStar />
+                <CiStar />
+                <CiStar />
+                <CiStar />
+              </div>
+              <div>
+                <p>Like</p>
+                <CiHeart />
+              </div>
+            </Rating>
+            <Submit>
+              <label>
+                <input type="checkbox" />
+                Contains spoilers
+              </label>
+              <button>Save</button>
+            </Submit>
+          </article>
+        </section>
       </Container>
     </FixedContainer>
   );

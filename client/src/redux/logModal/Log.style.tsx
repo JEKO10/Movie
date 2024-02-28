@@ -30,7 +30,7 @@ const fadeOut = keyframes`
 `;
 
 const sharedModalStyle = css<LogModalProps>`
-  ${flexMixin({ justify: "center", align: "flex-start" })};
+  ${flexMixin({ justify: "flex-start", align: "flex-start" })};
   flex-direction: column;
   position: relative;
   top: -5rem;
@@ -106,4 +106,86 @@ export const LogModal = styled.section<LogModalProps>`
 
 export const MovieModal = styled.section<LogModalProps>`
   ${sharedModalStyle};
+  height: 383px;
+  width: 800px;
+
+  section {
+    ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+    width: 100%;
+  }
+
+  img {
+    height: 225px;
+    width: 150px;
+    box-shadow:
+      inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+      0 0 10px #000;
+    border-radius: 5px;
+    margin-right: 2rem;
+  }
+
+  textarea {
+    height: 76px;
+    width: 510px;
+    resize: none;
+  }
 `;
+
+export const BackButton = styled.button`
+  background-color: ${tertiaryColor};
+  color: #fff;
+  font-family: ${primaryFont};
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow:
+    inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+    0 0 10px #000;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${secondaryColor};
+  }
+`;
+
+export const LogHeader = styled.header`
+  margin-top: -2.5rem;
+
+  h2,
+  h3,
+  h4 {
+    font-weight: 200;
+  }
+
+  div {
+    ${flexMixin({ justify: "flex-start", align: "flex-end" })};
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 35px;
+    margin-right: 1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    color: ${secondaryColor};
+    font-size: 1.5rem;
+  }
+`;
+
+export const Review = styled.div`
+  ${flexMixin({ justify: "space-between", align: "center" })};
+`;
+
+export const Rating = styled.div``;
+
+export const Submit = styled.div``;
