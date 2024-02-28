@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 import {
   flexMixin,
@@ -29,6 +29,20 @@ const fadeOut = keyframes`
   }
 `;
 
+const sharedModalStyle = css<LogModalProps>`
+  ${flexMixin({ justify: "center", align: "flex-start" })};
+  flex-direction: column;
+  position: relative;
+  top: -5rem;
+  background-color: #292929;
+  color: #fff;
+  width: 668px;
+  font-family: ${primaryFont};
+  padding: 20px;
+  border-radius: 3px;
+  animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s;
+`;
+
 export const FixedContainer = styled.div`
   ${flexMixin({ justify: "center", align: "center" })};
   background-color: rgba(0, 0, 0, 0.5);
@@ -41,17 +55,7 @@ export const FixedContainer = styled.div`
 `;
 
 export const LogModal = styled.section<LogModalProps>`
-  ${flexMixin({ justify: "center", align: "flex-start" })};
-  flex-direction: column;
-  position: relative;
-  top: -5rem;
-  background-color: #292929;
-  color: #fff;
-  width: 668px;
-  font-family: ${primaryFont};
-  padding: 20px;
-  border-radius: 3px;
-  animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s;
+  ${sharedModalStyle};
 
   h3 {
     text-transform: uppercase;
@@ -100,4 +104,6 @@ export const LogModal = styled.section<LogModalProps>`
   }
 `;
 
-export const MovieModal = styled.section``;
+export const MovieModal = styled.section<LogModalProps>`
+  ${sharedModalStyle};
+`;
