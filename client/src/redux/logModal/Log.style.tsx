@@ -151,7 +151,7 @@ export const BackButton = styled.button`
 `;
 
 export const LogHeader = styled.header`
-  margin-top: -2.5rem;
+  margin-top: -3rem;
 
   h2,
   h3,

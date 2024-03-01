@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { CiHeart, CiStar } from "react-icons/ci";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
@@ -21,6 +21,7 @@ import {
 } from "./Log.style";
 
 const MovieModal = () => {
+  const [isClosing, setIsClosing] = useState(false);
   const { movieInfo, isLoading } = useAppSelector((store) => store.singleMovie);
   const selectedMovieId = useAppSelector(
     (state) => state.navbar.selectedMovieId
@@ -32,9 +33,21 @@ const MovieModal = () => {
   const { title, poster_path, release_date } = movieInfo;
 
   const backHandle = () => {
-    dispatch(setIsMovieModalOpen({ isOpen: false, id: selectedMovieId }));
-    dispatch(setIsLogOpen(true));
-    dispatch(setInputValue(title));
+    setIsClosing(true);
+
+    setTimeout(() => {
+      dispatch(setIsMovieModalOpen({ isOpen: false, id: selectedMovieId }));
+      dispatch(setIsLogOpen(true));
+      dispatch(setInputValue(title));
+    }, 300);
+  };
+
+  const handleExit = () => {
+    setIsClosing(true);
+
+    setTimeout(() => {
+      dispatch(setIsMovieModalOpen({ isOpen: false, id: selectedMovieId }));
+    }, 300);
   };
 
   useEffect(() => {
@@ -44,7 +57,7 @@ const MovieModal = () => {
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
       if (!movieRef.current?.contains(e.target as Node)) {
-        dispatch(setIsMovieModalOpen({ isOpen: false, id: selectedMovieId }));
+        handleExit();
       }
     };
 
@@ -66,7 +79,7 @@ const MovieModal = () => {
   }
   return (
     <FixedContainer>
-      <Container ref={movieRef}>
+      <Container ref={movieRef} isClosing={isClosing}>
         <BackButton onClick={() => backHandle()}>Back</BackButton>
         <section>
           <img
