@@ -71,6 +71,12 @@ const navbarSlice = createSlice({
       state.isLogOpen = false;
       state.isMovieModalOpen = action.payload.isOpen;
       state.selectedMovieId = action.payload.id;
+
+      if (state.isMovieModalOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     }
   },
   extraReducers: (builder) => {

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { FiClock, FiEye, FiHeart, FiX } from "react-icons/fi";
-import { RiStarSFill } from "react-icons/ri";
+import { FiClock, FiEye, FiHeart } from "react-icons/fi";
 
 import { useAppDispatch } from "../../../common/hooks";
+import StarRating from "../../../common/StarRating";
 import {
   Actions,
   AddWatchlist,
   OptionsHeader,
-  Rating,
   RemoveWatchlist,
   Underline
 } from "../SingleMovie.styled";
@@ -15,8 +14,6 @@ import { toggleList, toggleReview, toggleShare } from "../singleMovieSlice";
 import Modals from "./Modals";
 
 const Options = () => {
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
   const [watchlist, setWatchlist] = useState(false);
   const [isLike, setIsLike] = useState(false);
   const [isWatched, setIsWatched] = useState(false);
@@ -44,36 +41,7 @@ const Options = () => {
           </div>
         </OptionsHeader>
         <Underline margin={`1rem -5px 0.5rem`} width="calc(100% + 10px)" />
-        <Rating>
-          <p>Rate</p>
-          <div>
-            {rating ? <FiX onClick={() => setRating(0)} /> : ""}
-            {[...Array(5)].map((_, index) => {
-              const ratingValue = index + 1;
-
-              return (
-                <label key={index}>
-                  <input
-                    type="radio"
-                    name="rating"
-                    value={ratingValue}
-                    onClick={() => {
-                      setRating(ratingValue);
-                      console.log("a");
-                    }}
-                  />
-                  <RiStarSFill
-                    color={
-                      ratingValue <= (hover || rating) ? "#00AF51" : "#334455"
-                    }
-                    onMouseEnter={() => setHover(ratingValue)}
-                    onMouseLeave={() => setHover(0)}
-                  />
-                </label>
-              );
-            })}
-          </div>
-        </Rating>
+        <StarRating />
         <Underline margin={`0.5rem -5px`} width="calc(100% + 10px)" />
         <div onClick={() => dispatch(toggleReview(true))}>
           <p>Review or log</p>
