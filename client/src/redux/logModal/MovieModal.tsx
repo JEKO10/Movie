@@ -97,17 +97,18 @@ const MovieModal = () => {
               </div>
             </LogHeader>
             <Review>
-              <label>
-                <input type="checkbox" />
-                Watched on
-                <span>28.2.2024.</span>
-              </label>
-              <label>
-                <input type="checkbox" />
-                I’ve watched this film before
-              </label>
+              <div>
+                <label>
+                  <input type="checkbox" />
+                  <span>Watched on 28.2.2024.</span>
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  <span>I’ve watched this film before</span>
+                </label>
+              </div>
+              <textarea placeholder="Add a review..." />
             </Review>
-            <textarea cols={30} rows={10} />
             <Rating>
               <div>
                 <p>Rating</p>

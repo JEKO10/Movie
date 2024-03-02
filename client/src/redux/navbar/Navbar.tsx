@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { CgProfile } from "react-icons/cg";
+import { FaSearch } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-import arrow from "../../assets/images/icons/arrow.svg";
-import account from "../../assets/images/icons/profile.svg";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Underline } from "../singleMovie/SingleMovie.styled";
 import Input from "./components/Input";
@@ -36,9 +37,9 @@ const Navbar = () => {
       </Link>
       <ProfileMenu>
         <ProfileHeader onClick={() => setIsModalOpen(!isModalOpen)}>
-          <img src={account} alt="accountImg" />
+          <CgProfile />
           <p>JEKO10</p>
-          <img src={arrow} alt="arrow" />
+          <IoIosArrowDown />
         </ProfileHeader>
         {isModalOpen && (
           <ProfileModal isModalOpen={isModalOpen}>
@@ -77,6 +78,7 @@ const Navbar = () => {
       <LogButton onClick={() => dispatch(setIsLogOpen(true))}>Log +</LogButton>
       <InputContainer>
         <Input value={isLogOpen || isMovieModalOpen ? "" : inputValue} />
+        <FaSearch />
       </InputContainer>
       <article>
         <button>Log in</button>

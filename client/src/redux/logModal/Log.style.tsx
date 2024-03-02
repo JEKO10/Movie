@@ -123,12 +123,6 @@ export const MovieModal = styled.section<LogModalProps>`
     border-radius: 5px;
     margin-right: 2rem;
   }
-
-  textarea {
-    height: 76px;
-    width: 510px;
-    resize: none;
-  }
 `;
 
 export const BackButton = styled.button`
@@ -183,7 +177,41 @@ export const LogHeader = styled.header`
 `;
 
 export const Review = styled.div`
-  ${flexMixin({ justify: "space-between", align: "center" })};
+  ${flexMixin({ justify: "center", align: "flex-start" })};
+  flex-direction: column;
+
+  div {
+    ${flexMixin({ justify: "center", align: "center" })};
+
+    label {
+      ${flexMixin({ justify: "center", align: "center" })};
+      margin-right: 5rem;
+
+      input {
+        height: 20px;
+        width: 20px;
+        font-size: 13px;
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  textarea {
+    height: 100px;
+    width: 510px;
+    color: ${tertiaryColor};
+    font-family: ${primaryFont};
+    margin: 1rem 0;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    resize: none;
+
+    &:focus {
+      background-color: #ccddee;
+    }
+  }
 `;
 
 export const Rating = styled.div``;

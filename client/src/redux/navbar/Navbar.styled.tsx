@@ -53,6 +53,11 @@ export const ProfileHeader = styled.header`
   transition: background-color 200ms ease;
   cursor: pointer;
 
+  svg {
+    font-size: 1.8rem;
+    color: ${tertiaryColor};
+  }
+
   p {
     font-size: 25px;
     margin: 0 0.5rem;
@@ -136,10 +141,12 @@ export const Input = styled.div`
     color: #fff;
   }
 
-  img {
+  svg {
+    font-size: 2rem;
     position: absolute;
     top: 0.6rem;
     right: 1rem;
+    color: ${tertiaryColor};
   }
 `;
 

@@ -1,32 +1,32 @@
 import React from "react";
+import { FaRegHeart } from "react-icons/fa";
+import { FaRegCirclePlay } from "react-icons/fa6";
+import { GoHomeFill } from "react-icons/go";
+import { IoListSharp } from "react-icons/io5";
 
-import community from "../assets/images/icons/community.svg";
-import home from "../assets/images/icons/home.svg";
-import list from "../assets/images/icons/list.svg";
-import play from "../assets/images/icons/play.svg";
 import { Side } from "./Temp.style";
 
 const Sidebar = () => {
   return (
     <Side>
       <div>
-        <img src={home} alt="homeImg" />
+        <GoHomeFill />
         <p>Home</p>
       </div>
       <div>
-        <img src={play} alt="playImg" />
+        <FaRegCirclePlay />
         <p>Movies</p>
       </div>
       <div>
-        <img src={list} alt="listImg" />
+        <IoListSharp />
         <p>Lists</p>
       </div>
       <div>
-        <img src={community} alt="communityImg" />
+        <FaRegHeart />
         <p>Community</p>
       </div>
       <div>
-        <img src={community} alt="communityImg" />
+        <FaRegHeart />
         <p>Settings</p>
       </div>
     </Side>

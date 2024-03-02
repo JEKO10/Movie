@@ -38,8 +38,11 @@ export const Side = styled.aside`
       color: ${secondaryColor};
     }
 
-    img {
-      margin-right: 0.8rem;
+    svg {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: ${tertiaryColor};
+      margin-right: 0.5rem;
     }
 
     p {
@@ -82,7 +85,9 @@ export const Features = styled.section`
       }
     }
 
-    img {
+    svg {
+      font-size: 5rem;
+      color: ${tertiaryColor};
       margin-right: 2rem;
     }
 

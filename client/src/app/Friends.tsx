@@ -1,6 +1,6 @@
 import React from "react";
+import { FaDotCircle } from "react-icons/fa";
 
-import friend from "../assets/images/icons/friend.svg";
 import { Side } from "./Temp.style";
 
 const Friends = () => {
@@ -8,23 +8,23 @@ const Friends = () => {
     <Side>
       <h3>Friends:</h3>
       <div>
-        <img src={friend} alt="friend" />
+        <FaDotCircle />
         <p>@username</p>
       </div>
       <div>
-        <img src={friend} alt="friend" />
+        <FaDotCircle />
         <p>@username</p>
       </div>
       <div>
-        <img src={friend} alt="friend" />
+        <FaDotCircle />
         <p>@username</p>
       </div>
       <div>
-        <img src={friend} alt="friend" />
+        <FaDotCircle />
         <p>@username</p>
       </div>
       <div>
-        <img src={friend} alt="friend" />
+        <FaDotCircle />
         <p>@username</p>
       </div>
     </Side>
