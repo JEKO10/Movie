@@ -179,6 +179,7 @@ export const LogHeader = styled.header`
 export const Review = styled.div`
   ${flexMixin({ justify: "center", align: "flex-start" })};
   flex-direction: column;
+  margin-top: 0.5rem;
 
   div {
     ${flexMixin({ justify: "center", align: "center" })};
@@ -188,10 +189,17 @@ export const Review = styled.div`
       margin-right: 5rem;
 
       input {
+        background-color: ${secondaryColor};
         height: 20px;
         width: 20px;
-        font-size: 13px;
-        margin-right: 1rem;
+        font-size: 1rem;
+        margin-right: 0.5rem;
+        cursor: pointer;
+      }
+
+      span {
+        font-size: 1.1rem;
+        user-select: none;
       }
     }
   }
@@ -200,9 +208,10 @@ export const Review = styled.div`
     height: 100px;
     width: 510px;
     color: ${tertiaryColor};
+    font-size: 1.1rem;
     font-family: ${primaryFont};
     margin: 1rem 0;
-    padding: 10px;
+    padding: 5px 10px;
     border: none;
     outline: none;
     border-radius: 3px;
@@ -210,10 +219,56 @@ export const Review = styled.div`
 
     &:focus {
       background-color: #ccddee;
+      box-shadow:
+        inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+        0 0 10px #000;
     }
   }
 `;
 
-export const Rating = styled.div``;
+export const Rating = styled.div`
+  ${flexMixin({ justify: "flex-start", align: "center" })};
+  margin-bottom: 1rem;
 
-export const Submit = styled.div``;
+  div {
+    margin-right: 5rem;
+  }
+`;
+
+export const Submit = styled.div`
+  ${flexMixin({ justify: "space-between", align: "center" })};
+
+  label {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+
+    input {
+      background-color: ${secondaryColor};
+      height: 20px;
+      width: 20px;
+      font-size: 1rem;
+      margin-right: 0.5rem;
+      cursor: pointer;
+    }
+
+    span {
+      font-size: 1.1rem;
+      user-select: none;
+    }
+  }
+
+  button {
+    background-color: ${tertiaryColor};
+    color: #fff;
+    font-family: ${primaryFont};
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${secondaryColor};
+    }
+  }
+`;

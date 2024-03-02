@@ -9,7 +9,7 @@ import {
   OptionsHeader,
   Rating,
   RemoveWatchlist,
-  Underline,
+  Underline
 } from "../SingleMovie.styled";
 import { toggleList, toggleReview, toggleShare } from "../singleMovieSlice";
 import Modals from "./Modals";
@@ -57,11 +57,14 @@ const Options = () => {
                     type="radio"
                     name="rating"
                     value={ratingValue}
-                    onClick={() => setRating(ratingValue)}
+                    onClick={() => {
+                      setRating(ratingValue);
+                      console.log("a");
+                    }}
                   />
                   <RiStarSFill
                     color={
-                      ratingValue <= (hover || rating) ? "#0f87be" : "#334455"
+                      ratingValue <= (hover || rating) ? "#00AF51" : "#334455"
                     }
                     onMouseEnter={() => setHover(ratingValue)}
                     onMouseLeave={() => setHover(0)}

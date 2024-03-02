@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { CiHeart, CiStar } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
+import { FiX } from "react-icons/fi";
+import { RiStarSFill } from "react-icons/ri";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
@@ -8,6 +10,7 @@ import {
   setIsLogOpen,
   setIsMovieModalOpen
 } from "../navbar/navbarSlice";
+import { Rating } from "../singleMovie/SingleMovie.styled";
 import { getMovie } from "../singleMovie/singleMovieSlice";
 import {
   BackButton,
@@ -15,12 +18,14 @@ import {
   LogHeader,
   LogModal,
   MovieModal as Container,
-  Rating,
   Review,
   Submit
 } from "./Log.style";
 
 const MovieModal = () => {
+  const [rating, setRating] = useState(0);
+  const [isLike, setIsLike] = useState(false);
+  const [hover, setHover] = useState(0);
   const [isClosing, setIsClosing] = useState(false);
   const { movieInfo, isLoading } = useAppSelector((store) => store.singleMovie);
   const selectedMovieId = useAppSelector(
@@ -110,23 +115,48 @@ const MovieModal = () => {
               <textarea placeholder="Add a review..." />
             </Review>
             <Rating>
+              <p>Rating</p>
               <div>
-                <p>Rating</p>
-                <CiStar />
-                <CiStar />
-                <CiStar />
-                <CiStar />
-                <CiStar />
-              </div>
-              <div>
-                <p>Like</p>
-                <CiHeart />
+                {rating ? <FiX onClick={() => setRating(0)} /> : ""}
+                {[...Array(5)].map((_, index) => {
+                  const ratingValue = index + 1;
+
+                  return (
+                    <label key={index}>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={ratingValue}
+                        onClick={() => {
+                          setRating(ratingValue);
+                          console.log("a");
+                        }}
+                      />
+                      <RiStarSFill
+                        color={
+                          ratingValue <= (hover || rating)
+                            ? "#00AF51"
+                            : "#334455"
+                        }
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(0)}
+                      />
+                    </label>
+                  );
+                })}
               </div>
             </Rating>
+            <div onClick={() => setIsLike(!isLike)}>
+              <p>Like</p>
+              <FaHeart
+                color={isLike ? "#ff9023" : "#334455"}
+                fill={isLike ? "#ff9023" : "#334455"}
+              />
+            </div>
             <Submit>
               <label>
                 <input type="checkbox" />
-                Contains spoilers
+                <span>Contains spoilers</span>
               </label>
               <button>Save</button>
             </Submit>

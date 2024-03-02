@@ -316,12 +316,6 @@ export const Rating = styled.article`
   svg {
     color: #334455;
     transition: all 200ms ease;
-
-    path {
-      &:first-of-type {
-        display: none;
-      }
-    }
   }
 `;
 
