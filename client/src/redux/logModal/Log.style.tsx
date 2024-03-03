@@ -33,7 +33,7 @@ const sharedModalStyle = css<LogModalProps>`
   ${flexMixin({ justify: "flex-start", align: "flex-start" })};
   flex-direction: column;
   position: relative;
-  top: -5rem;
+  top: -4rem;
   background-color: #292929;
   color: #fff;
   width: 668px;
@@ -41,6 +41,21 @@ const sharedModalStyle = css<LogModalProps>`
   padding: 20px;
   border-radius: 3px;
   animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s;
+`;
+
+const sharedButtonStyle = css`
+  background-color: ${tertiaryColor};
+  color: #fff;
+  font-family: ${primaryFont};
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${secondaryColor};
+  }
 `;
 
 export const FixedContainer = styled.div`
@@ -127,22 +142,11 @@ export const MovieModal = styled.section<LogModalProps>`
 `;
 
 export const BackButton = styled.button`
-  background-color: ${tertiaryColor};
-  color: #fff;
-  font-family: ${primaryFont};
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  ${sharedButtonStyle};
   margin-bottom: 1rem;
-  padding: 5px 10px;
-  border-radius: 3px;
   box-shadow:
     inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
     0 0 10px #000;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${secondaryColor};
-  }
 `;
 
 export const LogHeader = styled.header`
@@ -284,17 +288,6 @@ export const Submit = styled.div`
   }
 
   button {
-    background-color: ${tertiaryColor};
-    color: #fff;
-    font-family: ${primaryFont};
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${secondaryColor};
-    }
+    ${sharedButtonStyle};
   }
 `;

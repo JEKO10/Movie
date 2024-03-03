@@ -14,7 +14,7 @@ type SearchedDataProps = {
 export const SearchedData = styled.section<SearchedDataProps>`
   background-color: rgb(19, 24, 28);
   position: absolute;
-  top: ${({ isLogOpen }) => (isLogOpen ? "20rem" : "4.5rem")};
+  top: ${({ isLogOpen }) => (isLogOpen ? "21.5rem" : "4.5rem")};
   right: ${({ isLogOpen }) => (isLogOpen ? "30.85rem" : "27rem")};
   height: fit-content;
   width: ${({ isLogOpen }) => (isLogOpen ? "588px" : "524px")};
