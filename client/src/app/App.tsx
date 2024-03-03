@@ -12,10 +12,10 @@ function App() {
     <>
       <GlobalStyles />
       <RouterProvider />
-      <FixedSidebar />
+      {/* <FixedSidebar />
       <TrendingMovies />
       <Features />
-      <Oscar />
+      <Oscar /> */}
     </>
   );
 }

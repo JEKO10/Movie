@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FaHeart } from "react-icons/fa";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
@@ -9,6 +8,7 @@ import {
   setIsLogOpen,
   setIsMovieModalOpen
 } from "../navbar/navbarSlice";
+import { Like } from "../singleMovie/SingleMovie.styled";
 import { getMovie } from "../singleMovie/singleMovieSlice";
 import {
   BackButton,
@@ -16,6 +16,7 @@ import {
   LogHeader,
   LogModal,
   MovieModal as Container,
+  Rating,
   Review,
   Submit
 } from "./Log.style";
@@ -110,14 +111,13 @@ const MovieModal = () => {
               </div>
               <textarea placeholder="Add a review..." />
             </Review>
-            <StarRating />
-            <div onClick={() => setIsLike(!isLike)}>
-              <p>Like</p>
-              <FaHeart
-                color={isLike ? "#ff9023" : "#334455"}
-                fill={isLike ? "#ff9023" : "#334455"}
-              />
-            </div>
+            <Rating>
+              <StarRating />
+              <div onClick={() => setIsLike(!isLike)}>
+                <p>Like</p>
+                <Like isLike={isLike} />
+              </div>
+            </Rating>
             <Submit>
               <label>
                 <input type="checkbox" />

@@ -228,10 +228,19 @@ export const Review = styled.div`
 
 export const Rating = styled.div`
   ${flexMixin({ justify: "flex-start", align: "center" })};
-  margin-bottom: 1rem;
+
+  p {
+    margin-bottom: 0.3rem;
+    letter-spacing: 1px;
+  }
 
   div {
     margin-right: 5rem;
+
+    svg {
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
   }
 `;
 

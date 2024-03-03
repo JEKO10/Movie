@@ -10,7 +10,7 @@ const StarRating = () => {
 
   return (
     <Rating>
-      <p>Rate</p>
+      <p>Rating</p>
       <div>
         {rating ? <FiX onClick={() => setRating(0)} /> : ""}
         {[...Array(5)].map((_, index) => {

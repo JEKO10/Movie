@@ -1,4 +1,5 @@
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,6 +13,10 @@ type BannerProps = {
 type UnderlineProps = {
   margin: string;
   width: string;
+};
+
+type LikeProps = {
+  isLike: boolean;
 };
 
 export const Movie = styled.section`
@@ -293,16 +298,12 @@ export const OptionsHeader = styled.header`
 `;
 
 export const Rating = styled.article`
-  ${flexMixin({ justify: "space-evenly", align: "center" })};
-  flex-direction: column;
-  padding: 0 10px;
-
   div {
     position: relative;
 
     > svg {
       color: #fff;
-      font-size: 1rem;
+      font-size: 1rem !important;
       position: absolute;
       top: 0.5rem;
       left: -1rem;
@@ -314,8 +315,10 @@ export const Rating = styled.article`
   }
 
   svg {
+    font-size: 2.5rem;
     color: #334455;
     transition: all 200ms ease;
+    cursor: pointer;
   }
 `;
 
@@ -385,5 +388,15 @@ export const Review = styled.article`
   p {
     max-width: 95%;
     margin: 1rem 0;
+  }
+`;
+
+export const Like = styled(FaHeart)<LikeProps>`
+  font-size: 2rem !important;
+  color: ${({ isLike }) => (isLike ? "#ff9023" : "#334455")};
+  fill: ${({ isLike }) => (isLike ? "#ff9023" : "#334455")};
+
+  &:hover {
+    fill: ${({ isLike }) => (!isLike ? "#233547" : "")};
   }
 `;
