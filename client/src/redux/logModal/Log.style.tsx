@@ -106,8 +106,9 @@ export const LogModal = styled.section<LogModalProps>`
 
 export const MovieModal = styled.section<LogModalProps>`
   ${sharedModalStyle};
-  height: 383px;
+  /* height: 383px; */
   width: 800px;
+  padding-right: 70px;
 
   section {
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};
@@ -182,11 +183,11 @@ export const Review = styled.div`
   margin-top: 0.5rem;
 
   div {
-    ${flexMixin({ justify: "center", align: "center" })};
+    ${flexMixin({ justify: "space-between", align: "center" })};
+    width: 100%;
 
     label {
       ${flexMixin({ justify: "center", align: "center" })};
-      margin-right: 5rem;
 
       input {
         background-color: ${secondaryColor};
@@ -206,7 +207,7 @@ export const Review = styled.div`
 
   textarea {
     height: 100px;
-    width: 510px;
+    width: 100%;
     color: ${tertiaryColor};
     font-size: 1.1rem;
     font-family: ${primaryFont};
@@ -227,7 +228,7 @@ export const Review = styled.div`
 `;
 
 export const Rating = styled.div`
-  ${flexMixin({ justify: "flex-start", align: "center" })};
+  ${flexMixin({ justify: "space-between", align: "center" })};
 
   p {
     margin-bottom: 0.3rem;
@@ -235,17 +236,34 @@ export const Rating = styled.div`
   }
 
   div {
-    margin-right: 5rem;
-
     svg {
       font-size: 2.5rem;
       cursor: pointer;
+    }
+
+    input {
+      color: ${tertiaryColor};
+      font-size: 1.1rem;
+      font-family: ${primaryFont};
+      padding: 5px 10px;
+      border: none;
+      outline: none;
+      border-radius: 3px;
+      resize: none;
+
+      &:focus {
+        background-color: #ccddee;
+        box-shadow:
+          inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+          0 0 10px #000;
+      }
     }
   }
 `;
 
 export const Submit = styled.div`
   ${flexMixin({ justify: "space-between", align: "center" })};
+  margin-top: 1rem;
 
   label {
     ${flexMixin({ justify: "flex-start", align: "center" })};
@@ -271,7 +289,6 @@ export const Submit = styled.div`
     font-family: ${primaryFont};
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 1rem;
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;

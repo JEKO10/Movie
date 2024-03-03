@@ -58,7 +58,7 @@ const navbarSlice = createSlice({
       state.isLogOpen = payload;
       state.inputValue = "";
 
-      if (state.isLogOpen) {
+      if (state.isLogOpen || state.isMovieModalOpen) {
         document.body.style.overflow = "hidden";
       } else {
         document.body.style.overflow = "auto";
@@ -72,11 +72,11 @@ const navbarSlice = createSlice({
       state.isMovieModalOpen = action.payload.isOpen;
       state.selectedMovieId = action.payload.id;
 
-      // if (state.isMovieModalOpen) {
-      //   document.body.style.overflow = "hidden";
-      // } else {
-      //   document.body.style.overflow = "auto";
-      // }
+      if (state.isMovieModalOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     }
   },
   extraReducers: (builder) => {

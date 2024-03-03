@@ -112,6 +112,10 @@ const MovieModal = () => {
               <textarea placeholder="Add a review..." />
             </Review>
             <Rating>
+              <div>
+                <p>Tags</p>
+                <input type="text" placeholder="eg. HBO MAX" />
+              </div>
               <StarRating />
               <div onClick={() => setIsLike(!isLike)}>
                 <p>Like</p>
