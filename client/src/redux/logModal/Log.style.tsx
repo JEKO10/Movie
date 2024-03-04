@@ -261,13 +261,34 @@ export const Rating = styled.div`
 `;
 
 export const Tags = styled.div`
+  ${flexMixin({ justify: "flex-start", align: "center" })};
+  flex-wrap: wrap;
+  gap: 5px;
+
   p {
+    ${flexMixin({ justify: "center", align: "center" })};
     background-color: ${tertiaryColor};
     width: fit-content;
     margin-top: 0.2rem;
     padding: 0 5px;
     border-radius: 3px;
+    user-select: none;
     cursor: default;
+
+    span {
+      opacity: 0.5;
+
+      svg {
+        font-size: 13px;
+        margin: 0 0 -1px 2px; /* top | right | bottom | left */
+      }
+    }
+
+    &:hover {
+      span {
+        opacity: 1;
+      }
+    }
   }
 `;
 

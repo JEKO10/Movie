@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { FiX } from "react-icons/fi";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
@@ -44,6 +45,10 @@ const MovieModal = () => {
       setTags([...tags, inputElement.value]);
       inputElement.value = "";
     }
+  };
+
+  const handleDelete = (clickedTag: string) => {
+    setTags((prevTags) => prevTags.filter((tag) => tag !== clickedTag));
   };
 
   const backHandle = () => {
@@ -140,8 +145,11 @@ const MovieModal = () => {
             </Rating>
             <Tags>
               {tags.map((tag) => (
-                <p title={tag} key={tag}>
-                  {tag}
+                <p title={tag} key={tag} onClick={() => handleDelete(tag)}>
+                  <span>
+                    {tag}
+                    <FiX />
+                  </span>
                 </p>
               ))}
             </Tags>
