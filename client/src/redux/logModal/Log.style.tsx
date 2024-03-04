@@ -260,9 +260,20 @@ export const Rating = styled.div`
   }
 `;
 
+export const Tags = styled.div`
+  p {
+    background-color: ${tertiaryColor};
+    width: fit-content;
+    margin-top: 0.2rem;
+    padding: 0 5px;
+    border-radius: 3px;
+    cursor: default;
+  }
+`;
+
 export const Submit = styled.div`
   ${flexMixin({ justify: "space-between", align: "center" })};
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 
   label {
     ${flexMixin({ justify: "flex-start", align: "center" })};

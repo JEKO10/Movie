@@ -18,10 +18,12 @@ import {
   MovieModal as Container,
   Rating,
   Review,
-  Submit
+  Submit,
+  Tags
 } from "./Log.style";
 
 const MovieModal = () => {
+  const [tags, setTags] = useState<string[]>([]);
   const [isLike, setIsLike] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const { movieInfo, isLoading } = useAppSelector((store) => store.singleMovie);
@@ -33,6 +35,16 @@ const MovieModal = () => {
   const movieRef = useRef<HTMLElement>(null);
 
   const { title, poster_path, release_date } = movieInfo;
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const inputElement = event.target as HTMLInputElement;
+
+      setTags([...tags, inputElement.value]);
+      inputElement.value = "";
+    }
+  };
 
   const backHandle = () => {
     setIsClosing(true);
@@ -114,7 +126,11 @@ const MovieModal = () => {
             <Rating>
               <div>
                 <p>Tags</p>
-                <input type="text" placeholder="eg. HBO MAX" />
+                <input
+                  type="text"
+                  placeholder="eg. HBO MAX"
+                  onKeyDown={(event) => handleKeyDown(event)}
+                />
               </div>
               <StarRating />
               <div onClick={() => setIsLike(!isLike)}>
@@ -122,6 +138,13 @@ const MovieModal = () => {
                 <Like isLike={isLike} />
               </div>
             </Rating>
+            <Tags>
+              {tags.map((tag) => (
+                <p title={tag} key={tag}>
+                  {tag}
+                </p>
+              ))}
+            </Tags>
             <Submit>
               <label>
                 <input type="checkbox" />
