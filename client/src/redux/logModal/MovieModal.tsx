@@ -41,8 +41,12 @@ const MovieModal = () => {
     if (event.key === "Enter") {
       event.preventDefault();
       const inputElement = event.target as HTMLInputElement;
+      const newTag = inputElement.value;
 
-      setTags([...tags, inputElement.value]);
+      if (newTag && !tags.includes(newTag) && newTag) {
+        setTags([...tags, newTag]);
+      }
+
       inputElement.value = "";
     }
   };
@@ -147,7 +151,8 @@ const MovieModal = () => {
               {tags.map((tag) => (
                 <p title={tag} key={tag} onClick={() => handleDelete(tag)}>
                   <span>
-                    {tag}
+                    {tag.slice(0, 15)}
+                    {tag.length > 15 && "..."}
                     <FiX />
                   </span>
                 </p>
