@@ -58,6 +58,31 @@ const sharedButtonStyle = css`
   }
 `;
 
+const sharedInputStyle = css`
+  color: ${tertiaryColor};
+  font-size: 1.1rem;
+  font-family: ${primaryFont};
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  box-shadow:
+    inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+    0 0 10px #000;
+
+  &:focus {
+    background-color: #ccddee;
+  }
+`;
+
+const sharedCheckboxStyle = css`
+  background-color: ${secondaryColor};
+  height: 20px;
+  width: 20px;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+`;
+
 export const FixedContainer = styled.div`
   ${flexMixin({ justify: "center", align: "center" })};
   background-color: rgba(0, 0, 0, 0.5);
@@ -88,21 +113,9 @@ export const LogModal = styled.section<LogModalProps>`
     }
 
     input {
-      font-family: ${primaryFont};
-      color: ${tertiaryColor};
+      ${sharedInputStyle}
       width: 588px;
-      font-size: 1.1rem;
       padding: 10px;
-      border: none;
-      border-radius: 3px;
-      outline: none;
-      box-shadow:
-        inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
-        0 0 10px #000;
-
-      &:focus {
-        background-color: #ccddee;
-      }
     }
   }
 
@@ -194,12 +207,7 @@ export const Review = styled.div`
       ${flexMixin({ justify: "center", align: "center" })};
 
       input {
-        background-color: ${secondaryColor};
-        height: 20px;
-        width: 20px;
-        font-size: 1rem;
-        margin-right: 0.5rem;
-        cursor: pointer;
+        ${sharedCheckboxStyle}
       }
 
       span {
@@ -246,21 +254,8 @@ export const Rating = styled.div`
     }
 
     input {
-      color: ${tertiaryColor};
-      font-size: 1.1rem;
-      font-family: ${primaryFont};
+      ${sharedInputStyle}
       padding: 5px 10px;
-      border: none;
-      outline: none;
-      border-radius: 3px;
-      resize: none;
-
-      &:focus {
-        background-color: #ccddee;
-        box-shadow:
-          inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
-          0 0 10px #000;
-      }
     }
   }
 `;
@@ -273,12 +268,7 @@ export const Submit = styled.div`
     ${flexMixin({ justify: "flex-start", align: "center" })};
 
     input {
-      background-color: ${secondaryColor};
-      height: 20px;
-      width: 20px;
-      font-size: 1rem;
-      margin-right: 0.5rem;
-      cursor: pointer;
+      ${sharedCheckboxStyle}
     }
 
     span {
