@@ -129,6 +129,20 @@ const sharedCheckboxLabelStyle = css`
   }
 `;
 
+const sharedCloseStyle = css`
+  font-size: 2rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0.6;
+  cursor: pointer;
+
+  &:hover {
+    color: ${secondaryColor};
+    opacity: 1;
+  }
+`;
+
 export const FixedContainer = styled.div`
   ${flexMixin({ justify: "center", align: "center" })};
   background-color: rgba(0, 0, 0, 0.5);
@@ -142,6 +156,10 @@ export const FixedContainer = styled.div`
 
 export const LogModal = styled.section<LogModalProps>`
   ${sharedModalStyle};
+
+  > svg {
+    ${sharedCloseStyle}
+  }
 
   h3 {
     text-transform: uppercase;
@@ -167,18 +185,6 @@ export const LogModal = styled.section<LogModalProps>`
         0 0 10px #000;
     }
   }
-
-  svg {
-    font-size: 2rem;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    cursor: pointer;
-
-    &:hover {
-      color: ${secondaryColor};
-    }
-  }
 `;
 
 export const MovieModal = styled.section<LogModalProps>`
@@ -186,6 +192,10 @@ export const MovieModal = styled.section<LogModalProps>`
   /* height: 383px; */
   width: 800px;
   padding-right: 70px;
+
+  > svg {
+    ${sharedCloseStyle}
+  }
 
   section {
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};
@@ -336,7 +346,7 @@ export const Tags = styled.div`
 
 export const Submit = styled.div`
   ${flexMixin({ justify: "space-between", align: "center" })};
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 
   label {
     ${sharedCheckboxLabelStyle}

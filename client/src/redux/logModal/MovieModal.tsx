@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiCheck, FiX } from "react-icons/fi";
+import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
@@ -106,6 +107,7 @@ const MovieModal = () => {
   return (
     <FixedContainer>
       <Container ref={movieRef} isClosing={isClosing}>
+        <IoMdClose onClick={() => handleExit()} />
         <BackButton onClick={() => backHandle()}>Back</BackButton>
         <section>
           <img
