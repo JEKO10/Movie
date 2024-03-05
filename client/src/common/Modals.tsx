@@ -30,7 +30,7 @@ const Modals = () => {
   return (
     <section ref={modalRef}>
       <Navbar />
-      {inputValue && isModalOpen && !isMovieModalOpen && <SearchModal />}
+      {inputValue && isModalOpen && <SearchModal />}
       {isLogOpen && <LogModal />}
       {isMovieModalOpen && <MovieModal />}
     </section>

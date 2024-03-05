@@ -68,6 +68,7 @@ const navbarSlice = createSlice({
       state,
       action: PayloadAction<{ isOpen: boolean; id: number }>
     ) => {
+      state.inputValue = "";
       state.isLogOpen = false;
       state.isMovieModalOpen = action.payload.isOpen;
       state.selectedMovieId = action.payload.id;

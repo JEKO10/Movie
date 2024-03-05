@@ -19,9 +19,7 @@ import { setIsLogOpen } from "./navbarSlice";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { isLogOpen, inputValue, isMovieModalOpen } = useAppSelector(
-    (store) => store.navbar
-  );
+  const { isLogOpen, inputValue } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
 
   const onLinkChange = () => {
@@ -77,7 +75,7 @@ const Navbar = () => {
       </ProfileMenu>
       <LogButton onClick={() => dispatch(setIsLogOpen(true))}>Log +</LogButton>
       <InputContainer>
-        <Input value={isLogOpen || isMovieModalOpen ? "" : inputValue} />
+        <Input value={isLogOpen ? "" : inputValue} />
         <FaSearch />
       </InputContainer>
       <article>
