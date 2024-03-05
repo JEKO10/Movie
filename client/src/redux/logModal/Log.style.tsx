@@ -59,6 +59,7 @@ const sharedButtonStyle = css`
 `;
 
 const sharedInputStyle = css`
+  background-color: #ccddee;
   color: ${tertiaryColor};
   font-size: 1.1rem;
   font-family: ${primaryFont};
@@ -67,7 +68,7 @@ const sharedInputStyle = css`
   outline: none;
 
   &:focus {
-    background-color: #ccddee;
+    background-color: #fff;
     box-shadow:
       inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
       0 0 10px #000;
@@ -83,6 +84,48 @@ const sharedCheckboxStyle = css`
 
   &:focus {
     background-color: #fff;
+  }
+`;
+
+const sharedCheckboxLabelStyle = css`
+  position: relative;
+  cursor: pointer;
+
+  svg {
+    color: #000;
+    position: absolute;
+    bottom: 0.2rem;
+    left: 0.1rem;
+    font-size: 1.1rem;
+    font-weight: 100;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  span {
+    font-size: 1.1rem;
+    margin-left: 1.7rem;
+    user-select: none;
+  }
+
+  &:before {
+    ${sharedCheckboxStyle}
+    content: "";
+    display: inline-block;
+    background-color: #ccddee;
+
+    position: absolute;
+    left: 0;
+    bottom: 3px;
+    transition: all 200ms ease;
+  }
+
+  &:hover {
+    &:before {
+      background-color: #fff;
+    }
   }
 `;
 
@@ -210,51 +253,14 @@ export const Review = styled.div`
     width: 100%;
 
     label {
-      position: relative;
-      cursor: pointer;
-
-      svg {
-        color: #000;
-        position: absolute;
-        bottom: 0.2rem;
-        left: 0.1rem;
-        font-size: 1.1rem;
-        font-weight: 100;
-      }
-
-      input[type="checkbox"] {
-        display: none;
-      }
-
-      span {
-        font-size: 1.1rem;
-        margin-left: 1.7rem;
-        user-select: none;
-      }
-
-      &:before {
-        ${sharedCheckboxStyle}
-        content: "";
-        display: inline-block;
-        background-color: #ccddee;
-
-        position: absolute;
-        left: 0;
-        bottom: 3px;
-        transition: all 200ms ease;
-      }
-
-      &:hover {
-        &:before {
-          background-color: #fff;
-        }
-      }
+      ${sharedCheckboxLabelStyle}
     }
   }
 
   textarea {
     height: 100px;
     width: 100%;
+    background-color: #ccddee;
     color: ${tertiaryColor};
     font-size: 1.1rem;
     font-family: ${primaryFont};
@@ -266,7 +272,7 @@ export const Review = styled.div`
     resize: none;
 
     &:focus {
-      background-color: #ccddee;
+      background-color: #fff;
       box-shadow:
         inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
         0 0 10px #000;
@@ -311,7 +317,8 @@ export const Tags = styled.div`
     cursor: default;
 
     span {
-      opacity: 0.5;
+      opacity: 0.6;
+      transition: all 200ms ease;
 
       svg {
         font-size: 13px;
@@ -332,16 +339,8 @@ export const Submit = styled.div`
   margin-top: 0.5rem;
 
   label {
+    ${sharedCheckboxLabelStyle}
     ${flexMixin({ justify: "flex-start", align: "center" })};
-
-    input {
-      ${sharedCheckboxStyle}
-    }
-
-    span {
-      font-size: 1.1rem;
-      user-select: none;
-    }
   }
 
   button {

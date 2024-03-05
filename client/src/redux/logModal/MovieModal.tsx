@@ -26,6 +26,7 @@ import {
 const MovieModal = () => {
   const [isWatched, setIsWatched] = useState(false);
   const [isRewatch, setIsRewatch] = useState(false);
+  const [isSpoiler, setIsSpoiler] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
   const [isLike, setIsLike] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -172,7 +173,12 @@ const MovieModal = () => {
             </Tags>
             <Submit>
               <label>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={isSpoiler}
+                  onChange={() => setIsSpoiler(!isSpoiler)}
+                />
+                {isSpoiler && <FiCheck />}
                 <span>Contains spoilers</span>
               </label>
               <button>Save</button>
