@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FiX } from "react-icons/fi";
+import { FiCheck, FiX } from "react-icons/fi";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
@@ -24,6 +24,8 @@ import {
 } from "./Log.style";
 
 const MovieModal = () => {
+  const [isWatched, setIsWatched] = useState(false);
+  const [isRewatch, setIsRewatch] = useState(false);
   const [tags, setTags] = useState<string[]>([]);
   const [isLike, setIsLike] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -122,11 +124,21 @@ const MovieModal = () => {
             <Review>
               <div>
                 <label>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={isWatched}
+                    onChange={() => setIsWatched(!isWatched)}
+                  />
+                  {isWatched && <FiCheck />}
                   <span>Watched on 28.2.2024.</span>
                 </label>
                 <label>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={isRewatch}
+                    onChange={() => setIsRewatch(!isRewatch)}
+                  />
+                  {isRewatch && <FiCheck />}
                   <span>I’ve watched this film before</span>
                 </label>
               </div>

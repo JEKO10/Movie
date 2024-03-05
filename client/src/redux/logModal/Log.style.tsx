@@ -65,12 +65,12 @@ const sharedInputStyle = css`
   border: none;
   border-radius: 3px;
   outline: none;
-  box-shadow:
-    inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
-    0 0 10px #000;
 
   &:focus {
     background-color: #ccddee;
+    box-shadow:
+      inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+      0 0 10px #000;
   }
 `;
 
@@ -79,8 +79,11 @@ const sharedCheckboxStyle = css`
   height: 20px;
   width: 20px;
   font-size: 1rem;
-  margin-right: 0.5rem;
-  cursor: pointer;
+  border-radius: 3px;
+
+  &:focus {
+    background-color: #fff;
+  }
 `;
 
 export const FixedContainer = styled.div`
@@ -116,6 +119,9 @@ export const LogModal = styled.section<LogModalProps>`
       ${sharedInputStyle}
       width: 588px;
       padding: 10px;
+      box-shadow:
+        inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+        0 0 10px #000;
     }
   }
 
@@ -204,15 +210,44 @@ export const Review = styled.div`
     width: 100%;
 
     label {
-      ${flexMixin({ justify: "center", align: "center" })};
+      position: relative;
+      cursor: pointer;
 
-      input {
-        ${sharedCheckboxStyle}
+      svg {
+        color: #000;
+        position: absolute;
+        bottom: 0.2rem;
+        left: 0.1rem;
+        font-size: 1.1rem;
+        font-weight: 100;
+      }
+
+      input[type="checkbox"] {
+        display: none;
       }
 
       span {
         font-size: 1.1rem;
+        margin-left: 1.7rem;
         user-select: none;
+      }
+
+      &:before {
+        ${sharedCheckboxStyle}
+        content: "";
+        display: inline-block;
+        background-color: #ccddee;
+
+        position: absolute;
+        left: 0;
+        bottom: 3px;
+        transition: all 200ms ease;
+      }
+
+      &:hover {
+        &:before {
+          background-color: #fff;
+        }
       }
     }
   }
