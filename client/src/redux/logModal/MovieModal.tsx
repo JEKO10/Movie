@@ -2,7 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { FiX } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useOutsideClick
+} from "../../common/hooks";
 import { Loader } from "../../common/Loader";
 import {
   handleBack,
@@ -55,19 +59,9 @@ const MovieModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
     dispatch(getMovie(selectedMovieId.toString()));
   }, [selectedMovieId]);
 
-  useEffect(() => {
-    const clickOutside = (e: MouseEvent) => {
-      if (!movieRef.current?.contains(e.target as Node)) {
-        handleExit(setIsClosing, dispatch, setIsMovieModalOpen);
-      }
-    };
-
-    document.addEventListener("mousedown", clickOutside, true);
-
-    return () => {
-      document.removeEventListener("mousedown", clickOutside, true);
-    };
-  }, []);
+  useOutsideClick(movieRef, dispatch, setIsLogOpen, () =>
+    handleExit(setIsClosing, dispatch, setIsMovieModalOpen)
+  );
 
   if (isLoading) {
     return (

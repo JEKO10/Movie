@@ -1,6 +1,30 @@
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
+import { useEffect } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import type { AppDispatch, RootState } from "../app/store";
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
+
+export const useOutsideClick = <T>(
+  ref: React.RefObject<HTMLElement>,
+  dispatch: AppDispatch,
+  callback?: ActionCreatorWithPayload<T, string>,
+  handleExit?: () => void
+) => {
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        if (callback) dispatch(callback(false as T));
+        if (handleExit) handleExit();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside, true);
+    };
+  }, [ref, callback, handleExit]);
+};

@@ -15,7 +15,7 @@ export const handleExit = <T>(
   setIsClosing(true);
 
   setTimeout(() => {
-    dispatch(setIsModalOpen({} as T));
+    dispatch(setIsModalOpen(false as T));
     setIsClosing(false);
   }, 300);
 };
