@@ -9,7 +9,8 @@ import {
   handleCheckboxChange,
   handleDelete,
   handleExit,
-  handleKeyDown
+  handleKeyDown,
+  ModalProps
 } from "../../common/modals/modalUtils";
 import StarRating from "../../common/StarRating";
 import {
@@ -32,7 +33,7 @@ import {
   Tags
 } from "./Log.style";
 
-const MovieModal = () => {
+const MovieModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const [checkboxes, setCheckboxes] = useState({
     isWatched: false,
     isRewatch: false,
@@ -40,7 +41,6 @@ const MovieModal = () => {
   });
   const [tags, setTags] = useState<string[]>([]);
   const [isLike, setIsLike] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   const { movieInfo, isLoading } = useAppSelector((store) => store.singleMovie);
   const selectedMovieId = useAppSelector(
     (state) => state.navbar.selectedMovieId

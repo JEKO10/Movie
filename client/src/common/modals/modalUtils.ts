@@ -2,6 +2,11 @@ import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
 import { AppDispatch } from "../../app/store";
 
+export type ModalProps = {
+  isClosing: boolean;
+  setIsClosing: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export const handleExit = <T>(
   setIsClosing: React.Dispatch<React.SetStateAction<boolean>>,
   dispatch: AppDispatch,
@@ -11,6 +16,7 @@ export const handleExit = <T>(
 
   setTimeout(() => {
     dispatch(setIsModalOpen({} as T));
+    setIsClosing(false);
   }, 300);
 };
 
@@ -34,6 +40,7 @@ export const handleBack = (
     dispatch(setIsMovieModalOpen({ isOpen: false, id: 0 }));
     dispatch(setIsLogOpen(true));
     dispatch(setInputValue(title));
+    setIsClosing(false);
   }, 300);
 };
 

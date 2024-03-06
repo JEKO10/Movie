@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { handleExit } from "../../common/modals/modalUtils";
+import { handleExit, ModalProps } from "../../common/modals/modalUtils";
 import Input from "../navbar/components/Input";
 import { setIsLogOpen } from "../navbar/navbarSlice";
 import { FixedContainer, LogModal as Container } from "./Log.style";
 
-const LogModal = () => {
-  const [isClosing, setIsClosing] = useState(false);
+const LogModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const { inputValue } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
 
