@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FiCheck, FiX } from "react-icons/fi";
+import { FiX } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
@@ -12,6 +12,7 @@ import {
 } from "../navbar/navbarSlice";
 import { Like } from "../singleMovie/SingleMovie.styled";
 import { getMovie } from "../singleMovie/singleMovieSlice";
+import Checkbox from "./components/Checkbox";
 import {
   BackButton,
   FixedContainer,
@@ -25,9 +26,11 @@ import {
 } from "./Log.style";
 
 const MovieModal = () => {
-  const [isWatched, setIsWatched] = useState(false);
-  const [isRewatch, setIsRewatch] = useState(false);
-  const [isSpoiler, setIsSpoiler] = useState(false);
+  const [checkboxes, setCheckboxes] = useState({
+    isWatched: false,
+    isRewatch: false,
+    isSpoiler: false
+  });
   const [tags, setTags] = useState<string[]>([]);
   const [isLike, setIsLike] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -40,6 +43,13 @@ const MovieModal = () => {
   const movieRef = useRef<HTMLElement>(null);
 
   const { title, poster_path, release_date } = movieInfo;
+
+  const handleCheckboxChange = (checkboxName: keyof typeof checkboxes) => {
+    setCheckboxes(() => ({
+      ...checkboxes,
+      [checkboxName]: !checkboxes[checkboxName]
+    }));
+  };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -59,7 +69,7 @@ const MovieModal = () => {
     setTags((prevTags) => prevTags.filter((tag) => tag !== clickedTag));
   };
 
-  const backHandle = () => {
+  const handleBack = () => {
     setIsClosing(true);
 
     setTimeout(() => {
@@ -108,7 +118,7 @@ const MovieModal = () => {
     <FixedContainer>
       <Container ref={movieRef} isClosing={isClosing}>
         <IoMdClose onClick={() => handleExit()} />
-        <BackButton onClick={() => backHandle()}>Back</BackButton>
+        <BackButton onClick={() => handleBack()}>Back</BackButton>
         <section>
           <img
             src={
@@ -126,24 +136,16 @@ const MovieModal = () => {
             </LogHeader>
             <Review>
               <div>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={isWatched}
-                    onChange={() => setIsWatched(!isWatched)}
-                  />
-                  {isWatched && <FiCheck />}
-                  <span>Watched on 28.2.2024.</span>
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    checked={isRewatch}
-                    onChange={() => setIsRewatch(!isRewatch)}
-                  />
-                  {isRewatch && <FiCheck />}
-                  <span>I’ve watched this film before</span>
-                </label>
+                <Checkbox
+                  label="Watched on 28.2.2024."
+                  checked={checkboxes.isWatched}
+                  onChange={() => handleCheckboxChange("isWatched")}
+                />
+                <Checkbox
+                  label="I’ve watched this film before"
+                  checked={checkboxes.isRewatch}
+                  onChange={() => handleCheckboxChange("isRewatch")}
+                />
               </div>
               <textarea placeholder="Add a review..." />
             </Review>
@@ -174,15 +176,11 @@ const MovieModal = () => {
               ))}
             </Tags>
             <Submit>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={isSpoiler}
-                  onChange={() => setIsSpoiler(!isSpoiler)}
-                />
-                {isSpoiler && <FiCheck />}
-                <span>Contains spoilers</span>
-              </label>
+              <Checkbox
+                label="Contains spoilers"
+                checked={checkboxes.isSpoiler}
+                onChange={() => handleCheckboxChange("isSpoiler")}
+              />
               <button>Save</button>
             </Submit>
           </article>

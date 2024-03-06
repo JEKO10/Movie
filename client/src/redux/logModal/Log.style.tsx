@@ -89,7 +89,6 @@ const sharedCheckboxStyle = css`
 
 const sharedCheckboxLabelStyle = css`
   position: relative;
-  cursor: pointer;
 
   svg {
     color: #000;
