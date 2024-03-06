@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
-import Modals from "../common/Modals";
+import Modals from "../common/modals/Modals";
 import ScrollToTop from "../common/ScrollTop";
 import routes from "./routes";
 

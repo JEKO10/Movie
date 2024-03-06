@@ -1,11 +1,11 @@
 import React, { useEffect, useRef } from "react";
 
-import LogModal from "../redux/logModal/LogModal";
-import MovieModal from "../redux/logModal/MovieModal";
-import SearchModal from "../redux/navbar/components/SearchModal";
-import Navbar from "../redux/navbar/Navbar";
-import { setIsModalOpen } from "../redux/navbar/navbarSlice";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import LogModal from "../../redux/logModal/LogModal";
+import MovieModal from "../../redux/logModal/MovieModal";
+import SearchModal from "../../redux/navbar/components/SearchModal";
+import Navbar from "../../redux/navbar/Navbar";
+import { setIsModalOpen } from "../../redux/navbar/navbarSlice";
+import { useAppDispatch, useAppSelector } from "../hooks";
 
 const Modals = () => {
   const { inputValue, isModalOpen, isLogOpen, isMovieModalOpen } =

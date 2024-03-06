@@ -4,6 +4,13 @@ import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader } from "../../common/Loader";
+import {
+  handleBack,
+  handleCheckboxChange,
+  handleDelete,
+  handleExit,
+  handleKeyDown
+} from "../../common/modals/modalUtils";
 import StarRating from "../../common/StarRating";
 import {
   setInputValue,
@@ -44,49 +51,6 @@ const MovieModal = () => {
 
   const { title, poster_path, release_date } = movieInfo;
 
-  const handleCheckboxChange = (checkboxName: keyof typeof checkboxes) => {
-    setCheckboxes(() => ({
-      ...checkboxes,
-      [checkboxName]: !checkboxes[checkboxName]
-    }));
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      const inputElement = event.target as HTMLInputElement;
-      const newTag = inputElement.value;
-
-      if (newTag && !tags.includes(newTag) && newTag) {
-        setTags([...tags, newTag]);
-      }
-
-      inputElement.value = "";
-    }
-  };
-
-  const handleDelete = (clickedTag: string) => {
-    setTags((prevTags) => prevTags.filter((tag) => tag !== clickedTag));
-  };
-
-  const handleBack = () => {
-    setIsClosing(true);
-
-    setTimeout(() => {
-      dispatch(setIsMovieModalOpen({ isOpen: false, id: selectedMovieId }));
-      dispatch(setIsLogOpen(true));
-      dispatch(setInputValue(title));
-    }, 300);
-  };
-
-  const handleExit = () => {
-    setIsClosing(true);
-
-    setTimeout(() => {
-      dispatch(setIsMovieModalOpen({ isOpen: false, id: selectedMovieId }));
-    }, 300);
-  };
-
   useEffect(() => {
     dispatch(getMovie(selectedMovieId.toString()));
   }, [selectedMovieId]);
@@ -94,7 +58,7 @@ const MovieModal = () => {
   useEffect(() => {
     const clickOutside = (e: MouseEvent) => {
       if (!movieRef.current?.contains(e.target as Node)) {
-        handleExit();
+        handleExit(setIsClosing, dispatch, setIsMovieModalOpen);
       }
     };
 
@@ -117,8 +81,25 @@ const MovieModal = () => {
   return (
     <FixedContainer>
       <Container ref={movieRef} isClosing={isClosing}>
-        <IoMdClose onClick={() => handleExit()} />
-        <BackButton onClick={() => handleBack()}>Back</BackButton>
+        <IoMdClose
+          onClick={() =>
+            handleExit(setIsClosing, dispatch, setIsMovieModalOpen)
+          }
+        />
+        <BackButton
+          onClick={() =>
+            handleBack(
+              setIsClosing,
+              dispatch,
+              setIsMovieModalOpen,
+              setIsLogOpen,
+              setInputValue,
+              title
+            )
+          }
+        >
+          Back
+        </BackButton>
         <section>
           <img
             src={
@@ -139,12 +120,16 @@ const MovieModal = () => {
                 <Checkbox
                   label="Watched on 28.2.2024."
                   checked={checkboxes.isWatched}
-                  onChange={() => handleCheckboxChange("isWatched")}
+                  onChange={() =>
+                    handleCheckboxChange(checkboxes, setCheckboxes, "isWatched")
+                  }
                 />
                 <Checkbox
                   label="I’ve watched this film before"
                   checked={checkboxes.isRewatch}
-                  onChange={() => handleCheckboxChange("isRewatch")}
+                  onChange={() =>
+                    handleCheckboxChange(checkboxes, setCheckboxes, "isRewatch")
+                  }
                 />
               </div>
               <textarea placeholder="Add a review..." />
@@ -155,7 +140,7 @@ const MovieModal = () => {
                 <input
                   type="text"
                   placeholder="eg. HBO MAX"
-                  onKeyDown={(event) => handleKeyDown(event)}
+                  onKeyDown={(event) => handleKeyDown(event, tags, setTags)}
                 />
               </div>
               <StarRating />
@@ -166,7 +151,11 @@ const MovieModal = () => {
             </Rating>
             <Tags>
               {tags.map((tag) => (
-                <p title={tag} key={tag} onClick={() => handleDelete(tag)}>
+                <p
+                  title={tag}
+                  key={tag}
+                  onClick={() => handleDelete(tag, tags, setTags)}
+                >
                   <span>
                     {tag.slice(0, 15)}
                     {tag.length > 15 && "..."}
@@ -179,7 +168,9 @@ const MovieModal = () => {
               <Checkbox
                 label="Contains spoilers"
                 checked={checkboxes.isSpoiler}
-                onChange={() => handleCheckboxChange("isSpoiler")}
+                onChange={() =>
+                  handleCheckboxChange(checkboxes, setCheckboxes, "isSpoiler")
+                }
               />
               <button>Save</button>
             </Submit>
