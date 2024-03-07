@@ -1,7 +1,8 @@
 import React from "react";
+import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch } from "../../../common/hooks";
-import { FixedContainer } from "../../logModal/Log.style";
+import { FixedContainer, Modal } from "../../logModal/Log.style";
 import { setIsLogInOpen } from "../../navbar/navbarSlice";
 
 const LogIn = () => {
@@ -9,7 +10,9 @@ const LogIn = () => {
 
   return (
     <FixedContainer>
-      <button onClick={() => dispatch(setIsLogInOpen(false))}>Close</button>
+      <Modal>
+        <IoMdClose onClick={() => dispatch(setIsLogInOpen(false))} />
+      </Modal>
     </FixedContainer>
   );
 };

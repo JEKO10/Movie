@@ -29,7 +29,7 @@ import {
   BackButton,
   FixedContainer,
   LogHeader,
-  LogModal,
+  Modal,
   MovieModal as Container,
   Rating,
   Review,
@@ -66,9 +66,9 @@ const MovieModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   if (isLoading) {
     return (
       <FixedContainer>
-        <LogModal>
+        <Modal>
           <Loader style={{ marginTop: "0" }} />
-        </LogModal>
+        </Modal>
       </FixedContainer>
     );
   }

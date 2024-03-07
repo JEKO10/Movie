@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { handleExit, ModalProps } from "../../common/modals/modalUtils";
 import Input from "../navbar/components/Input";
 import { setIsLogOpen } from "../navbar/navbarSlice";
-import { FixedContainer, LogModal as Container } from "./Log.style";
+import { FixedContainer, Modal as Container } from "./Log.style";
 
 const LogModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const { inputValue } = useAppSelector((store) => store.navbar);

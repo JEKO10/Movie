@@ -153,7 +153,7 @@ export const FixedContainer = styled.section`
   z-index: 5;
 `;
 
-export const LogModal = styled.article<LogModalProps>`
+export const Modal = styled.article<LogModalProps>`
   ${sharedModalStyle};
 
   > svg {
