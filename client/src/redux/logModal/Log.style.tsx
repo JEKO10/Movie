@@ -142,7 +142,7 @@ const sharedCloseStyle = css`
   }
 `;
 
-export const FixedContainer = styled.div`
+export const FixedContainer = styled.section`
   ${flexMixin({ justify: "center", align: "center" })};
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
@@ -153,7 +153,7 @@ export const FixedContainer = styled.div`
   z-index: 5;
 `;
 
-export const LogModal = styled.section<LogModalProps>`
+export const LogModal = styled.article<LogModalProps>`
   ${sharedModalStyle};
 
   > svg {

@@ -15,7 +15,7 @@ import {
   ProfileMenu,
   ProfileModal
 } from "./Navbar.styled";
-import { setIsLogOpen } from "./navbarSlice";
+import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
 
 const Navbar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -79,58 +79,11 @@ const Navbar = () => {
         <FaSearch />
       </InputContainer>
       <article>
-        <button>Log in</button>
-        <button>Sign up</button>
+        <button onClick={() => dispatch(setIsLogInOpen(true))}>Log in</button>
+        <button onClick={() => dispatch(setIsSignUpOpen(true))}>Sign up</button>
       </article>
     </Nav>
   );
 };
 
 export default Navbar;
-
-// const [isVisible, setIsVisible] = useState(true);
-// const [scrollTop, setScrollTop] = useState(0);
-
-// useEffect(() => {
-//   const handleScroll = () => {
-//     const newScrollTop =
-//       window.pageYOffset || document.documentElement.scrollTop;
-
-//     if (newScrollTop > scrollTop) {
-//       setIsVisible(false);
-//     } else {
-//       setIsVisible(true);
-//     }
-
-//     setScrollTop(newScrollTop);
-//   };
-
-//   window.addEventListener("scroll", handleScroll);
-
-//   return () => {
-//     window.removeEventListener("scroll", handleScroll);
-//   };
-// }, [scrollTop]);
-
-{
-  /* <Link
-            to={"/account"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Profile" ? "active" : ""}
-          > */
-}
-{
-  /* </Link> */
-}
-
-{
-  /* <li>
-          <Link
-            to={"/reviews"}
-            onClick={(event) => setClicked(event)}
-            className={query === "Reviews" ? "active" : ""}
-          >
-            Reviews
-          </Link>
-        </li> */
-}

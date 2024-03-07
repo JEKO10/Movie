@@ -18,6 +18,8 @@ export type InitialNavbar = {
   isModalOpen: boolean;
   isLogOpen: boolean;
   isMovieModalOpen: boolean;
+  isLogInOpen: boolean;
+  isSignUpOpen: boolean;
 };
 
 // trendingPeople

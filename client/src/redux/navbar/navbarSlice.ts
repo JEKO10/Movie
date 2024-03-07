@@ -10,7 +10,9 @@ const initialState: InitialNavbar = {
   selectedMovieId: 0,
   isModalOpen: false,
   isLogOpen: false,
-  isMovieModalOpen: false
+  isMovieModalOpen: false,
+  isLogInOpen: false,
+  isSignUpOpen: false
 };
 
 export const searchMovies = createAsyncThunk(
@@ -78,6 +80,12 @@ const navbarSlice = createSlice({
       } else {
         document.body.style.overflow = "auto";
       }
+    },
+    setIsLogInOpen: (state, { payload }: { payload: boolean }) => {
+      state.isLogInOpen = payload;
+    },
+    setIsSignUpOpen: (state, { payload }: { payload: boolean }) => {
+      state.isSignUpOpen = payload;
     }
   },
   extraReducers: (builder) => {
@@ -95,6 +103,8 @@ export const {
   setInputValue,
   setIsModalOpen,
   setIsLogOpen,
-  setIsMovieModalOpen
+  setIsMovieModalOpen,
+  setIsLogInOpen,
+  setIsSignUpOpen
 } = navbarSlice.actions;
 export const { reducer } = navbarSlice;

@@ -7,7 +7,7 @@ import {
   ProfileForm,
   ProfileName,
   ProfileWrapper,
-  WrongInfo,
+  WrongInfo
 } from "../redux/profile/Profile.styled";
 
 const Profile = () => {
@@ -33,7 +33,7 @@ const Profile = () => {
         lastName,
         email,
         password,
-        bio,
+        bio
       })
       .then((response) => {
         console.log(response);
@@ -51,7 +51,7 @@ const Profile = () => {
       .post("http://localhost:3001/login", {
         username: logName,
         email: logName,
-        password: logPassword,
+        password: logPassword
       })
       .then((response) => {
         if (
