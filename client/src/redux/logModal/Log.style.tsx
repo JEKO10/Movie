@@ -36,7 +36,6 @@ const sharedModalStyle = css<LogModalProps>`
   top: -4rem;
   background-color: #292929;
   color: #fff;
-  width: 668px;
   font-family: ${primaryFont};
   padding: 20px;
   border-radius: 3px;
@@ -155,6 +154,7 @@ export const FixedContainer = styled.section`
 
 export const Modal = styled.article<LogModalProps>`
   ${sharedModalStyle};
+  width: 668px;
 
   > svg {
     ${sharedCloseStyle}

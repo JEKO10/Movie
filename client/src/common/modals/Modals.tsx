@@ -34,8 +34,12 @@ const Modals = () => {
       {isMovieModalOpen && (
         <MovieModal isClosing={isClosing} setIsClosing={setIsClosing} />
       )}
-      {isLogInOpen && <LogIn />}
-      {isSignUpOpen && <SignUp />}
+      {isLogInOpen && (
+        <LogIn isClosing={isClosing} setIsClosing={setIsClosing} />
+      )}
+      {isSignUpOpen && (
+        <SignUp isClosing={isClosing} setIsClosing={setIsClosing} />
+      )}
     </section>
   );
 };
