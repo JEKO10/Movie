@@ -31,7 +31,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           onClick={() => handleExit(setIsClosing, dispatch, setIsLogInOpen)}
         />
         <h2>Log in</h2>
-        <Form isLogInStatus={isLogInStatus}>
+        <Form isStatus={isLogInStatus}>
           <label>
             Email or username
             <input type="text" />

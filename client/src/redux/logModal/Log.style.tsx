@@ -184,9 +184,9 @@ export const Modal = styled.article<LogModalProps>`
       ${sharedInputStyle}
       width: 588px;
       padding: 10px;
-      box-shadow:
+      /* box-shadow:
         inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
-        0 0 10px #000;
+        0 0 10px #000; */
     }
   }
 `;

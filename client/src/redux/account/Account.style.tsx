@@ -4,7 +4,7 @@ import { secondaryColor } from "../../assets/style/GlobalStyles";
 import { sharedButtonStyle } from "../logModal/Log.style";
 
 type FormProps = {
-  isLogInStatus: boolean;
+  isStatus?: boolean;
 };
 
 export const Form = styled.form<FormProps>`
@@ -23,6 +23,6 @@ export const Form = styled.form<FormProps>`
     color: ${secondaryColor};
     font-size: 1.1rem;
     transition: opacity 200ms ease;
-    opacity: ${({ isLogInStatus }) => (isLogInStatus ? 1 : 0)};
+    opacity: ${({ isStatus }) => (isStatus ? 1 : 0)};
   }
 `;
