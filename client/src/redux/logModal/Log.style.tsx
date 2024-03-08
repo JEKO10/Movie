@@ -42,7 +42,7 @@ const sharedModalStyle = css<LogModalProps>`
   animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s;
 `;
 
-const sharedButtonStyle = css`
+export const sharedButtonStyle = css`
   background-color: ${tertiaryColor};
   color: #fff;
   font-family: ${primaryFont};
@@ -160,6 +160,11 @@ export const Modal = styled.article<LogModalProps>`
     ${sharedCloseStyle}
   }
 
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  h2,
   h3 {
     text-transform: uppercase;
     font-weight: 200;

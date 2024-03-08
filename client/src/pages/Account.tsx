@@ -21,7 +21,7 @@ const Profile = () => {
 
   const [logName, setLogName] = useState("");
   const [logPassword, setLogPassword] = useState("");
-  const [invalidCredentials, setInvalidCredentials] = useState(false); // New state variable
+  const [invalidCredentials, setInvalidCredentials] = useState(false); 
 
   axios.defaults.withCredentials = true;
 
