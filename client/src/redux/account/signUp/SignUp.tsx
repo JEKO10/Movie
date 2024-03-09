@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
@@ -8,6 +9,11 @@ import { setIsLogInOpen, setIsSignUpOpen } from "../../navbar/navbarSlice";
 import { Form } from "../Account.style";
 
 const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
+  const [userInfo, setUserInfo] = useState({
+    userName: "",
+    email: "",
+    password: ""
+  });
   const [signUpStatus, setSignUpStatus] = useState(false);
   const dispatch = useAppDispatch();
   const signUpRef = useRef<HTMLElement>(null);
@@ -16,12 +22,22 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
     handleExit(setIsClosing, dispatch, setIsSignUpOpen)
   );
 
-  const handleClick = () => {
-    setSignUpStatus(true);
+  const addUser = () => {
+    axios
+      .post("http://localhost:3001/register", {
+        userName: userInfo.userName,
+        email: userInfo.email,
+        password: userInfo.password
+      })
+      .then((response) => {
+        console.log(response);
 
-    setTimeout(() => {
-      setSignUpStatus(false);
-    }, 2000);
+        if (response.data.err) {
+          console.log("error");
+        } else {
+          console.log("working");
+        }
+      });
   };
 
   return (
@@ -31,21 +47,36 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           onClick={() => handleExit(setIsClosing, dispatch, setIsSignUpOpen)}
         />
         <h2>Sign up</h2>
-        <Form isStatus={signUpStatus}>
-          <label>
-            Email address
-            <input type="text" />
-          </label>
+        <Form isStatus={signUpStatus} onSubmit={addUser}>
           <label>
             Username
-            <input type="text" />
+            <input
+              type="text"
+              onChange={(event) =>
+                setUserInfo({ ...userInfo, userName: event.target.value })
+              }
+            />
+          </label>
+          <label>
+            Email address
+            <input
+              type="text"
+              onChange={(event) =>
+                setUserInfo({ ...userInfo, email: event.target.value })
+              }
+            />
           </label>
           <label>
             Password
-            <input type="password" />
+            <input
+              type="password"
+              onChange={(event) =>
+                setUserInfo({ ...userInfo, password: event.target.value })
+              }
+            />
           </label>
-          <p>Failed</p>
-          <button onClick={handleClick}>Sign up</button>
+          <p>Status</p>
+          <button>Sign up</button>
         </Form>
       </Modal>
     </FixedContainer>
