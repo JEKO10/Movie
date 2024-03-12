@@ -14,7 +14,7 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
     email: "",
     password: ""
   });
-  const [signUpStatus, setSignUpStatus] = useState(false);
+  const [signUpStatus, setSignUpStatus] = useState("");
   const dispatch = useAppDispatch();
   const signUpRef = useRef<HTMLElement>(null);
   axios.defaults.withCredentials = true;
@@ -23,21 +23,32 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
     handleExit(setIsClosing, dispatch, setIsSignUpOpen)
   );
 
-  const addUser = () => {
+  const addUser = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const { username, email, password } = userInfo;
+
+    if (!username || !email || !password) {
+      setSignUpStatus("All fields are required!");
+      return;
+    }
+
     axios
       .post("http://localhost:3001/signup", {
-        username: userInfo.username,
-        email: userInfo.email,
-        password: userInfo.password
+        username,
+        email,
+        password
       })
       .then((response) => {
-        console.log(response);
+        if (response.data.message) {
+          const message = response.data.message;
+          // setSignUpStatus(message);
 
-        if (response.data.err) {
-          console.log("error");
-        } else {
-          console.log("working");
+          console.log("Prouka: " + message);
         }
+      })
+      .catch((err) => {
+        console.log("nebitno: " + err);
       });
   };
 
@@ -76,7 +87,7 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
               }
             />
           </label>
-          <p>Status</p>
+          <p>{signUpStatus}</p>
           <button>Sign up</button>
         </Form>
       </Modal>

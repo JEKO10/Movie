@@ -4,7 +4,7 @@ import { secondaryColor } from "../../assets/style/GlobalStyles";
 import { sharedButtonStyle } from "../logModal/Log.style";
 
 type FormProps = {
-  isStatus?: boolean;
+  isStatus: string;
 };
 
 export const Form = styled.form<FormProps>`

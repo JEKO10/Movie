@@ -42,10 +42,10 @@ app.post("/signup", (req, res) => {
 
     (err, result) => {
       if (err) {
-        res.status(500).send({ message: "Internal Server Error" });
-        console.error("Error executing query: ", err);
+        console.error("Error executing query:", err);
+        res.send({ message: "A" });
       } else {
-        res.send({ message: "User registered successfully" });
+        res.status(200).send({ message: "User registered successfully" });
       }
     }
   );
