@@ -1,9 +1,18 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mysql from "mysql";
 
 const app = express();
+app.use(express.json());
 dotenv.config();
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true
+  })
+);
 const PORT = process.env.VITE_APP_PORT || 3001;
 const db = mysql.createPool({
   user: process.env.VITE_APP_dbUser,
@@ -14,11 +23,32 @@ const db = mysql.createPool({
 
 db.getConnection((err, connection) => {
   if (err) {
-    console.error("Error connecting to MySQL:", err);
+    console.error("Error connecting to MySQL: ", err);
   } else {
     console.log("Connected to MySQL!");
     connection.release();
   }
+});
+
+app.post("/signup", (req, res) => {
+  let { username, email, password } = req.body;
+  username = username.trim();
+  email = email.trim();
+  password = password.trim();
+
+  db.query(
+    "INSERT INTO users (username, email, password) VALUES (?, ?, ?);",
+    [username, email, password],
+
+    (err, result) => {
+      if (err) {
+        res.status(500).send({ message: "Internal Server Error" });
+        console.error("Error executing query: ", err);
+      } else {
+        res.send({ message: "User registered successfully" });
+      }
+    }
+  );
 });
 
 app.listen(PORT, () => {

@@ -10,13 +10,14 @@ import { Form } from "../Account.style";
 
 const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const [userInfo, setUserInfo] = useState({
-    userName: "",
+    username: "",
     email: "",
     password: ""
   });
   const [signUpStatus, setSignUpStatus] = useState(false);
   const dispatch = useAppDispatch();
   const signUpRef = useRef<HTMLElement>(null);
+  axios.defaults.withCredentials = true;
 
   useOutsideClick(signUpRef, dispatch, setIsLogInOpen, () =>
     handleExit(setIsClosing, dispatch, setIsSignUpOpen)
@@ -24,8 +25,8 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
 
   const addUser = () => {
     axios
-      .post("http://localhost:3001/register", {
-        userName: userInfo.userName,
+      .post("http://localhost:3001/signup", {
+        username: userInfo.username,
         email: userInfo.email,
         password: userInfo.password
       })
@@ -53,14 +54,14 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
             <input
               type="text"
               onChange={(event) =>
-                setUserInfo({ ...userInfo, userName: event.target.value })
+                setUserInfo({ ...userInfo, username: event.target.value })
               }
             />
           </label>
           <label>
             Email address
             <input
-              type="text"
+              type="email"
               onChange={(event) =>
                 setUserInfo({ ...userInfo, email: event.target.value })
               }
