@@ -40,15 +40,15 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
         password
       })
       .then((response) => {
-        if (response.data.message) {
-          const message = response.data.message;
-          // setSignUpStatus(message);
-
-          console.log("Prouka: " + message);
-        }
+        const message = response.data.message;
+        if (message.includes("username"))
+          setSignUpStatus("Username already taken!");
+        else if (message.includes("email"))
+          setSignUpStatus("Email already taken!");
+        else setSignUpStatus(message);
       })
       .catch((err) => {
-        console.log("nebitno: " + err);
+        console.error(err);
       });
   };
 

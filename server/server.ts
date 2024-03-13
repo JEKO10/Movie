@@ -42,10 +42,9 @@ app.post("/signup", (req, res) => {
 
     (err, result) => {
       if (err) {
-        console.error("Error executing query:", err);
-        res.send({ message: "A" });
+        res.send({ message: err.sqlMessage });
       } else {
-        res.status(200).send({ message: "User registered successfully" });
+        res.status(200).send({ message: "User registered successfully!" });
       }
     }
   );
