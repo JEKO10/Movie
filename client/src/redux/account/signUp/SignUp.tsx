@@ -41,6 +41,7 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
       })
       .then((response) => {
         const message = response.data.message;
+
         if (message.includes("username"))
           setSignUpStatus("Username already taken!");
         else if (message.includes("email"))
@@ -67,6 +68,7 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
               onChange={(event) =>
                 setUserInfo({ ...userInfo, username: event.target.value })
               }
+              required
             />
           </label>
           <label>
@@ -76,6 +78,7 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
               onChange={(event) =>
                 setUserInfo({ ...userInfo, email: event.target.value })
               }
+              required
             />
           </label>
           <label>
@@ -85,6 +88,7 @@ const SignUp: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
               onChange={(event) =>
                 setUserInfo({ ...userInfo, password: event.target.value })
               }
+              required
             />
           </label>
           <p>{signUpStatus}</p>

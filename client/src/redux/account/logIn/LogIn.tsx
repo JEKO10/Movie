@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
@@ -8,7 +9,11 @@ import { setIsLogInOpen, setIsSignUpOpen } from "../../navbar/navbarSlice";
 import { Form } from "../Account.style";
 
 const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
-  const [isLogInStatus, setIsLogInStatus] = useState(false);
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: ""
+  });
+  const [logInStatus, setLogInStatus] = useState("");
   const dispatch = useAppDispatch();
   const logInRef = useRef<HTMLElement>(null);
 
@@ -16,12 +21,25 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
     handleExit(setIsClosing, dispatch, setIsLogInOpen)
   );
 
-  const handleClick = () => {
-    setIsLogInStatus(true);
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-    setTimeout(() => {
-      setIsLogInStatus(false);
-    }, 2000);
+    const { email, password } = userInfo;
+
+    if (!email || !password) {
+      setLogInStatus("All files are required!");
+      return;
+    }
+
+    axios
+      .post("http://localhost:3001/login", { email, password })
+      .then((response) => {
+        if (response.data.message) {
+          setLogInStatus(response.data.message);
+        } else {
+          setLogInStatus("Welcome " + response.data[0].username);
+        }
+      });
   };
 
   return (
@@ -31,17 +49,30 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           onClick={() => handleExit(setIsClosing, dispatch, setIsLogInOpen)}
         />
         <h2>Log in</h2>
-        <Form isStatus={isLogInStatus}>
+        <Form isStatus={logInStatus} onSubmit={handleLogin}>
           <label>
             Email or username
-            <input type="text" />
+            <input
+              type="text"
+              onChange={(event) =>
+                setUserInfo({ ...userInfo, email: event.target.value })
+              }
+              required
+            />
           </label>
           <label>
             Password
-            <input type="password" />
+            <input
+              type="password"
+              onChange={(event) =>
+                setUserInfo({ ...userInfo, password: event.target.value })
+              }
+              required
+            />
           </label>
-          <p>Your credentials don`t match.</p>
-          <button onClick={handleClick}>Log in</button>
+          {/* <p>Your credentials don`t match.</p> */}
+          <p>{logInStatus}</p>
+          <button>Log in</button>
         </Form>
       </Modal>
     </FixedContainer>
