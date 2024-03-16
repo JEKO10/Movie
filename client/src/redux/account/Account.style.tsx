@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { secondaryColor } from "../../assets/style/GlobalStyles";
+import { flexMixin, secondaryColor } from "../../assets/style/GlobalStyles";
 import { sharedButtonStyle } from "../logModal/Log.style";
 
 type FormProps = {
@@ -8,6 +8,11 @@ type FormProps = {
 };
 
 export const Form = styled.form<FormProps>`
+  label {
+    ${flexMixin({ justify: "center", align: "flex-start" })};
+    flex-direction: column;
+  }
+
   input {
     margin-top: 0.3rem;
   }
@@ -16,7 +21,7 @@ export const Form = styled.form<FormProps>`
     ${sharedButtonStyle}
     font-size: 1rem;
     display: block;
-    margin: 1rem 40px 0 auto; /* top | right | bottom | left */
+    margin: 1rem 0 0 auto; /* top | right | bottom | left */
   }
 
   p {

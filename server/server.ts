@@ -1,7 +1,7 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import mysql from "mysql";
+import mysql, { QueryOptions } from "mysql";
 
 const app = express();
 app.use(express.json());
@@ -51,20 +51,23 @@ app.post("/signup", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  let { email, password } = req.body;
-  email = email.trim();
+  let { identifier, password } = req.body;
+  identifier = identifier.trim();
   password = password.trim();
+  let sqlQuery: string | QueryOptions;
 
-  db.query(
-    "SELECT * FROM users WHERE email = ? AND password = ?",
-    [email, password],
-    (err, result) => {
-      if (err) res.send({ err: err });
+  if (/\S+@\S+\.\S+/.test(identifier)) {
+    sqlQuery = "SELECT * FROM users WHERE email = ? AND password = ?";
+  } else {
+    sqlQuery = "SELECT * FROM users WHERE username = ? AND password = ?";
+  }
 
-      if (result.length > 0) res.send(result);
-      else res.send({ message: "Your credentials don`t match!" });
-    }
-  );
+  db.query(sqlQuery, [identifier, password], (err, result) => {
+    if (result.length > 0) res.send(result);
+    else res.send({ message: "Your credentials don`t match!" });
+
+    if (err) res.send({ err: err });
+  });
 });
 
 app.listen(PORT, () => {

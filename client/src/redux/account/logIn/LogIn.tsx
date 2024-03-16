@@ -10,7 +10,7 @@ import { Form } from "../Account.style";
 
 const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const [userInfo, setUserInfo] = useState({
-    email: "",
+    identifier: "",
     password: ""
   });
   const [logInStatus, setLogInStatus] = useState("");
@@ -24,15 +24,15 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { email, password } = userInfo;
+    const { identifier, password } = userInfo;
 
-    if (!email || !password) {
+    if (!identifier || !password) {
       setLogInStatus("All files are required!");
       return;
     }
 
     axios
-      .post("http://localhost:3001/login", { email, password })
+      .post("http://localhost:3001/login", { identifier, password })
       .then((response) => {
         if (response.data.message) {
           setLogInStatus(response.data.message);
@@ -55,7 +55,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
             <input
               type="text"
               onChange={(event) =>
-                setUserInfo({ ...userInfo, email: event.target.value })
+                setUserInfo({ ...userInfo, identifier: event.target.value })
               }
               required
             />
@@ -70,7 +70,6 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
               required
             />
           </label>
-          {/* <p>Your credentials don`t match.</p> */}
           <p>{logInStatus}</p>
           <button>Log in</button>
         </Form>
