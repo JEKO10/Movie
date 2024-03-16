@@ -1,5 +1,5 @@
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import type { AppDispatch, RootState } from "../app/store";
@@ -27,4 +27,20 @@ export const useOutsideClick = <T>(
       document.removeEventListener("mousedown", handleClickOutside, true);
     };
   }, [ref, callback, handleExit]);
+};
+
+export const useCapsLock = () => {
+  const [isCapsOn, setIsCapsOn] = useState(false);
+
+  const handleCapsLock = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const capsLockOn: boolean = event.getModifierState("CapsLock");
+
+    if (capsLockOn) {
+      setIsCapsOn(true);
+    } else {
+      setIsCapsOn(false);
+    }
+  };
+
+  return { isCapsOn, handleCapsLock, setIsCapsOn };
 };

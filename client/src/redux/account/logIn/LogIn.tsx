@@ -1,8 +1,13 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
+import { BsCapslockFill } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 
-import { useAppDispatch, useOutsideClick } from "../../../common/hooks";
+import {
+  useAppDispatch,
+  useCapsLock,
+  useOutsideClick
+} from "../../../common/hooks";
 import { handleExit, ModalProps } from "../../../common/modals/modalUtils";
 import { FixedContainer, Modal } from "../../logModal/Log.style";
 import { setIsLogInOpen, setIsSignUpOpen } from "../../navbar/navbarSlice";
@@ -16,6 +21,8 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const [logInStatus, setLogInStatus] = useState("");
   const dispatch = useAppDispatch();
   const logInRef = useRef<HTMLElement>(null);
+
+  const { isCapsOn, handleCapsLock, setIsCapsOn } = useCapsLock();
 
   useOutsideClick(logInRef, dispatch, setIsSignUpOpen, () =>
     handleExit(setIsClosing, dispatch, setIsLogInOpen)
@@ -64,11 +71,14 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
             Password
             <input
               type="password"
-              onChange={(event) =>
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 setUserInfo({ ...userInfo, password: event.target.value })
               }
+              onKeyUp={(e) => handleCapsLock(e)}
+              onBlur={() => setIsCapsOn(false)}
               required
             />
+            {isCapsOn && <BsCapslockFill />}
           </label>
           <p>{logInStatus}</p>
           <button>Log in</button>
