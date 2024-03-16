@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import LogIn from "../../redux/account/logIn/LogIn";
 import SignUp from "../../redux/account/signUp/SignUp";
@@ -7,7 +7,7 @@ import MovieModal from "../../redux/logModal/MovieModal";
 import SearchModal from "../../redux/navbar/components/SearchModal";
 import Navbar from "../../redux/navbar/Navbar";
 import { setIsModalOpen } from "../../redux/navbar/navbarSlice";
-import { useAppDispatch, useAppSelector, useOutsideClick } from "../hooks";
+import { useAppSelector, useOutsideClick } from "../hooks";
 
 const Modals = () => {
   const [isClosing, setIsClosing] = useState(false);
@@ -19,13 +19,11 @@ const Modals = () => {
     isLogInOpen,
     isSignUpOpen
   } = useAppSelector((state) => state.navbar);
-  const dispatch = useAppDispatch();
-  const modalRef = useRef<HTMLElement>(null);
 
-  useOutsideClick(modalRef, dispatch, setIsModalOpen);
+  const { ref } = useOutsideClick(setIsModalOpen);
 
   return (
-    <section ref={modalRef}>
+    <section ref={ref}>
       <Navbar />
       {inputValue && isModalOpen && <SearchModal />}
       {isLogOpen && (

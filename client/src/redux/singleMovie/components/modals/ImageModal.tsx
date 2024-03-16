@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { RxCross2 } from "react-icons/rx";
 
 import { PosterModal } from "../../../../assets/style/Modals.styled";
@@ -18,9 +18,8 @@ type ModalProps = {
 const ImageModal: React.FC<ModalProps> = ({ posterUrl, poster_path }) => {
   const { isPosterOpen } = useAppSelector((store) => store.singleMovie);
   const dispatch = useAppDispatch();
-  const posterRef = useRef<HTMLImageElement>(null);
 
-  useOutsideClick(posterRef, dispatch, togglePoster);
+  const { ref } = useOutsideClick(togglePoster);
 
   return (
     <PosterModal isPosterOpen={isPosterOpen}>
@@ -28,7 +27,7 @@ const ImageModal: React.FC<ModalProps> = ({ posterUrl, poster_path }) => {
       <img
         src={poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG}
         alt="POSTER"
-        ref={posterRef}
+        ref={ref as React.LegacyRef<HTMLImageElement>}
       />
     </PosterModal>
   );

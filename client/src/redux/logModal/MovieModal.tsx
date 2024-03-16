@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
 import { IoMdClose } from "react-icons/io";
 
@@ -51,7 +51,6 @@ const MovieModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   );
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w154/";
-  const movieRef = useRef<HTMLElement>(null);
 
   const { title, poster_path, release_date } = movieInfo;
 
@@ -59,7 +58,7 @@ const MovieModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
     dispatch(getMovie(selectedMovieId.toString()));
   }, [selectedMovieId]);
 
-  useOutsideClick(movieRef, dispatch, setIsLogOpen, () =>
+  const { ref } = useOutsideClick(setIsLogOpen, () =>
     handleExit(setIsClosing, dispatch, setIsMovieModalOpen)
   );
 
@@ -74,7 +73,7 @@ const MovieModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   }
   return (
     <FixedContainer>
-      <Container ref={movieRef} isClosing={isClosing}>
+      <Container ref={ref} isClosing={isClosing}>
         <IoMdClose
           onClick={() =>
             handleExit(setIsClosing, dispatch, setIsMovieModalOpen)

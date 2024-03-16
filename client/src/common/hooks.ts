@@ -1,5 +1,5 @@
 import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 import type { AppDispatch, RootState } from "../app/store";
@@ -8,11 +8,12 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 export const useOutsideClick = <T>(
-  ref: React.RefObject<HTMLElement>,
-  dispatch: AppDispatch,
   callback?: ActionCreatorWithPayload<T, string>,
   handleExit?: () => void
 ) => {
+  const dispatch = useAppDispatch();
+  const ref = useRef<HTMLElement>(null);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -27,6 +28,8 @@ export const useOutsideClick = <T>(
       document.removeEventListener("mousedown", handleClickOutside, true);
     };
   }, [ref, callback, handleExit]);
+
+  return { ref };
 };
 
 export const useCapsLock = () => {

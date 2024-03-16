@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { BsCapslockFill } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 
@@ -20,11 +20,10 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   });
   const [logInStatus, setLogInStatus] = useState("");
   const dispatch = useAppDispatch();
-  const logInRef = useRef<HTMLElement>(null);
 
   const { isCapsOn, handleCapsLock, setIsCapsOn } = useCapsLock();
 
-  useOutsideClick(logInRef, dispatch, setIsSignUpOpen, () =>
+  const { ref } = useOutsideClick(setIsSignUpOpen, () =>
     handleExit(setIsClosing, dispatch, setIsLogInOpen)
   );
 
@@ -51,7 +50,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
 
   return (
     <FixedContainer>
-      <Modal isClosing={isClosing} ref={logInRef}>
+      <Modal isClosing={isClosing} ref={ref}>
         <IoMdClose
           onClick={() => handleExit(setIsClosing, dispatch, setIsLogInOpen)}
         />
