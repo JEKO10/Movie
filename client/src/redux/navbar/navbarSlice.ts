@@ -83,9 +83,19 @@ const navbarSlice = createSlice({
     },
     setIsLogInOpen: (state, { payload }: { payload: boolean }) => {
       state.isLogInOpen = payload;
+      if (state.isLogInOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     },
     setIsSignUpOpen: (state, { payload }: { payload: boolean }) => {
       state.isSignUpOpen = payload;
+      if (state.isSignUpOpen) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "auto";
+      }
     }
   },
   extraReducers: (builder) => {
