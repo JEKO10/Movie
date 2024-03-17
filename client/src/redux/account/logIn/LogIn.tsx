@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsCapslockFill } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 
@@ -20,6 +20,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   });
   const [logInStatus, setLogInStatus] = useState("");
   const dispatch = useAppDispatch();
+  axios.defaults.withCredentials = true;
 
   const { isCapsOn, handleCapsLock, setIsCapsOn } = useCapsLock();
 
@@ -47,6 +48,12 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
         }
       });
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/login").then((response) => {
+      console.log(response.data);
+    });
+  }, []);
 
   return (
     <FixedContainer>

@@ -1,14 +1,37 @@
 import bcrypt from "bcrypt";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import session from "express-session";
 import mysql, { QueryOptions } from "mysql";
 
 const app = express();
-app.use(express.json());
 dotenv.config();
-app.use(cors());
 const PORT = process.env.VITE_APP_PORT || 3001;
+app.use(express.json());
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true
+  })
+);
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    secret: process.env.VITE_APP_SECRET as string,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60 * 60 * 24 * 1000
+    }
+  })
+);
 
 const db = mysql.createPool({
   user: process.env.VITE_APP_dbUser,
@@ -50,6 +73,12 @@ app.post("/signup", (req, res) => {
   });
 });
 
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else res.send({ loggedIn: false });
+});
+
 app.post("/login", (req, res) => {
   let { identifier, password } = req.body;
   identifier = identifier.trim();
@@ -68,6 +97,7 @@ app.post("/login", (req, res) => {
     if (result.length > 0) {
       bcrypt.compare(password, result[0].password, (err, response) => {
         if (response) {
+          req.session.user = result;
           res.send(result);
         } else {
           res.send({ message: "Your credentials don`t match!" });
