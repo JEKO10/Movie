@@ -51,7 +51,8 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
 
   useEffect(() => {
     axios.get("http://localhost:3001/login").then((response) => {
-      console.log(response.data);
+      if (response.data.loggedIn === true)
+        setLogInStatus("Welcome back " + response.data.user[0].username);
     });
   }, []);
 

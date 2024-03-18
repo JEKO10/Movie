@@ -22,6 +22,16 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+declare module "express-session" {
+  interface SessionData {
+    user: {
+      email: string;
+      username: string;
+      password: string;
+    };
+  }
+}
+
 app.use(
   session({
     secret: process.env.VITE_APP_SECRET as string,
