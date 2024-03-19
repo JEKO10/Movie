@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import session from "express-session";
+import jwt from "jsonwebtoken";
 import mysql, { QueryOptions } from "mysql";
 
 const app = express();
@@ -107,8 +108,12 @@ app.post("/login", (req, res) => {
     if (result.length > 0) {
       bcrypt.compare(password, result[0].password, (err, response) => {
         if (response) {
+          const id = result[0].id;
+          const token = jwt.sign({ id }, "secret", { expiresIn: 300 });
+
           req.session.user = result;
-          res.send(result);
+
+          res.json({ auth: true, token, result });
         } else {
           res.send({ message: "Your credentials don`t match!" });
         }
