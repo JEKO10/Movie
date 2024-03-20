@@ -7,7 +7,7 @@ import express from "express";
 // import session from "express-session";
 import mysql, { QueryOptions } from "mysql";
 
-import { createTokens } from "./JWT";
+import { createTokens, validateToken } from "./JWT";
 
 const app = express();
 dotenv.config();
@@ -126,6 +126,10 @@ app.post("/login", (req, res) => {
       res.send({ message: "User doesn't exist!" });
     }
   });
+});
+
+app.get("/profile", validateToken, (req, res) => {
+  res.json("User profile info");
 });
 
 app.listen(PORT, () => {
