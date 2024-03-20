@@ -4,9 +4,10 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import session from "express-session";
-import jwt from "jsonwebtoken";
+// import session from "express-session";
 import mysql, { QueryOptions } from "mysql";
+
+import { createTokens } from "./JWT";
 
 const app = express();
 dotenv.config();
@@ -33,16 +34,17 @@ declare module "express-session" {
   }
 }
 
-app.use(
-  session({
-    secret: process.env.VITE_APP_SECRET as string,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 60 * 60 * 24 * 1000
-    }
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.VITE_APP_SECRET as string,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       maxAge: 60 * 60 * 24 * 1000,
+//       httpOnly: true
+//     }
+//   })
+// );
 
 const db = mysql.createPool({
   user: process.env.VITE_APP_dbUser,
@@ -108,12 +110,14 @@ app.post("/login", (req, res) => {
     if (result.length > 0) {
       bcrypt.compare(password, result[0].password, (err, response) => {
         if (response) {
-          const id = result[0].id;
-          const token = jwt.sign({ id }, "secret", { expiresIn: 300 });
+          const accessToken = createTokens(result[0].id);
 
-          req.session.user = result;
+          res.cookie("jwt", accessToken, {
+            maxAge: 60 * 60 * 24 * 30 * 1000,
+            httpOnly: true
+          });
 
-          res.json({ auth: true, token, result });
+          res.send(result);
         } else {
           res.send({ message: "Your credentials don`t match!" });
         }
