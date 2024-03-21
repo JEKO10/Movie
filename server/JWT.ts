@@ -1,38 +1,55 @@
-import { NextFunction, Request, Response } from "express";
 import { sign, verify } from "jsonwebtoken";
 
-export const createTokens = ({ id }: { id: number }) => {
-  const accessToken = sign({ id }, "secret", {
-    expiresIn: 3 * 24 * 60 * 60
-  });
+// declare module "express-serve-static-core" {
+//   interface Request {
+//     user: string | JwtPayload | undefined;
+//   }
+// }
 
-  return accessToken;
-};
+// export const createTokens = ({ id }: { id: number }) => {
+//   const accessToken = sign({ id }, "secret", {
+//     expiresIn: 3 * 24 * 60 * 60
+//   });
 
-export const validateToken = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const accessToken = req.cookies["jwt"];
+//   return accessToken;
+// };
 
-  if (accessToken)
-    return res.status(400).json({ error: "User not authenticated!" });
+// // export const validateToken = (
+// //   req: Request,
+// //   res: Response,
+// //   next: NextFunction
+// // ) => {
+// //   const accessToken = req.header("Authorization");
 
-  try {
-    const validToken = verify(accessToken, "secret");
+// //   if (!accessToken)
+// //     return res.status(400).json({ error: "User not authenticated!" });
 
-    if (validToken) {
-      //   req.authenticated = true;
-      return next();
-    }
-  } catch (err) {
-    return res.status(400).json({ error: err });
-  }
-};
+// //   try {
+// //     const validToken = verify(accessToken, "secret") as JwtPayload;
 
-// const id = result[0].id;
-// const token = jwt.sign({ id }, "secret", {
-//   expiresIn: 3 * 24 * 60 * 60
-// });
-// res.json({ auth: true, token, result });
+// //     req.userId = validToken.userId;
+// //     next();
+
+// //     // if (validToken) {
+// //     //   req.authenticated = true;
+// //     //   return next();
+// //     // }
+// //   } catch (err) {
+// //     return res.status(400).json({ error: err });
+// //   }
+// // };
+
+// // export function authenticateToken(
+// //   req: Request,
+// //   res: Response,
+// //   next: NextFunction
+// // ) {
+// //   const token = req.header("Authorization");
+// //   if (!token) return res.status(401).json({ error: "Authentication failed" });
+
+// //   verify(token, "secret", (err, user) => {
+// //     if (err) return res.status(403).json({ error: "Token is not valid" });
+// //     req.user = user;
+// //     next();
+// //   });
+// // }

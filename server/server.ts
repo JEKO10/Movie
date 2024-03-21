@@ -4,10 +4,8 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-// import session from "express-session";
+import jwt from "jsonwebtoken";
 import mysql, { QueryOptions } from "mysql";
-
-import { createTokens, validateToken } from "./JWT";
 
 const app = express();
 dotenv.config();
@@ -86,11 +84,11 @@ app.post("/signup", (req, res) => {
   });
 });
 
-app.get("/login", (req, res) => {
-  if (req.session.user) {
-    res.send({ loggedIn: true, user: req.session.user });
-  } else res.send({ loggedIn: false });
-});
+// app.get("/login", (req, res) => {
+//   if (req.session.user) {
+//     res.send({ loggedIn: true, user: req.session.user });
+//   } else res.send({ loggedIn: false });
+// });
 
 app.post("/login", (req, res) => {
   let { identifier, password } = req.body;
@@ -109,15 +107,19 @@ app.post("/login", (req, res) => {
 
     if (result.length > 0) {
       bcrypt.compare(password, result[0].password, (err, response) => {
-        if (response) {
-          const accessToken = createTokens(result[0].id);
+        if (response && process.env.ACCESS_TOKEN_SECRET) {
+          const token = jwt.sign(
+            { user: result[0] },
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: "1h" }
+          );
 
-          res.cookie("jwt", accessToken, {
-            maxAge: 60 * 60 * 24 * 30 * 1000,
-            httpOnly: true
+          res.cookie("token", token, {
+            httpOnly: true,
+            maxAge: 24 * 60 * 60 * 1000
           });
 
-          res.send(result);
+          return res.redirect("/profile");
         } else {
           res.send({ message: "Your credentials don`t match!" });
         }
@@ -128,7 +130,7 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.get("/profile", validateToken, (req, res) => {
+app.get("/profile", (req, res) => {
   res.json("User profile info");
 });
 

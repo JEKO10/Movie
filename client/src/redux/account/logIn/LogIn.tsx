@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsCapslockFill } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
 
@@ -44,17 +44,17 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
         if (response.data.message) {
           setLogInStatus(response.data.message);
         } else {
-          setLogInStatus("Welcome " + response.data[0].username);
+          setLogInStatus("Welcome ");
         }
       });
   };
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/login").then((response) => {
-      if (response.data.loggedIn === true)
-        setLogInStatus("Welcome back " + response.data.user[0].username);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:3001/login").then((response) => {
+  //     if (response.data.loggedIn === true)
+  //       setLogInStatus("Welcome back " + response.data.user[0].username);
+  //   });
+  // }, []);
 
   return (
     <FixedContainer>
