@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BsCapslockFill } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 import {
   useAppDispatch,
@@ -20,6 +21,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   });
   const [logInStatus, setLogInStatus] = useState("");
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
   const { isCapsOn, handleCapsLock, setIsCapsOn } = useCapsLock();
@@ -44,17 +46,11 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
         if (response.data.message) {
           setLogInStatus(response.data.message);
         } else {
-          setLogInStatus("Welcome ");
+          setLogInStatus("Welcome " + identifier);
+          navigate("/profile");
         }
       });
   };
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:3001/login").then((response) => {
-  //     if (response.data.loggedIn === true)
-  //       setLogInStatus("Welcome back " + response.data.user[0].username);
-  //   });
-  // }, []);
 
   return (
     <FixedContainer>
