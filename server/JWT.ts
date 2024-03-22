@@ -1,55 +1,41 @@
-import { sign, verify } from "jsonwebtoken";
+import { NextFunction, Request, Response } from "express";
+import { JwtPayload, verify } from "jsonwebtoken";
 
-// declare module "express-serve-static-core" {
-//   interface Request {
-//     user: string | JwtPayload | undefined;
-//   }
-// }
+declare module "express" {
+  interface Request {
+    user?: {
+      email: string;
+      username: string;
+      password: string;
+    };
+  }
+}
 
-// export const createTokens = ({ id }: { id: number }) => {
-//   const accessToken = sign({ id }, "secret", {
-//     expiresIn: 3 * 24 * 60 * 60
-//   });
+export const verifyToken = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const token = req.cookies.token;
+  const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 
-//   return accessToken;
-// };
+  if (!accessTokenSecret) {
+    return res
+      .status(500)
+      .json({ error: "Access token secret is not defined." });
+  }
 
-// // export const validateToken = (
-// //   req: Request,
-// //   res: Response,
-// //   next: NextFunction
-// // ) => {
-// //   const accessToken = req.header("Authorization");
+  try {
+    const decodedToken = verify(token, accessTokenSecret) as JwtPayload;
 
-// //   if (!accessToken)
-// //     return res.status(400).json({ error: "User not authenticated!" });
+    req.user = {
+      email: decodedToken.email,
+      username: decodedToken.username,
+      password: decodedToken.password
+    };
 
-// //   try {
-// //     const validToken = verify(accessToken, "secret") as JwtPayload;
-
-// //     req.userId = validToken.userId;
-// //     next();
-
-// //     // if (validToken) {
-// //     //   req.authenticated = true;
-// //     //   return next();
-// //     // }
-// //   } catch (err) {
-// //     return res.status(400).json({ error: err });
-// //   }
-// // };
-
-// // export function authenticateToken(
-// //   req: Request,
-// //   res: Response,
-// //   next: NextFunction
-// // ) {
-// //   const token = req.header("Authorization");
-// //   if (!token) return res.status(401).json({ error: "Authentication failed" });
-
-// //   verify(token, "secret", (err, user) => {
-// //     if (err) return res.status(403).json({ error: "Token is not valid" });
-// //     req.user = user;
-// //     next();
-// //   });
-// // }
+    next();
+  } catch (err) {
+    res.clearCookie("token");
+  }
+};

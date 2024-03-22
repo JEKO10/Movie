@@ -7,6 +7,8 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import mysql, { QueryOptions } from "mysql";
 
+import { verifyToken } from "./JWT";
+
 const app = express();
 dotenv.config();
 const PORT = process.env.VITE_APP_PORT || 3001;
@@ -130,8 +132,8 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.get("/profile", (req, res) => {
-  res.json("User profile info");
+app.get("/profile", verifyToken, (req, res) => {
+  res.json("User signed in!??");
 });
 
 app.listen(PORT, () => {
