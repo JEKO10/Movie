@@ -1,6 +1,7 @@
 import React from "react";
 
 import { GlobalStyles } from "../assets/style/GlobalStyles";
+import Profile from "../redux/profile/Profile";
 import RouterProvider from "../router/RouterProvide";
 import Features from "./Features";
 import FixedSidebar from "./FixedSidebar";
@@ -13,6 +14,7 @@ function App() {
       <GlobalStyles />
       <RouterProvider />
       <FixedSidebar />
+      <Profile />
       <TrendingMovies />
       <Features />
       <Oscar />

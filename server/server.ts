@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import session from "express-session";
 import jwt from "jsonwebtoken";
 import mysql, { QueryOptions } from "mysql";
 
@@ -24,27 +25,35 @@ app.use(
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+interface User {
+  email: string;
+  username: string;
+  password: string;
+}
+
 declare module "express-session" {
   interface SessionData {
-    user: {
-      email: string;
-      username: string;
-      password: string;
-    };
+    user: User;
   }
 }
 
-// app.use(
-//   session({
-//     secret: process.env.VITE_APP_SECRET as string,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       maxAge: 60 * 60 * 24 * 1000,
-//       httpOnly: true
-//     }
-//   })
-// );
+declare module "express" {
+  interface Request {
+    user?: User;
+  }
+}
+
+app.use(
+  session({
+    secret: process.env.VITE_APP_SECRET as string,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 60 * 60 * 24 * 1000,
+      httpOnly: true
+    }
+  })
+);
 
 const db = mysql.createPool({
   user: process.env.VITE_APP_dbUser,
@@ -115,7 +124,8 @@ app.post("/login", (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
           });
 
-          return res.redirect("/profile");
+          req.session.user = result;
+          res.send(result);
         } else {
           res.send({ message: "Your credentials don`t match!" });
         }
@@ -127,7 +137,9 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/profile", verifyToken, (req, res) => {
-  res.json("User signed in!??");
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  } else res.send({ loggedIn: false });
 });
 
 app.listen(PORT, () => {
