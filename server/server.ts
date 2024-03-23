@@ -126,12 +126,27 @@ app.post("/login", (req, res) => {
 
           req.session.user = result;
           res.send(result);
+
+          // res.redirect(`/${result[0].username}`);
         } else {
           res.send({ message: "Your credentials don`t match!" });
         }
       });
     } else {
       res.send({ message: "User doesn't exist!" });
+    }
+  });
+});
+
+app.get("/logout", (req, res) => {
+  res.clearCookie("token");
+
+  req.session.destroy((err) => {
+    if (err) {
+      console.error("Error destroying session:", err);
+      res.status(500).send({ error: "Server error" });
+    } else {
+      res.send({ message: "Logout successful" });
     }
   });
 });
