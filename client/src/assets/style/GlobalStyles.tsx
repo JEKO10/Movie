@@ -66,12 +66,12 @@ export const GlobalStyles = React.memo(
       font-family: ${primaryFont};
     }
 
-    main {
+    /* main {
       background: url("../images/onceAmerica.jpg") center/cover no-repeat;
       max-width: 75vw;
       margin: 0 auto;
       padding-top: 70px;
       color: #fff;
-    }
+    } */
   `}`
 );

@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { BsCapslockFill } from "react-icons/bs";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
-// import { useNavigate } from "react-router-dom";
 import {
   useAppDispatch,
   useCapsLock,
@@ -21,7 +21,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   });
   const [logInStatus, setLogInStatus] = useState("");
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   axios.defaults.withCredentials = true;
 
   const { isCapsOn, handleCapsLock, setIsCapsOn } = useCapsLock();
@@ -47,9 +47,15 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           setLogInStatus(response.data.message);
         } else {
           setLogInStatus("Welcome " + response.data[0].username);
-          // navigate("/profile");
+          navigate("/profile");
         }
       });
+  };
+
+  const handleLogout = () => {
+    axios.get("http://localhost:3001/logout").then(() => {
+      navigate("/");
+    });
   };
 
   return (
@@ -85,9 +91,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           </label>
           <p>{logInStatus}</p>
           <button>Log in</button>
-          <button>
-            <a href="http://localhost:3001/logout">Log out</a>
-          </button>
+          <button onClick={handleLogout}>Log out</button>
         </Form>
       </Modal>
     </FixedContainer>
