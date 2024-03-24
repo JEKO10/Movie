@@ -27,7 +27,7 @@ const routes = [
   },
   {
     id: 2,
-    path: "/profile",
+    path: "/:username",
     element: Profile
   },
   {
