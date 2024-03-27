@@ -150,8 +150,8 @@ app.get("/logout", (req, res) => {
 
 app.get("/profile", verifyToken, (req, res) => {
   if (req.session.user) {
-    res.send({ loggedIn: true, user: req.session.user });
-  } else res.send({ loggedIn: false });
+    res.send({ user: req.session.user });
+  }
 });
 
 app.listen(PORT, () => {

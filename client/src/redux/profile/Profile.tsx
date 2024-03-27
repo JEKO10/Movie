@@ -9,10 +9,12 @@ const Profile = () => {
     axios
       .get("http://localhost:3001/profile", { withCredentials: true })
       .then((response) => {
-        setIsLoggedIn(response.data.loggedIn);
-
-        if (response.data.loggedIn === true) {
+        if (response.data.user.lenght !== 0) {
           setUserData(response.data.user[0]);
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+          console.log("You are not auth!");
         }
       })
       .catch((error) => {
