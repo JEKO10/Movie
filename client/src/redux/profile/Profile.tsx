@@ -25,7 +25,7 @@ const Profile = () => {
   }, []);
 
   if (!isLoggedIn) {
-    return <p>Log in</p>;
+    return <p>You need to log in to acces this page!</p>;
   }
   return (
     <section>

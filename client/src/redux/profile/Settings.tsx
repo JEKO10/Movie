@@ -13,7 +13,7 @@ const Settings = () => {
         setUser(response.data.user);
       })
       .catch((error) => {
-        console.error("Error fetching user data:", error);
+        setUser({ username: "User doesnt exist", email: "" });
       });
   }, [username]);
 
