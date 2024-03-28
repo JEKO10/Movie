@@ -150,8 +150,30 @@ app.get("/logout", (req, res) => {
 
 app.get("/profile", verifyToken, (req, res) => {
   if (req.session.user) {
-    res.send({ user: req.session.user });
+    res.send({ loggedIn: true, user: req.session.user });
+  } else {
+    res.send({ loggedIn: false });
   }
+});
+
+app.get("/:username", (req, res) => {
+  const username = req.params.username;
+
+  db.query(
+    "SELECT * FROM users WHERE username = ?;",
+    [username],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: "Failed to fetch user profile" });
+      }
+
+      if (!result || result.length === 0) {
+        return res.status(404).json({ error: "User not found" });
+      }
+
+      res.json({ user: result[0] });
+    }
+  );
 });
 
 app.listen(PORT, () => {

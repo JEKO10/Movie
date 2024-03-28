@@ -1,20 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
   const [userData, setUserData] = useState({ email: "", username: "" });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { username } = useParams();
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/profile", { withCredentials: true })
+      .get(`http://localhost:3001/profile`, { withCredentials: true })
       .then((response) => {
         if (response.data.user.lenght !== 0) {
           setUserData(response.data.user[0]);
           setIsLoggedIn(true);
         } else {
           setIsLoggedIn(false);
-          console.log("You are not auth!");
+          setUserData({ username: "You are not auth!", email: "" });
         }
       })
       .catch((error) => {

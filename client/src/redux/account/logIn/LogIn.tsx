@@ -47,7 +47,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           setLogInStatus(response.data.message);
         } else {
           setLogInStatus("Welcome " + response.data[0].username);
-          navigate(`/profile`);
+          navigate(`/${response.data[0].username}`);
         }
       });
   };
