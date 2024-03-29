@@ -28,71 +28,71 @@ const routes = [
   },
   {
     id: 2,
-    path: "/profile",
-    element: Profile
-  },
-  {
-    id: 16,
-    path: "/:username",
+    path: "/settings",
     element: Settings
   },
   {
     id: 3,
+    path: "/:username",
+    element: Profile
+  },
+  {
+    id: 4,
     path: "/reviews",
     element: Reviews
   },
   {
-    id: 4,
+    id: 5,
     path: "/likes",
     element: Likes
   },
   {
-    id: 5,
+    id: 6,
     path: "/watchlist",
     element: Watchlist
   },
   {
-    id: 6,
+    id: 7,
     path: "/films",
     element: Films
   },
   {
-    id: 7,
+    id: 8,
     path: "/lists",
     element: Lists
   },
   {
-    id: 8,
+    id: 9,
     path: "/movie/:id",
     element: SingleMovie
   },
   {
-    id: 9,
+    id: 10,
     path: "/person/:id",
     element: PersonInfo
   },
   {
-    id: 10,
+    id: 11,
     path: "/discover/:id/:name",
     element: DiscoverMovies
   },
   {
-    id: 11,
+    id: 12,
     path: "/collection/:id/:name",
     element: Collection
   },
   {
-    id: 12,
+    id: 13,
     path: "/*",
     element: Error
   },
   {
-    id: 13,
+    id: 14,
     path: "/*",
     element: ScrollToTop
   },
   {
-    id: 14,
+    id: 15,
     path: "/contact",
     element: Contact
   }
