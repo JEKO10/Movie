@@ -14,14 +14,14 @@ type SearchedDataProps = {
 export const SearchedData = styled.section<SearchedDataProps>`
   background-color: rgb(19, 24, 28);
   position: absolute;
-  top: ${({ isLogOpen }) => (isLogOpen ? "21.5rem" : "4.5rem")};
-  right: ${({ isLogOpen }) => (isLogOpen ? "30.85rem" : "27rem")};
+  top: ${({ isLogOpen }) => (isLogOpen ? "21.5rem" : "6.1rem")};
+  right: ${({ isLogOpen }) => (isLogOpen ? "30.85rem" : "26.8rem")};
   height: fit-content;
   width: ${({ isLogOpen }) => (isLogOpen ? "588px" : "524px")};
   max-height: 260px;
   overflow-x: hidden;
   border-bottom: 0.1px solid ${secondaryColor};
-  border-radius: ${({ isLogOpen }) => (isLogOpen ? "3px" : "10px")};
+  /* border-radius: ${({ isLogOpen }) => (isLogOpen ? "3px" : "10px")}; */
   z-index: 10;
 
   &::-webkit-scrollbar {
@@ -74,5 +74,27 @@ export const MovieInfo = styled.p`
 
   &:last-of-type {
     color: ${secondaryColor};
+  }
+`;
+
+export const Categories = styled.section`
+  position: absolute;
+  top: 4.6rem;
+  right: 26.8rem;
+  width: 524px;
+
+  article {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+
+    p {
+      text-align: center;
+      width: 25%;
+      border: 1px solid ${secondaryColor};
+      cursor: pointer;
+
+      &:hover {
+        background-color: ${secondaryColor};
+      }
+    }
   }
 `;

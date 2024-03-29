@@ -136,7 +136,7 @@ export const Input = styled.div`
     font-size: 1.5rem;
     font-family: ${primaryFont};
     padding: 0 20px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     outline: none;
     color: #fff;
   }
