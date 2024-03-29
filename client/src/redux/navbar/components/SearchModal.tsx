@@ -3,7 +3,7 @@ import React from "react";
 import { Fade } from "../../../assets/style/Fade.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { SearchData } from "../../../common/types/typesTS";
-import { setIsMovieModalOpen } from "../navbarSlice";
+import { setIsModalOpen, setIsMovieModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
 const SearchModal = () => {
@@ -40,7 +40,7 @@ const SearchModal = () => {
             onClick={
               isLogOpen
                 ? () => dispatch(setIsMovieModalOpen({ isOpen: true, id }))
-                : () => {}
+                : () => dispatch(setIsModalOpen(false))
             }
           >
             {!isLogOpen && (
