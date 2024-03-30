@@ -56,7 +56,7 @@ const SearchModal = () => {
             <div>
               <MovieInfo>{title || name}</MovieInfo>
               <MovieInfo>{release_date?.slice(0, 4)}</MovieInfo>
-              {title && title.length > 13 && <Fade isTrending={false} />}
+              <Fade isTrending={false} />
             </div>
           </SingleMovie>
         );

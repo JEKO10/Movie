@@ -1,19 +1,33 @@
 import React, { useState } from "react";
 
+import { secondaryColor } from "../../../assets/style/GlobalStyles";
+import { useAppDispatch } from "../../../common/hooks";
+import { searchMovies, setCategory } from "../navbarSlice";
 import { Categories } from "./SearchModal.styled";
 
 const SearchCategories = () => {
   const [isClicked, setIsClicked] = useState({
-    films: false,
-    cast: false,
-    lists: false,
+    all: false,
+    movie: false,
+    person: false,
     users: false
   });
+  const dispatch = useAppDispatch();
 
-  const handleClick = (
+  const clickHandle = (
     event: React.MouseEvent<HTMLParagraphElement, MouseEvent>
   ) => {
     const clickedTitle = (event.currentTarget as HTMLParagraphElement).title;
+
+    dispatch(setCategory(clickedTitle));
+    dispatch(searchMovies());
+
+    setIsClicked({
+      all: false,
+      movie: false,
+      person: false,
+      users: false
+    });
 
     setIsClicked((prevState) => ({
       ...prevState,
@@ -25,30 +39,38 @@ const SearchCategories = () => {
     <Categories>
       <article>
         <p
-          title="films"
-          onClick={handleClick}
-          style={{ fontWeight: isClicked.films ? "bold" : "normal" }}
+          title="all"
+          onClick={clickHandle}
+          style={{
+            backgroundColor: isClicked.all ? secondaryColor : "transparent"
+          }}
         >
-          Films
+          All
         </p>
         <p
-          title="cast"
-          onClick={handleClick}
-          style={{ fontWeight: isClicked.films ? "bold" : "normal" }}
+          title="movie"
+          onClick={clickHandle}
+          style={{
+            backgroundColor: isClicked.movie ? secondaryColor : "transparent"
+          }}
         >
-          Cast & Crew
+          Movies
         </p>
         <p
-          title="lists"
-          onClick={handleClick}
-          style={{ fontWeight: isClicked.films ? "bold" : "normal" }}
+          title="person"
+          onClick={clickHandle}
+          style={{
+            backgroundColor: isClicked.person ? secondaryColor : "transparent"
+          }}
         >
-          Lists
+          Person
         </p>
         <p
           title="users"
-          onClick={handleClick}
-          style={{ fontWeight: isClicked.films ? "bold" : "normal" }}
+          onClick={clickHandle}
+          style={{
+            backgroundColor: isClicked.users ? secondaryColor : "transparent"
+          }}
         >
           Users
         </p>

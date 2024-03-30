@@ -20,6 +20,7 @@ export type InitialNavbar = {
   isMovieModalOpen: boolean;
   isLogInOpen: boolean;
   isSignUpOpen: boolean;
+  category: string;
 };
 
 // trendingPeople

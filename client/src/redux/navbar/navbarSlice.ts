@@ -12,7 +12,8 @@ const initialState: InitialNavbar = {
   isLogOpen: false,
   isMovieModalOpen: false,
   isLogInOpen: false,
-  isSignUpOpen: false
+  isSignUpOpen: false,
+  category: ""
 };
 
 export const searchMovies = createAsyncThunk(
@@ -26,13 +27,22 @@ export const searchMovies = createAsyncThunk(
       const resp = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${navbar.inputValue}&media_type=movie,person`
+        }&query=${navbar.inputValue}&media_type=movie,person,list`
       );
 
-      const filteredResults = resp.data.results.filter(
-        (result: SearchData) =>
-          result.media_type === "movie" || result.media_type === "person"
-      );
+      const filteredResults = resp.data.results.filter((result: SearchData) => {
+        if (navbar.category === "movie") {
+          return result.media_type === "movie";
+        } else if (navbar.category === "person") {
+          return result.media_type === "person";
+        } else if (navbar.category === "users") {
+          return result.media_type === "users";
+        } else {
+          return (
+            result.media_type === "movie" || result.media_type === "person"
+          );
+        }
+      });
 
       return filteredResults;
     } catch (error) {
@@ -47,16 +57,19 @@ const navbarSlice = createSlice({
   name: "navbar",
   initialState,
   reducers: {
-    setQuery: (state, { payload }: { payload: string }) => {
+    setQuery: (state, { payload }: PayloadAction<string>) => {
       state.query = payload;
     },
-    setInputValue: (state, { payload }: { payload: string }) => {
+    setInputValue: (state, { payload }: PayloadAction<string>) => {
       state.inputValue = payload;
     },
-    setIsModalOpen: (state, { payload }: { payload: boolean }) => {
+    setCategory: (state, { payload }: PayloadAction<string>) => {
+      state.category = payload;
+    },
+    setIsModalOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isModalOpen = payload;
     },
-    setIsLogOpen: (state, { payload }: { payload: boolean }) => {
+    setIsLogOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isLogOpen = payload;
       state.inputValue = "";
 
@@ -81,7 +94,7 @@ const navbarSlice = createSlice({
         document.body.style.overflow = "auto";
       }
     },
-    setIsLogInOpen: (state, { payload }: { payload: boolean }) => {
+    setIsLogInOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isLogInOpen = payload;
       if (state.isLogInOpen) {
         document.body.style.overflow = "hidden";
@@ -89,7 +102,7 @@ const navbarSlice = createSlice({
         document.body.style.overflow = "auto";
       }
     },
-    setIsSignUpOpen: (state, { payload }: { payload: boolean }) => {
+    setIsSignUpOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isSignUpOpen = payload;
       if (state.isSignUpOpen) {
         document.body.style.overflow = "hidden";
@@ -115,6 +128,7 @@ export const {
   setIsLogOpen,
   setIsMovieModalOpen,
   setIsLogInOpen,
-  setIsSignUpOpen
+  setIsSignUpOpen,
+  setCategory
 } = navbarSlice.actions;
 export const { reducer } = navbarSlice;

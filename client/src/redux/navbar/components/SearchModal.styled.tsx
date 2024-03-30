@@ -90,6 +90,8 @@ export const Categories = styled.section`
       text-align: center;
       width: 25%;
       border: 1px solid ${secondaryColor};
+      user-select: none;
+      transition: all 100ms ease;
       cursor: pointer;
 
       &:hover {
