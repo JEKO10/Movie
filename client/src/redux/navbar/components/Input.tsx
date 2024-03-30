@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 import { useAppDispatch } from "../../../common/hooks";
@@ -10,11 +11,21 @@ type InputProps = {
 const Input: React.FC<InputProps> = ({ value }) => {
   const dispatch = useAppDispatch();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
     dispatch(setInputValue(value));
     dispatch(searchMovies());
+
+    try {
+      const response = await axios.post("http://localhost:3001/searchUsers", {
+        query: value
+      });
+      const searchData = response.data;
+      console.log(searchData);
+    } catch (error) {
+      console.error("Error searching users:", error);
+    }
   };
 
   return (

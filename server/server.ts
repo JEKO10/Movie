@@ -148,6 +148,22 @@ app.get("/logout", (req, res) => {
   });
 });
 
+app.post("/searchUsers", async (req, res) => {
+  const { query } = req.body;
+
+  try {
+    const results = await db.query(
+      "SELECT * FROM users WHERE username LIKE ?;",
+      [`%${query}%`]
+    );
+
+    res.json(results);
+  } catch (error) {
+    console.error("Error searching users:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 app.get("/settings", verifyToken, (req, res) => {
   if (req.session.user) {
     res.send({ loggedIn: true, user: req.session.user });
