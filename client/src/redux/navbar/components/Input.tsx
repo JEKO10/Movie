@@ -18,11 +18,8 @@ const Input: React.FC<InputProps> = ({ value }) => {
     dispatch(searchMovies());
 
     try {
-      const response = await axios.post("http://localhost:3001/searchUsers", {
-        query: value
-      });
-      const searchData = response.data;
-      console.log(searchData);
+      const response = await axios.get("http://localhost:3001/searchUsers");
+      console.log(response.data);
     } catch (error) {
       console.error("Error searching users:", error);
     }
