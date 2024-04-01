@@ -19,7 +19,10 @@ const Input: React.FC<InputProps> = ({ value }) => {
 
     try {
       const response = await axios.get("http://localhost:3001/searchUsers");
-      console.log(response.data);
+
+      console.log(response);
+
+      return response;
     } catch (error) {
       console.error("Error searching users:", error);
     }

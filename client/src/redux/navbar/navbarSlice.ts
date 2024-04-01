@@ -35,8 +35,6 @@ export const searchMovies = createAsyncThunk(
           return result.media_type === "movie";
         } else if (navbar.category === "person") {
           return result.media_type === "person";
-        } else if (navbar.category === "users") {
-          return result.media_type === "users";
         } else {
           return (
             result.media_type === "movie" || result.media_type === "person"

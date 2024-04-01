@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 import { Fade } from "../../../assets/style/Fade.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
@@ -6,13 +7,43 @@ import { SearchData } from "../../../common/types/typesTS";
 import { setIsModalOpen, setIsMovieModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
+type UserData = {
+  id: number;
+  username: string;
+  email: string;
+};
+
 const SearchModal = () => {
-  const { searchData, inputValue, isLogOpen } = useAppSelector(
+  const { searchData, inputValue, isLogOpen, category } = useAppSelector(
     (store) => store.navbar
   );
+  const [users, setUsers] = useState<UserData[]>([
+    {
+      id: 0,
+      username: "",
+      email: ""
+    }
+  ]);
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w92/";
 
+  useEffect(() => {
+    axios.get("http://localhost:3001/searchUsers").then((response) => {
+      setUsers(response.data);
+    });
+  }, []);
+
+  if (category === "users") {
+    return (
+      <SearchedData isLogOpen={isLogOpen}>
+        {users.map((user) => (
+          <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
+            {user.username}
+          </SingleMovie>
+        ))}
+      </SearchedData>
+    );
+  }
   return (
     <SearchedData isLogOpen={isLogOpen}>
       {searchData?.map((movie: SearchData) => {
