@@ -36,11 +36,15 @@ const SearchModal = () => {
   if (category === "users") {
     return (
       <SearchedData isLogOpen={isLogOpen}>
-        {users.map((user) => (
-          <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
-            {user.username}
-          </SingleMovie>
-        ))}
+        {users
+          .filter((user) =>
+            user.username.toLowerCase().includes(inputValue.toLowerCase())
+          )
+          .map((user) => (
+            <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
+              {user.username}
+            </SingleMovie>
+          ))}
       </SearchedData>
     );
   }
