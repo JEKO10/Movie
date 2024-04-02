@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 
 import { useAppDispatch } from "../../../common/hooks";
@@ -16,16 +15,6 @@ const Input: React.FC<InputProps> = ({ value }) => {
 
     dispatch(setInputValue(value));
     dispatch(searchMovies());
-
-    try {
-      const response = await axios.get("http://localhost:3001/searchUsers");
-
-      console.log(response);
-
-      return response;
-    } catch (error) {
-      console.error("Error searching users:", error);
-    }
   };
 
   return (

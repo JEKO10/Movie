@@ -31,20 +31,29 @@ const SearchModal = () => {
     axios.get("http://localhost:3001/searchUsers").then((response) => {
       setUsers(response.data);
     });
-  }, []);
+  }, [inputValue]);
+
+  const filteredUsers = users.filter((user) =>
+    user.username.toLowerCase().includes(inputValue.toLowerCase())
+  );
 
   if (category === "users") {
     return (
       <SearchedData isLogOpen={isLogOpen}>
-        {users
+        {filteredUsers
           .filter((user) =>
             user.username.toLowerCase().includes(inputValue.toLowerCase())
           )
           .map((user) => (
             <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
-              {user.username}
+              <div>
+                <MovieInfo>{user.username}</MovieInfo>
+              </div>
             </SingleMovie>
           ))}
+        {filteredUsers.length === 0 && inputValue && (
+          <p>No user matches for your search term.</p>
+        )}
       </SearchedData>
     );
   }
