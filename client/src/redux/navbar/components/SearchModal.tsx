@@ -7,7 +7,7 @@ import { SearchData } from "../../../common/types/typesTS";
 import { setIsModalOpen, setIsMovieModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
-type UserData = {
+export type UserData = {
   id: number;
   username: string;
   email: string;

@@ -39,6 +39,7 @@ export const Side = styled.aside`
     }
 
     svg {
+      transform: translateX(-5px);
       font-size: 1.3rem;
       font-weight: 800;
       color: ${tertiaryColor};
