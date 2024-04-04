@@ -19,6 +19,8 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
     identifier: "",
     password: ""
   });
+  // eslint-disable-next-line
+  const [isLoading, setIsLoading] = useState(true);
   const [logInStatus, setLogInStatus] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -40,6 +42,9 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
       return;
     }
 
+    setIsLoading(true);
+    setLogInStatus("Loading...");
+
     axios
       .post("http://localhost:3001/login", { identifier, password })
       .then((response) => {
@@ -49,6 +54,8 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           setLogInStatus("Welcome " + response.data[0].username);
           navigate(`/${response.data[0].username}`);
         }
+
+        setIsLoading(false);
       });
   };
 
