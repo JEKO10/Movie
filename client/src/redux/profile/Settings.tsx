@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const Settings = () => {
   const [userData, setUserData] = useState({ email: "", username: "" });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { username } = useParams();
+  // const { username } = useParams();
 
   useEffect(() => {
     axios

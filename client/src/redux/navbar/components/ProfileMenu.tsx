@@ -21,20 +21,27 @@ const ProfileMenu = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/JEKO")
+      .get(`http://localhost:3001/settings`, { withCredentials: true })
       .then((response) => {
-        setUser(response.data.user);
+        if (response.data.user.lenght !== 0) {
+          setUser(response.data.user[0]);
+        } else {
+          setUser({ username: "" });
+        }
       })
       .catch((error) => {
-        console.error("Error fetching user settings:", error);
+        console.error("Error fetching user data: ", error);
       });
-  }, [isModalOpen]);
+  }, []);
 
+  if (!user.username) {
+    return;
+  }
   return (
     <Container>
       <ProfileHeader onClick={() => setIsModalOpen(!isModalOpen)}>
         <CgProfile />
-        {user.username}
+        <p>{user.username}</p>
         <IoIosArrowDown />
       </ProfileHeader>
       {isModalOpen && (
