@@ -48,6 +48,7 @@ export const Nav = styled.nav`
 export const ProfileHeader = styled.header`
   ${flexMixin({ justify: "space-between", align: "center" })};
   background-color: ${primaryColor};
+  min-width: 155px;
   padding: 10px 15px;
   border-radius: 10px;
   transition: background-color 200ms ease;

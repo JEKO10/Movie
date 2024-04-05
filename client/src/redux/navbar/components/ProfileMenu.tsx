@@ -4,20 +4,29 @@ import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 
+import {
+  useAppDispatch,
+  useAppSelector,
+  useOutsideClick
+} from "../../../common/hooks";
 import { Underline } from "../../singleMovie/SingleMovie.styled";
 import {
   ProfileHeader,
   ProfileMenu as Container,
   ProfileModal
 } from "../Navbar.styled";
+import { setIsProfileOpen } from "../navbarSlice";
 
 const ProfileMenu = () => {
   const [user, setUser] = useState({ username: "" });
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isProfileOpen } = useAppSelector((store) => store.navbar);
+  const dispath = useAppDispatch();
 
   const onLinkChange = () => {
-    setIsModalOpen(false);
+    dispath(setIsProfileOpen(false));
   };
+
+  const { ref } = useOutsideClick(setIsProfileOpen);
 
   useEffect(() => {
     axios
@@ -39,13 +48,16 @@ const ProfileMenu = () => {
   }
   return (
     <Container>
-      <ProfileHeader onClick={() => setIsModalOpen(!isModalOpen)}>
+      <ProfileHeader onClick={() => dispath(setIsProfileOpen(!isProfileOpen))}>
         <CgProfile />
         <p>{user.username}</p>
         <IoIosArrowDown />
       </ProfileHeader>
-      {isModalOpen && (
-        <ProfileModal isModalOpen={isModalOpen}>
+      {isProfileOpen && (
+        <ProfileModal
+          ref={ref as React.LegacyRef<HTMLUListElement>}
+          isModalOpen={isProfileOpen}
+        >
           <li onClick={onLinkChange}>
             <Link to="/profile">Profile</Link>
           </li>

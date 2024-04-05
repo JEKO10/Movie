@@ -9,6 +9,7 @@ const initialState: InitialNavbar = {
   searchData: [],
   selectedMovieId: 0,
   isModalOpen: false,
+  isProfileOpen: false,
   isLogOpen: false,
   isMovieModalOpen: false,
   isLogInOpen: false,
@@ -66,6 +67,9 @@ const navbarSlice = createSlice({
     },
     setIsModalOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isModalOpen = payload;
+    },
+    setIsProfileOpen: (state, { payload }: PayloadAction<boolean>) => {
+      state.isProfileOpen = payload;
     },
     setIsLogOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isLogOpen = payload;
@@ -126,6 +130,7 @@ export const {
   setIsLogOpen,
   setIsMovieModalOpen,
   setIsLogInOpen,
+  setIsProfileOpen,
   setIsSignUpOpen,
   setCategory
 } = navbarSlice.actions;

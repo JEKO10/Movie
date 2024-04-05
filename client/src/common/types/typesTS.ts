@@ -16,6 +16,7 @@ export type InitialNavbar = {
   searchData: SearchData[];
   selectedMovieId: number;
   isModalOpen: boolean;
+  isProfileOpen: boolean;
   isLogOpen: boolean;
   isMovieModalOpen: boolean;
   isLogInOpen: boolean;
