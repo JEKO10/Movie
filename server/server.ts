@@ -138,6 +138,7 @@ app.post("/login", (req, res) => {
 
 app.get("/logout", (req, res) => {
   res.clearCookie("token");
+  res.clearCookie("connect.sid", { path: "/" });
 
   req.session.destroy((err) => {
     if (err) {

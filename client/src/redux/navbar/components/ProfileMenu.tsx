@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDown } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   useAppDispatch,
@@ -20,13 +20,21 @@ import { setIsProfileOpen } from "../navbarSlice";
 const ProfileMenu = () => {
   const [user, setUser] = useState({ username: "" });
   const { isProfileOpen } = useAppSelector((store) => store.navbar);
+  const navigate = useNavigate();
   const dispath = useAppDispatch();
+
+  const { ref } = useOutsideClick(setIsProfileOpen);
 
   const onLinkChange = () => {
     dispath(setIsProfileOpen(false));
   };
 
-  const { ref } = useOutsideClick(setIsProfileOpen);
+  const handleLogout = () => {
+    axios.get("http://localhost:3001/logout").then(() => {
+      navigate("/");
+      window.location.reload();
+    });
+  };
 
   useEffect(() => {
     axios
@@ -84,7 +92,7 @@ const ProfileMenu = () => {
           <li onClick={onLinkChange}>
             <Link to="/profile/settings">Settings</Link>
           </li>
-          <li onClick={onLinkChange}>
+          <li onClick={handleLogout}>
             <Link to="/">Sign Out</Link>
           </li>
         </ProfileModal>

@@ -59,12 +59,6 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
       });
   };
 
-  const handleLogout = () => {
-    axios.get("http://localhost:3001/logout").then(() => {
-      navigate("/");
-    });
-  };
-
   return (
     <FixedContainer>
       <Modal isClosing={isClosing} ref={ref}>
@@ -98,7 +92,6 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
           </label>
           <p>{logInStatus}</p>
           <button>Log in</button>
-          <button onClick={handleLogout}>Log out</button>
         </Form>
       </Modal>
     </FixedContainer>
