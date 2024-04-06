@@ -53,6 +53,7 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
         } else {
           setLogInStatus("Welcome " + response.data[0].username);
           navigate(`/${response.data[0].username}`);
+          window.location.reload();
         }
 
         setIsLoading(false);

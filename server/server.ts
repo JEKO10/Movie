@@ -137,14 +137,14 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  res.clearCookie("token");
+  res.clearCookie("token", { path: "/" });
   res.clearCookie("connect.sid", { path: "/" });
 
   req.session.destroy((err) => {
     if (err) {
-      res.status(500).send({ error: "Server error" });
+      res.status(400).send("Unable to log out!");
     } else {
-      res.send({ message: "Logout successful" });
+      res.send("Logout successful!");
     }
   });
 });
@@ -185,6 +185,10 @@ app.get("/:username", (req, res) => {
       res.json({ user: result[0] });
     }
   );
+});
+
+app.get("/", (req, res) => {
+  res.send("Home page");
 });
 
 app.listen(PORT, () => {
