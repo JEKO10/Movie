@@ -30,10 +30,14 @@ const Navbar = () => {
         <Input value={isLogOpen ? "" : inputValue} />
         <FaSearch />
       </InputContainer>
-      <article>
-        <button onClick={() => dispatch(setIsLogInOpen(true))}>Log in</button>
-        <button onClick={() => dispatch(setIsSignUpOpen(true))}>Sign up</button>
-      </article>
+      {!isLoggedIn && (
+        <article>
+          <button onClick={() => dispatch(setIsLogInOpen(true))}>Log in</button>
+          <button onClick={() => dispatch(setIsSignUpOpen(true))}>
+            Sign up
+          </button>
+        </article>
+      )}
     </Nav>
   );
 };
