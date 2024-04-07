@@ -3,8 +3,8 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoMdList } from "react-icons/io";
 import { IoEye, IoStar } from "react-icons/io5";
 
+import { Features as Container } from "./Home.style";
 import RatePopUp from "./RatePopUp";
-import { Features as Container } from "./Temp.style";
 
 const Features = () => {
   return (

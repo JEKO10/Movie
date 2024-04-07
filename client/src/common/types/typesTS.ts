@@ -178,6 +178,12 @@ export type RegisterInfo = {
   bio: string;
 };
 
+export type UserData = {
+  id: number;
+  username: string;
+  email: string;
+};
+
 export type InitialProfile = {
   registerInfo: RegisterInfo;
 };

@@ -3,15 +3,9 @@ import React, { useEffect, useState } from "react";
 
 import { Fade } from "../../../assets/style/Fade.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
-import { SearchData } from "../../../common/types/typesTS";
+import { SearchData, UserData } from "../../../common/types/typesTS";
 import { setIsModalOpen, setIsMovieModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
-
-export type UserData = {
-  id: number;
-  username: string;
-  email: string;
-};
 
 const SearchModal = () => {
   const { searchData, inputValue, isLogOpen, category } = useAppSelector(

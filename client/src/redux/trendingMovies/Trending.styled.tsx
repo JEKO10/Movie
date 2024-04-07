@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { flexMixin, primaryFont } from "../../assets/style/GlobalStyles";
+import {
+  flexMixin,
+  primaryFont,
+  secondaryColor
+} from "../../assets/style/GlobalStyles";
 
 type TitleProps = {
   time: string;
@@ -82,5 +86,82 @@ export const TrendLink = styled(Link)`
     border: solid 2px;
     border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
     border-top: none;
+  }
+`;
+
+export const TrendingMovies = styled.section`
+  max-width: 73vw;
+  margin: 0 auto;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 200;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+
+    > div {
+      ${flexMixin({ justify: "space-between", align: "flex-start" })};
+      flex-direction: column;
+      background-color: #292929;
+      position: relative;
+      height: 325px;
+      width: 245px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      transition: all 200ms ease;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow:
+          inset 0 1px 0 #292929,
+          0 0 10px #000;
+        transform: translateY(-10px);
+      }
+
+      h2 {
+        max-width: 150px;
+        font-size: 30px;
+        text-transform: uppercase;
+        line-height: 30px;
+        margin-bottom: 5px;
+      }
+
+      img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+
+      h3 {
+        font-size: 30px;
+        color: ${secondaryColor};
+        position: absolute;
+        top: 0;
+        right: 10px;
+      }
+
+      p {
+        max-width: 108px;
+        color: #fff;
+        font-size: 20px;
+        line-height: 20px;
+        opacity: 0.5;
+      }
+
+      button {
+        background-color: ${secondaryColor};
+        color: #fff;
+        font-size: 40px;
+        font-family: ${primaryFont};
+        text-transform: uppercase;
+        padding: 0 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        z-index: 2;
+      }
+    }
   }
 `;

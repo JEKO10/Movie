@@ -1,62 +1,45 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-import { Fade } from "../../assets/style/Fade.styled";
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
-import { Loader, LoaderWrapper } from "../../common/Loader";
-import { Underline } from "../discoverMovies/DiscoverMovies.styled";
-import { Title, Trend, TrendInfo, TrendLink } from "./Trending.styled";
-import { changeTime, getTrending } from "./trendingMoviesSlice";
+import eyesWideShut from "../../assets/images/eyesWide.png";
+import forestGump from "../../assets/images/forestGump.png";
+import noCountry from "../../assets/images/noCountry.png";
+import { TrendingMovies as Container } from "./Trending.styled";
 
-const Trending = () => {
-  const { isLoading, trendingMovies, time } = useAppSelector(
-    (store) => store.trendingMovies
-  );
-  const dispatch = useAppDispatch();
-  const posterUrl = "https://image.tmdb.org/t/p/w500/";
-
-  useEffect(() => {
-    dispatch(getTrending(time));
-  }, [time]);
-
-  if (isLoading) {
-    return (
-      <LoaderWrapper>
-        <Loader />
-      </LoaderWrapper>
-    );
-  }
+const TrendingMovies = () => {
   return (
-    <Trend className="trending">
-      <Title time={time}>
-        <h2>Popular movies</h2>
-        <select
-          name="time"
-          onChange={(e) => dispatch(changeTime(e.currentTarget.value))}
-          value={time}
-        >
-          <option value="day">Today</option>
-          <option value="week">This week</option>
-        </select>
-      </Title>
-      <Underline></Underline>
-      <TrendInfo>
-        {trendingMovies?.slice(0, 5).map(({ id, title, name, poster_path }) => (
-          <TrendLink to={`/movie/${id}`} key={id} className="trendElement">
-            <img
-              src={
-                poster_path ? posterUrl + poster_path : import.meta.env.VITE_IMG
-              }
-              alt="Poster"
-            />
-            <div>
-              <h4>{title ? title : name}</h4>
-              {title?.length > 17 && <Fade isTrending={true} />}
-            </div>
-          </TrendLink>
-        ))}
-      </TrendInfo>
-    </Trend>
+    <Container>
+      <h2>Trending Movies</h2>
+      <article>
+        <div>
+          <h3>1.</h3>
+          <div>
+            <h2>No country for old men</h2>
+            <p>In the last month, this movie was searched 32,121 times!</p>
+            <img src={noCountry} alt="noCountry" />
+          </div>
+          <button>Rate</button>
+        </div>
+        <div>
+          <h3>2.</h3>
+          <div>
+            <h2>Eyes wide shut</h2>
+            <p>In the last month, this movie was searched 18,010 times!</p>
+            <img src={eyesWideShut} alt="eyesWideShut" />
+          </div>
+          <button>Rate</button>
+        </div>
+        <div>
+          <h3>3.</h3>
+          <div>
+            <h2>Forest Gump</h2>
+            <p>In the last month, this movie was searched 12,223 times!</p>
+            <img src={forestGump} alt="forestGump" />
+          </div>
+          <button>Rate</button>
+        </div>
+      </article>
+    </Container>
   );
 };
 
-export default Trending;
+export default TrendingMovies;

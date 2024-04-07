@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 
-import { UserData } from "../redux/navbar/components/SearchModal";
-import { Side } from "./Temp.style";
+import { UserData } from "../../common/types/typesTS";
+import { Side } from "./Home.style";
 
 const Friends = () => {
   const [friends, setFriends] = useState<UserData[]>([

@@ -4,7 +4,7 @@ import { FaRegCirclePlay } from "react-icons/fa6";
 import { GoHomeFill } from "react-icons/go";
 import { IoListSharp } from "react-icons/io5";
 
-import { Side } from "./Temp.style";
+import { Side } from "./Home.style";
 
 const Sidebar = () => {
   return (

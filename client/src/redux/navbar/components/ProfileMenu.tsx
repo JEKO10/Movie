@@ -54,7 +54,7 @@ const ProfileMenu = () => {
   }, []);
 
   if (!user.username) {
-    return;
+    return false;
   }
   return (
     <Container>

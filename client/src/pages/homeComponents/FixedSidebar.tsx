@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import Friends from "./Friends";
+import { FixedSidebar as Container } from "./Home.style";
 import Sidebar from "./Sidebar";
-import { FixedSidebar as Container } from "./Temp.style";
 
 const FixedSidebar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,7 +29,7 @@ const FixedSidebar = () => {
           height: "3px",
           width: "130px",
           margin: "0 50px",
-          borderRadius: "10px",
+          borderRadius: "10px"
         }}
       />
       <Friends />

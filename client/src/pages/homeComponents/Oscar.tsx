@@ -1,7 +1,7 @@
 import React from "react";
 
-import poster from "../assets/images/poster.jpg";
-import { Oscar as Container } from "./Temp.style";
+import poster from "../../assets/images/poster.jpg";
+import { Oscar as Container } from "./Home.style";
 
 const Oscar = () => {
   return (
