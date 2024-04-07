@@ -13,6 +13,7 @@ import { handleExit, ModalProps } from "../../../common/modals/modalUtils";
 import { FixedContainer, Modal } from "../../logModal/Log.style";
 import { setIsLogInOpen, setIsSignUpOpen } from "../../navbar/navbarSlice";
 import { Form } from "../Account.style";
+import { setIsLoggedIn } from "../../profile/profileSlice";
 
 const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
   const [userInfo, setUserInfo] = useState({
@@ -50,8 +51,10 @@ const LogIn: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
       .then((response) => {
         if (response.data.message) {
           setLogInStatus(response.data.message);
+          dispatch(setIsLoggedIn(false));
         } else {
           setLogInStatus("Welcome " + response.data[0].username);
+          dispatch(setIsLoggedIn(true));
           navigate(`/${response.data[0].username}`);
           window.location.reload();
         }

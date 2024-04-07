@@ -9,6 +9,7 @@ import {
   useAppSelector,
   useOutsideClick
 } from "../../../common/hooks";
+import { setIsLoggedIn } from "../../profile/profileSlice";
 import { Underline } from "../../singleMovie/SingleMovie.styled";
 import {
   ProfileHeader,
@@ -20,6 +21,7 @@ import { setIsProfileOpen } from "../navbarSlice";
 const ProfileMenu = () => {
   const [user, setUser] = useState({ username: "" });
   const { isProfileOpen } = useAppSelector((store) => store.navbar);
+  const { isLoggedIn } = useAppSelector((store) => store.profile);
   const dispath = useAppDispatch();
 
   const { ref } = useOutsideClick(setIsProfileOpen);
@@ -44,7 +46,9 @@ const ProfileMenu = () => {
       .then((response) => {
         if (response.data.user.lenght !== 0) {
           setUser(response.data.user[0]);
+          dispath(setIsLoggedIn(true));
         } else {
+          dispath(setIsLoggedIn(false));
           setUser({ username: "" });
         }
       })
@@ -53,7 +57,7 @@ const ProfileMenu = () => {
       });
   }, []);
 
-  if (!user.username) {
+  if (!isLoggedIn) {
     return false;
   }
   return (

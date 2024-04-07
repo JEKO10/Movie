@@ -10,6 +10,7 @@ import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
 
 const Navbar = () => {
   const { isLogOpen, inputValue } = useAppSelector((store) => store.navbar);
+  const { isLoggedIn } = useAppSelector((store) => store.profile);
   const dispatch = useAppDispatch();
 
   return (
@@ -19,7 +20,11 @@ const Navbar = () => {
           <span>Movie</span>xd
         </h1>
       </Link>
-      <LogButton onClick={() => dispatch(setIsLogOpen(true))}>Log +</LogButton>
+      {isLoggedIn && (
+        <LogButton onClick={() => dispatch(setIsLogOpen(true))}>
+          Log +
+        </LogButton>
+      )}
       <ProfileMenu />
       <InputContainer>
         <Input value={isLogOpen ? "" : inputValue} />

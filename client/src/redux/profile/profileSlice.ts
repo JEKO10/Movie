@@ -8,8 +8,9 @@ const initialState: InitialProfile = {
     name: "",
     lastName: "",
     email: "",
-    bio: "",
+    bio: ""
   },
+  isLoggedIn: false
 };
 
 const profileSlice = createSlice({
@@ -19,9 +20,12 @@ const profileSlice = createSlice({
     setRegister: (state, action: PayloadAction<RegisterInfo>) => {
       state.registerInfo = action.payload;
     },
-  },
+    setIsLoggedIn: (state, { payload }: PayloadAction<boolean>) => {
+      state.isLoggedIn = payload;
+    }
+  }
 });
 
-export const { setRegister } = profileSlice.actions;
+export const { setRegister, setIsLoggedIn } = profileSlice.actions;
 
 export const { reducer } = profileSlice;
