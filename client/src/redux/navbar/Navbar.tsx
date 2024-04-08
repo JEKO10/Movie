@@ -26,18 +26,28 @@ const Navbar = () => {
         </LogButton>
       )}
       <ProfileMenu />
-      <InputContainer>
-        <Input value={isLogOpen ? "" : inputValue} />
-        <FaSearch />
-      </InputContainer>
-      {!isLoggedIn && (
+      {/* {!isLoggedIn && (
         <article>
           <button onClick={() => dispatch(setIsLogInOpen(true))}>Log in</button>
           <button onClick={() => dispatch(setIsSignUpOpen(true))}>
             Sign up
           </button>
         </article>
+      )} */}
+      {!isLoggedIn && (
+        <article>
+          <p onClick={() => dispatch(setIsLogInOpen(true))}>Log in</p>
+          <p onClick={() => dispatch(setIsSignUpOpen(true))}>Sign up</p>
+        </article>
       )}
+      <article>
+        <p>Films</p>
+        <p>Members</p>
+      </article>
+      <InputContainer>
+        <Input value={isLogOpen ? "" : inputValue} />
+        <FaSearch />
+      </InputContainer>
     </Nav>
   );
 };
