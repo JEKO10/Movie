@@ -34,16 +34,17 @@ const Navbar = () => {
           </button>
         </article>
       )} */}
-      {!isLoggedIn && (
-        <article>
-          <p onClick={() => dispatch(setIsLogInOpen(true))}>Log in</p>
-          <p onClick={() => dispatch(setIsSignUpOpen(true))}>Sign up</p>
-        </article>
-      )}
-      <article>
-        <p>Films</p>
-        <p>Members</p>
-      </article>
+      <ul>
+        {!isLoggedIn && (
+          <li onClick={() => dispatch(setIsLogInOpen(true))}>Log in</li>
+        )}
+        {!isLoggedIn && (
+          <li onClick={() => dispatch(setIsSignUpOpen(true))}>Sign up</li>
+        )}
+        <li>Films</li>
+        <li>Members</li>
+        {!isLoggedIn && <li>Journal</li>}
+      </ul>
       <InputContainer>
         <Input value={isLogOpen ? "" : inputValue} />
         <FaSearch />

@@ -32,6 +32,26 @@ export const Nav = styled.nav`
     }
   }
 
+  > ul {
+    ${flexMixin({ justify: "center", align: "center" })};
+    list-style: none;
+
+    li {
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      line-height: 17px;
+      text-transform: uppercase;
+      margin: 0 2.5rem;
+      color: #dedede;
+      transition: all 200ms ease;
+      cursor: pointer;
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
   article button {
     background-color: ${secondaryColor};
     color: #fff;
