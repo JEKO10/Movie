@@ -1,34 +1,35 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  const [user, setUser] = useState({ email: "", username: "" });
-  const { username } = useParams();
+  const [userData, setUserData] = useState({ email: "", username: "" });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/${username}`)
+      .get(`http://localhost:3001/settings`, { withCredentials: true })
       .then((response) => {
-        setUser(response.data.user);
+        if (response.data.user.lenght !== 0) {
+          setUserData(response.data.user[0]);
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+          setUserData({ username: "You are not auth!", email: "" });
+        }
       })
       .catch((error) => {
-        setUser({ username: "User doesnt exist", email: "" });
+        console.error("Error fetching user data: ", error);
       });
-  }, [username]);
+  }, []);
 
+  if (!isLoggedIn) {
+    return <p>You need to log in to acces this page!</p>;
+  }
   return (
-    <div>
-      {user ? (
-        <div>
-          <h1>User Profile</h1>
-          <p>Username: {user.username}</p>
-          <p>Email: {user.email}</p>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
+    <section>
+      {userData.username && <p>Username: {userData.username}</p>}
+      {userData.email && <p>Email: {userData.email}</p>}
+    </section>
   );
 };
 

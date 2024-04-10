@@ -61,17 +61,14 @@ const ProfileMenu = () => {
     return false;
   }
   return (
-    <Container>
+    <Container ref={ref}>
       <ProfileHeader onClick={() => dispath(setIsProfileOpen(!isProfileOpen))}>
         <CgProfile />
         <p>{user.username}</p>
         <IoIosArrowDown />
       </ProfileHeader>
       {isProfileOpen && (
-        <ProfileModal
-          ref={ref as React.LegacyRef<HTMLUListElement>}
-          isModalOpen={isProfileOpen}
-        >
+        <ProfileModal isModalOpen={isProfileOpen}>
           <li onClick={onLinkChange}>
             <Link to="/profile">Profile</Link>
           </li>

@@ -12,6 +12,7 @@ import Lists from "../redux/lists/Lists";
 import PersonInfo from "../redux/personInfo/PersonInfo";
 import Profile from "../redux/profile/Profile";
 import Settings from "../redux/profile/Settings";
+import User from "../redux/profile/User";
 import Reviews from "../redux/reviews/Reviews";
 import SingleMovie from "../redux/singleMovie/SingleMovie";
 
@@ -23,8 +24,8 @@ const routes = [
   },
   {
     id: 1,
-    path: "/account",
-    element: Account
+    path: "/profile",
+    element: Profile
   },
   {
     id: 2,
@@ -34,7 +35,7 @@ const routes = [
   {
     id: 3,
     path: "/:username",
-    element: Profile
+    element: User
   },
   {
     id: 4,
