@@ -1,14 +1,14 @@
 import express from "express";
 
 import {
+  getProfile,
   getUserByUsername,
-  profile,
   searchUsers
 } from "../controllers/userController";
 
 const router = express.Router();
 
-router.get("/profile", profile);
+router.get("/profile", getProfile);
 router.get("/:username", getUserByUsername);
 router.get("/searchUsers", searchUsers);
 
