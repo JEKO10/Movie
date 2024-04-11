@@ -7,7 +7,7 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/settings`, { withCredentials: true })
+      .get(`http://localhost:3001/profile`, { withCredentials: true })
       .then((response) => {
         if (response.data.user.lenght !== 0) {
           setUserData(response.data.user[0]);
@@ -27,6 +27,7 @@ const Profile = () => {
   }
   return (
     <section>
+      <p>This is restricted page</p>
       {userData.username && <p>Username: {userData.username}</p>}
       {userData.email && <p>Email: {userData.email}</p>}
     </section>

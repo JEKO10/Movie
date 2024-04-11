@@ -1,5 +1,4 @@
 import ScrollToTop from "../common/ScrollTop";
-import Account from "../pages/Account";
 import Error from "../pages/Error";
 import Films from "../pages/Films";
 import Home from "../pages/Home";

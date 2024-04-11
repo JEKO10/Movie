@@ -42,7 +42,7 @@ const ProfileMenu = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/settings`, { withCredentials: true })
+      .get(`http://localhost:3001/profile`, { withCredentials: true })
       .then((response) => {
         if (response.data.user.lenght !== 0) {
           setUser(response.data.user[0]);
@@ -93,7 +93,7 @@ const ProfileMenu = () => {
           </li>
           <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
           <li onClick={onLinkChange}>
-            <Link to="/profile/settings">Settings</Link>
+            <Link to="/settings">Settings</Link>
           </li>
           <li onClick={handleLogout}>
             <Link to="/">Sign Out</Link>

@@ -4,34 +4,27 @@ import {
   flexMixin,
   primaryColor,
   primaryFont,
+  secondaryColor
 } from "../../assets/style/GlobalStyles";
 
 type WrongInfoProps = {
   invalidCredentials: boolean;
 };
 
-export const ProfileWrapper = styled.section`
-  min-height: 88vh;
+export const ProfileForm = styled.article`
+  max-width: 80vw;
+  margin: 0 auto 3rem;
 
   h2 {
     color: rgba(255, 255, 255, 0.7);
     font-weight: 300;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
-`;
-
-export const FormContainer = styled.section`
-  ${flexMixin({ justify: "space-between", align: "center" })}
 
   > p {
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
   }
-`;
-
-export const ProfileForm = styled.article`
-  align-self: flex-start;
-  width: 30%;
 
   label {
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};
@@ -66,7 +59,7 @@ export const ProfileForm = styled.article`
     cursor: pointer;
 
     &:hover {
-      color: yellow;
+      color: ${secondaryColor};
     }
   }
 `;

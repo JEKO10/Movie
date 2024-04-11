@@ -7,14 +7,9 @@ const User = () => {
   const { username } = useParams();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3001/${username}`)
-      .then((response) => {
-        setUser(response.data.user);
-      })
-      .catch((error) => {
-        setUser({ username: "User doesnt exist", email: "" });
-      });
+    axios.get(`http://localhost:3001/${username}`).then((response) => {
+      setUser(response.data.user);
+    });
   }, [username]);
 
   return (

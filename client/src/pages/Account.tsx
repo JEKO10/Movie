@@ -6,7 +6,6 @@ import {
   FormContainer,
   ProfileForm,
   ProfileName,
-  ProfileWrapper,
   WrongInfo
 } from "../redux/profile/Profile.styled";
 
