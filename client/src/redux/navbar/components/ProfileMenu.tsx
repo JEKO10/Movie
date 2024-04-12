@@ -44,7 +44,7 @@ const ProfileMenu = () => {
     axios
       .get(`http://localhost:3001/profile`, { withCredentials: true })
       .then((response) => {
-        if (response.data.user.lenght !== 0) {
+        if (response.data.user.length !== 0) {
           setUser(response.data.user[0]);
           dispath(setIsLoggedIn(true));
         } else {
@@ -93,7 +93,7 @@ const ProfileMenu = () => {
           </li>
           <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
           <li onClick={onLinkChange}>
-            <Link to="/settings">Settings</Link>
+            <Link to="/profile/settings">Settings</Link>
           </li>
           <li onClick={handleLogout}>
             <Link to="/">Sign Out</Link>
