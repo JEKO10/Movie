@@ -11,8 +11,9 @@ type WrongInfoProps = {
   invalidCredentials: boolean;
 };
 
-export const ProfileForm = styled.article`
-  max-width: 80vw;
+export const SettingsContainer = styled.section`
+  ${flexMixin({ justify: "space-between", align: "flex-start" })};
+  max-width: 70vw;
   margin: 0 auto 3rem;
 
   h2 {
@@ -25,6 +26,26 @@ export const ProfileForm = styled.article`
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
   }
+
+  article:last-of-type div {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+
+    img {
+      height: 150px;
+      margin-right: 0.2rem;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      cursor: pointer;
+
+      &:hover {
+        border: 2px solid ${secondaryColor};
+      }
+    }
+  }
+`;
+
+export const ProfileForm = styled.article`
+  width: 50%;
 
   label {
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};

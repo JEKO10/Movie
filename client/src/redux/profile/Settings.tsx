@@ -1,45 +1,57 @@
 import React from "react";
 
-import { ProfileForm, ProfileName } from "./Profile.styled";
+import poster from "../../assets/images/poster.jpg";
+import { ProfileForm, ProfileName, SettingsContainer } from "./Profile.styled";
 
 const Settings = () => {
   return (
-    <ProfileForm>
-      <h2>Account Settings</h2>
-      <label>
-        Username
-        <input type="text" />
-      </label>
-      <ProfileName>
+    <SettingsContainer>
+      <ProfileForm>
+        <h2>Account Settings</h2>
+        <label>
+          Username
+          <input type="text" />
+        </label>
+        <ProfileName>
+          <label>
+            Name
+            <input type="text" />
+          </label>
+          <label>
+            Last name
+            <input type="text" />
+          </label>
+        </ProfileName>
         <label>
           Name
-          <input type="text" />
+          <input type="email" />
         </label>
+        <ProfileName>
+          <label>
+            Location
+            <input type="text" />
+          </label>
+          <label>
+            Website
+            <input type="text" />
+          </label>
+        </ProfileName>
         <label>
-          Last name
-          <input type="text" />
+          Bio
+          <textarea cols={30} rows={10} />
         </label>
-      </ProfileName>
-      <label>
-        Name
-        <input type="email" />
-      </label>
-      <ProfileName>
-        <label>
-          Location
-          <input type="text" />
-        </label>
-        <label>
-          Website
-          <input type="text" />
-        </label>
-      </ProfileName>
-      <label>
-        Bio
-        <textarea cols={30} rows={10} />
-      </label>
-      <button type="submit">Save changes</button>
-    </ProfileForm>
+        <button type="submit">Save changes</button>
+      </ProfileForm>
+      <article>
+        <h2>Favorite Films</h2>
+        <div>
+          <img src={poster} alt="poster" />
+          <img src={poster} alt="poster" />
+          <img src={poster} alt="poster" />
+          <img src={poster} alt="poster" />
+        </div>
+      </article>
+    </SettingsContainer>
   );
 };
 
