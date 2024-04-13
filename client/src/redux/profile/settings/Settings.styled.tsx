@@ -5,47 +5,35 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor
-} from "../../assets/style/GlobalStyles";
+} from "../../../assets/style/GlobalStyles";
 
 type WrongInfoProps = {
   invalidCredentials: boolean;
 };
 
 export const SettingsContainer = styled.section`
-  ${flexMixin({ justify: "space-between", align: "flex-start" })};
   max-width: 70vw;
   margin: 0 auto 3rem;
 
+  > div {
+    ${flexMixin({ justify: "space-between", align: "flex-start" })};
+  }
+
   h2 {
+    font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.7);
-    font-weight: 300;
-    margin: 1rem 0;
+    font-weight: 100;
+    margin: 1rem 0 2rem;
   }
 
   > p {
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
   }
-
-  article:last-of-type div {
-    ${flexMixin({ justify: "space-between", align: "center" })};
-
-    img {
-      height: 150px;
-      margin-right: 0.2rem;
-      border: 2px solid transparent;
-      border-radius: 15px;
-      cursor: pointer;
-
-      &:hover {
-        border: 2px solid ${secondaryColor};
-      }
-    }
-  }
 `;
 
 export const ProfileForm = styled.article`
-  width: 50%;
+  width: 40%;
 
   label {
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};
@@ -58,17 +46,19 @@ export const ProfileForm = styled.article`
   input,
   textarea,
   button {
-    font-family: ${primaryFont};
-    font-weight: 600;
-    margin-top: 0.2rem;
-    background-color: #2c3440;
-    color: #89a;
+    background-color: ${primaryColor};
+    color: ${secondaryColor};
     width: 100%;
+    font-family: ${primaryFont};
+    font-weight: 100;
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
     padding: 9px 9px 8px;
     border: none;
     outline: none;
     border-radius: 3px;
     box-shadow: inset 0 -1px 0 #456;
+    resize: vertical;
   }
 
   button {
@@ -82,6 +72,32 @@ export const ProfileForm = styled.article`
     &:hover {
       color: ${secondaryColor};
     }
+  }
+`;
+
+export const FavoriteFilms = styled.article`
+  margin-top: -0.5rem;
+
+  div {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+
+    img {
+      height: 165px;
+      width: 110px;
+      margin-right: 1rem;
+      border-radius: 4px;
+      box-shadow:
+        inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+        0 0 10px #000;
+      cursor: pointer;
+    }
+  }
+
+  h3 {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    font-weight: 100;
+    margin-bottom: 0.3rem;
   }
 `;
 

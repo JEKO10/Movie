@@ -93,7 +93,7 @@ const ProfileMenu = () => {
           </li>
           <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
           <li onClick={onLinkChange}>
-            <Link to="/profile/settings">Settings</Link>
+            <Link to="/settings">Settings</Link>
           </li>
           <li onClick={handleLogout}>
             <Link to="/">Sign Out</Link>

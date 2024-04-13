@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
-  FormContainer,
   ProfileForm,
   ProfileName,
   WrongInfo
-} from "../redux/profile/Profile.styled";
+} from "../redux/profile/settings/Settings.styled";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Profile = () => {
 
   const [logName, setLogName] = useState("");
   const [logPassword, setLogPassword] = useState("");
-  const [invalidCredentials, setInvalidCredentials] = useState(false); 
+  const [invalidCredentials, setInvalidCredentials] = useState(false);
 
   axios.defaults.withCredentials = true;
 
@@ -80,90 +79,83 @@ const Profile = () => {
   }, []);
 
   return (
-    <ProfileWrapper>
-      <FormContainer>
-        <ProfileForm>
-          <h2>Create an account</h2>
-          <label>
-            Username *
-            <input
-              type="text"
-              onChange={(event) => setUsername(event.target.value)}
-            />
-          </label>
-          <ProfileName>
-            <label>
-              Name
-              <input
-                type="text"
-                onChange={(event) => setName(event.target.value)}
-              />
-            </label>
-            <label>
-              Last name
-              <input
-                type="text"
-                onChange={(event) => setLastName(event.target.value)}
-              />
-            </label>
-          </ProfileName>
-          <label>
-            Email address *
-            <input
-              type="email"
-              onChange={(event) => setEmail(event.target.value)}
-            />
-          </label>
-          <label>
-            Password *
-            <input
-              // type="password"
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </label>
-          <label>
-            Bio
-            <textarea
-              cols={30}
-              rows={10}
-              onChange={(event) => setBio(event.target.value)}
-            ></textarea>
-          </label>
-          <button type="submit" onClick={addUser}>
-            Create account
-          </button>
-        </ProfileForm>
-        <p>or</p>
-        <ProfileForm>
-          <h2>Log in</h2>
-          <label>
-            Email or username
-            <input
-              type="text"
-              onChange={(event) => setLogName(event.target.value)}
-            />
-          </label>
-          <label>
-            Password
-            <input
-              // type="password"
-              onChange={(event) => setLogPassword(event.target.value)}
-            />
-          </label>
-          <button
-            type="submit"
-            onClick={() => {
-              login();
-            }}
-          >
-            Log in
-          </button>
-          <WrongInfo invalidCredentials={invalidCredentials}>
-            Your credentials don`t match.
-          </WrongInfo>
-        </ProfileForm>
-      </FormContainer>
-    </ProfileWrapper>
+    <ProfileForm>
+      <h2>Create an account</h2>
+      <label>
+        Username *
+        <input
+          type="text"
+          onChange={(event) => setUsername(event.target.value)}
+        />
+      </label>
+      <ProfileName>
+        <label>
+          Name
+          <input
+            type="text"
+            onChange={(event) => setName(event.target.value)}
+          />
+        </label>
+        <label>
+          Last name
+          <input
+            type="text"
+            onChange={(event) => setLastName(event.target.value)}
+          />
+        </label>
+      </ProfileName>
+      <label>
+        Email address *
+        <input
+          type="email"
+          onChange={(event) => setEmail(event.target.value)}
+        />
+      </label>
+      <label>
+        Password *
+        <input
+          // type="password"
+          onChange={(event) => setPassword(event.target.value)}
+        />
+      </label>
+      <label>
+        Bio
+        <textarea
+          cols={30}
+          rows={10}
+          onChange={(event) => setBio(event.target.value)}
+        ></textarea>
+      </label>
+      <button type="submit" onClick={addUser}>
+        Create account
+      </button>
+      <h2>Log in</h2>
+      <label>
+        Email or username
+        <input
+          type="text"
+          onChange={(event) => setLogName(event.target.value)}
+        />
+      </label>
+      <label>
+        Password
+        <input
+          // type="password"
+          onChange={(event) => setLogPassword(event.target.value)}
+        />
+      </label>
+      <button
+        type="submit"
+        onClick={() => {
+          login();
+        }}
+      >
+        Log in
+      </button>
+      <WrongInfo invalidCredentials={invalidCredentials}>
+        Your credentials don`t match.
+      </WrongInfo>
+    </ProfileForm>
   );
 };
 

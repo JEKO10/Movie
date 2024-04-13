@@ -10,7 +10,7 @@ import DiscoverMovies from "../redux/discoverMovies/DiscoverMovies";
 import Lists from "../redux/lists/Lists";
 import PersonInfo from "../redux/personInfo/PersonInfo";
 import Profile from "../redux/profile/Profile";
-import Settings from "../redux/profile/Settings";
+import Settings from "../redux/profile/settings/Settings";
 import User from "../redux/profile/User";
 import Reviews from "../redux/reviews/Reviews";
 import SingleMovie from "../redux/singleMovie/SingleMovie";

@@ -1,6 +1,6 @@
 import React from "react";
 
-import poster from "../../assets/images/poster.jpg";
+import poster from "../../assets/images/poster.png";
 import { Oscar as Container } from "./Home.style";
 
 const Oscar = () => {
