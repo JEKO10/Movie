@@ -1,6 +1,6 @@
 import React from "react";
+import { FaCirclePlus } from "react-icons/fa6";
 
-import poster from "../../assets/images/poster.png";
 import {
   FavoriteFilms,
   ProfileForm,
@@ -50,12 +50,20 @@ const Settings = () => {
         </ProfileForm>
         <FavoriteFilms>
           <h3>Favorite Films</h3>
-          <div>
-            <img src={poster} alt="poster" />
-            <img src={poster} alt="poster" />
-            <img src={poster} alt="poster" />
-            <img src={poster} alt="poster" />
-          </div>
+          <ul>
+            <li>
+              <FaCirclePlus />
+            </li>
+            <li>
+              <FaCirclePlus />
+            </li>
+            <li>
+              <FaCirclePlus />
+            </li>
+            <li>
+              <FaCirclePlus />
+            </li>
+          </ul>
         </FavoriteFilms>
       </div>
     </SettingsContainer>

@@ -78,18 +78,36 @@ export const ProfileForm = styled.article`
 export const FavoriteFilms = styled.article`
   margin-top: -0.5rem;
 
-  div {
+  ul {
     ${flexMixin({ justify: "space-between", align: "center" })};
+    list-style-type: none;
 
-    img {
+    li {
+      ${flexMixin({ justify: "center", align: "center" })};
       height: 165px;
       width: 110px;
+      background-color: #2c3641;
       margin-right: 1rem;
       border-radius: 4px;
       box-shadow:
         inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
         0 0 10px #000;
       cursor: pointer;
+
+      svg {
+        font-size: 2rem;
+        color: #5c5b5b;
+        text-align: center;
+        border-radius: 50%;
+        transition: all 200ms ease;
+      }
+
+      &:hover svg {
+        color: #fff;
+        box-shadow:
+          inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+          0 0 10px #000;
+      }
     }
   }
 
