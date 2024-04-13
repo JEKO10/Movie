@@ -5,6 +5,7 @@ import {
   FavoriteFilms,
   ProfileForm,
   ProfileName,
+  RemoveMovie,
   SettingsContainer
 } from "./Settings.styled";
 
@@ -52,15 +53,19 @@ const Settings = () => {
           <h3>Favorite Films</h3>
           <ul>
             <li>
+              <RemoveMovie />
               <FaCirclePlus />
             </li>
             <li>
+              <RemoveMovie />
               <FaCirclePlus />
             </li>
             <li>
+              <RemoveMovie />
               <FaCirclePlus />
             </li>
             <li>
+              <RemoveMovie />
               <FaCirclePlus />
             </li>
           </ul>

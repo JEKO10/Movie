@@ -1,3 +1,4 @@
+import { AiTwotoneCloseCircle } from "react-icons/ai";
 import styled from "styled-components";
 
 import {
@@ -75,6 +76,14 @@ export const ProfileForm = styled.article`
   }
 `;
 
+export const ProfileName = styled.div`
+  ${flexMixin({ justify: "space-between", align: "center" })};
+
+  label {
+    width: 48%;
+  }
+`;
+
 export const FavoriteFilms = styled.article`
   margin-top: -0.5rem;
 
@@ -84,6 +93,7 @@ export const FavoriteFilms = styled.article`
 
     li {
       ${flexMixin({ justify: "center", align: "center" })};
+      position: relative;
       height: 165px;
       width: 110px;
       background-color: #2c3641;
@@ -102,7 +112,7 @@ export const FavoriteFilms = styled.article`
         transition: all 200ms ease;
       }
 
-      &:hover svg {
+      &:hover svg:not(:first-of-type) {
         color: #fff;
         box-shadow:
           inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
@@ -119,12 +129,12 @@ export const FavoriteFilms = styled.article`
   }
 `;
 
-export const ProfileName = styled.div`
-  ${flexMixin({ justify: "space-between", align: "center" })};
+export const RemoveMovie = styled(AiTwotoneCloseCircle)`
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
 
-  label {
-    width: 48%;
-  }
+  font-size: 1.5rem !important;
 `;
 
 export const WrongInfo = styled.p<WrongInfoProps>`
