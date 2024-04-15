@@ -10,7 +10,8 @@ const initialState: InitialProfile = {
     email: "",
     bio: ""
   },
-  isLoggedIn: false
+  isLoggedIn: false,
+  isFavoriteOpen: false
 };
 
 const profileSlice = createSlice({
@@ -22,10 +23,14 @@ const profileSlice = createSlice({
     },
     setIsLoggedIn: (state, { payload }: PayloadAction<boolean>) => {
       state.isLoggedIn = payload;
+    },
+    setIsFavoriteOpen: (state, { payload }: PayloadAction<boolean>) => {
+      state.isFavoriteOpen = payload;
     }
   }
 });
 
-export const { setRegister, setIsLoggedIn } = profileSlice.actions;
+export const { setRegister, setIsLoggedIn, setIsFavoriteOpen } =
+  profileSlice.actions;
 
 export const { reducer } = profileSlice;

@@ -8,6 +8,7 @@ import SearchCategories from "../../redux/navbar/components/SearchCategories";
 import SearchModal from "../../redux/navbar/components/SearchModal";
 import Navbar from "../../redux/navbar/Navbar";
 import { setIsModalOpen } from "../../redux/navbar/navbarSlice";
+import FavoriteModal from "../../redux/profile/settings/FavoriteModal";
 import { useAppSelector, useOutsideClick } from "../hooks";
 
 const Modals = () => {
@@ -20,6 +21,7 @@ const Modals = () => {
     isLogInOpen,
     isSignUpOpen
   } = useAppSelector((state) => state.navbar);
+  const { isFavoriteOpen } = useAppSelector((state) => state.profile);
 
   const { ref } = useOutsideClick(setIsModalOpen);
 
@@ -39,6 +41,9 @@ const Modals = () => {
       )}
       {isSignUpOpen && (
         <SignUp isClosing={isClosing} setIsClosing={setIsClosing} />
+      )}
+      {isFavoriteOpen && (
+        <FavoriteModal isClosing={isClosing} setIsClosing={setIsClosing} />
       )}
     </section>
   );

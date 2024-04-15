@@ -1,6 +1,8 @@
 import React from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 
+import { useAppDispatch } from "../../../common/hooks";
+import { setIsFavoriteOpen } from "../profileSlice";
 import {
   FavoriteFilms,
   ProfileForm,
@@ -10,6 +12,12 @@ import {
 } from "./Settings.styled";
 
 const Settings = () => {
+  const dispatch = useAppDispatch();
+
+  const handleClick = () => {
+    dispatch(setIsFavoriteOpen(true));
+  };
+
   return (
     <SettingsContainer>
       <h2>Profile</h2>
@@ -52,19 +60,19 @@ const Settings = () => {
         <FavoriteFilms>
           <h3>Favorite Films</h3>
           <ul>
-            <li>
+            <li onClick={handleClick}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>
-            <li>
+            <li onClick={handleClick}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>
-            <li>
+            <li onClick={handleClick}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>
-            <li>
+            <li onClick={handleClick}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>

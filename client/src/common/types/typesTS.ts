@@ -187,6 +187,7 @@ export type UserData = {
 export type InitialProfile = {
   registerInfo: RegisterInfo;
   isLoggedIn: boolean;
+  isFavoriteOpen: boolean;
 };
 
 // reviews & lists
