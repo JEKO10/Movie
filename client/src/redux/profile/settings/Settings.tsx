@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 
 import { useAppDispatch } from "../../../common/hooks";
@@ -12,9 +12,12 @@ import {
 } from "./Settings.styled";
 
 const Settings = () => {
+  const [movieIndex, setMovieIndex] = useState<number>(0);
   const dispatch = useAppDispatch();
 
-  const handleClick = () => {
+  const handleClick = (index: number) => {
+    setMovieIndex(index);
+
     dispatch(setIsFavoriteOpen(true));
   };
 
@@ -60,19 +63,19 @@ const Settings = () => {
         <FavoriteFilms>
           <h3>Favorite Films</h3>
           <ul>
-            <li onClick={handleClick}>
+            <li onClick={() => handleClick(0)}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>
-            <li onClick={handleClick}>
+            <li onClick={() => handleClick(1)}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>
-            <li onClick={handleClick}>
+            <li onClick={() => handleClick(2)}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>
-            <li onClick={handleClick}>
+            <li onClick={() => handleClick(3)}>
               <RemoveMovie />
               <FaCirclePlus />
             </li>
