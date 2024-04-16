@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useAppDispatch } from "../../../common/hooks";
+import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { searchMovies, setInputValue, setIsModalOpen } from "../navbarSlice";
 
 type InputProps = {
@@ -8,6 +8,7 @@ type InputProps = {
 };
 
 const Input: React.FC<InputProps> = ({ value }) => {
+  const { isLogOpen } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
 
   const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,13 +18,19 @@ const Input: React.FC<InputProps> = ({ value }) => {
     dispatch(searchMovies());
   };
 
+  const handleClick = () => {
+    if (isLogOpen) {
+      dispatch(setIsModalOpen(true));
+    }
+  };
+
   return (
     <input
       type="text"
       value={value}
       placeholder="Enter movie title..."
       onChange={handleInputChange}
-      onClick={() => dispatch(setIsModalOpen(true))}
+      onClick={handleClick}
     />
   );
 };

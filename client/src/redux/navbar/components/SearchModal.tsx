@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Fade } from "../../../assets/style/Fade.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { SearchData, UserData } from "../../../common/types/typesTS";
-import { setIsModalOpen, setIsMovieModalOpen } from "../navbarSlice";
+import { setIsMovieModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
 const SearchModal = () => {
@@ -31,26 +31,26 @@ const SearchModal = () => {
     user.username.toLowerCase().includes(inputValue.toLowerCase())
   );
 
-  if (category === "users") {
-    return (
-      <SearchedData isLogOpen={isLogOpen}>
-        {filteredUsers
-          .filter((user) =>
-            user.username.toLowerCase().includes(inputValue.toLowerCase())
-          )
-          .map((user) => (
-            <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
-              <div>
-                <MovieInfo>{user.username}</MovieInfo>
-              </div>
-            </SingleMovie>
-          ))}
-        {filteredUsers.length === 0 && inputValue && (
-          <p>No user matches for your search term.</p>
-        )}
-      </SearchedData>
-    );
-  }
+  // if (category === "users") {
+  //   return (
+  //     <SearchedData isLogOpen={isLogOpen}>
+  //       {filteredUsers
+  //         .filter((user) =>
+  //           user.username.toLowerCase().includes(inputValue.toLowerCase())
+  //         )
+  //         .map((user) => (
+  //           <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
+  //             <div>
+  //               <MovieInfo>{user.username}</MovieInfo>
+  //             </div>
+  //           </SingleMovie>
+  //         ))}
+  //       {filteredUsers.length === 0 && inputValue && (
+  //         <p>No user matches for your search term.</p>
+  //       )}
+  //     </SearchedData>
+  //   );
+  // }
   return (
     <SearchedData isLogOpen={isLogOpen}>
       {searchData?.map((movie: SearchData) => {
@@ -75,11 +75,7 @@ const SearchModal = () => {
                   ? `/movie/${id}`
                   : `/person/${id}`
             }
-            onClick={
-              isLogOpen
-                ? () => dispatch(setIsMovieModalOpen({ isOpen: true, id }))
-                : () => dispatch(setIsModalOpen(false))
-            }
+            onClick={() => dispatch(setIsMovieModalOpen({ isOpen: true, id }))}
           >
             {!isLogOpen && (
               <img
