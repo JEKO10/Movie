@@ -17,7 +17,7 @@ const PersonInfo = () => {
     gender,
     known_for_department,
     place_of_birth,
-    profile_path,
+    profile_path
     // imdb_id,
   } = useAppSelector((store) => store.personInfo.personInfo);
   const { isLoading, isBioOpen, personMovies } = useAppSelector(
@@ -80,7 +80,7 @@ const PersonInfo = () => {
         {isBioOpen && (
           <p
             dangerouslySetInnerHTML={{
-              __html: biography.replace(/\n/g, "<br>"),
+              __html: biography.replace(/\n/g, "<br>")
             }}
           />
         )}

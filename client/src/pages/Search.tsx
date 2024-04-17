@@ -5,6 +5,12 @@ import { useParams } from "react-router-dom";
 
 import { SearchData } from "../common/types/typesTS";
 
+// const response = await axios.get(
+//   `https://api.themoviedb.org/3/search/multi?api_key=${
+//     import.meta.env.VITE_API_KEY
+//   }&query=${formattedInputValue}&media_type=movie,person`
+// );
+
 const Search = () => {
   const [searchData, setSearchData] = useState<SearchData[]>([]);
   const { inputValue } = useParams();
@@ -13,13 +19,26 @@ const Search = () => {
     try {
       const formattedInputValue = inputValue?.replace(/\s+/g, "+");
 
-      const response = await axios.get(
+      const firstResponse = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${formattedInputValue}&media_type=movie,person`
+        }&query=${formattedInputValue}&media_type=movie,person&page=1`
       );
 
-      setSearchData(response.data.results);
+      const totalPages = firstResponse.data.total_pages;
+      const returnedData = [];
+
+      for (let i = 1; i <= totalPages; i++) {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/search/multi?api_key=${
+            import.meta.env.VITE_API_KEY
+          }&query=${formattedInputValue}&media_type=movie,person&page=${i}`
+        );
+
+        returnedData.push(...response.data.results);
+      }
+
+      setSearchData(returnedData);
     } catch (error) {
       if (isAxiosError(error)) {
         return isRejectedWithValue(error.response);
