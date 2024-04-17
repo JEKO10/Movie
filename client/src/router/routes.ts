@@ -3,6 +3,7 @@ import Error from "../pages/Error";
 import Films from "../pages/Films";
 import Home from "../pages/Home";
 import Likes from "../pages/Likes";
+import Search from "../pages/Search";
 import Watchlist from "../pages/Watchlist";
 import Contact from "../redux/contact/Contact";
 import Collection from "../redux/discoverMovies/components/Collection";
@@ -63,36 +64,41 @@ const routes = [
   },
   {
     id: 9,
+    path: "/search/:inputValue",
+    element: Search
+  },
+  {
+    id: 10,
     path: "/movie/:id",
     element: SingleMovie
   },
   {
-    id: 10,
+    id: 11,
     path: "/person/:id",
     element: PersonInfo
   },
   {
-    id: 11,
+    id: 12,
     path: "/discover/:id/:name",
     element: DiscoverMovies
   },
   {
-    id: 12,
+    id: 13,
     path: "/collection/:id/:name",
     element: Collection
   },
   {
-    id: 13,
+    id: 14,
     path: "/*",
     element: Error
   },
   {
-    id: 14,
+    id: 15,
     path: "/*",
     element: ScrollToTop
   },
   {
-    id: 15,
+    id: 16,
     path: "/contact",
     element: Contact
   }

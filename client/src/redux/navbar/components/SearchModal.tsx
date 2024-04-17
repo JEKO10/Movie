@@ -31,26 +31,26 @@ const SearchModal = () => {
     user.username.toLowerCase().includes(inputValue.toLowerCase())
   );
 
-  // if (category === "users") {
-  //   return (
-  //     <SearchedData isLogOpen={isLogOpen}>
-  //       {filteredUsers
-  //         .filter((user) =>
-  //           user.username.toLowerCase().includes(inputValue.toLowerCase())
-  //         )
-  //         .map((user) => (
-  //           <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
-  //             <div>
-  //               <MovieInfo>{user.username}</MovieInfo>
-  //             </div>
-  //           </SingleMovie>
-  //         ))}
-  //       {filteredUsers.length === 0 && inputValue && (
-  //         <p>No user matches for your search term.</p>
-  //       )}
-  //     </SearchedData>
-  //   );
-  // }
+  if (category === "users") {
+    return (
+      <SearchedData isLogOpen={isLogOpen}>
+        {filteredUsers
+          .filter((user) =>
+            user.username.toLowerCase().includes(inputValue.toLowerCase())
+          )
+          .map((user) => (
+            <SingleMovie key={user.id} isLogOpen={isLogOpen} to={"#"}>
+              <div>
+                <MovieInfo>{user.username}</MovieInfo>
+              </div>
+            </SingleMovie>
+          ))}
+        {filteredUsers.length === 0 && inputValue && (
+          <p>No user matches for your search term.</p>
+        )}
+      </SearchedData>
+    );
+  }
   return (
     <SearchedData isLogOpen={isLogOpen}>
       {searchData?.map((movie: SearchData) => {

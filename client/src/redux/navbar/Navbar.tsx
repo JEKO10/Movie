@@ -1,6 +1,6 @@
 import React from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import Input from "./components/Input";
@@ -12,6 +12,7 @@ const Navbar = () => {
   const { isLogOpen, inputValue } = useAppSelector((store) => store.navbar);
   const { isLoggedIn } = useAppSelector((store) => store.profile);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <Nav>
@@ -47,7 +48,9 @@ const Navbar = () => {
       </ul>
       <InputContainer>
         <Input value={isLogOpen ? "" : inputValue} />
-        <FaSearch />
+        <FaSearch
+          onClick={() => inputValue && navigate(`/search/${inputValue}`)}
+        />
       </InputContainer>
     </Nav>
   );

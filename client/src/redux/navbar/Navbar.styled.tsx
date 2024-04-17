@@ -163,11 +163,12 @@ export const Input = styled.div`
   }
 
   svg {
+    color: ${tertiaryColor};
     font-size: 2rem;
     position: absolute;
     top: 0.6rem;
     right: 1rem;
-    color: ${tertiaryColor};
+    cursor: pointer;
   }
 `;
 
