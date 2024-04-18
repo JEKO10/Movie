@@ -1,10 +1,12 @@
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-import { Loader, LoaderWrapper } from "../common/Loader";
-import { SearchData } from "../common/types/typesTS";
+import { Loader, LoaderWrapper } from "../../common/Loader";
+import { SearchData } from "../../common/types/typesTS";
+import { Underline } from "../../redux/singleMovie/SingleMovie.styled";
+import { SearchContainer } from "./Search.style";
 
 const Search = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +23,7 @@ const Search = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${formattedInputValue}&media_type=movie,person`
+        }&query=${formattedInputValue}&sort_by=popularity.desc`
       );
 
       setSearchData(response.data.results);
@@ -48,19 +50,28 @@ const Search = () => {
     );
   }
   return (
-    <section>
-      {searchData.map((item: SearchData) => (
-        <img
-          src={
-            item.poster_path
-              ? posterUrl + item.poster_path
-              : import.meta.env.VITE_IMG
-          }
-          alt="moviePoster"
-          key={item.id}
-        />
-      ))}
-    </section>
+    <SearchContainer>
+      <p>
+        Found {searchData.length} matches for “{inputValue}”
+      </p>
+      <Underline width={"100%"} margin="0 0 1rem" />
+      <article>
+        {searchData.map((movie: SearchData) => (
+          <Link to={`/movie/${movie.id}`} key={movie.id}>
+            <img
+              loading="lazy"
+              src={
+                movie.poster_path
+                  ? posterUrl + movie.poster_path
+                  : import.meta.env.VITE_IMG
+              }
+              alt="moviePoster"
+              key={movie.id}
+            />
+          </Link>
+        ))}
+      </article>
+    </SearchContainer>
   );
 };
 

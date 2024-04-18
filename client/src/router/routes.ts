@@ -3,7 +3,7 @@ import Error from "../pages/Error";
 import Films from "../pages/Films";
 import Home from "../pages/Home";
 import Likes from "../pages/Likes";
-import Search from "../pages/Search";
+import Search from "../pages/search/Search";
 import Watchlist from "../pages/Watchlist";
 import Contact from "../redux/contact/Contact";
 import Collection from "../redux/discoverMovies/components/Collection";
