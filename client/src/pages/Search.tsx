@@ -3,42 +3,30 @@ import axios, { isAxiosError } from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { Loader, LoaderWrapper } from "../common/Loader";
 import { SearchData } from "../common/types/typesTS";
 
-// const response = await axios.get(
-//   `https://api.themoviedb.org/3/search/multi?api_key=${
-//     import.meta.env.VITE_API_KEY
-//   }&query=${formattedInputValue}&media_type=movie,person`
-// );
-
 const Search = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [searchData, setSearchData] = useState<SearchData[]>([]);
   const { inputValue } = useParams();
+  const posterUrl = "https://image.tmdb.org/t/p/w342/";
 
   const getSearchData = async () => {
+    setIsLoading(true);
+
     try {
       const formattedInputValue = inputValue?.replace(/\s+/g, "+");
 
-      const firstResponse = await axios.get(
+      const response = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${formattedInputValue}&media_type=movie,person&page=1`
+        }&query=${formattedInputValue}&media_type=movie,person`
       );
 
-      const totalPages = firstResponse.data.total_pages;
-      const returnedData = [];
+      setSearchData(response.data.results);
 
-      for (let i = 1; i <= totalPages; i++) {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/search/multi?api_key=${
-            import.meta.env.VITE_API_KEY
-          }&query=${formattedInputValue}&media_type=movie,person&page=${i}`
-        );
-
-        returnedData.push(...response.data.results);
-      }
-
-      setSearchData(returnedData);
+      setIsLoading(false);
     } catch (error) {
       if (isAxiosError(error)) {
         return isRejectedWithValue(error.response);
@@ -52,11 +40,22 @@ const Search = () => {
     console.log(searchData);
   }, [inputValue]);
 
+  if (isLoading) {
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
+  }
   return (
     <section>
       {searchData.map((item: SearchData) => (
         <img
-          src={`http://image.tmdb.org/t/p/w154/` + item.poster_path}
+          src={
+            item.poster_path
+              ? posterUrl + item.poster_path
+              : import.meta.env.VITE_IMG
+          }
           alt="moviePoster"
           key={item.id}
         />
