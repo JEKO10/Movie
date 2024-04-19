@@ -6,8 +6,11 @@ export type SearchData = {
   profile_path: string;
   title?: string;
   name: string;
+  original_name: string;
+  original_title: string;
   release_date?: string;
   media_type: string;
+  overview: string;
 };
 
 export type InitialNavbar = {

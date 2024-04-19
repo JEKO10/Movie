@@ -68,6 +68,13 @@ const Search = () => {
               alt="moviePoster"
               key={movie.id}
             />
+            <div>
+              <h3>
+                {movie.title || movie.original_title || movie.original_name}
+              </h3>
+              <h4>{movie.release_date?.slice(0, 4)}</h4>
+              <p>{movie.overview}</p>
+            </div>
           </Link>
         ))}
       </article>
