@@ -11,6 +11,7 @@ export type SearchData = {
   release_date?: string;
   media_type: string;
   overview: string;
+  credits: MovieCreditsType;
 };
 
 export type InitialNavbar = {
@@ -137,6 +138,7 @@ type MovieCast = {
 type MovieCrew = {
   id: number;
   department: string;
+  known_for_department: string;
   job: string;
   name: string;
   profile_path: string;

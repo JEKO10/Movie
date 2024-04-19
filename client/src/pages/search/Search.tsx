@@ -26,7 +26,27 @@ const Search = () => {
         }&query=${formattedInputValue}&sort_by=popularity.desc`
       );
 
-      setSearchData(response.data.results);
+      const movies = response.data.results;
+
+      const creditPromises = movies.map(async (movie: SearchData) => {
+        if (movie.media_type === "movie") {
+          const creditsResponse = await axios.get(
+            `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+          );
+
+          movie.credits = creditsResponse.data;
+        } else if (movie.media_type === "tv") {
+          const creditsResponse = await axios.get(
+            `https://api.themoviedb.org/3/tv/${movie.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+          );
+
+          movie.credits = creditsResponse.data;
+        }
+      });
+
+      await Promise.all(creditPromises);
+
+      setSearchData(movies);
 
       setIsLoading(false);
     } catch (error) {
@@ -74,6 +94,18 @@ const Search = () => {
               </h3>
               <h4>{movie.release_date?.slice(0, 4)}</h4>
               <p>{movie.overview}</p>
+              {movie.credits.crew.length !== 0 && (
+                <h2>
+                  Directed by{"  "}
+                  {
+                    movie.credits?.crew.find(
+                      (person) =>
+                        person.job === "Director" ||
+                        person.department === "Directing"
+                    )?.name
+                  }
+                </h2>
+              )}
             </div>
           </Link>
         ))}
