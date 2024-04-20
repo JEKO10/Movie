@@ -77,37 +77,42 @@ const Search = () => {
       <Underline width={"100%"} margin="0 0 1rem" />
       <article>
         {searchData.map((movie: SearchData) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id}>
-            <img
-              loading="lazy"
-              src={
-                movie.poster_path
-                  ? posterUrl + movie.poster_path
-                  : import.meta.env.VITE_IMG
-              }
-              alt="moviePoster"
-              key={movie.id}
-            />
-            <div>
-              <h3>
-                {movie.title || movie.original_title || movie.original_name}
-              </h3>
-              <h4>{movie.release_date?.slice(0, 4)}</h4>
-              <p>{movie.overview}</p>
-              {movie.credits.crew.length !== 0 && (
-                <h2>
-                  Directed by{"  "}
-                  {
-                    movie.credits?.crew.find(
-                      (person) =>
-                        person.job === "Director" ||
-                        person.department === "Directing"
-                    )?.name
-                  }
-                </h2>
-              )}
-            </div>
-          </Link>
+          <>
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <img
+                loading="lazy"
+                src={
+                  movie.poster_path
+                    ? posterUrl + movie.poster_path
+                    : import.meta.env.VITE_IMG
+                }
+                alt="moviePoster"
+                key={movie.id}
+              />
+              <div>
+                <h3>
+                  {movie.title || movie.original_title || movie.original_name}
+                  <span>{movie.release_date?.slice(0, 4)}</span>
+                </h3>
+                <p>{movie.overview}</p>
+                {movie.credits.crew.length !== 0 && (
+                  <h4>
+                    Directed by{"  "}
+                    <span>
+                      {
+                        movie.credits?.crew.find(
+                          (person) =>
+                            person.job === "Director" ||
+                            person.known_for_department === "Directing"
+                        )?.name
+                      }
+                    </span>
+                  </h4>
+                )}
+              </div>
+            </Link>
+            <Underline width={"100%"} margin="0 0 1rem" />
+          </>
         ))}
       </article>
     </SearchContainer>
