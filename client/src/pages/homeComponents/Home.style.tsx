@@ -185,8 +185,8 @@ export const RatePopUp = styled.aside`
 `;
 
 export const News = styled.section`
-  max-width: 72vw;
-  margin: 3rem auto;
+  max-width: 83vw;
+  margin: 1rem 50px 1rem auto;
 
   h2 {
     font-size: 40px;
@@ -228,6 +228,75 @@ export const News = styled.section`
       text-transform: uppercase;
 
       cursor: pointer;
+    }
+  }
+`;
+
+export const FriendsActivity = styled.section`
+  max-width: 83vw;
+  margin: 1rem 50px 3rem auto;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 200;
+
+    margin-bottom: 1rem;
+  }
+
+  article {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+
+    > div {
+      background-color: ${primaryColor};
+      width: 330px;
+
+      padding: 10px;
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      div {
+        ${flexMixin({ justify: "space-between", align: "center" })};
+        padding: 0 5px;
+
+        p {
+          font-size: 2rem;
+        }
+
+        span {
+          margin-bottom: -1rem;
+        }
+
+        svg {
+          color: ${tertiaryColor};
+          font-size: 1.5rem;
+
+          margin: 0 0.5rem;
+        }
+      }
+    }
+
+    ul {
+      ${flexMixin({ justify: "flex-start", align: "center" })};
+      list-style-type: none;
+
+      border-radius: 12px;
+
+      li {
+        margin-right: -5rem;
+
+        img {
+          height: 185px;
+          width: 137px;
+
+          border: 2px solid ${secondaryColor};
+          border-radius: 12px;
+
+          box-shadow:
+            inset 0 1px 0 #000,
+            0 0 10px #000;
+        }
+      }
     }
   }
 `;

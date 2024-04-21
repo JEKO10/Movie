@@ -177,7 +177,7 @@ export const Input = styled.div`
     width: 524px;
 
     padding: 0 20px;
-    /* border-radius: 10px; */
+    border-radius: 5px;
     outline: none;
   }
 
