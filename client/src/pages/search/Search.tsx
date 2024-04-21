@@ -74,7 +74,7 @@ const Search = () => {
       <p>
         Found {searchData.length} matches for “{inputValue}”
       </p>
-      <Underline width={"100%"} margin="0 0 1rem" />
+      <Underline width={"100%"} margin="0 0 2rem" />
       <article>
         {searchData.map((movie: SearchData) => (
           <>

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import {
   flexMixin,
+  paragraphColor,
   primaryColor,
   primaryFont,
   secondaryColor,
@@ -14,8 +15,10 @@ type SidebarProp = {
 
 export const FixedSidebar = styled.aside<SidebarProp>`
   position: fixed;
+
   transform: ${({ isScrolled }) =>
     isScrolled ? " translateY(-80px)" : " translateY(0)"};
+
   transition: transform 200ms ease;
 `;
 
@@ -31,6 +34,7 @@ export const Side = styled.aside`
   div {
     ${flexMixin({ justify: "flex-start", align: "center" })};
     width: fit-content;
+
     margin-bottom: 0.8rem;
     cursor: pointer;
 
@@ -39,11 +43,13 @@ export const Side = styled.aside`
     }
 
     svg {
-      transform: translateX(-5px);
       font-size: 1.3rem;
       font-weight: 800;
       color: ${tertiaryColor};
+
       margin-right: 0.5rem;
+
+      transform: translateX(-5px);
     }
 
     p {
@@ -61,16 +67,20 @@ export const Features = styled.section`
   h2 {
     font-size: 40px;
     font-weight: 200;
+
     margin-bottom: 1rem;
   }
 
   div {
     ${flexMixin({ justify: "flex-start", align: "center" })};
     background-color: ${primaryColor};
+
     width: 801px;
+
     margin-bottom: 2rem;
     padding: 20px;
     border-radius: 10px;
+
     box-shadow:
       inset 0 1px 0 #000,
       0 0 10px #000;
@@ -89,6 +99,7 @@ export const Features = styled.section`
     svg {
       font-size: 5rem;
       color: ${tertiaryColor};
+
       margin-right: 2rem;
     }
 
@@ -96,6 +107,7 @@ export const Features = styled.section`
       color: ${tertiaryColor};
       font-size: 30px;
       text-transform: uppercase;
+
       max-width: 550px;
     }
   }
@@ -108,6 +120,7 @@ export const Oscar = styled.section`
   h2 {
     font-size: 40px;
     font-weight: 200;
+
     margin-bottom: 1rem;
   }
 
@@ -118,6 +131,8 @@ export const Oscar = styled.section`
     img {
       border: 2px solid transparent;
       border-radius: 15px;
+
+      transition: border 200ms ease;
       cursor: pointer;
 
       &:hover {
@@ -129,34 +144,90 @@ export const Oscar = styled.section`
 
 export const RatePopUp = styled.aside`
   background-color: rgba(0, 175, 81, 0.2);
+
+  text-align: center;
+
   width: 324px;
+
   padding: 25px 0;
   border-radius: 12px;
-  text-align: center;
 
   p {
     font-size: 28px;
     text-transform: uppercase;
-    max-width: 260px;
-    margin: 1rem auto 2rem;
     text-align: center;
+
+    max-width: 260px;
+
+    margin: 1rem auto 2rem;
   }
 
   button {
     background-color: ${secondaryColor};
     color: #fff;
+
     font-size: 30px;
     font-family: ${primaryFont};
     text-transform: uppercase;
+
     margin-left: 1rem;
     padding: 5px 60px;
     border-radius: 10px;
+
     transition: all 300ms ease;
     cursor: pointer;
 
     &:hover {
       background-color: ${primaryColor};
       color: ${secondaryColor};
+    }
+  }
+`;
+
+export const News = styled.section`
+  max-width: 72vw;
+  margin: 3rem auto;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 200;
+
+    margin-bottom: 1rem;
+  }
+
+  article {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+    background-color: ${primaryColor};
+    border-radius: 12px;
+
+    img {
+      border-radius: 12px;
+      margin-right: 2rem;
+    }
+
+    h3 {
+      font-weight: 100;
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: ${paragraphColor};
+      line-height: 25px;
+
+      max-width: 450px;
+      margin: 1rem 0;
+    }
+
+    button {
+      background: none;
+      color: #fff;
+
+      font-size: 1.5rem;
+      font-family: ${primaryFont};
+      text-transform: uppercase;
+
+      cursor: pointer;
     }
   }
 `;

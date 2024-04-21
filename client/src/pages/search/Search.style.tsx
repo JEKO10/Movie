@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import {
   flexMixin,
+  paragraphColor,
   secondaryColor,
   tertiaryColor
 } from "../../assets/style/GlobalStyles";
@@ -16,6 +17,7 @@ export const SearchContainer = styled.section`
     font-weight: 100;
     letter-spacing: 2px;
     word-spacing: 5px;
+    margin-top: 1rem;
   }
 
   article {
@@ -38,6 +40,7 @@ export const SearchContainer = styled.section`
       h3 {
         font-size: 1.5rem;
         font-weight: 100;
+        line-height: 20px;
 
         span {
           margin-left: 1rem;
@@ -46,9 +49,9 @@ export const SearchContainer = styled.section`
       }
 
       p {
-        opacity: 0.8;
+        color: ${paragraphColor};
         font-weight: 100;
-        margin: 0.5rem 0;
+        margin: 0.5rem 0 1rem;
       }
 
       h4 {

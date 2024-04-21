@@ -4,6 +4,7 @@ import { createGlobalStyle, css } from "styled-components";
 export const primaryColor = "#292929";
 export const secondaryColor = "#00AF51";
 export const tertiaryColor = "#606060";
+export const paragraphColor = "#949494";
 export const primaryFont = "Jockey One, sans-serif";
 
 interface IFlexMixin {

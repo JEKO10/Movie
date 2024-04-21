@@ -6,6 +6,7 @@ import { togglePoster } from "../redux/singleMovie/singleMovieSlice";
 import TrendingMovies from "../redux/trendingMovies/TrendingMovies";
 import Features from "./homeComponents/Features";
 import FixedSidebar from "./homeComponents/FixedSidebar";
+import News from "./homeComponents/News";
 import Oscar from "./homeComponents/Oscar";
 
 const Home = () => {
@@ -22,6 +23,7 @@ const Home = () => {
       <TrendingMovies />
       <Features />
       <Oscar />
+      <News />
     </section>
   );
 };
