@@ -23,6 +23,7 @@ export const Nav = styled.nav`
     h1 {
       font-size: 40px;
       font-weight: 200;
+
       cursor: pointer;
 
       span {
@@ -37,12 +38,14 @@ export const Nav = styled.nav`
     list-style: none;
 
     li {
+      color: #dedede;
       font-size: 1.1rem;
       letter-spacing: 1px;
       line-height: 17px;
       text-transform: uppercase;
+
       margin: 0 2.5rem;
-      color: #dedede;
+
       transition: all 200ms ease;
       cursor: pointer;
 
@@ -58,9 +61,11 @@ export const Nav = styled.nav`
     font-size: 30px;
     font-family: ${primaryFont};
     text-transform: uppercase;
+
     margin-left: 1rem;
     padding: 5px 40px;
     border-radius: 10px;
+
     cursor: pointer;
   }
 `;
@@ -68,9 +73,12 @@ export const Nav = styled.nav`
 export const ProfileHeader = styled.header`
   ${flexMixin({ justify: "space-between", align: "center" })};
   background-color: ${primaryColor};
+
   min-width: 155px;
+
   padding: 10px 15px;
   border-radius: 10px;
+
   transition: background-color 200ms ease;
   cursor: pointer;
 
@@ -96,12 +104,16 @@ export const ProfileMenu = styled.section`
 export const ProfileModal = styled.ul<ProfileMenuProps>`
   background-color: ${primaryColor};
   list-style-type: none;
+
+  min-width: 155px;
+
   position: absolute;
   top: 55px;
   left: 0;
-  min-width: 155px;
+
   padding: 0 20px 5px 5px; // top right bottom left
   border-radius: 5px;
+
   box-shadow:
     inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
     0 0 10px #000;
@@ -110,13 +122,16 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
   li {
     margin: 5px;
     margin: 5px -20px 5px -5px;
+
     cursor: pointer;
 
     a {
-      color: #fff;
       display: block;
-      text-decoration: none;
+
+      color: #fff;
       font-weight: 500;
+      text-decoration: none;
+
       padding: 5px 10px;
 
       &:hover {
@@ -137,8 +152,10 @@ export const LogButton = styled.button`
   font-size: 30px;
   font-family: ${primaryFont};
   text-transform: uppercase;
+
   padding: 5px 40px;
   border-radius: 10px;
+
   transition: background-color 200ms ease;
   cursor: pointer;
 
@@ -152,22 +169,26 @@ export const Input = styled.div`
 
   input {
     background-color: ${primaryColor};
-    height: 52px;
-    width: 524px;
+    color: #fff;
     font-size: 1.5rem;
     font-family: ${primaryFont};
+
+    height: 52px;
+    width: 524px;
+
     padding: 0 20px;
     /* border-radius: 10px; */
     outline: none;
-    color: #fff;
   }
 
   svg {
     color: ${tertiaryColor};
     font-size: 2rem;
+
     position: absolute;
     top: 0.6rem;
     right: 1rem;
+
     cursor: pointer;
   }
 `;

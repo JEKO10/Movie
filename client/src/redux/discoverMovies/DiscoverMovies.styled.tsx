@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-import { flexMixin } from "../../assets/style/GlobalStyles";
+import { flexMixin, paragraphColor } from "../../assets/style/GlobalStyles";
 
 type MoviesListProps = {
   isCollection: boolean;
 };
 
 export const Discover = styled.section`
-  margin: 3rem 0;
   min-height: 76.5vh;
+  margin: 3rem 0;
 `;
 
 export const MoviesList = styled.article<MoviesListProps>`
@@ -19,17 +19,22 @@ export const MoviesList = styled.article<MoviesListProps>`
   grid-gap: 5px 10px;
 
   > p {
-    margin-top: 10rem;
-    font-size: 2rem;
-    max-width: 100% !important;
     grid-area: 1/-1;
+
+    font-size: 2rem;
+
+    max-width: 100% !important;
+
+    margin-top: 10rem;
   }
 
   img {
     width: 100%;
     height: 100%;
+
     border: 2px solid rgba(255, 255, 255, 0.6);
     border-radius: 5px;
+
     transition: all 200ms ease;
 
     &:hover {
@@ -53,12 +58,13 @@ export const Sorting = styled.article`
   }
 
   p {
-    text-align: center;
     background-color: #445566;
     color: #e1e1ff99;
+    text-align: center;
+
+    margin: 1rem 0;
     padding: 10px;
     border-radius: 5px;
-    margin: 1rem 0;
 
     span {
       text-transform: lowercase;
@@ -67,18 +73,21 @@ export const Sorting = styled.article`
   }
 
   h4 {
+    color: ${paragraphColor};
     font-size: 1.2rem;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.5);
     text-align: center;
+
     margin-bottom: 3rem;
   }
 `;
 
 export const Underline = styled.div`
-  width: 100%;
+  background-color: ${paragraphColor};
+
   height: 2px;
-  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+
   margin-bottom: 1rem;
 `;
 
@@ -102,8 +111,9 @@ export const SortList = styled.ul`
   }
 
   ul {
-    position: absolute;
     background-color: #445566;
+    position: absolute;
+
     padding: 5px 10px;
 
     li {

@@ -21,9 +21,10 @@ export const SettingsContainer = styled.section`
   }
 
   h2 {
-    font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
     font-weight: 100;
+
     margin: 1rem 0 2rem;
   }
 
@@ -39,8 +40,10 @@ export const ProfileForm = styled.article`
   label {
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};
     flex-direction: column;
-    font-size: 0.9rem;
+
     color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+
     margin: 0 0 1rem;
   }
 
@@ -48,26 +51,32 @@ export const ProfileForm = styled.article`
   textarea,
   button {
     background-color: ${primaryColor};
+
     color: ${secondaryColor};
-    width: 100%;
     font-family: ${primaryFont};
     font-weight: 100;
     letter-spacing: 1px;
+
+    width: 100%;
+
     margin-top: 0.2rem;
     padding: 9px 9px 8px;
     border: none;
-    outline: none;
     border-radius: 3px;
+    outline: none;
+
     box-shadow: inset 0 -1px 0 #456;
     resize: vertical;
   }
 
   button {
     background-color: ${primaryColor};
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+    color: #f4fcf0;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #f4fcf0;
+
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
     cursor: pointer;
 
     &:hover {
@@ -93,22 +102,28 @@ export const FavoriteFilms = styled.article`
 
     li {
       ${flexMixin({ justify: "center", align: "center" })};
+
+      background-color: #2c3641;
       position: relative;
+
       height: 165px;
       width: 110px;
-      background-color: #2c3641;
+
       margin-right: 1rem;
       border-radius: 4px;
+
       box-shadow:
         inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
         0 0 10px #000;
       cursor: pointer;
 
       svg {
-        font-size: 2rem;
         color: #5c5b5b;
+        font-size: 2rem;
         text-align: center;
+
         border-radius: 50%;
+
         transition: all 200ms ease;
       }
 
@@ -125,21 +140,24 @@ export const FavoriteFilms = styled.article`
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.1rem;
     font-weight: 100;
+
     margin-bottom: 0.3rem;
   }
 `;
 
 export const RemoveMovie = styled(AiTwotoneCloseCircle)`
+  font-size: 1.5rem !important;
+
   position: absolute;
   top: -0.5rem;
   right: -0.5rem;
-
-  font-size: 1.5rem !important;
 `;
 
 export const WrongInfo = styled.p<WrongInfoProps>`
-  margin-top: 1rem;
   color: #ff0000;
   opacity: ${({ invalidCredentials }) => (invalidCredentials ? 1 : 0)};
+
+  margin-top: 1rem;
+
   transition: opacity 0.3s ease-in-out;
 `;

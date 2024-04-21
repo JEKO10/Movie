@@ -9,12 +9,14 @@ import {
 export const ContactPage = styled.section`
   ${flexMixin({ justify: "flex-start", align: "flex-start" })};
   flex-direction: column;
+
   min-height: 90vh;
+
   padding-top: 70px;
 
   h2 {
-    margin-bottom: 2rem;
     color: ${secondaryColor};
+    margin-bottom: 2rem;
   }
 
   > article {
@@ -26,8 +28,10 @@ export const ContactPage = styled.section`
 export const ContactPoster = styled.article`
   img {
     height: 410px;
+
     border: 1.5px solid #e1e1ff99;
     border-radius: 5px;
+
     cursor: pointer;
   }
 `;
@@ -36,23 +40,30 @@ export const ContactForm = styled.form`
   label {
     ${flexMixin({ justify: "center", align: "flex-start" })};
     flex-direction: column;
-    width: 100%;
+
     color: ${secondaryColor};
+
+    width: 100%;
+
     margin-bottom: 1rem;
 
     input,
     textarea {
       background-color: #2c3440;
       color: #89a;
-      width: 350px;
-      max-height: 200px;
-      margin-top: 0.5rem;
-      padding: 9px 9px 8px;
       font-family: ${primaryFont};
       font-weight: 600;
+
+      max-height: 200px;
+      width: 350px;
+
+      margin-top: 0.5rem;
+      padding: 9px 9px 8px;
+
       border: none;
-      outline: none;
       border-radius: 3px;
+      outline: none;
+
       box-shadow: inset 0 -1px 0 #456;
       resize: vertical;
     }
@@ -60,15 +71,18 @@ export const ContactForm = styled.form`
 
   button {
     background-color: #2c3440;
-    width: 350px;
     color: #89a;
-    margin-top: 2rem;
-    padding: 9px 9px 8px;
     font-family: ${primaryFont};
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
+
+    width: 350px;
+
+    margin-top: 2rem;
+    padding: 9px 9px 8px;
     border-radius: 3px;
+
     box-shadow: inset 0 -1px 0 #456;
     transition: all 200ms ease;
     cursor: pointer;
@@ -80,9 +94,10 @@ export const ContactForm = styled.form`
 
   p {
     color: ${secondaryColor};
-    text-align: center;
-    margin-top: 1rem;
     font-size: 1.5rem;
+    text-align: center;
     letter-spacing: 1px;
+
+    margin-top: 1rem;
   }
 `;

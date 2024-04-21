@@ -10,21 +10,25 @@ import { primaryColor, secondaryColor } from "./GlobalStyles";
 const commonStyles = css`
   height: 100vh;
   width: 100vw;
+
   position: absolute;
   top: 0;
   left: 0;
+
   padding: 30px;
 
   > article {
     background-color: rgba(0, 0, 0, 0.8);
     width: max-content;
+
     padding: 25px 40px;
   }
 
   img {
     display: block;
-    margin: 0 auto 1rem;
     height: 65px;
+
+    margin: 0 auto 1rem;
   }
 
   p {
@@ -47,8 +51,9 @@ const commonStyles = css`
 
   h3 {
     font-size: 1rem;
-    margin: 1rem 0;
     font-weight: 400;
+
+    margin: 1rem 0;
 
     a {
       color: ${primaryColor};

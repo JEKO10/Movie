@@ -15,16 +15,19 @@ export const Form = styled.form<FormProps>`
   label {
     ${flexMixin({ justify: "center", align: "flex-start" })};
     flex-direction: column;
+
     position: relative;
 
     svg {
-      font-size: 1.7rem;
       background-color: ${primaryColor};
       color: ${secondaryColor};
-      padding: 5px;
+      font-size: 1.7rem;
+
       position: absolute;
       top: 2.4rem;
       right: 0.5rem;
+
+      padding: 5px;
       border-radius: 3px;
     }
   }
@@ -35,14 +38,17 @@ export const Form = styled.form<FormProps>`
 
   button {
     ${sharedButtonStyle}
-    font-size: 1rem;
     display: block;
+
+    font-size: 1rem;
+
     margin: 1rem 0 0 auto; /* top | right | bottom | left */
   }
 
   p {
     color: ${secondaryColor};
     font-size: 1.1rem;
+
     transition: opacity 200ms ease;
     opacity: ${({ isStatus }) => (isStatus ? 1 : 0)};
   }

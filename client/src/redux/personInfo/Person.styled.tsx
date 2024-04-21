@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
-import { flexMixin } from "../../assets/style/GlobalStyles";
+import { flexMixin, paragraphColor } from "../../assets/style/GlobalStyles";
 
 export const Person = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-start" })};
+  color: ${paragraphColor};
+
   min-height: 76.5vh;
-  color: rgba(255, 255, 255, 0.5);
+
   margin: 3rem 0;
 
   article:first-of-type {
@@ -38,8 +40,10 @@ export const Person = styled.section`
 
 export const PersonImg = styled.img`
   width: 200px;
+
   border: 2px solid rgba(255, 255, 255, 0.6);
   border-radius: 5px;
+
   transition: all 200ms ease;
 
   &:hover {
@@ -49,10 +53,13 @@ export const PersonImg = styled.img`
 
 export const FullBio = styled.h5`
   display: inline-block;
-  font-size: 1rem;
+
   color: #fff;
+  font-size: 1rem;
   text-decoration: underline;
+
   margin-top: 1rem;
+
   cursor: pointer;
 
   &:hover {

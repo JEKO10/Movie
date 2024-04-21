@@ -22,22 +22,23 @@ type LikeProps = {
 export const Movie = styled.section`
   ${flexMixin({ justify: "flex-start", align: "center" })};
   flex-direction: column;
-  min-height: 76.5vh;
-  margin-bottom: 3rem;
   background: #13181c;
+
+  min-height: 76.5vh;
   width: 100vw;
   max-width: 100%;
+
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
+
+  margin-bottom: 3rem;
+
   z-index: -1;
 `;
 
 export const Banner = styled.div<BannerProps>`
-  width: 75vw;
-  height: 650px;
-  position: relative;
   background-image: ${({ posterUrl, backdrop_path }) =>
     backdrop_path
       ? `url(${posterUrl + backdrop_path})`
@@ -46,12 +47,19 @@ export const Banner = styled.div<BannerProps>`
   background-size: cover;
   background-repeat: no-repeat;
 
+  width: 75vw;
+  height: 650px;
+
+  position: relative;
+
   &::before {
     content: "";
     position: absolute;
     top: 0;
+
     height: 100%;
     width: 100%;
+
     background-image: linear-gradient(
         0deg,
         #13181c 0,
@@ -144,9 +152,12 @@ export const Banner = styled.div<BannerProps>`
 
 export const Wrapper = styled.article`
   ${flexMixin({ justify: "space-between", align: "flex-start" })};
+
   width: 70vw;
+
   margin-top: -2rem;
   margin-bottom: 4rem;
+
   z-index: 2;
 `;
 
@@ -154,15 +165,19 @@ export const Info = styled.article`
   ${flexMixin({ justify: "flex-start", align: "flex-start" })};
   flex-direction: column;
   flex: 2;
+
   height: 345px;
   width: 100%;
+
   margin: 0 2rem;
 `;
 
 export const Name = styled.div`
   ${flexMixin({ justify: "flex-start", align: "flex-end" })};
   flex-wrap: wrap;
+
   width: 100%;
+
   margin-bottom: 1rem;
 
   > * {
@@ -173,12 +188,13 @@ export const Name = styled.div`
   h2 {
     font-size: 2rem;
     line-height: 30px;
+
     margin-bottom: 0.5rem;
 
     span {
       color: #e1e1ff99;
-      font-weight: 400;
       font-size: 1.2rem;
+      font-weight: 400;
 
       a {
         color: rgba(255, 255, 255, 0.8);
@@ -191,6 +207,7 @@ export const Name = styled.div`
     color: #e1e1ff99;
     font-size: 1.2rem;
     font-weight: 400;
+
     margin-bottom: 0.65rem;
 
     a {
@@ -204,26 +221,31 @@ export const Overview = styled.div`
   ${flexMixin({ justify: "center", align: "flex-start" })};
 
   article:first-child {
-    color: #e1e1ff99;
     display: flex;
     flex-direction: column;
+
+    color: #e1e1ff99;
+
     height: 100%;
 
     h4 {
-      margin-bottom: 1rem;
       font-weight: 400;
       text-transform: uppercase;
+
+      margin-bottom: 1rem;
     }
 
     p {
       line-height: 25px;
+
       margin-right: 2rem;
       margin-bottom: 2rem;
     }
 
     h3 {
-      font-weight: 400;
       font-size: 1rem;
+      font-weight: 400;
+
       margin-top: auto;
     }
   }
@@ -232,18 +254,23 @@ export const Overview = styled.div`
 export const Poster = styled.img`
   width: 230px;
   height: 345px;
+
   border: 1.5px solid #e1e1ff99;
   border-radius: 5px;
+
   cursor: pointer;
 `;
 
 export const Actions = styled.article`
   ${flexMixin({ justify: "space-between", align: "center" })};
   flex-direction: column;
+
   background-color: #445566;
   color: #e1e1ff99;
-  width: 240px;
   text-align: center;
+
+  width: 240px;
+
   padding: 10px 5px;
   border-radius: 5px;
 
@@ -263,7 +290,9 @@ export const Actions = styled.article`
   svg {
     font-size: 2.5rem;
     stroke-width: 1px;
+
     margin-bottom: 0.3rem;
+
     cursor: pointer;
 
     path,
@@ -280,9 +309,12 @@ export const OptionsHeader = styled.header`
   div {
     ${flexMixin({ justify: "center", align: "center" })};
     flex-direction: column;
-    width: 45px;
     position: relative;
+
+    width: 45px;
+
     margin: 0 1rem;
+
     cursor: pointer;
 
     &:hover p {
@@ -292,6 +324,7 @@ export const OptionsHeader = styled.header`
     p {
       font-size: 0.9rem;
       font-weight: 500;
+
       user-select: none;
     }
   }
@@ -304,6 +337,7 @@ export const Rating = styled.article`
     > svg {
       color: #fff;
       font-size: 1rem !important;
+
       position: absolute;
       top: 0.5rem;
       left: -1rem;
@@ -315,8 +349,9 @@ export const Rating = styled.article`
   }
 
   svg {
-    font-size: 2.5rem;
     color: #334455;
+    font-size: 2.5rem;
+
     transition: all 200ms ease;
     cursor: pointer;
   }
@@ -324,6 +359,7 @@ export const Rating = styled.article`
 
 export const AddWatchlist = styled(AiFillPlusCircle)`
   font-size: 1rem !important;
+
   position: absolute;
   top: 1.6rem;
   right: -1px;
@@ -331,6 +367,7 @@ export const AddWatchlist = styled(AiFillPlusCircle)`
 
 export const RemoveWatchlist = styled(AiFillMinusCircle)`
   font-size: 1rem !important;
+
   position: absolute;
   top: 1.6rem;
   right: -1px;
@@ -338,10 +375,13 @@ export const RemoveWatchlist = styled(AiFillMinusCircle)`
 
 export const Collection = styled(Link)`
   color: #e1e1ff99;
-  width: min-content;
-  text-decoration: none;
   font-weight: 700;
+  text-decoration: none;
+
+  width: min-content;
+
   margin-bottom: 3rem;
+
   transition: all 200ms ease;
 
   &:hover {
@@ -350,19 +390,24 @@ export const Collection = styled(Link)`
 `;
 
 export const Underline = styled.div<UnderlineProps>`
+  background-color: #606060;
+
   height: 1px;
   width: ${({ width }) => width} !important;
-  padding: 0 !important;
-  background-color: #606060;
+
   margin: ${({ margin }) => margin};
+  padding: 0 !important;
 `;
 
 export const Review = styled.article`
   ${flexMixin({ justify: "center", align: "center" })};
   flex-direction: column;
-  max-width: 70vw;
+
   background-color: rgba(0, 0, 0, 0.4);
   color: #e1e1ff99;
+
+  max-width: 70vw;
+
   margin-bottom: 3rem;
   padding: 30px 40px;
   border-radius: 5px;
@@ -374,14 +419,17 @@ export const Review = styled.article`
     img {
       height: 50px;
       width: 50px;
-      border-radius: 50%;
+
       margin-right: 2rem;
+      border-radius: 50%;
     }
   }
 
   h4 {
     text-align: start;
+
     width: 100%;
+
     margin: 1rem 0;
   }
 
@@ -392,8 +440,9 @@ export const Review = styled.article`
 `;
 
 export const Like = styled(FaHeart)<LikeProps>`
-  font-size: 2rem !important;
   color: ${({ isLike }) => (isLike ? "#ff9023" : "#334455")};
+  font-size: 2rem !important;
+
   fill: ${({ isLike }) => (isLike ? "#ff9023" : "#334455")};
 
   &:hover {

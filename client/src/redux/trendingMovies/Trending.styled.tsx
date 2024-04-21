@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import {
   flexMixin,
+  paragraphColor,
   primaryFont,
   secondaryColor
 } from "../../assets/style/GlobalStyles";
@@ -29,12 +30,15 @@ export const Title = styled.div<TitleProps>`
   }
 
   select {
+    font-family: ${primaryFont};
+
     width: ${({ time }) => (time === "day" ? "80px" : "120px")};
+
     margin-left: 0.3rem;
     background: none;
     border: none;
     outline: none;
-    font-family: ${primaryFont};
+
     cursor: pointer;
 
     option {
@@ -50,9 +54,11 @@ export const TrendInfo = styled.article`
 `;
 
 export const TrendLink = styled(Link)`
-  width: 180px;
   color: #fff;
   text-decoration: none;
+
+  width: 180px;
+
   box-shadow: 7px 10px 2px 1px rgba(0, 0, 0, 0.8);
   cursor: pointer;
   transition: all 500ms ease;
@@ -64,10 +70,12 @@ export const TrendLink = styled(Link)`
   img {
     height: 250px;
     width: 100%;
+
     border: solid 2px;
     border-image: linear-gradient(rgba(225, 225, 255, 0.6), rgb(19, 24, 28)) 1 /
       200px;
     border-bottom: none;
+
     transition: all 500ms ease;
 
     &:hover {
@@ -79,13 +87,16 @@ export const TrendLink = styled(Link)`
   > div {
     position: relative;
     background: #445566;
+
     margin-top: -0.3rem;
     padding: 5px;
+
     white-space: nowrap;
     overflow: hidden;
+
     border: solid 2px;
-    border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
     border-top: none;
+    border-image: linear-gradient(to top, rgba(225, 225, 255, 0.6), #000) 1;
   }
 `;
 
@@ -96,6 +107,7 @@ export const TrendingMovies = styled.section`
   h2 {
     font-size: 40px;
     font-weight: 200;
+
     margin-bottom: 1rem;
   }
 
@@ -105,12 +117,16 @@ export const TrendingMovies = styled.section`
     > div {
       ${flexMixin({ justify: "space-between", align: "flex-start" })};
       flex-direction: column;
+
       background-color: #292929;
       position: relative;
+
       height: 325px;
       width: 245px;
+
       padding: 10px 10px;
       border-radius: 12px;
+
       transition: all 200ms ease;
       cursor: pointer;
 
@@ -122,10 +138,12 @@ export const TrendingMovies = styled.section`
       }
 
       h2 {
-        max-width: 150px;
         font-size: 30px;
         text-transform: uppercase;
         line-height: 30px;
+
+        max-width: 150px;
+
         margin-bottom: 5px;
       }
 
@@ -136,29 +154,33 @@ export const TrendingMovies = styled.section`
       }
 
       h3 {
-        font-size: 30px;
         color: ${secondaryColor};
+        font-size: 30px;
+
         position: absolute;
         top: 0;
         right: 10px;
       }
 
       p {
-        max-width: 108px;
-        color: #fff;
+        color: ${paragraphColor};
         font-size: 20px;
         line-height: 20px;
-        opacity: 0.5;
+
+        max-width: 108px;
       }
 
       button {
         background-color: ${secondaryColor};
         color: #fff;
+
         font-size: 40px;
         font-family: ${primaryFont};
         text-transform: uppercase;
+
         padding: 0 30px;
         border-radius: 10px;
+
         cursor: pointer;
         z-index: 2;
       }

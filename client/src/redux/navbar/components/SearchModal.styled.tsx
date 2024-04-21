@@ -13,15 +13,19 @@ type SearchedDataProps = {
 
 export const SearchedData = styled.section<SearchedDataProps>`
   background-color: rgb(19, 24, 28);
+
   position: absolute;
   top: ${({ isLogOpen }) => (isLogOpen ? "21.5rem" : "6.1rem")};
   right: ${({ isLogOpen }) => (isLogOpen ? "30.85rem" : "26.8rem")};
+
   height: fit-content;
   width: ${({ isLogOpen }) => (isLogOpen ? "588px" : "524px")};
   max-height: 260px;
-  overflow-x: hidden;
+
   border-bottom: 0.1px solid ${secondaryColor};
   /* border-radius: ${({ isLogOpen }) => (isLogOpen ? "3px" : "10px")}; */
+
+  overflow-x: hidden;
   z-index: 10;
 
   &::-webkit-scrollbar {
@@ -36,17 +40,22 @@ export const SearchedData = styled.section<SearchedDataProps>`
   > p {
     color: ${secondaryColor};
     line-height: 20px;
-    padding: 20px 10px;
     text-align: center;
+
+    padding: 20px 10px;
   }
 `;
 
 export const SingleMovie = styled(Link)<SearchedDataProps>`
   ${flexMixin({ justify: "flex-start", align: "center" })};
+
   color: #fff;
   text-decoration: none;
+
   position: relative;
+
   border: 0.1px solid ${tertiaryColor};
+
   cursor: pointer;
 
   img {
@@ -58,7 +67,9 @@ export const SingleMovie = styled(Link)<SearchedDataProps>`
     css`
       div {
         display: flex;
+
         width: 100%;
+
         padding: 10px 0;
       }
     `}
@@ -81,6 +92,7 @@ export const Categories = styled.section`
   position: absolute;
   top: 4.6rem;
   right: 26.8rem;
+
   width: 524px;
 
   article {
@@ -88,8 +100,11 @@ export const Categories = styled.section`
 
     p {
       text-align: center;
+
       width: 25%;
+
       border: 1px solid ${secondaryColor};
+
       user-select: none;
       transition: all 100ms ease;
       cursor: pointer;

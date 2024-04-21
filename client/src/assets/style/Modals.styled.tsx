@@ -21,40 +21,48 @@ type CopyModalProps = {
 };
 
 export const PosterModal = styled.div<PosterModalProps>`
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+
   height: 100%;
   width: 100%;
-  text-align: center;
+
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  visibility: hidden;
+
   opacity: 0;
+  visibility: hidden;
   transition: all 500ms ease;
 
   ${({ isPosterOpen }) =>
     isPosterOpen &&
     css`
-      visibility: visible;
       opacity: 1;
+      visibility: visible;
     `}
 
   img {
-    position: relative;
     height: 95vh;
+
+    position: relative;
+
     margin-top: 1rem;
     border: 1.5px solid #e1e1ff99;
     border-radius: 5px;
+
     z-index: 1;
   }
 
   svg {
+    color: #e1e1ff99;
     font-size: 2rem;
+
     position: absolute;
     top: 15px;
     right: 20px;
-    color: #e1e1ff99;
+
     cursor: pointer;
 
     &:hover {
@@ -65,25 +73,29 @@ export const PosterModal = styled.div<PosterModalProps>`
 
 export const Modal = styled.section<ModalProps>`
   ${flexMixin({ justify: "center", align: "center" })};
+
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+
   height: 100%;
   width: 100%;
-  text-align: center;
+
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.8);
+
   transition: all 500ms ease;
 
   ${({ isShare, isReview, isLists }) =>
     isShare || isReview || isLists
       ? css`
-          visibility: visible;
           opacity: 1;
+          visibility: visible;
         `
       : css`
-          visibility: hidden;
           opacity: 0;
+          visibility: hidden;
         `}
 
   svg {
@@ -93,19 +105,25 @@ export const Modal = styled.section<ModalProps>`
 
 export const ModalShare = styled.article`
   background-color: #445566;
+
   min-width: 500px;
   max-width: 600px;
+
   padding: 20px 40px;
   border-radius: 5px;
+
   z-index: 1;
 
   svg:first-child {
+    color: #e1e1ff99;
     font-size: 2rem;
-    margin: 0;
+
     position: absolute;
     top: 15px;
     right: 20px;
-    color: #e1e1ff99;
+
+    margin: 0;
+
     cursor: pointer;
 
     &:hover {
@@ -116,9 +134,12 @@ export const ModalShare = styled.article`
   > div {
     ${flexMixin({ justify: "center", align: "center" })};
     background-color: #667788;
+
     width: min-content;
+
     margin: 0 auto 2rem;
     border-radius: 5px;
+
     box-shadow: inset 0 1.5px 0 #e1e1ff99;
     transition: all 200ms ease;
 
@@ -145,7 +166,9 @@ export const ModalShare = styled.article`
   svg {
     color: #fff;
     font-size: 2rem;
+
     margin: 0 2rem;
+
     transition: all 200ms ease;
 
     &:hover {
@@ -157,30 +180,37 @@ export const ModalShare = styled.article`
 export const CopyModal = styled.p<CopyModalProps>`
   background-color: #334455;
   color: #fff;
+  font-weight: 800;
+  text-shadow: 1px 1px 2px #000;
+
   position: absolute;
   left: 2rem;
   bottom: 2rem;
+
   padding: 5px 15px;
   border-radius: 3px;
-  font-weight: 800;
-  text-shadow: 1px 1px 2px #000;
+
   opacity: ${({ isCopied }) => (isCopied ? 1 : 0)};
   transition: all 500ms ease;
 `;
 
 export const ModalLists = styled.article`
   background-color: #445566;
+
   min-width: 500px;
   max-width: 600px;
+
   padding: 20px 40px;
   border-radius: 5px;
 
   > svg:first-child {
+    color: #e1e1ff99;
     font-size: 2rem;
+
     position: absolute;
     top: 15px;
     right: 20px;
-    color: #e1e1ff99;
+
     cursor: pointer;
 
     &:hover {
@@ -190,15 +220,18 @@ export const ModalLists = styled.article`
 
   h2 {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
     text-align: start;
+
+    margin-bottom: 1rem;
   }
 
   > div {
     ${flexMixin({ justify: "space-between", align: "center" })};
-    width: 100%;
-    margin-bottom: 1rem;
     background-color: #334455;
+
+    width: 100%;
+
+    margin-bottom: 1rem;
     padding: 2px;
     border-radius: 50px;
 
@@ -215,10 +248,13 @@ export const PublicToggle = styled.p<PublicToggle>`
   font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0.5px;
+
   width: 50%;
+
   padding: 2px 15px;
   border: 2px solid transparent;
   border-radius: 50px;
+
   transition: all 500ms ease;
 
   &:hover {
@@ -255,6 +291,7 @@ export const AddToList = styled.div`
       color: #fff;
       font-family: ${primaryFont};
       text-align: right;
+
       margin-right: 0.5rem;
       outline: none;
 
@@ -271,10 +308,12 @@ export const AddToList = styled.div`
 
 export const Submit = styled.article`
   background-color: #334455;
+  text-align: end;
+
   width: calc(100% + 80px);
+
   margin: 0 -40px -20px;
   border-radius: 0 0 5px 5px;
-  text-align: end;
 
   button {
     background-color: ${primaryColor};
@@ -282,12 +321,14 @@ export const Submit = styled.article`
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 2px;
+
     margin: 15px 35px;
     padding: 8px 25px;
     border-radius: 5px;
+
     box-shadow: inset 0 -1px 0 #456;
-    cursor: pointer;
     transition: all 200ms ease;
+    cursor: pointer;
 
     &:hover {
       color: #fff;
@@ -299,17 +340,22 @@ export const Submit = styled.article`
 export const ModalReview = styled.article`
   ${flexMixin({ justify: "space-between", align: "flex-start" })};
   background-color: #445566;
+
   min-width: 500px;
+
   padding: 20px 40px;
   border-radius: 5px;
+
   z-index: 1;
 
   svg:first-child {
+    color: #e1e1ff99;
     font-size: 2rem;
+
     position: absolute;
     top: 15px;
     right: 20px;
-    color: #e1e1ff99;
+
     cursor: pointer;
 
     &:hover {
@@ -320,8 +366,9 @@ export const ModalReview = styled.article`
   h2 {
     span {
       color: #e1e1ff99;
-      font-weight: 400;
       font-size: 1.1rem;
+      font-weight: 400;
+
       margin: 0 0.5rem;
     }
   }
@@ -338,33 +385,41 @@ export const ModalReview = styled.article`
 
       label {
         ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+
         color: #ccddee;
         font-size: 0.9rem;
+
         user-select: none;
 
         input[type="checkbox"] {
+          accent-color: #ccddee;
           font-size: 22rem;
+
           height: 18px;
           width: 20px;
-          border-radius: 5px;
+
           margin-right: 0.5rem;
-          accent-color: #ccddee;
+          border-radius: 5px;
+
           cursor: pointer;
         }
       }
     }
 
     textarea {
-      font-family: ${primaryFont};
       background-color: #ccddee;
       color: #556677;
+      font-size: 0.8rem;
+      font-family: ${primaryFont};
+
       min-height: 50px;
       max-height: 300px;
-      font-size: 0.8rem;
+
       margin: 0.2rem 0;
       padding: 10px;
       border-radius: 5px;
       outline: none;
+
       resize: vertical;
       transition: all 500ms ease;
 
@@ -378,9 +433,11 @@ export const ModalReview = styled.article`
   img {
     height: 230px;
     width: 160px;
-    border-radius: 5px;
+
     margin-right: 2rem;
     border: 3px solid transparent;
+    border-radius: 5px;
+
     transition: all 500ms ease;
     cursor: pointer;
 
@@ -396,11 +453,13 @@ export const SaveButton = styled.button`
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 2px;
+
   padding: 8px 25px;
   border-radius: 5px;
+
   box-shadow: inset 0 -1px 0 #456;
-  cursor: pointer;
   transition: all 200ms ease;
+  cursor: pointer;
 
   &:hover {
     color: #fff;
