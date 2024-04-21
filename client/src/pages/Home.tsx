@@ -7,6 +7,7 @@ import TrendingMovies from "../redux/trendingMovies/TrendingMovies";
 import Features from "./homeComponents/Features";
 import FixedSidebar from "./homeComponents/FixedSidebar";
 import FriendsActivity from "./homeComponents/FriendsActivity";
+import Header from "./homeComponents/Header";
 import News from "./homeComponents/News";
 import Oscar from "./homeComponents/Oscar";
 
@@ -21,6 +22,7 @@ const Home = () => {
   return (
     <section>
       <FixedSidebar />
+      <Header />
       <TrendingMovies />
       <Features />
       <Oscar />

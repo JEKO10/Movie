@@ -13,6 +13,69 @@ type SidebarProp = {
   isScrolled: boolean;
 };
 
+export const Header = styled.header`
+  max-width: 73vw;
+  margin: 3rem auto;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 200;
+
+    margin-bottom: 1rem;
+  }
+
+  img {
+    height: 160px;
+    width: 96px;
+
+    margin-right: 1rem;
+  }
+
+  article {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+
+    div {
+      ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+      background-color: ${primaryColor};
+
+      width: 245px;
+
+      padding: 10px;
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      &:last-of-type {
+        flex-direction: column;
+      }
+    }
+
+    h4 {
+      color: ${paragraphColor};
+      font-size: 1.5rem;
+      font-weight: 100;
+    }
+
+    p {
+      font-size: 1.4rem;
+      line-height: 30px;
+    }
+
+    ul {
+      ${flexMixin({ justify: "flex-start", align: "center" })};
+      flex-wrap: wrap;
+      gap: 5px;
+
+      list-style-type: none;
+
+      li {
+        font-size: 1.4rem;
+        line-height: 25px;
+      }
+    }
+  }
+`;
+
 export const FixedSidebar = styled.aside<SidebarProp>`
   position: fixed;
 
