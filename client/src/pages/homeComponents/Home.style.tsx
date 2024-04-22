@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import {
   flexMixin,
@@ -13,9 +13,9 @@ type SidebarProp = {
   isScrolled: boolean;
 };
 
-export const Header = styled.header`
-  max-width: 73vw;
-  margin: 3rem auto;
+const sharedSectionStyle = css`
+  max-width: 83vw;
+  margin: 1rem 50px 3rem auto; /* top | right | bottom | left */
 
   h2 {
     font-size: 40px;
@@ -23,6 +23,12 @@ export const Header = styled.header`
 
     margin-bottom: 1rem;
   }
+`;
+
+export const Header = styled.header`
+  ${sharedSectionStyle};
+  max-width: 73vw;
+  margin: 3rem auto;
 
   img {
     height: 160px;
@@ -124,15 +130,7 @@ export const Side = styled.aside`
 
 export const Features = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-end" })};
-  max-width: 83vw;
-  margin: 1rem 50px 1rem auto; /* top | right | bottom | left */
-
-  h2 {
-    font-size: 40px;
-    font-weight: 200;
-
-    margin-bottom: 1rem;
-  }
+  ${sharedSectionStyle};
 
   div {
     ${flexMixin({ justify: "flex-start", align: "center" })};
@@ -177,15 +175,7 @@ export const Features = styled.section`
 `;
 
 export const Oscar = styled.section`
-  max-width: 83vw;
-  margin: 1rem 50px 1rem auto;
-
-  h2 {
-    font-size: 40px;
-    font-weight: 200;
-
-    margin-bottom: 1rem;
-  }
+  ${sharedSectionStyle};
 
   article {
     display: grid;
@@ -248,15 +238,7 @@ export const RatePopUp = styled.aside`
 `;
 
 export const News = styled.section`
-  max-width: 83vw;
-  margin: 1rem 50px 1rem auto;
-
-  h2 {
-    font-size: 40px;
-    font-weight: 200;
-
-    margin-bottom: 1rem;
-  }
+  ${sharedSectionStyle};
 
   article {
     ${flexMixin({ justify: "flex-start", align: "center" })};
@@ -296,15 +278,7 @@ export const News = styled.section`
 `;
 
 export const FriendsActivity = styled.section`
-  max-width: 83vw;
-  margin: 1rem 50px 3rem auto;
-
-  h2 {
-    font-size: 40px;
-    font-weight: 200;
-
-    margin-bottom: 1rem;
-  }
+  ${sharedSectionStyle};
 
   article {
     ${flexMixin({ justify: "space-between", align: "center" })};
