@@ -11,12 +11,12 @@ import {
   MoviesList,
   Sorting,
   SortList,
-  Underline,
+  Underline
 } from "./DiscoverMovies.styled";
 import {
   getDiscoverMovies,
   toggleSort,
-  toggleSortName,
+  toggleSortName
 } from "./discoverMoviesSlice";
 
 const DiscoverMovies = () => {
@@ -61,7 +61,7 @@ const DiscoverMovies = () => {
                     value="popularity.desc"
                     onClick={changeSort}
                     style={{
-                      color: selectedSort === "popularity.desc" ? "#fff" : "",
+                      color: selectedSort === "popularity.desc" ? "#fff" : ""
                     }}
                   >
                     Popularity
@@ -70,7 +70,7 @@ const DiscoverMovies = () => {
                     value="vote_average.desc"
                     onClick={changeSort}
                     style={{
-                      color: selectedSort === "vote_average.desc" ? "#fff" : "",
+                      color: selectedSort === "vote_average.desc" ? "#fff" : ""
                     }}
                   >
                     Average Rating
@@ -82,7 +82,7 @@ const DiscoverMovies = () => {
                       color:
                         selectedSort === "primary_release_date.desc"
                           ? "#fff"
-                          : "",
+                          : ""
                     }}
                   >
                     Release date
@@ -92,7 +92,7 @@ const DiscoverMovies = () => {
                     onClick={changeSort}
                     style={{
                       color:
-                        selectedSort === "original_title.desc" ? "#fff" : "",
+                        selectedSort === "original_title.desc" ? "#fff" : ""
                     }}
                   >
                     Name
@@ -101,7 +101,7 @@ const DiscoverMovies = () => {
                     value="revenue.desc"
                     onClick={changeSort}
                     style={{
-                      color: selectedSort === "revenue.desc" ? "#fff" : "",
+                      color: selectedSort === "revenue.desc" ? "#fff" : ""
                     }}
                   >
                     Revenue
@@ -111,7 +111,7 @@ const DiscoverMovies = () => {
             </SortList>
           </div>
         </div>
-        <Underline></Underline>
+        <Underline />
         <p>
           There are {totalItems}
           <span>{name}</span>

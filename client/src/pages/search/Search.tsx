@@ -11,6 +11,7 @@ import { SearchContainer } from "./Search.style";
 const Search = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchData, setSearchData] = useState<SearchData[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const { inputValue } = useParams();
   const posterUrl = "https://image.tmdb.org/t/p/w342/";
 
@@ -23,31 +24,30 @@ const Search = () => {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${formattedInputValue}&sort_by=popularity.desc`
+        }&query=${formattedInputValue}&sort_by=popularity.desc&page=${currentPage}`
       );
 
-      const movies = response.data.results;
+      // const creditPromises = response.data.results.map(
+      //   async (movie: SearchData) => {
+      //     if (movie.media_type === "movie") {
+      //       const creditsResponse = await axios.get(
+      //         `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+      //       );
 
-      const creditPromises = movies.map(async (movie: SearchData) => {
-        if (movie.media_type === "movie") {
-          const creditsResponse = await axios.get(
-            `https://api.themoviedb.org/3/movie/${movie.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
-          );
+      //       movie.credits = creditsResponse.data;
+      //     } else if (movie.media_type === "tv") {
+      //       const creditsResponse = await axios.get(
+      //         `https://api.themoviedb.org/3/tv/${movie.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+      //       );
 
-          movie.credits = creditsResponse.data;
-        } else if (movie.media_type === "tv") {
-          const creditsResponse = await axios.get(
-            `https://api.themoviedb.org/3/tv/${movie.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
-          );
+      //       movie.credits = creditsResponse.data;
+      //     }
+      //   }
+      // );
 
-          movie.credits = creditsResponse.data;
-        }
-      });
+      // await Promise.all(creditPromises);
 
-      await Promise.all(creditPromises);
-
-      setSearchData(movies);
-
+      setSearchData(response.data.results);
       setIsLoading(false);
     } catch (error) {
       if (isAxiosError(error)) {
@@ -58,9 +58,7 @@ const Search = () => {
 
   useEffect(() => {
     getSearchData();
-
-    console.log(searchData);
-  }, [inputValue]);
+  }, [inputValue, currentPage]);
 
   if (isLoading) {
     return (
@@ -95,7 +93,7 @@ const Search = () => {
                   <span>{movie.release_date?.slice(0, 4)}</span>
                 </h3>
                 <p>{movie.overview}</p>
-                {movie.credits.crew.length !== 0 && (
+                {/* {movie.credits.crew.length !== 0 && (
                   <h4>
                     Directed by{"  "}
                     <span>
@@ -108,13 +106,24 @@ const Search = () => {
                       }
                     </span>
                   </h4>
-                )}
+                )} */}
               </div>
             </Link>
             <Underline width={"100%"} margin="0 0 1rem" />
           </>
         ))}
       </article>
+      <div>
+        <button
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous Page
+        </button>
+        <button onClick={() => setCurrentPage(currentPage + 1)}>
+          Next Page
+        </button>
+      </div>
     </SearchContainer>
   );
 };

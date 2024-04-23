@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {
   MdKeyboardDoubleArrowLeft,
-  MdKeyboardDoubleArrowRight,
+  MdKeyboardDoubleArrowRight
 } from "react-icons/md";
 
 import { PaginationList } from "../../../assets/style/Pagination.styled";
@@ -10,7 +10,7 @@ import { Loader, LoaderWrapper } from "../../../common/Loader";
 import { getDiscoverMovies } from "../discoverMoviesSlice";
 
 type PaginationProps = {
-  id: string | undefined;
+  id?: string | undefined;
 };
 
 const Pagination: React.FC<PaginationProps> = ({ id }) => {
@@ -50,14 +50,14 @@ const Pagination: React.FC<PaginationProps> = ({ id }) => {
           ...(currentPage === 2
             ? [currentPage - 1, currentPage + 4]
             : currentPage === 1
-            ? [currentPage, currentPage + 5]
-            : [currentPage - 2, currentPage + 3])
+              ? [currentPage, currentPage + 5]
+              : [currentPage - 2, currentPage + 3])
         )
         .map((page: number) => {
           return (
             <li
               style={{
-                background: currentPage === page ? "#dda824" : "",
+                background: currentPage === page ? "#dda824" : ""
               }}
               key={page}
               onClick={() => {
