@@ -1,15 +1,11 @@
 import { isRejectedWithValue } from "@reduxjs/toolkit";
 import axios, { isAxiosError } from "axios";
 import React, { useEffect, useState } from "react";
-import {
-  MdKeyboardDoubleArrowLeft,
-  MdKeyboardDoubleArrowRight
-} from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
 
-import { PaginationList } from "../../assets/style/Pagination.styled";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { SearchData } from "../../common/types/typesTS";
+import Pagination from "../../redux/discoverMovies/components/Pagination";
 import { Underline } from "../../redux/singleMovie/SingleMovie.styled";
 import { SearchContainer } from "./Search.style";
 
@@ -17,11 +13,11 @@ const Search = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [searchData, setSearchData] = useState<SearchData[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalItems, setTotalItems] = useState(1);
   const { inputValue } = useParams();
   const posterUrl = "https://image.tmdb.org/t/p/w342/";
-  const [totalResults, setTotalResults] = useState(1);
   const pages = [];
-  const totalPages = Math.ceil(totalResults / 20);
+  const totalPages = Math.ceil(totalItems / 20);
 
   for (let i = 0; i <= totalPages; i++) {
     pages.push(i);
@@ -39,7 +35,7 @@ const Search = () => {
         }&query=${formattedInputValue}&sort_by=popularity.desc&page=${currentPage}`
       );
 
-      setTotalResults(response.data.total_results);
+      setTotalItems(response.data.total_results);
 
       const creditPromises = response.data.results.map(
         async (movie: SearchData) => {
@@ -70,15 +66,8 @@ const Search = () => {
     }
   };
 
-  const handlePageClick = (page: number) => {
-    window.scrollTo(0, 0);
-    setCurrentPage(page);
-  };
-
   useEffect(() => {
     getSearchData();
-
-    console.log(totalResults);
   }, [inputValue, currentPage]);
 
   if (isLoading) {
@@ -134,46 +123,12 @@ const Search = () => {
           </>
         ))}
       </article>
-      <PaginationList>
-        <li
-          onClick={() => {
-            handlePageClick(1);
-          }}
-        >
-          <MdKeyboardDoubleArrowLeft />
-        </li>
-        {pages
-          .slice(
-            ...(currentPage === 2
-              ? [currentPage - 1, currentPage + 4]
-              : currentPage === 1
-                ? [currentPage, currentPage + 5]
-                : [currentPage - 2, currentPage + 3])
-          )
-          .map((page: number) => {
-            return (
-              <li
-                style={{
-                  background: currentPage === page ? "#dda824" : ""
-                }}
-                key={page}
-                onClick={() => {
-                  handlePageClick(page * 5);
-                  setCurrentPage(page);
-                }}
-              >
-                {page}
-              </li>
-            );
-          })}
-        <li
-          onClick={() => {
-            handlePageClick(pages.length - 1);
-          }}
-        >
-          <MdKeyboardDoubleArrowRight />
-        </li>
-      </PaginationList>
+      <Pagination
+        totalItems={totalItems}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        itemsPerPage={20}
+      />
     </SearchContainer>
   );
 };

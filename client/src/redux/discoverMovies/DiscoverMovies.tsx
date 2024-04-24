@@ -22,6 +22,7 @@ import {
 const DiscoverMovies = () => {
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
   const [selectedSort, setSelectedSort] = useState<string>("popularity.desc");
+  const [currentPage, setCurrentPage] = useState(1);
   const { name, id } = useParams();
   const { discoverMovies, totalItems, sortName, isLoading } = useAppSelector(
     (store) => store.discoverMovies
@@ -138,7 +139,13 @@ const DiscoverMovies = () => {
           <Loader />
         </LoaderWrapper>
       )}
-      <Pagination id={id} />
+      <Pagination
+        id={id}
+        totalItems={totalItems}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        itemsPerPage={100}
+      />
     </Discover>
   );
 };
