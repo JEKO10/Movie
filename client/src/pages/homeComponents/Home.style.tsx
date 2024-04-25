@@ -14,8 +14,7 @@ type SidebarProp = {
 };
 
 const sharedSectionStyle = css`
-  max-width: 83vw;
-  margin: 1rem 50px 3rem auto; /* top | right | bottom | left */
+  margin: 1rem 50px 3rem 15vw; /* top | right | bottom | left */
 
   h2 {
     font-size: 40px;
@@ -27,8 +26,8 @@ const sharedSectionStyle = css`
 
 export const Header = styled.header`
   ${sharedSectionStyle};
-  max-width: 73vw;
-  margin: 3rem auto;
+  max-width: 55vw;
+  margin: 1rem 455px 3rem auto;
 
   img {
     height: 160px;

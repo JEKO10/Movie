@@ -101,8 +101,8 @@ export const TrendLink = styled(Link)`
 `;
 
 export const TrendingMovies = styled.section`
-  max-width: 73vw;
-  margin: 0 auto;
+  max-width: 55vw;
+  margin: 1rem 455px 3rem auto;
 
   h2 {
     font-size: 40px;

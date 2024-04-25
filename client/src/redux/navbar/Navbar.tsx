@@ -21,6 +21,12 @@ const Navbar = () => {
           <span>Movie</span>xd
         </h1>
       </Link>
+      <InputContainer>
+        <Input value={isLogOpen ? "" : inputValue} />
+        <FaSearch
+          onClick={() => inputValue && navigate(`/search/${inputValue}`)}
+        />
+      </InputContainer>
       {isLoggedIn && (
         <LogButton onClick={() => dispatch(setIsLogOpen(true))}>
           Log +
@@ -46,12 +52,6 @@ const Navbar = () => {
         <li>Members</li>
         {!isLoggedIn && <li>Journal</li>}
       </ul>
-      <InputContainer>
-        <Input value={isLogOpen ? "" : inputValue} />
-        <FaSearch
-          onClick={() => inputValue && navigate(`/search/${inputValue}`)}
-        />
-      </InputContainer>
     </Nav>
   );
 };
