@@ -36,7 +36,7 @@ export const Header = styled.header`
     margin-right: 1rem;
   }
 
-  article {
+  article:last-of-type {
     ${flexMixin({ justify: "space-between", align: "center" })};
 
     div {
@@ -79,6 +79,16 @@ export const Header = styled.header`
       }
     }
   }
+`;
+
+export const HeaderSlide = styled.div`
+  background-color: ${tertiaryColor};
+
+  height: 6px;
+  width: 33px;
+
+  margin: 0.5rem;
+  border-radius: 12px;
 `;
 
 export const FixedSidebar = styled.aside<SidebarProp>`
@@ -135,15 +145,12 @@ export const Features = styled.section`
     ${flexMixin({ justify: "flex-start", align: "center" })};
     background-color: ${primaryColor};
 
-    width: 801px;
+    width: 845px;
 
     margin-bottom: 2rem;
     padding: 20px;
     border-radius: 10px;
 
-    box-shadow:
-      inset 0 1px 0 #000,
-      0 0 10px #000;
     cursor: pointer;
 
     & {
