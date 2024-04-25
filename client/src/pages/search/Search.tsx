@@ -103,7 +103,7 @@ const Search = () => {
                   <span>{movie.release_date?.slice(0, 4)}</span>
                 </h3>
                 <p>{movie.overview}</p>
-                {movie.credits.crew.length !== 0 && (
+                {movie.credits && movie.credits.crew.length !== 0 && (
                   <h4>
                     Directed by{"  "}
                     <span>

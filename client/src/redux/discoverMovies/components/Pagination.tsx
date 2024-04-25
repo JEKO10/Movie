@@ -27,7 +27,8 @@ const Pagination: React.FC<PaginationProps> = ({
   let pages;
   if (totalItems) {
     totalPages = Math.ceil(totalItems / itemsPerPage);
-    pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+    pages = Array.from({ length: totalPages }, (_, i) => i);
   }
   const dispatch = useAppDispatch();
 
@@ -38,6 +39,8 @@ const Pagination: React.FC<PaginationProps> = ({
     if (itemsPerPage === 100) {
       dispatch(getDiscoverMovies({ id, page }));
     }
+
+    console.log(currentPage);
   };
 
   return (
@@ -45,17 +48,28 @@ const Pagination: React.FC<PaginationProps> = ({
       <li onClick={() => handlePageClick(1)}>
         <MdKeyboardDoubleArrowLeft />
       </li>
-      {pages?.map((page: number) => (
-        <li
-          key={page}
-          style={{
-            background: currentPage === page ? "#dda824" : ""
-          }}
-          onClick={() => handlePageClick(page)}
-        >
-          {page}
-        </li>
-      ))}
+      {pages
+        ?.slice(
+          ...(currentPage === 1
+            ? [currentPage - 1, currentPage + 4]
+            : [currentPage - 2, currentPage + 3])
+        )
+        .map((page: number) => {
+          return (
+            <li
+              style={{
+                background: currentPage === page + 1 ? "#00AF51" : ""
+              }}
+              key={page}
+              onClick={() => {
+                handlePageClick(page * itemsPerPage);
+                setCurrentPage(page + 1);
+              }}
+            >
+              {page + 1}
+            </li>
+          );
+        })}
       <li onClick={() => handlePageClick(totalPages)}>
         <MdKeyboardDoubleArrowRight />
       </li>

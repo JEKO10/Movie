@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import { flexMixin, primaryColor } from "../../../assets/style/GlobalStyles";
+import {
+  flexMixin,
+  primaryColor,
+  tertiaryColor
+} from "../../../assets/style/GlobalStyles";
 
 export const PaginationList = styled.ul`
   ${flexMixin({ justify: "center", align: "center" })}
@@ -24,8 +28,8 @@ export const PaginationList = styled.ul`
     }
 
     &:hover {
-      background-color: #fff !important;
-      color: ${primaryColor};
+      background-color: ${tertiaryColor} !important;
+      color: #fff;
     }
   }
 `;
