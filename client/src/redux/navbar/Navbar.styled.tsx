@@ -58,7 +58,7 @@ export const Nav = styled.nav`
   article button {
     background-color: ${secondaryColor};
     color: #fff;
-    font-size: 30px;
+    font-size: 1.5rem;
     font-family: ${primaryFont};
     text-transform: uppercase;
 

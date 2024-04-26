@@ -29,15 +29,72 @@ export const Header = styled.header`
   max-width: 55vw;
   margin: 1rem 455px 3rem auto;
 
-  img {
-    height: 160px;
-    width: 96px;
+  position: relative;
 
-    margin-right: 1rem;
+  article:first-of-type {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+    background-color: ${primaryColor};
+
+    margin-bottom: 3rem;
+    border-radius: 12px;
+
+    h3 {
+      font-size: 2.6rem;
+      font-weight: 100;
+      text-transform: uppercase;
+      line-height: 40px;
+
+      margin-bottom: 0.5rem;
+    }
+
+    h4 {
+      font-weight: 100;
+    }
+
+    h5 {
+      color: ${paragraphColor};
+      font-size: 1.1rem;
+      font-weight: 100;
+
+      margin-top: 0.5rem;
+    }
+
+    button {
+      background-color: ${secondaryColor};
+      color: #fff;
+      font-size: 1.5rem;
+      font-family: ${primaryFont};
+      text-transform: uppercase;
+
+      margin-top: 0.5rem;
+      padding: 5px 20px;
+      border-radius: 12px;
+    }
+
+    img {
+      border-radius: 0 12px 12px 0;
+    }
+
+    > div:first-of-type {
+      padding: 0 20px;
+
+      > p {
+        color: ${paragraphColor};
+        font-size: 1.1rem;
+        line-height: 22px;
+      }
+    }
   }
 
   article:last-of-type {
     ${flexMixin({ justify: "space-between", align: "center" })};
+
+    img {
+      height: 160px;
+      width: 96px;
+
+      margin-right: 1rem;
+    }
 
     div {
       ${flexMixin({ justify: "flex-start", align: "flex-start" })};
@@ -81,14 +138,35 @@ export const Header = styled.header`
   }
 `;
 
-export const HeaderSlide = styled.div`
-  background-color: ${tertiaryColor};
+export const HeaderRating = styled.div`
+  color: ${secondaryColor};
 
-  height: 6px;
-  width: 33px;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 
-  margin: 0.5rem;
-  border-radius: 12px;
+  p {
+    color: ${secondaryColor};
+  }
+`;
+
+export const HeaderSlides = styled.div`
+  ${flexMixin({ justify: "flex-start", align: "center" })};
+  margin-top: 1rem;
+
+  div {
+    background-color: ${tertiaryColor};
+
+    height: 6px;
+    width: 33px;
+
+    margin-right: 0.5rem;
+    border-radius: 12px;
+
+    &:first-of-type {
+      background-color: ${secondaryColor};
+    }
+  }
 `;
 
 export const FixedSidebar = styled.aside<SidebarProp>`
