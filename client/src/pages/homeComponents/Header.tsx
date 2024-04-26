@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { IoStar } from "react-icons/io5";
 
 import backdropImg from "../../assets/images/news.jpg";
@@ -6,11 +6,21 @@ import poster from "../../assets/images/poster.png";
 import { Header as Container, HeaderRating, HeaderSlides } from "./Home.style";
 
 const Header = () => {
+  const [slide, setSlide] = useState(1);
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const newIndex = parseInt(
+      e.currentTarget.getAttribute("data-index") || "1"
+    );
+
+    setSlide(newIndex);
+  };
+
   return (
     <Container>
       <article>
         <div>
-          <h3>Inglourious basterds </h3>
+          <h3>Inglourious basterds</h3>
           <p>
             In Nazi-occupied France during World War II, a plan to assassinate
             Nazi leaders by a group of Jewish U.S. soldiers coincides with a
@@ -18,11 +28,11 @@ const Header = () => {
           </p>
           <h5>2h 33min</h5>
           <button>Rate</button>
-          <HeaderSlides>
-            <div />
-            <div />
-            <div />
-            <div />
+          <HeaderSlides slide={slide}>
+            <div data-index={1} onClick={handleClick} />
+            <div data-index={2} onClick={handleClick} />
+            <div data-index={3} onClick={handleClick} />
+            <div data-index={4} onClick={handleClick} />
           </HeaderSlides>
         </div>
         <img src={backdropImg} alt="backdropImg" />

@@ -13,6 +13,10 @@ type SidebarProp = {
   isScrolled: boolean;
 };
 
+type HeaderSlidesProps = {
+  slide: number;
+};
+
 const sharedSectionStyle = css`
   margin: 1rem 50px 3rem 15vw; /* top | right | bottom | left */
 
@@ -69,6 +73,8 @@ export const Header = styled.header`
       margin-top: 0.5rem;
       padding: 5px 20px;
       border-radius: 12px;
+
+      cursor: pointer;
     }
 
     img {
@@ -150,7 +156,7 @@ export const HeaderRating = styled.div`
   }
 `;
 
-export const HeaderSlides = styled.div`
+export const HeaderSlides = styled.div<HeaderSlidesProps>`
   ${flexMixin({ justify: "flex-start", align: "center" })};
   margin-top: 1rem;
 
@@ -163,7 +169,9 @@ export const HeaderSlides = styled.div`
     margin-right: 0.5rem;
     border-radius: 12px;
 
-    &:first-of-type {
+    cursor: pointer;
+
+    &:nth-child(${({ slide }) => slide}) {
       background-color: ${secondaryColor};
     }
   }
