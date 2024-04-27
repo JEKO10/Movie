@@ -274,6 +274,8 @@ export const Oscar = styled.section`
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
     img {
+      width: 162px;
+
       border: 2px solid transparent;
       border-radius: 15px;
 

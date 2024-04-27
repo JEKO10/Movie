@@ -6,7 +6,7 @@ import { InitialTrendMovies, Trending } from "../../common/types/typesTS";
 const initialState: InitialTrendMovies = {
   isLoading: true,
   trendingMovies: [],
-  time: "day",
+  time: "week"
 };
 
 export const getTrending = createAsyncThunk(
@@ -34,7 +34,7 @@ const trendingMoviesSlice = createSlice({
   reducers: {
     changeTime: (state, { payload }) => {
       state.time = payload;
-    },
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -51,7 +51,7 @@ const trendingMoviesSlice = createSlice({
       .addCase(getTrending.rejected, (state) => {
         state.isLoading = false;
       });
-  },
+  }
 });
 
 export const { changeTime } = trendingMoviesSlice.actions;
