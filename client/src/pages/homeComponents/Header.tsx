@@ -8,7 +8,7 @@ import { getTrending } from "../../redux/trendingMovies/trendingMoviesSlice";
 import { Header as Container, HeaderRating, HeaderSlides } from "./Home.style";
 
 const Header = () => {
-  const [slide, setSlide] = useState(1);
+  const [slide, setSlide] = useState(0);
   const { trendingMovies, time, isLoading } = useAppSelector(
     (store) => store.trendingMovies
   );
@@ -17,7 +17,7 @@ const Header = () => {
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const newIndex = parseInt(
-      e.currentTarget.getAttribute("data-index") || "1"
+      e.currentTarget.getAttribute("data-index") || "0"
     );
 
     setSlide(newIndex);
@@ -25,8 +25,6 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getTrending(time));
-
-    console.log(trendingMovies);
   }, [time]);
 
   if (isLoading) {
@@ -41,22 +39,27 @@ const Header = () => {
       <article>
         <div>
           <h3>
-            {trendingMovies[0].title ||
-              trendingMovies[0].original_title ||
-              trendingMovies[0].original_name}
+            {trendingMovies[slide].title.slice(0, 24) ||
+              trendingMovies[slide].original_title.slice(0, 24) ||
+              trendingMovies[slide].original_name.slice(0, 24)}
+            {trendingMovies[slide].title?.length > 24 ||
+            trendingMovies[slide].original_title?.length > 24 ||
+            trendingMovies[slide].original_name?.length > 24
+              ? "..."
+              : ""}
           </h3>
-          <p>{trendingMovies[0].overview.slice(0, 220)}...</p>
-          <h5>{trendingMovies[0].release_date.slice(0, 4)}</h5>
+          <p>{trendingMovies[slide].overview.slice(0, 220)}...</p>
+          <h5>{trendingMovies[slide].release_date.slice(0, 4)}</h5>
           <button>Rate</button>
           <HeaderSlides slide={slide}>
+            <div data-index={0} onClick={handleClick} />
             <div data-index={1} onClick={handleClick} />
             <div data-index={2} onClick={handleClick} />
             <div data-index={3} onClick={handleClick} />
-            <div data-index={4} onClick={handleClick} />
           </HeaderSlides>
         </div>
         <img
-          src={backdropUrl + trendingMovies[0].backdrop_path}
+          src={backdropUrl + trendingMovies[slide].backdrop_path}
           alt="backdropImg"
         />
         <HeaderRating>

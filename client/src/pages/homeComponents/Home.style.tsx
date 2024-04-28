@@ -172,7 +172,7 @@ export const HeaderSlides = styled.div<HeaderSlidesProps>`
 
     cursor: pointer;
 
-    &:nth-child(${({ slide }) => slide}) {
+    &:nth-child(${({ slide }) => slide + 1}) {
       background-color: ${secondaryColor};
     }
   }
