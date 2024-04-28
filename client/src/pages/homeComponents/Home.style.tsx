@@ -78,11 +78,12 @@ export const Header = styled.header`
     }
 
     img {
+      height: 100%;
       border-radius: 0 12px 12px 0;
     }
 
     > div:first-of-type {
-      padding: 0 20px;
+      padding: 20px;
 
       > p {
         color: ${paragraphColor};

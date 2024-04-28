@@ -33,9 +33,13 @@ export type InitialNavbar = {
 export type Trending = {
   id: number;
   title: string;
-  name: string;
   profile_path: string;
   poster_path: string;
+  original_title: string;
+  original_name: string;
+  overview: string;
+  backdrop_path: string;
+  release_date: string;
 };
 
 export type InitialTrendPeople = {

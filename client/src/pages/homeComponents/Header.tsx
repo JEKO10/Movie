@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoStar } from "react-icons/io5";
 
-import backdropImg from "../../assets/images/news.jpg";
 import poster from "../../assets/images/poster.png";
+import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { Loader, LoaderWrapper } from "../../common/Loader";
+import { getTrending } from "../../redux/trendingMovies/trendingMoviesSlice";
 import { Header as Container, HeaderRating, HeaderSlides } from "./Home.style";
 
 const Header = () => {
   const [slide, setSlide] = useState(1);
+  const { trendingMovies, time, isLoading } = useAppSelector(
+    (store) => store.trendingMovies
+  );
+  const dispatch = useAppDispatch();
+  const backdropUrl = "https://image.tmdb.org/t/p/w500/";
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const newIndex = parseInt(
@@ -16,17 +23,30 @@ const Header = () => {
     setSlide(newIndex);
   };
 
+  useEffect(() => {
+    dispatch(getTrending(time));
+
+    console.log(trendingMovies);
+  }, [time]);
+
+  if (isLoading) {
+    return (
+      <LoaderWrapper>
+        <Loader />
+      </LoaderWrapper>
+    );
+  }
   return (
     <Container>
       <article>
         <div>
-          <h3>Inglourious basterds</h3>
-          <p>
-            In Nazi-occupied France during World War II, a plan to assassinate
-            Nazi leaders by a group of Jewish U.S. soldiers coincides with a
-            theatre owner&apos;s vengeful plans for the same.
-          </p>
-          <h5>2h 33min</h5>
+          <h3>
+            {trendingMovies[0].title ||
+              trendingMovies[0].original_title ||
+              trendingMovies[0].original_name}
+          </h3>
+          <p>{trendingMovies[0].overview.slice(0, 220)}...</p>
+          <h5>{trendingMovies[0].release_date.slice(0, 4)}</h5>
           <button>Rate</button>
           <HeaderSlides slide={slide}>
             <div data-index={1} onClick={handleClick} />
@@ -35,7 +55,10 @@ const Header = () => {
             <div data-index={4} onClick={handleClick} />
           </HeaderSlides>
         </div>
-        <img src={backdropImg} alt="backdropImg" />
+        <img
+          src={backdropUrl + trendingMovies[0].backdrop_path}
+          alt="backdropImg"
+        />
         <HeaderRating>
           <span>
             <IoStar />

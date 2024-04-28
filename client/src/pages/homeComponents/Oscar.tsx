@@ -18,7 +18,7 @@ const Oscar = () => {
 
   return (
     <Container>
-      <h2>And the Oscar Goes to...</h2>
+      <h2>Trending movies</h2>
       <article>
         {trendingMovies?.slice(0, 6).map(({ id, poster_path }) => (
           <Link to={`/movie/${id}`} key={id}>
