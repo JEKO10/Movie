@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoStar } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 import poster from "../../assets/images/poster.png";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
@@ -50,7 +51,9 @@ const Header = () => {
           </h3>
           <p>{trendingMovies[slide].overview.slice(0, 220)}...</p>
           <h5>{trendingMovies[slide].release_date.slice(0, 4)}</h5>
-          <button>Rate</button>
+          <button>
+            <Link to={`/movie/${trendingMovies[slide].id}`}>Rate</Link>
+          </button>
           <HeaderSlides slide={slide}>
             <div data-index={0} onClick={handleClick} />
             <div data-index={1} onClick={handleClick} />
@@ -70,7 +73,7 @@ const Header = () => {
             <IoStar />
             <IoStar />
           </span>
-          <p>4.2/5</p>
+          <p>{trendingMovies[slide].vote_average}</p>
         </HeaderRating>
       </article>
       <article>

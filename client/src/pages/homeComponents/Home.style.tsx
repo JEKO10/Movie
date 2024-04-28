@@ -65,7 +65,7 @@ export const Header = styled.header`
 
     button {
       background-color: ${secondaryColor};
-      color: #fff;
+
       font-size: 1.5rem;
       font-family: ${primaryFont};
       text-transform: uppercase;
@@ -75,6 +75,19 @@ export const Header = styled.header`
       border-radius: 12px;
 
       cursor: pointer;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      &:hover {
+        background-color: #fff;
+
+        a {
+          color: ${secondaryColor};
+        }
+      }
     }
 
     img {
@@ -146,14 +159,18 @@ export const Header = styled.header`
 `;
 
 export const HeaderRating = styled.div`
-  color: ${secondaryColor};
+  background-color: ${secondaryColor};
+  color: #fff;
 
   position: absolute;
   top: 1rem;
   right: 1rem;
 
+  padding: 5px 10px;
+  border-radius: 4px;
+
   p {
-    color: ${secondaryColor};
+    color: #fff;
   }
 `;
 
