@@ -39,6 +39,8 @@ export const Header = styled.header`
     ${flexMixin({ justify: "space-between", align: "center" })};
     background-color: ${primaryColor};
 
+    position: relative;
+
     margin-bottom: 3rem;
     border-radius: 12px;
 
@@ -66,12 +68,12 @@ export const Header = styled.header`
     button {
       background-color: ${secondaryColor};
 
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-family: ${primaryFont};
       text-transform: uppercase;
 
       margin-top: 0.5rem;
-      padding: 5px 20px;
+      padding: 0 10px;
       border-radius: 12px;
 
       cursor: pointer;
@@ -96,12 +98,15 @@ export const Header = styled.header`
     }
 
     > div:first-of-type {
-      padding: 20px;
+      min-height: 100%;
+      padding: 0 20px;
 
       > p {
         color: ${paragraphColor};
         font-size: 1.1rem;
         line-height: 22px;
+
+        height: 110px;
       }
     }
   }

@@ -40,16 +40,16 @@ const Header = () => {
       <article>
         <div>
           <h3>
-            {trendingMovies[slide].title.slice(0, 24) ||
-              trendingMovies[slide].original_title.slice(0, 24) ||
-              trendingMovies[slide].original_name.slice(0, 24)}
-            {trendingMovies[slide].title?.length > 24 ||
-            trendingMovies[slide].original_title?.length > 24 ||
-            trendingMovies[slide].original_name?.length > 24
+            {trendingMovies[slide].title.slice(0, 14) ||
+              trendingMovies[slide].original_title.slice(0, 14) ||
+              trendingMovies[slide].original_name.slice(0, 14)}
+            {trendingMovies[slide].title?.length > 14 ||
+            trendingMovies[slide].original_title?.length > 14 ||
+            trendingMovies[slide].original_name?.length > 14
               ? "..."
               : ""}
           </h3>
-          <p>{trendingMovies[slide].overview.slice(0, 220)}...</p>
+          <p>{trendingMovies[slide].overview.slice(0, 200)}...</p>
           <h5>{trendingMovies[slide].release_date.slice(0, 4)}</h5>
           <button>
             <Link to={`/movie/${trendingMovies[slide].id}`}>Rate</Link>
