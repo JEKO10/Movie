@@ -184,8 +184,6 @@ export const HeaderSlides = styled.div<HeaderSlidesProps>`
   margin-top: 1rem;
 
   div {
-    background-color: ${tertiaryColor};
-
     height: 6px;
     width: 33px;
 
@@ -194,8 +192,17 @@ export const HeaderSlides = styled.div<HeaderSlidesProps>`
 
     cursor: pointer;
 
+    background: linear-gradient(
+      to right,
+      ${secondaryColor} 50%,
+      ${tertiaryColor} 50%
+    );
+    background-size: 200% 100%;
+    background-position: bottom right;
+    transition: all 500ms ease-out;
+
     &:nth-child(${({ slide }) => slide + 1}) {
-      background-color: ${secondaryColor};
+      background-position: bottom left;
     }
   }
 `;
