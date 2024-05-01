@@ -58,8 +58,9 @@ export const HeaderMovie = styled.article<SlideProps>`
 
     div:first-of-type {
       min-height: 100%;
+      width: 345px;
 
-      margin-top: -1.5rem;
+      margin-top: 1.5rem;
       padding: 0 20px;
 
       > p {
@@ -128,12 +129,12 @@ export const HeaderMovie = styled.article<SlideProps>`
 `;
 
 export const HeaderRating = styled.div`
-  background-color: ${secondaryColor};
+  background-color: rgba(0, 175, 81, 0.8);
   color: #fff;
 
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.5rem;
+  right: 0.5rem;
 
   padding: 5px 10px;
   border-radius: 4px;
