@@ -22,14 +22,8 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const newIndex = parseInt(
-      e.currentTarget.getAttribute("data-index") || "0"
-    );
-
-    setSlide(newIndex);
-
-    console.log(trendingMovies);
+  const handleClick = (index: number) => {
+    setSlide(index);
   };
 
   useEffect(() => {
@@ -45,45 +39,44 @@ const Header = () => {
   }
   return (
     <Container>
-      <HeaderMovie>
-        <article>
-          <div>
-            <h3>
-              {trendingMovies[slide].title.slice(0, 14) ||
-                trendingMovies[slide].original_title.slice(0, 14) ||
-                trendingMovies[slide].original_name.slice(0, 14)}
-              {trendingMovies[slide].title?.length > 14 ||
-              trendingMovies[slide].original_title?.length > 14 ||
-              trendingMovies[slide].original_name?.length > 14
-                ? "..."
-                : ""}
-            </h3>
-            <p>{trendingMovies[slide].overview.slice(0, 200)}...</p>
-            <h5>{trendingMovies[slide].release_date.slice(0, 4)}</h5>
-            <button>
-              <Link to={`/movie/${trendingMovies[slide].id}`}>Rate</Link>
-            </button>
-          </div>
-          <img
-            src={backdropUrl + trendingMovies[slide].backdrop_path}
-            alt="backdropImg"
-          />
-        </article>
-        <HeaderRating>
-          <span>
-            <IoStar />
-            <IoStar />
-            <IoStar />
-            <IoStar />
-            <IoStar />
-          </span>
-          <p>{trendingMovies[slide].vote_average}</p>
-        </HeaderRating>
+      <HeaderMovie slide={slide}>
+        {trendingMovies.slice(0, 4).map((movie) => (
+          <article key={movie.id}>
+            <div>
+              <h3>
+                {movie.title.slice(0, 14) ||
+                  movie.original_title.slice(0, 14) ||
+                  movie.original_name.slice(0, 14)}
+                {movie.title?.length > 14 ||
+                movie.original_title?.length > 14 ||
+                movie.original_name?.length > 14
+                  ? "..."
+                  : ""}
+              </h3>
+              <p>{movie.overview.slice(0, 200)}...</p>
+              <h5>{movie.release_date.slice(0, 4)}</h5>
+              <button>
+                <Link to={`/movie/${movie.id}`}>Rate</Link>
+              </button>
+            </div>
+            <img src={backdropUrl + movie.backdrop_path} alt="backdropImg" />
+            <HeaderRating>
+              <span>
+                <IoStar />
+                <IoStar />
+                <IoStar />
+                <IoStar />
+                <IoStar />
+              </span>
+              <p>{movie.vote_average}</p>
+            </HeaderRating>
+          </article>
+        ))}
         <HeaderSlides slide={slide}>
-          <div data-index={0} onClick={handleClick} />
-          <div data-index={1} onClick={handleClick} />
-          <div data-index={2} onClick={handleClick} />
-          <div data-index={3} onClick={handleClick} />
+          <div onClick={() => handleClick(0)} />
+          <div onClick={() => handleClick(1)} />
+          <div onClick={() => handleClick(2)} />
+          <div onClick={() => handleClick(3)} />
         </HeaderSlides>
       </HeaderMovie>
       <HeaderInfo>

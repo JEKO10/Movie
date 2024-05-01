@@ -13,7 +13,7 @@ type SidebarProp = {
   isScrolled: boolean;
 };
 
-type HeaderSlidesProps = {
+type SlideProps = {
   slide: number;
 };
 
@@ -36,7 +36,8 @@ export const Header = styled.header`
   position: relative;
 `;
 
-export const HeaderMovie = styled.article`
+export const HeaderMovie = styled.article<SlideProps>`
+  display: flex;
   background-color: ${primaryColor};
 
   position: relative;
@@ -44,8 +45,16 @@ export const HeaderMovie = styled.article`
   margin-bottom: 3rem;
   border-radius: 12px;
 
+  overflow: hidden;
+
   > article {
     ${flexMixin({ justify: "space-between", align: "center" })};
+
+    position: relative;
+
+    transform: ${({ slide }) => css`translateX(-${slide * 100}%)`};
+
+    transition: transform 500ms ease;
 
     div:first-of-type {
       min-height: 100%;
@@ -134,7 +143,7 @@ export const HeaderRating = styled.div`
   }
 `;
 
-export const HeaderSlides = styled.div<HeaderSlidesProps>`
+export const HeaderSlides = styled.div<SlideProps>`
   ${flexMixin({ justify: "flex-start", align: "center" })};
 
   position: absolute;
