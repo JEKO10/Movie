@@ -6,7 +6,13 @@ import poster from "../../assets/images/poster.png";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { getTrending } from "../../redux/trendingMovies/trendingMoviesSlice";
-import { Header as Container, HeaderRating, HeaderSlides } from "./Home.style";
+import {
+  Header as Container,
+  HeaderInfo,
+  HeaderMovie,
+  HeaderRating,
+  HeaderSlides
+} from "./Home.style";
 
 const Header = () => {
   const [slide, setSlide] = useState(0);
@@ -14,7 +20,7 @@ const Header = () => {
     (store) => store.trendingMovies
   );
   const dispatch = useAppDispatch();
-  const backdropUrl = "https://image.tmdb.org/t/p/w500/";
+  const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const newIndex = parseInt(
@@ -22,6 +28,8 @@ const Header = () => {
     );
 
     setSlide(newIndex);
+
+    console.log(trendingMovies);
   };
 
   useEffect(() => {
@@ -37,34 +45,30 @@ const Header = () => {
   }
   return (
     <Container>
-      <article>
-        <div>
-          <h3>
-            {trendingMovies[slide].title.slice(0, 14) ||
-              trendingMovies[slide].original_title.slice(0, 14) ||
-              trendingMovies[slide].original_name.slice(0, 14)}
-            {trendingMovies[slide].title?.length > 14 ||
-            trendingMovies[slide].original_title?.length > 14 ||
-            trendingMovies[slide].original_name?.length > 14
-              ? "..."
-              : ""}
-          </h3>
-          <p>{trendingMovies[slide].overview.slice(0, 200)}...</p>
-          <h5>{trendingMovies[slide].release_date.slice(0, 4)}</h5>
-          <button>
-            <Link to={`/movie/${trendingMovies[slide].id}`}>Rate</Link>
-          </button>
-          <HeaderSlides slide={slide}>
-            <div data-index={0} onClick={handleClick} />
-            <div data-index={1} onClick={handleClick} />
-            <div data-index={2} onClick={handleClick} />
-            <div data-index={3} onClick={handleClick} />
-          </HeaderSlides>
-        </div>
-        <img
-          src={backdropUrl + trendingMovies[slide].backdrop_path}
-          alt="backdropImg"
-        />
+      <HeaderMovie>
+        <article>
+          <div>
+            <h3>
+              {trendingMovies[slide].title.slice(0, 14) ||
+                trendingMovies[slide].original_title.slice(0, 14) ||
+                trendingMovies[slide].original_name.slice(0, 14)}
+              {trendingMovies[slide].title?.length > 14 ||
+              trendingMovies[slide].original_title?.length > 14 ||
+              trendingMovies[slide].original_name?.length > 14
+                ? "..."
+                : ""}
+            </h3>
+            <p>{trendingMovies[slide].overview.slice(0, 200)}...</p>
+            <h5>{trendingMovies[slide].release_date.slice(0, 4)}</h5>
+            <button>
+              <Link to={`/movie/${trendingMovies[slide].id}`}>Rate</Link>
+            </button>
+          </div>
+          <img
+            src={backdropUrl + trendingMovies[slide].backdrop_path}
+            alt="backdropImg"
+          />
+        </article>
         <HeaderRating>
           <span>
             <IoStar />
@@ -75,8 +79,14 @@ const Header = () => {
           </span>
           <p>{trendingMovies[slide].vote_average}</p>
         </HeaderRating>
-      </article>
-      <article>
+        <HeaderSlides slide={slide}>
+          <div data-index={0} onClick={handleClick} />
+          <div data-index={1} onClick={handleClick} />
+          <div data-index={2} onClick={handleClick} />
+          <div data-index={3} onClick={handleClick} />
+        </HeaderSlides>
+      </HeaderMovie>
+      <HeaderInfo>
         <div>
           <img src={poster} alt="Director" />
           <span>
@@ -104,7 +114,7 @@ const Header = () => {
             <li>#Suspense</li>
           </ul>
         </div>
-      </article>
+      </HeaderInfo>
     </Container>
   );
 };

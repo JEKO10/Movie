@@ -34,71 +34,23 @@ export const Header = styled.header`
   margin: 1rem 455px 3rem auto;
 
   position: relative;
+`;
 
-  article:first-of-type {
+export const HeaderMovie = styled.article`
+  background-color: ${primaryColor};
+
+  position: relative;
+
+  margin-bottom: 3rem;
+  border-radius: 12px;
+
+  > article {
     ${flexMixin({ justify: "space-between", align: "center" })};
-    background-color: ${primaryColor};
 
-    position: relative;
-
-    margin-bottom: 3rem;
-    border-radius: 12px;
-
-    h3 {
-      font-size: 2.6rem;
-      font-weight: 100;
-      text-transform: uppercase;
-      line-height: 40px;
-
-      margin-bottom: 0.5rem;
-    }
-
-    h4 {
-      font-weight: 100;
-    }
-
-    h5 {
-      color: ${paragraphColor};
-      font-size: 1.1rem;
-      font-weight: 100;
-
-      margin-top: 0.5rem;
-    }
-
-    button {
-      background-color: ${secondaryColor};
-
-      font-size: 1.2rem;
-      font-family: ${primaryFont};
-      text-transform: uppercase;
-
-      margin-top: 0.5rem;
-      padding: 0 10px;
-      border-radius: 12px;
-
-      cursor: pointer;
-
-      a {
-        color: #fff;
-        text-decoration: none;
-      }
-
-      &:hover {
-        background-color: #fff;
-
-        a {
-          color: ${secondaryColor};
-        }
-      }
-    }
-
-    img {
-      height: 100%;
-      border-radius: 0 12px 12px 0;
-    }
-
-    > div:first-of-type {
+    div:first-of-type {
       min-height: 100%;
+
+      margin-top: -1.5rem;
       padding: 0 20px;
 
       > p {
@@ -111,55 +63,58 @@ export const Header = styled.header`
     }
   }
 
-  article:last-of-type {
-    ${flexMixin({ justify: "space-between", align: "center" })};
+  h3 {
+    font-size: 2.6rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    line-height: 40px;
 
-    img {
-      height: 160px;
-      width: 96px;
+    margin-bottom: 0.5rem;
+  }
 
-      margin-right: 1rem;
+  h4 {
+    font-weight: 100;
+  }
+
+  h5 {
+    color: ${paragraphColor};
+    font-size: 1.1rem;
+    font-weight: 100;
+
+    margin-top: 0.5rem;
+  }
+
+  button {
+    background-color: ${secondaryColor};
+
+    font-size: 1.5rem;
+    font-family: ${primaryFont};
+    text-transform: uppercase;
+
+    margin-top: 0.5rem;
+    padding: 2px 15px;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    a {
+      color: #fff;
+      text-decoration: none;
     }
 
-    div {
-      ${flexMixin({ justify: "flex-start", align: "flex-start" })};
-      background-color: ${primaryColor};
+    &:hover {
+      background-color: #fff;
 
-      width: 245px;
-
-      padding: 10px;
-      border-radius: 12px;
-
-      cursor: pointer;
-
-      &:last-of-type {
-        flex-direction: column;
+      a {
+        color: ${secondaryColor};
       }
     }
+  }
 
-    h4 {
-      color: ${paragraphColor};
-      font-size: 1.5rem;
-      font-weight: 100;
-    }
-
-    p {
-      font-size: 1.4rem;
-      line-height: 30px;
-    }
-
-    ul {
-      ${flexMixin({ justify: "flex-start", align: "center" })};
-      flex-wrap: wrap;
-      gap: 5px;
-
-      list-style-type: none;
-
-      li {
-        font-size: 1.4rem;
-        line-height: 25px;
-      }
-    }
+  img {
+    height: 100%;
+    width: 500px;
+    border-radius: 0 12px 12px 0;
   }
 `;
 
@@ -181,7 +136,10 @@ export const HeaderRating = styled.div`
 
 export const HeaderSlides = styled.div<HeaderSlidesProps>`
   ${flexMixin({ justify: "flex-start", align: "center" })};
-  margin-top: 1rem;
+
+  position: absolute;
+  bottom: 0.8rem;
+  left: 20px;
 
   div {
     height: 6px;
@@ -203,6 +161,57 @@ export const HeaderSlides = styled.div<HeaderSlidesProps>`
 
     &:nth-child(${({ slide }) => slide + 1}) {
       background-position: bottom left;
+    }
+  }
+`;
+
+export const HeaderInfo = styled.article`
+  ${flexMixin({ justify: "space-between", align: "center" })};
+
+  img {
+    height: 160px;
+    width: 96px;
+
+    margin-right: 1rem;
+  }
+
+  div {
+    ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+    background-color: ${primaryColor};
+
+    width: 245px;
+
+    padding: 10px;
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    &:last-of-type {
+      flex-direction: column;
+    }
+  }
+
+  h4 {
+    color: ${paragraphColor};
+    font-size: 1.5rem;
+    font-weight: 100;
+  }
+
+  p {
+    font-size: 1.4rem;
+    line-height: 30px;
+  }
+
+  ul {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+    flex-wrap: wrap;
+    gap: 5px;
+
+    list-style-type: none;
+
+    li {
+      font-size: 1.4rem;
+      line-height: 25px;
     }
   }
 `;
