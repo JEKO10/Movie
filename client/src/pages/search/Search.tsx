@@ -68,8 +68,6 @@ const Search = () => {
 
   useEffect(() => {
     getSearchData();
-
-    console.log(searchData);
   }, [inputValue, currentPage]);
 
   if (isLoading) {

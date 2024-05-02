@@ -41,6 +41,7 @@ export type Trending = {
   backdrop_path: string;
   release_date: string;
   vote_average: number;
+  genre_ids: number[];
 };
 
 export type InitialTrendPeople = {

@@ -189,6 +189,7 @@ export const HeaderInfo = styled.article`
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};
     background-color: ${primaryColor};
 
+    height: 180px;
     width: 245px;
 
     padding: 10px;

@@ -16,19 +16,33 @@ import {
   HeaderSlides
 } from "./Home.style";
 
+type GenreList = {
+  id: number;
+  name: string;
+};
+
 const Header = () => {
   const [slide, setSlide] = useState(0);
   const [movieCredits, setMovieCredits] = useState<MovieCreditsType>();
+  const [genresList, setGenresList] = useState<GenreList[]>();
   const { trendingMovies, time, isLoading } = useAppSelector(
     (store) => store.trendingMovies
   );
   const dispatch = useAppDispatch();
   const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
 
-  const handleClick = (index: number) => {
+  const handleClick = async (index: number) => {
     setSlide(index);
 
-    console.log(movieCredits);
+    try {
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/${trendingMovies[index]?.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+      );
+
+      setMovieCredits(response.data);
+    } catch (error) {
+      console.error("Error fetching credits:", error);
+    }
   };
 
   useEffect(() => {
@@ -36,13 +50,10 @@ const Header = () => {
 
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${trendingMovies[slide]?.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=57f3cbeef6fb415a143ea528978252e4&language=en-US`
       )
       .then((response) => {
-        setMovieCredits(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching credits:", error);
+        setGenresList(response.data.genres);
       });
   }, [time]);
 
@@ -100,27 +111,32 @@ const Header = () => {
           <img src={poster} alt="Director" />
           <span>
             <h4>Director:</h4>
-            <p>Stanley Kubrick</p>
+            <p>
+              {
+                movieCredits?.crew.find(
+                  (person) =>
+                    person.job === "Director" ||
+                    person.known_for_department === "Directing"
+                )?.name
+              }
+            </p>
           </span>
         </div>
         <div>
           <img src={poster} alt="Director" />
           <span>
             <h4>Main actor:</h4>
-            <p>Tom Cruise</p>
+            <p>{movieCredits?.cast[0].name}</p>
           </span>
         </div>
         <div>
           <h4>Genre:</h4>
           <ul>
-            <li>#Wartime</li>
-            <li>#Adventure</li>
-            <li>#Action</li>
-            <li>#Noir</li>
-            <li>#Slasher</li>
-            <li>#Drama</li>
-            <li>#Propaganda</li>
-            <li>#Suspense</li>
+            {trendingMovies[slide].genre_ids.map((id) => {
+              const genre = genresList?.find((genre) => genre.id === id);
+
+              return genre && <li key={genre.id}>#{genre.name}</li>;
+            })}
           </ul>
         </div>
       </HeaderInfo>
