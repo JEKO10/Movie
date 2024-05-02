@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -5,6 +6,7 @@ import { Link } from "react-router-dom";
 import poster from "../../assets/images/poster.png";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
+import { MovieCreditsType } from "../../common/types/typesTS";
 import { getTrending } from "../../redux/trendingMovies/trendingMoviesSlice";
 import {
   Header as Container,
@@ -16,6 +18,7 @@ import {
 
 const Header = () => {
   const [slide, setSlide] = useState(0);
+  const [movieCredits, setMovieCredits] = useState<MovieCreditsType>();
   const { trendingMovies, time, isLoading } = useAppSelector(
     (store) => store.trendingMovies
   );
@@ -24,10 +27,23 @@ const Header = () => {
 
   const handleClick = (index: number) => {
     setSlide(index);
+
+    console.log(movieCredits);
   };
 
   useEffect(() => {
     dispatch(getTrending(time));
+
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${trendingMovies[slide]?.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+      )
+      .then((response) => {
+        setMovieCredits(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching credits:", error);
+      });
   }, [time]);
 
   if (isLoading) {

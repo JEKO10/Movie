@@ -125,12 +125,14 @@ const Search = () => {
           </>
         ))}
       </article>
-      <Pagination
-        totalItems={totalItems}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        itemsPerPage={20}
-      />
+      {searchData.length > 0 && (
+        <Pagination
+          totalItems={totalItems}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          itemsPerPage={20}
+        />
+      )}
     </SearchContainer>
   );
 };

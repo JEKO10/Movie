@@ -149,7 +149,7 @@ type MovieCrew = {
   profile_path: string;
 };
 
-type MovieCreditsType = {
+export type MovieCreditsType = {
   cast: MovieCast[];
   crew: MovieCrew[];
 };
