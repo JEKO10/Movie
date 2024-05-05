@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-import poster from "../../assets/images/poster.png";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { MovieCreditsType } from "../../common/types/typesTS";
@@ -30,6 +29,7 @@ const Header = () => {
   );
   const dispatch = useAppDispatch();
   const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
+  const profileUrl = "https://image.tmdb.org/t/p/w185/";
 
   const handleClick = async (index: number) => {
     setSlide(index);
@@ -108,7 +108,17 @@ const Header = () => {
       </HeaderMovie>
       <HeaderInfo>
         <div>
-          <img src={poster} alt="Director" />
+          <img
+            src={
+              profileUrl +
+              movieCredits?.crew.find(
+                (person) =>
+                  person.job === "Director" ||
+                  person.known_for_department === "Directing"
+              )?.profile_path
+            }
+            alt="Director"
+          />
           <span>
             <h4>Director:</h4>
             <p>
@@ -123,7 +133,10 @@ const Header = () => {
           </span>
         </div>
         <div>
-          <img src={poster} alt="Director" />
+          <img
+            src={profileUrl + movieCredits?.cast[0].profile_path}
+            alt="Director"
+          />
           <span>
             <h4>Main actor:</h4>
             <p>{movieCredits?.cast[0].name}</p>

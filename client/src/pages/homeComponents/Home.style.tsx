@@ -283,7 +283,7 @@ export const Features = styled.section`
 
     width: 845px;
 
-    margin-bottom: 2rem;
+    margin-top: 2rem;
     padding: 20px;
     border-radius: 10px;
 
