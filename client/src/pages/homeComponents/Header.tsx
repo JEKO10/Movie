@@ -22,7 +22,7 @@ type GenreList = {
 
 const Header = () => {
   const [slide, setSlide] = useState(0);
-  const [movieCredits, setMovieCredits] = useState<MovieCreditsType>();
+  const [movieCredits, setMovieCredits] = useState<MovieCreditsType[]>();
   const [genresList, setGenresList] = useState<GenreList[]>();
   const { trendingMovies, time, isLoading } = useAppSelector(
     (store) => store.trendingMovies
@@ -31,22 +31,34 @@ const Header = () => {
   const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
   const profileUrl = "https://image.tmdb.org/t/p/w185/";
 
-  const handleClick = async (index: number) => {
-    setSlide(index);
+  const getCredits = async () => {
+    const movieCreditsArray: MovieCreditsType[] = [];
 
     try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${trendingMovies[index]?.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
-      );
+      for (let i = 0; i < 4; i++) {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${trendingMovies[i]?.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
+        );
 
-      setMovieCredits(response.data);
+        movieCreditsArray.push(response.data);
+      }
+
+      setMovieCredits(movieCreditsArray);
     } catch (error) {
       console.error("Error fetching credits:", error);
     }
   };
 
+  const handleClick = (index: number) => {
+    setSlide(index);
+    console.log(movieCredits);
+
+    getCredits();
+  };
+
   useEffect(() => {
     dispatch(getTrending(time));
+    getCredits();
 
     axios
       .get(
@@ -55,6 +67,7 @@ const Header = () => {
       .then((response) => {
         setGenresList(response.data.genres);
       });
+    console.log(movieCredits);
   }, [time]);
 
   if (isLoading) {
@@ -107,41 +120,45 @@ const Header = () => {
         </HeaderSlides>
       </HeaderMovie>
       <HeaderInfo>
-        <div>
-          <img
-            src={
-              profileUrl +
-              movieCredits?.crew.find(
-                (person) =>
-                  person.job === "Director" ||
-                  person.known_for_department === "Directing"
-              )?.profile_path
-            }
-            alt="Director"
-          />
-          <span>
-            <h4>Director:</h4>
-            <p>
-              {
-                movieCredits?.crew.find(
+        {movieCredits?.map((credits) => (
+          <div key={credits.id}>
+            <img
+              src={
+                profileUrl +
+                credits?.crew.find(
                   (person) =>
                     person.job === "Director" ||
                     person.known_for_department === "Directing"
-                )?.name
+                )?.profile_path
               }
-            </p>
-          </span>
-        </div>
-        <div>
-          <img
-            src={profileUrl + movieCredits?.cast[0].profile_path}
-            alt="Director"
-          />
-          <span>
-            <h4>Main actor:</h4>
-            <p>{movieCredits?.cast[0].name}</p>
-          </span>
-        </div>
+              alt="Director"
+            />
+            <span>
+              <h4>Director:</h4>
+              <p>
+                {
+                  credits?.crew.find(
+                    (person) =>
+                      person.job === "Director" ||
+                      person.known_for_department === "Directing"
+                  )?.name
+                }
+              </p>
+            </span>
+          </div>
+        ))}
+        {movieCredits?.map((credits) => (
+          <div key={credits.id}>
+            <img
+              src={profileUrl + credits?.cast[0].profile_path}
+              alt="Director"
+            />
+            <span>
+              <h4>Top cast:</h4>
+              <p>{credits?.cast[0].name}</p>
+            </span>
+          </div>
+        ))}
         <div>
           <h4>Genre:</h4>
           <ul>

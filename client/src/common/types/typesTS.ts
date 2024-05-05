@@ -152,6 +152,7 @@ type MovieCrew = {
 };
 
 export type MovieCreditsType = {
+  id: number;
   cast: MovieCast[];
   crew: MovieCrew[];
 };
