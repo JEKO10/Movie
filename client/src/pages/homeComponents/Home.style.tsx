@@ -6,7 +6,7 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
-  tertiaryColor
+  tertiaryColor,
 } from "../../assets/style/GlobalStyles";
 
 type SidebarProp = {
@@ -53,7 +53,6 @@ export const HeaderMovie = styled.article<SlideProps>`
     position: relative;
 
     transform: ${({ slide }) => css`translateX(-${slide * 100}%)`};
-
     transition: transform 500ms ease;
 
     div:first-of-type {
@@ -175,31 +174,45 @@ export const HeaderSlides = styled.div<SlideProps>`
   }
 `;
 
-export const HeaderInfo = styled.article`
+export const HeaderInfo = styled.article<SlideProps>`
   ${flexMixin({ justify: "space-between", align: "center" })};
+
+  > article {
+    ${flexMixin({ justify: "flex-start", align: "flex-start" })};
+    background-color: ${primaryColor};
+
+    height: 180px;
+    width: 225px;
+
+    position: relative;
+
+    padding: 10px;
+    border-radius: 12px;
+
+    overflow: hidden;
+    cursor: pointer;
+
+    div {
+      ${flexMixin({ justify: "space-between", align: "flex-start" })};
+
+      width: 225px;
+
+      position: relative;
+
+      transform: ${({ slide }) => `translateX(-${slide * 100}%)`};
+      transition: transform 500ms ease;
+
+      span {
+        width: 120px;
+      }
+    }
+  }
 
   img {
     height: 160px;
     width: 96px;
 
     margin-right: 1rem;
-  }
-
-  div {
-    ${flexMixin({ justify: "flex-start", align: "flex-start" })};
-    background-color: ${primaryColor};
-
-    height: 180px;
-    width: 245px;
-
-    padding: 10px;
-    border-radius: 12px;
-
-    cursor: pointer;
-
-    &:last-of-type {
-      flex-direction: column;
-    }
   }
 
   h4 {

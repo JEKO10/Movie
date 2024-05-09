@@ -12,7 +12,7 @@ import {
   HeaderInfo,
   HeaderMovie,
   HeaderRating,
-  HeaderSlides
+  HeaderSlides,
 } from "./Home.style";
 
 type GenreList = {
@@ -67,7 +67,6 @@ const Header = () => {
       .then((response) => {
         setGenresList(response.data.genres);
       });
-    console.log(movieCredits);
   }, [time]);
 
   if (isLoading) {
@@ -119,46 +118,50 @@ const Header = () => {
           <div onClick={() => handleClick(3)} />
         </HeaderSlides>
       </HeaderMovie>
-      <HeaderInfo>
-        {movieCredits?.map((credits) => (
-          <div key={credits.id}>
-            <img
-              src={
-                profileUrl +
-                credits?.crew.find(
-                  (person) =>
-                    person.job === "Director" ||
-                    person.known_for_department === "Directing"
-                )?.profile_path
-              }
-              alt="Director"
-            />
-            <span>
-              <h4>Director:</h4>
-              <p>
-                {
+      <HeaderInfo slide={slide}>
+        <article>
+          {movieCredits?.map((credits) => (
+            <div key={credits.id}>
+              <img
+                src={
+                  profileUrl +
                   credits?.crew.find(
                     (person) =>
                       person.job === "Director" ||
                       person.known_for_department === "Directing"
-                  )?.name
+                  )?.profile_path
                 }
-              </p>
-            </span>
-          </div>
-        ))}
-        {movieCredits?.map((credits) => (
-          <div key={credits.id}>
-            <img
-              src={profileUrl + credits?.cast[0].profile_path}
-              alt="Director"
-            />
-            <span>
-              <h4>Top cast:</h4>
-              <p>{credits?.cast[0].name}</p>
-            </span>
-          </div>
-        ))}
+                alt="Director"
+              />
+              <span>
+                <h4>Director:</h4>
+                <p>
+                  {
+                    credits?.crew.find(
+                      (person) =>
+                        person.job === "Director" ||
+                        person.known_for_department === "Directing"
+                    )?.name
+                  }
+                </p>
+              </span>
+            </div>
+          ))}
+        </article>
+        <article>
+          {movieCredits?.map((credits) => (
+            <div key={credits.id}>
+              <img
+                src={profileUrl + credits?.cast[0].profile_path}
+                alt="Director"
+              />
+              <span>
+                <h4>Top cast:</h4>
+                <p>{credits?.cast[0].name}</p>
+              </span>
+            </div>
+          ))}
+        </article>
         <div>
           <h4>Genre:</h4>
           <ul>
