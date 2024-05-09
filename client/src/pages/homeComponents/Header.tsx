@@ -162,16 +162,20 @@ const Header = () => {
             </div>
           ))}
         </article>
-        <div>
-          <h4>Genre:</h4>
-          <ul>
-            {trendingMovies[slide].genre_ids.map((id) => {
-              const genre = genresList?.find((genre) => genre.id === id);
+        <article>
+          {trendingMovies.slice(0, 4).map((movie) => (
+            <div key={movie.id}>
+              <h4>Genre:</h4>
+              <ul>
+                {movie.genre_ids.map((id) => {
+                  const genre = genresList?.find((genre) => genre.id === id);
 
-              return genre && <li key={genre.id}>#{genre.name}</li>;
-            })}
-          </ul>
-        </div>
+                  return genre && <li key={genre.id}>#{genre.name}</li>;
+                })}
+              </ul>
+            </div>
+          ))}
+        </article>
       </HeaderInfo>
     </Container>
   );

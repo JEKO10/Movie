@@ -206,6 +206,10 @@ export const HeaderInfo = styled.article<SlideProps>`
         width: 120px;
       }
     }
+
+    &:last-of-type div {
+      flex-direction: column;
+    }
   }
 
   img {
@@ -231,11 +235,15 @@ export const HeaderInfo = styled.article<SlideProps>`
     flex-wrap: wrap;
     gap: 5px;
 
+    width: 225px;
+
     list-style-type: none;
 
     li {
       font-size: 1.4rem;
       line-height: 25px;
+
+      margin: 0 0.3rem;
     }
   }
 `;
