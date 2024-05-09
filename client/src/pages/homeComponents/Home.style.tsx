@@ -192,8 +192,9 @@ export const HeaderInfo = styled.article<SlideProps>`
     overflow: hidden;
     cursor: pointer;
 
-    div {
+    a {
       ${flexMixin({ justify: "space-between", align: "flex-start" })};
+      text-decoration: none;
 
       width: 225px;
 
@@ -217,6 +218,7 @@ export const HeaderInfo = styled.article<SlideProps>`
     width: 96px;
 
     margin-right: 1rem;
+    border-radius: 3px;
   }
 
   h4 {
@@ -226,6 +228,7 @@ export const HeaderInfo = styled.article<SlideProps>`
   }
 
   p {
+    color: #fff;
     font-size: 1.4rem;
     line-height: 30px;
   }
@@ -341,8 +344,9 @@ export const Oscar = styled.section`
   ${sharedSectionStyle};
 
   article {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    ${flexMixin({ justify: "space-between", align: "center" })};
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
 
     img {
       width: 162px;

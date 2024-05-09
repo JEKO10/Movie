@@ -8,7 +8,7 @@ import { TrendingMovies as Container } from "./Trending.styled";
 const TrendingMovies = () => {
   return (
     <Container>
-      <h2>Trending Movies</h2>
+      <h2>This Week&apos;s Picks</h2>
       <article>
         <div>
           <h3>1.</h3>
