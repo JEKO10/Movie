@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 import {
   useAppDispatch,
   useAppSelector,
-  useOutsideClick
+  useOutsideClick,
 } from "../../../common/hooks";
 import { setIsLoggedIn } from "../../profile/profileSlice";
 import { Underline } from "../../singleMovie/SingleMovie.styled";
 import {
   ProfileHeader,
   ProfileMenu as Container,
-  ProfileModal
+  ProfileModal,
 } from "../Navbar.styled";
 import { setIsProfileOpen } from "../navbarSlice";
 
@@ -33,7 +33,7 @@ const ProfileMenu = () => {
   const handleLogout = () => {
     axios
       .get("http://localhost:3001/logout", {
-        withCredentials: true
+        withCredentials: true,
       })
       .then(() => {
         window.location.reload();

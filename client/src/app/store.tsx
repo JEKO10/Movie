@@ -8,12 +8,10 @@ import { reducer as profileReducer } from "../redux/profile/profileSlice";
 import { reducer as ReviewsReducer } from "../redux/reviews/reviewsSlice";
 import { reducer as singleMovieReducer } from "../redux/singleMovie/singleMovieSlice";
 import { reducer as trendingMoviesReducer } from "../redux/trendingMovies/trendingMoviesSlice";
-import { reducer as trendingPeopleReducer } from "../redux/trendingPeople/trendingPeopleSlice";
 
 export const store = configureStore({
   reducer: {
     trendingMovies: trendingMoviesReducer,
-    trendingPeople: trendingPeopleReducer,
     personInfo: personInfoReducer,
     singleMovie: singleMovieReducer,
     navbar: navbarReducer,
