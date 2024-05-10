@@ -8,8 +8,9 @@ import {
   ProfileForm,
   ProfileName,
   RemoveMovie,
-  SettingsContainer
+  SettingsContainer,
 } from "./Settings.styled";
+import ToggleMenu from "./ToggleMenu";
 
 const Settings = () => {
   const [movieIndex, setMovieIndex] = useState<number>(0);
@@ -23,6 +24,7 @@ const Settings = () => {
 
   return (
     <SettingsContainer>
+      <ToggleMenu />
       <h2>Profile</h2>
       <div>
         <ProfileForm>

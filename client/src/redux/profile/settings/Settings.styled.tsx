@@ -5,7 +5,7 @@ import {
   flexMixin,
   primaryColor,
   primaryFont,
-  secondaryColor
+  secondaryColor,
 } from "../../../assets/style/GlobalStyles";
 
 type WrongInfoProps = {
@@ -34,6 +34,24 @@ export const SettingsContainer = styled.section`
   }
 `;
 
+export const ToggleMenu = styled.article`
+  margin: 1rem 0 2rem;
+
+  ul {
+    ${flexMixin({ justify: "flex-start", align: "center" })};
+    list-style-type: none;
+
+    li {
+      color: ${secondaryColor};
+      text-transform: uppercase;
+
+      margin-right: 2rem;
+
+      cursor: pointer;
+    }
+  }
+`;
+
 export const ProfileForm = styled.article`
   width: 40%;
 
@@ -57,6 +75,7 @@ export const ProfileForm = styled.article`
     font-weight: 100;
     letter-spacing: 1px;
 
+    max-height: 180px;
     width: 100%;
 
     margin-top: 0.2rem;

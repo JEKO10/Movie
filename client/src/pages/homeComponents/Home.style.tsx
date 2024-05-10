@@ -192,7 +192,8 @@ export const HeaderInfo = styled.article<SlideProps>`
     overflow: hidden;
     cursor: pointer;
 
-    a {
+    a,
+    div {
       ${flexMixin({ justify: "space-between", align: "flex-start" })};
       text-decoration: none;
 
