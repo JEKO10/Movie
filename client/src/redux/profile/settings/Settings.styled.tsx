@@ -35,7 +35,7 @@ export const SettingsContainer = styled.section`
 `;
 
 export const ToggleMenu = styled.article`
-  margin: 1rem 0 2rem;
+  margin: 1rem 0 1.5rem;
 
   ul {
     ${flexMixin({ justify: "flex-start", align: "center" })};
@@ -44,10 +44,22 @@ export const ToggleMenu = styled.article`
     li {
       color: ${secondaryColor};
       text-transform: uppercase;
+      letter-spacing: 1.5px;
 
-      margin-right: 2rem;
+      margin-right: 1rem;
 
       cursor: pointer;
+      transition: all 200ms ease;
+
+      & {
+        &:hover {
+          color: #fff;
+        }
+
+        &.active {
+          color: #fff;
+        }
+      }
     }
   }
 `;
