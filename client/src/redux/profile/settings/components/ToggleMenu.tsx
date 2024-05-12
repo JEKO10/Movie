@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { useAppDispatch } from "../../../common/hooks";
-import { Underline } from "../../singleMovie/SingleMovie.styled";
-import { setSettingsType } from "../profileSlice";
-import { ToggleMenu as Container } from "./Settings.styled";
+import { useAppDispatch } from "../../../../common/hooks";
+import { Underline } from "../../../singleMovie/SingleMovie.styled";
+import { setSettingsType } from "../../profileSlice";
+import { ToggleMenu as Container } from "../Settings.styled";
 
 const ToggleMenu = () => {
   const [active, setActive] = useState("profile");

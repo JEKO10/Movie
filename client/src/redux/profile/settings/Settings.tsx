@@ -1,27 +1,12 @@
-import React, { useState } from "react";
-import { FaCirclePlus } from "react-icons/fa6";
+import React from "react";
 
-import { useAppDispatch, useAppSelector } from "../../../common/hooks";
-import { setIsFavoriteOpen } from "../profileSlice";
-import {
-  FavoriteFilms,
-  ProfileForm,
-  ProfileName,
-  RemoveMovie,
-  SettingsContainer,
-} from "./Settings.styled";
-import ToggleMenu from "./ToggleMenu";
+import { useAppSelector } from "../../../common/hooks";
+import FavoriteFilms from "./components/FavoriteFilms";
+import ToggleMenu from "./components/ToggleMenu";
+import { ProfileForm, ProfileName, SettingsContainer } from "./Settings.styled";
 
 const Settings = () => {
-  const [movieIndex, setMovieIndex] = useState<number>(0);
   const { settingsType } = useAppSelector((store) => store.profile);
-  const dispatch = useAppDispatch();
-
-  const handleClick = (index: number) => {
-    setMovieIndex(index);
-
-    dispatch(setIsFavoriteOpen(true));
-  };
 
   return (
     <SettingsContainer>
@@ -63,27 +48,7 @@ const Settings = () => {
           </label>
           <button type="submit">Save changes</button>
         </ProfileForm>
-        <FavoriteFilms>
-          <h3>Favorite Films</h3>
-          <ul>
-            <li onClick={() => handleClick(0)}>
-              <RemoveMovie />
-              <FaCirclePlus />
-            </li>
-            <li onClick={() => handleClick(1)}>
-              <RemoveMovie />
-              <FaCirclePlus />
-            </li>
-            <li onClick={() => handleClick(2)}>
-              <RemoveMovie />
-              <FaCirclePlus />
-            </li>
-            <li onClick={() => handleClick(3)}>
-              <RemoveMovie />
-              <FaCirclePlus />
-            </li>
-          </ul>
-        </FavoriteFilms>
+        <FavoriteFilms />
       </div>
     </SettingsContainer>
   );
