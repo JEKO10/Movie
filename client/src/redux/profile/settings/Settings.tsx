@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 
-import { useAppDispatch } from "../../../common/hooks";
+import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { setIsFavoriteOpen } from "../profileSlice";
 import {
   FavoriteFilms,
@@ -14,6 +14,7 @@ import ToggleMenu from "./ToggleMenu";
 
 const Settings = () => {
   const [movieIndex, setMovieIndex] = useState<number>(0);
+  const { settingsType } = useAppSelector((store) => store.profile);
   const dispatch = useAppDispatch();
 
   const handleClick = (index: number) => {
@@ -25,7 +26,7 @@ const Settings = () => {
   return (
     <SettingsContainer>
       <ToggleMenu />
-      <h2>Profile</h2>
+      <h2>{settingsType}</h2>
       <div>
         <ProfileForm>
           <label>

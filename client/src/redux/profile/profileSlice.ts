@@ -8,10 +8,11 @@ const initialState: InitialProfile = {
     name: "",
     lastName: "",
     email: "",
-    bio: ""
+    bio: "",
   },
   isLoggedIn: false,
-  isFavoriteOpen: false
+  isFavoriteOpen: false,
+  settingsType: "profile",
 };
 
 const profileSlice = createSlice({
@@ -26,11 +27,18 @@ const profileSlice = createSlice({
     },
     setIsFavoriteOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isFavoriteOpen = payload;
-    }
-  }
+    },
+    setSettingsType: (state, { payload }: PayloadAction<string>) => {
+      state.settingsType = payload;
+    },
+  },
 });
 
-export const { setRegister, setIsLoggedIn, setIsFavoriteOpen } =
-  profileSlice.actions;
+export const {
+  setRegister,
+  setIsLoggedIn,
+  setIsFavoriteOpen,
+  setSettingsType,
+} = profileSlice.actions;
 
 export const { reducer } = profileSlice;

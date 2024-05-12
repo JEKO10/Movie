@@ -24,6 +24,7 @@ export const SettingsContainer = styled.section`
     color: rgba(255, 255, 255, 0.7);
     font-size: 1.5rem;
     font-weight: 100;
+    text-transform: capitalize;
 
     margin: 1rem 0 2rem;
   }

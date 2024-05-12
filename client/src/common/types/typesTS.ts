@@ -201,6 +201,7 @@ export type InitialProfile = {
   registerInfo: RegisterInfo;
   isLoggedIn: boolean;
   isFavoriteOpen: boolean;
+  settingsType: string;
 };
 
 // reviews & lists
