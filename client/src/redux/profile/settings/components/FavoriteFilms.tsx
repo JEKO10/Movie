@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 
-import { useAppDispatch } from "../../../../common/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { setInputValue } from "../../../navbar/navbarSlice";
 import { setIsFavoriteOpen } from "../../profileSlice";
 import { FavoriteFilms as Container, RemoveMovie } from "../Settings.styled";
 
 const FavoriteFilms = () => {
+  const { favoriteMovie } = useAppSelector((store) => store.profile);
   const [movieIndex, setMovieIndex] = useState<number>(0);
   const dispatch = useAppDispatch();
 
@@ -15,13 +16,12 @@ const FavoriteFilms = () => {
 
     dispatch(setIsFavoriteOpen(true));
     dispatch(setInputValue(""));
-
-    console.log(movieIndex);
   };
 
   return (
     <Container>
       <h3>Favorite Films</h3>
+      {favoriteMovie}
       <ul>
         <li onClick={() => handleClick(0)}>
           <RemoveMovie />

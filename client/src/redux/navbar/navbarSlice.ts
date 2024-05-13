@@ -98,6 +98,7 @@ const navbarSlice = createSlice({
     },
     setIsLogInOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isLogInOpen = payload;
+
       if (state.isLogInOpen) {
         document.body.style.overflow = "hidden";
       } else {
@@ -106,6 +107,7 @@ const navbarSlice = createSlice({
     },
     setIsSignUpOpen: (state, { payload }: PayloadAction<boolean>) => {
       state.isSignUpOpen = payload;
+
       if (state.isSignUpOpen) {
         document.body.style.overflow = "hidden";
       } else {

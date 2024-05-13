@@ -13,6 +13,7 @@ const initialState: InitialProfile = {
   isLoggedIn: false,
   isFavoriteOpen: false,
   settingsType: "profile",
+  favoriteMovie: 0,
 };
 
 const profileSlice = createSlice({
@@ -31,6 +32,9 @@ const profileSlice = createSlice({
     setSettingsType: (state, { payload }: PayloadAction<string>) => {
       state.settingsType = payload;
     },
+    setFavoriteMovie: (state, { payload }: PayloadAction<number>) => {
+      state.favoriteMovie = payload;
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export const {
   setIsLoggedIn,
   setIsFavoriteOpen,
   setSettingsType,
+  setFavoriteMovie,
 } = profileSlice.actions;
 
 export const { reducer } = profileSlice;

@@ -23,6 +23,7 @@ export const getMovie = createAsyncThunk(
           import.meta.env.VITE_API_KEY
         }&append_to_response=credits,keywords&adult=false`
       );
+
       return resp.data;
     } catch (error) {
       if (isAxiosError(error)) {

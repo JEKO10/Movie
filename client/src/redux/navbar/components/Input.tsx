@@ -2,14 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
-import { searchMovies, setInputValue, setIsModalOpen } from "../navbarSlice";
+import { searchMovies, setInputValue } from "../navbarSlice";
 
 type InputProps = {
   value: string;
 };
 
 const Input: React.FC<InputProps> = ({ value }) => {
-  const { isLogOpen, inputValue } = useAppSelector((store) => store.navbar);
+  const { inputValue } = useAppSelector((store) => store.navbar);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -18,12 +18,6 @@ const Input: React.FC<InputProps> = ({ value }) => {
 
     dispatch(setInputValue(value));
     dispatch(searchMovies());
-  };
-
-  const handleClick = () => {
-    if (isLogOpen) {
-      dispatch(setIsModalOpen(true));
-    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -38,7 +32,6 @@ const Input: React.FC<InputProps> = ({ value }) => {
       value={value}
       placeholder="Enter movie title..."
       onChange={handleInputChange}
-      onClick={handleClick}
       onKeyDown={handleKeyDown}
     />
   );

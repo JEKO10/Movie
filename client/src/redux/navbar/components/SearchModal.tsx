@@ -3,6 +3,7 @@ import React from "react";
 import { Fade } from "../../../assets/style/Fade.styled";
 import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { SearchData } from "../../../common/types/typesTS";
+import { setFavoriteMovie } from "../../profile/profileSlice";
 import { setIsMovieModalOpen } from "../navbarSlice";
 import { MovieInfo, SearchedData, SingleMovie } from "./SearchModal.styled";
 
@@ -19,7 +20,10 @@ const SearchModal = () => {
           <SingleMovie
             key={id}
             to={"#"}
-            onClick={() => dispatch(setIsMovieModalOpen({ isOpen: true, id }))}
+            onClick={() => {
+              dispatch(setFavoriteMovie(id));
+              dispatch(setIsMovieModalOpen({ isOpen: true, id }));
+            }}
           >
             <div>
               <MovieInfo>{title || name}</MovieInfo>
