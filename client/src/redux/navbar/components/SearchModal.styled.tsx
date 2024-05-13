@@ -1,29 +1,24 @@
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import {
   flexMixin,
   secondaryColor,
-  tertiaryColor
+  tertiaryColor,
 } from "../../../assets/style/GlobalStyles";
 
-type SearchedDataProps = {
-  isLogOpen: boolean;
-};
-
-export const SearchedData = styled.section<SearchedDataProps>`
+export const SearchedData = styled.section`
   background-color: rgb(19, 24, 28);
 
   position: absolute;
-  top: ${({ isLogOpen }) => (isLogOpen ? "21.5rem" : "6.1rem")};
-  right: ${({ isLogOpen }) => (isLogOpen ? "30.85rem" : "26.8rem")};
+  top: 24rem;
+  right: 30.85rem;
 
   height: fit-content;
-  width: ${({ isLogOpen }) => (isLogOpen ? "588px" : "524px")};
+  width: 588px;
   max-height: 260px;
 
   border-bottom: 0.1px solid ${secondaryColor};
-  /* border-radius: ${({ isLogOpen }) => (isLogOpen ? "3px" : "10px")}; */
 
   overflow-x: hidden;
   z-index: 10;
@@ -46,7 +41,7 @@ export const SearchedData = styled.section<SearchedDataProps>`
   }
 `;
 
-export const SingleMovie = styled(Link)<SearchedDataProps>`
+export const SingleMovie = styled(Link)`
   ${flexMixin({ justify: "flex-start", align: "center" })};
 
   color: #fff;
@@ -62,17 +57,13 @@ export const SingleMovie = styled(Link)<SearchedDataProps>`
     width: 50px;
   }
 
-  ${({ isLogOpen }) =>
-    isLogOpen &&
-    css`
-      div {
-        display: flex;
+  div {
+    display: flex;
 
-        width: 100%;
+    width: 100%;
 
-        padding: 10px 0;
-      }
-    `}
+    padding: 10px 0;
+  }
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);

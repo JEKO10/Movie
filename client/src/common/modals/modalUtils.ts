@@ -16,6 +16,7 @@ export const handleExit = <T>(
 
   setTimeout(() => {
     dispatch(setIsModalOpen(false as T));
+
     setIsClosing(false);
   }, 300);
 };
@@ -79,7 +80,7 @@ export const handleCheckboxChange = (
 ) => {
   setCheckboxes(() => ({
     ...checkboxes,
-    [checkboxName]: !checkboxes[checkboxName]
+    [checkboxName]: !checkboxes[checkboxName],
   }));
 };
 

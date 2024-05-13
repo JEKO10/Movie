@@ -12,7 +12,7 @@ import {
   Modal as Container,
 } from "../../../logModal/Log.style";
 import Input from "../../../navbar/components/Input";
-import { setIsLogOpen } from "../../../navbar/navbarSlice";
+import { setInputValue, setIsLogOpen } from "../../../navbar/navbarSlice";
 import { setIsFavoriteOpen } from "../../profileSlice";
 
 const FavoriteModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
@@ -28,7 +28,10 @@ const FavoriteModal: React.FC<ModalProps> = ({ isClosing, setIsClosing }) => {
       <Container ref={ref} isClosing={isClosing}>
         <h3>Pick a favorite film</h3>
         <IoMdClose
-          onClick={() => handleExit(setIsClosing, dispatch, setIsFavoriteOpen)}
+          onClick={() => {
+            handleExit(setIsClosing, dispatch, setIsFavoriteOpen);
+            dispatch(setInputValue(""));
+          }}
         />
         <form>
           <label>Name of Film</label>

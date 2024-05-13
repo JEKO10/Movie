@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
 
 import { useAppDispatch } from "../../../../common/hooks";
+import { setInputValue } from "../../../navbar/navbarSlice";
 import { setIsFavoriteOpen } from "../../profileSlice";
 import { FavoriteFilms as Container, RemoveMovie } from "../Settings.styled";
 
@@ -13,6 +14,9 @@ const FavoriteFilms = () => {
     setMovieIndex(index);
 
     dispatch(setIsFavoriteOpen(true));
+    dispatch(setInputValue(""));
+
+    console.log(movieIndex);
   };
 
   return (

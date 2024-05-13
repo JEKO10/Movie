@@ -4,7 +4,7 @@ import {
   flexMixin,
   primaryFont,
   secondaryColor,
-  tertiaryColor
+  tertiaryColor,
 } from "../../assets/style/GlobalStyles";
 
 type LogModalProps = {
@@ -43,7 +43,7 @@ const sharedModalStyle = css<LogModalProps>`
   padding: 20px;
   border-radius: 3px;
 
-  animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 0.3s;
+  animation: ${({ isClosing }) => (isClosing ? fadeOut : fadeIn)} 500ms;
 `;
 
 export const sharedButtonStyle = css`

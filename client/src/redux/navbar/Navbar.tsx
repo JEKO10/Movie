@@ -10,7 +10,9 @@ import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
 
 const Navbar = () => {
   const { isLogOpen, inputValue } = useAppSelector((store) => store.navbar);
-  const { isLoggedIn } = useAppSelector((store) => store.profile);
+  const { isLoggedIn, isFavoriteOpen } = useAppSelector(
+    (store) => store.profile
+  );
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -22,7 +24,7 @@ const Navbar = () => {
         </h1>
       </Link>
       <InputContainer>
-        <Input value={isLogOpen ? "" : inputValue} />
+        <Input value={isLogOpen || isFavoriteOpen ? "" : inputValue} />
         <FaSearch
           onClick={() => inputValue && navigate(`/search/${inputValue}`)}
         />
