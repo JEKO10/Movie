@@ -193,3 +193,33 @@ export const WrongInfo = styled.p<WrongInfoProps>`
 
   transition: opacity 0.3s ease-in-out;
 `;
+
+export const Auth = styled.article`
+  ${flexMixin({ justify: "center", align: "flex-start" })};
+  flex-direction: column;
+
+  label {
+    ${flexMixin({ justify: "center", align: "flex-start" })};
+    flex-direction: column;
+
+    span {
+      margin-bottom: 0.2rem;
+    }
+
+    input {
+      background-color: ${primaryColor};
+      color: #fff;
+      font-size: 1.5rem;
+      font-family: ${primaryFont};
+
+      margin-bottom: 0.5rem;
+      padding: 0 20px;
+      border-radius: 5px;
+      outline: none;
+    }
+  }
+
+  button {
+    margin-top: 1rem;
+  }
+`;

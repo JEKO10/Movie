@@ -14,7 +14,7 @@ const Settings = () => {
   return (
     <SettingsContainer>
       <ToggleMenu />
-      <h2>{settingsType}</h2>
+      <h2>{settingsType === "auth" ? "Change password" : settingsType}</h2>
       {settingsType === "profile" ? (
         <div>
           <ProfileForm />
