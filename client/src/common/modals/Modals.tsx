@@ -21,7 +21,9 @@ const Modals = () => {
   return (
     <section ref={ref}>
       <Navbar />
-      {inputValue && (isLogOpen || isFavoriteOpen) && <SearchModal />}
+      {inputValue && (isLogOpen || isFavoriteOpen) && (
+        <SearchModal setIsClosing={setIsClosing} isClosing={false} />
+      )}
       {isLogOpen && (
         <LogModal isClosing={isClosing} setIsClosing={setIsClosing} />
       )}
