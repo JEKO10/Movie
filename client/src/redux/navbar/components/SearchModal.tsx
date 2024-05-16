@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../common/hooks";
 import { handleExit, ModalProps } from "../../../common/modals/modalUtils";
 import { SearchData } from "../../../common/types/typesTS";
 import {
-  setFavoriteMovie,
+  setFavoriteMovieId,
   setIsFavoriteOpen,
 } from "../../profile/profileSlice";
 import { setInputValue, setIsMovieModalOpen } from "../navbarSlice";
@@ -28,7 +28,7 @@ const SearchModal: React.FC<ModalProps> = ({ setIsClosing }) => {
             key={id}
             to={"#"}
             onClick={() => {
-              dispatch(setFavoriteMovie(id));
+              dispatch(setFavoriteMovieId(id));
               dispatch(setInputValue(""));
               handleExit(setIsClosing, dispatch, setIsFavoriteOpen);
 

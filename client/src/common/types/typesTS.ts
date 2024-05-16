@@ -202,7 +202,7 @@ export type InitialProfile = {
   isLoggedIn: boolean;
   isFavoriteOpen: boolean;
   settingsType: string;
-  favoriteMovie: number;
+  favoriteMovieId: number;
 };
 
 // reviews & lists
