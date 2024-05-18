@@ -12,6 +12,10 @@ type WrongInfoProps = {
   invalidCredentials: boolean;
 };
 
+type FavoriteFilmProps = {
+  background: string;
+};
+
 export const SettingsContainer = styled.section`
   max-width: 70vw;
   margin: 0 auto 3rem;
@@ -131,41 +135,6 @@ export const FavoriteFilms = styled.article`
   ul {
     ${flexMixin({ justify: "space-between", align: "center" })};
     list-style-type: none;
-
-    li {
-      ${flexMixin({ justify: "center", align: "center" })};
-
-      background-color: #2c3641;
-      position: relative;
-
-      height: 165px;
-      width: 110px;
-
-      margin-right: 1rem;
-      border-radius: 4px;
-
-      box-shadow:
-        inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
-        0 0 10px #000;
-      cursor: pointer;
-
-      svg {
-        color: #5c5b5b;
-        font-size: 2rem;
-        text-align: center;
-
-        border-radius: 50%;
-
-        transition: all 200ms ease;
-      }
-
-      &:hover svg:not(:first-of-type) {
-        color: #fff;
-        box-shadow:
-          inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
-          0 0 10px #000;
-      }
-    }
   }
 
   h3 {
@@ -174,6 +143,44 @@ export const FavoriteFilms = styled.article`
     font-weight: 100;
 
     margin-bottom: 0.3rem;
+  }
+`;
+
+export const FavoriteFilm = styled.li<FavoriteFilmProps>`
+  ${flexMixin({ justify: "center", align: "center" })};
+
+  background-color: #2c3641;
+  background: ${({ background }) => `url(${background})`};
+  background-size: 100%;
+
+  position: relative;
+
+  height: 165px;
+  width: 110px;
+
+  margin-right: 1rem;
+  border-radius: 4px;
+
+  box-shadow:
+    inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+    0 0 10px #000;
+  cursor: pointer;
+
+  svg {
+    color: #5c5b5b;
+    font-size: 2rem;
+    text-align: center;
+
+    border-radius: 50%;
+
+    transition: all 200ms ease;
+  }
+
+  &:hover svg:not(:first-of-type) {
+    color: #fff;
+    box-shadow:
+      inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
+      0 0 10px #000;
   }
 `;
 

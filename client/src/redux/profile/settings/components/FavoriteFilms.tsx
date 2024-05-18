@@ -5,7 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { setInputValue } from "../../../navbar/navbarSlice";
 import { getMovie } from "../../../singleMovie/singleMovieSlice";
 import { setIsFavoriteOpen } from "../../profileSlice";
-import { FavoriteFilms as Container, RemoveMovie } from "../Settings.styled";
+import {
+  FavoriteFilm,
+  FavoriteFilms as Container,
+  RemoveMovie,
+} from "../Settings.styled";
 
 const FavoriteFilms = () => {
   const [movieIndex, setMovieIndex] = useState<number>(0);
@@ -28,31 +32,43 @@ const FavoriteFilms = () => {
   return (
     <Container>
       <h3>Favorite Films</h3>
-      <img
-        src={
-          movieInfo.poster_path
-            ? posterUrl + movieInfo.poster_path
-            : import.meta.env.VITE_IMG
-        }
-        alt="POSTER"
-      />
       <ul>
-        <li onClick={() => handleClick(0)}>
+        <FavoriteFilm
+          onClick={() => handleClick(0)}
+          background={
+            movieInfo.poster_path ? posterUrl + movieInfo.poster_path : ""
+          }
+        >
           <RemoveMovie />
           <FaCirclePlus />
-        </li>
-        <li onClick={() => handleClick(1)}>
+        </FavoriteFilm>
+        <FavoriteFilm
+          onClick={() => handleClick(1)}
+          background={
+            movieInfo.poster_path ? posterUrl + movieInfo.poster_path : ""
+          }
+        >
           <RemoveMovie />
           <FaCirclePlus />
-        </li>
-        <li onClick={() => handleClick(2)}>
+        </FavoriteFilm>
+        <FavoriteFilm
+          onClick={() => handleClick(2)}
+          background={
+            movieInfo.poster_path ? posterUrl + movieInfo.poster_path : ""
+          }
+        >
           <RemoveMovie />
           <FaCirclePlus />
-        </li>
-        <li onClick={() => handleClick(3)}>
+        </FavoriteFilm>
+        <FavoriteFilm
+          onClick={() => handleClick(3)}
+          background={
+            movieInfo.poster_path ? posterUrl + movieInfo.poster_path : ""
+          }
+        >
           <RemoveMovie />
           <FaCirclePlus />
-        </li>
+        </FavoriteFilm>
       </ul>
     </Container>
   );
