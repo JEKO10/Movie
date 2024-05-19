@@ -16,7 +16,7 @@ const FavoriteFilms = () => {
   const { favoriteMovieId } = useAppSelector((store) => store.profile);
   const { movieInfo } = useAppSelector((store) => store.singleMovie);
   const dispatch = useAppDispatch();
-  const posterUrl = "https://image.tmdb.org/t/p/w154/";
+  const posterUrl = "https://image.tmdb.org/t/p/w342/";
   const [posterPaths, setPosterPaths] = useState<string[]>(["", "", "", ""]);
 
   const handleClick = (index: number) => {
@@ -31,7 +31,7 @@ const FavoriteFilms = () => {
   }, [favoriteMovieId]);
 
   useEffect(() => {
-    if (movieIndex !== null && movieInfo.poster_path) {
+    if (movieInfo.poster_path) {
       setPosterPaths((prevPaths) => {
         const newPaths = [...prevPaths];
         newPaths[movieIndex] = posterUrl + movieInfo.poster_path;
@@ -39,7 +39,7 @@ const FavoriteFilms = () => {
         return newPaths;
       });
     }
-  }, [movieInfo.poster_path, movieIndex]);
+  }, [movieInfo]);
 
   return (
     <Container>
@@ -48,11 +48,20 @@ const FavoriteFilms = () => {
         {[0, 1, 2, 3].map((index) => (
           <FavoriteFilm
             key={index}
-            onClick={() => handleClick(index)}
+            onClick={() => !posterPaths[index] && handleClick(index)}
             background={posterPaths[index]}
           >
-            <RemoveMovie />
-            <FaCirclePlus />
+            {posterPaths[index] && (
+              <RemoveMovie
+                onClick={() => {
+                  const newPaths = [...posterPaths];
+                  newPaths[index] = "";
+
+                  setPosterPaths(newPaths);
+                }}
+              />
+            )}
+            {!posterPaths[index] && <FaCirclePlus />}
           </FavoriteFilm>
         ))}
       </ul>

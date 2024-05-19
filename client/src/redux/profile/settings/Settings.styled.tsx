@@ -176,7 +176,7 @@ export const FavoriteFilm = styled.li<FavoriteFilmProps>`
     transition: all 200ms ease;
   }
 
-  &:hover svg:not(:first-of-type) {
+  &:hover svg {
     color: #fff;
     box-shadow:
       inset 0 1px 0 hsla(0, 0%, 100%, 0.35),
@@ -190,6 +190,12 @@ export const RemoveMovie = styled(AiTwotoneCloseCircle)`
   position: absolute;
   top: -0.5rem;
   right: -0.5rem;
+
+  box-shadow: none !important;
+
+  &:hover {
+    background: ${secondaryColor};
+  }
 `;
 
 export const WrongInfo = styled.p<WrongInfoProps>`
