@@ -48,12 +48,13 @@ const FavoriteFilms = () => {
         {[0, 1, 2, 3].map((index) => (
           <FavoriteFilm
             key={index}
-            onClick={() => !posterPaths[index] && handleClick(index)}
+            onClick={() => handleClick(index)}
             background={posterPaths[index]}
           >
             {posterPaths[index] && (
               <RemoveMovie
-                onClick={() => {
+                onClick={(e) => {
+                  e.stopPropagation();
                   const newPaths = [...posterPaths];
                   newPaths[index] = "";
 

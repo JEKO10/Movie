@@ -28,19 +28,19 @@ export const searchMovies = createAsyncThunk(
       const resp = await axios.get(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${navbar.inputValue}&media_type=movie,person,list`
+        }&query=${navbar.inputValue}&media_type=movie`
       );
 
       const filteredResults = resp.data.results.filter((result: SearchData) => {
-        if (navbar.category === "movie") {
-          return result.media_type === "movie";
-        } else if (navbar.category === "person") {
-          return result.media_type === "person";
-        } else {
-          return (
-            result.media_type === "movie" || result.media_type === "person"
-          );
-        }
+        // if (navbar.category === "movie") {
+        return result.media_type === "movie";
+        // } else if (navbar.category === "person") {
+        //   return result.media_type === "person";
+        // } else {
+        //   return (
+        //     result.media_type === "movie" || result.media_type === "person"
+        //   );
+        // }
       });
 
       return filteredResults;
