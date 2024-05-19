@@ -127,7 +127,7 @@ export const HeaderMovie = styled.article<SlideProps>`
   }
 `;
 
-export const HeaderRating = styled.div`
+export const HeaderRating = styled.div<SlideProps>`
   background-color: rgba(0, 175, 81, 0.8);
   color: #fff;
 
@@ -140,6 +140,14 @@ export const HeaderRating = styled.div`
 
   p {
     color: #fff;
+  }
+
+  svg {
+    color: ${tertiaryColor};
+
+    &:nth-child(-n + ${({ slide }) => slide}) {
+      color: #fff;
+    }
   }
 `;
 
@@ -206,6 +214,10 @@ export const HeaderInfo = styled.article<SlideProps>`
 
       span {
         width: 120px;
+
+        p {
+          max-width: 85px;
+        }
       }
     }
 

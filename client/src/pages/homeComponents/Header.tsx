@@ -97,15 +97,13 @@ const Header = () => {
               </button>
             </div>
             <img src={backdropUrl + movie.backdrop_path} alt="backdropImg" />
-            <HeaderRating>
+            <HeaderRating slide={Math.floor(movie.vote_average / 2)}>
               <span>
-                <IoStar />
-                <IoStar />
-                <IoStar />
-                <IoStar />
-                <IoStar />
+                {[0, 1, 2, 3, 4].map((index) => (
+                  <IoStar key={index} />
+                ))}
               </span>
-              <p>{movie.vote_average}</p>
+              <p>{movie.vote_average.toString().slice(0, 3)}</p>
             </HeaderRating>
           </article>
         ))}
