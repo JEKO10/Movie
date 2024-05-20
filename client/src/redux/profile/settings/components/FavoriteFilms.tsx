@@ -13,11 +13,13 @@ import {
 
 const FavoriteFilms = () => {
   const [movieIndex, setMovieIndex] = useState<number>(0);
-  const { favoriteMovieId } = useAppSelector((store) => store.profile);
+  const [posterPaths, setPosterPaths] = useState<string[]>(["", "", "", ""]);
+  const { favoriteMovieId, isFavoriteOpen } = useAppSelector(
+    (store) => store.profile
+  );
   const { movieInfo } = useAppSelector((store) => store.singleMovie);
   const dispatch = useAppDispatch();
   const posterUrl = "https://image.tmdb.org/t/p/w342/";
-  const [posterPaths, setPosterPaths] = useState<string[]>(["", "", "", ""]);
 
   const handleClick = (index: number) => {
     setMovieIndex(index);
@@ -31,7 +33,7 @@ const FavoriteFilms = () => {
   }, [favoriteMovieId]);
 
   useEffect(() => {
-    if (movieInfo.poster_path) {
+    if (movieInfo.poster_path && !isFavoriteOpen) {
       setPosterPaths((prevPaths) => {
         const newPaths = [...prevPaths];
         newPaths[movieIndex] = posterUrl + movieInfo.poster_path;
@@ -39,7 +41,7 @@ const FavoriteFilms = () => {
         return newPaths;
       });
     }
-  }, [movieInfo]);
+  }, [movieInfo.poster_path, isFavoriteOpen]);
 
   return (
     <Container>
