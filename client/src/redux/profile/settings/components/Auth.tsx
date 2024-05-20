@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Auth as Container } from "../Settings.styled";
+import { ProfileForm as Container } from "../Settings.styled";
 
 const Auth = () => {
   return (
