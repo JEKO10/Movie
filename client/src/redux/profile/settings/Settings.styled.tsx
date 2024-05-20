@@ -149,9 +149,11 @@ export const FavoriteFilms = styled.article`
 export const FavoriteFilm = styled.li<FavoriteFilmProps>`
   ${flexMixin({ justify: "center", align: "center" })};
 
-  background-color: #2c3641;
   background: ${({ background }) => `url(${background})`};
   background-size: 100%;
+  background-position: ${({ background }) =>
+    background ? `100%` : "0 -100px"};
+  transition: background-position 500ms ease;
 
   position: relative;
 
