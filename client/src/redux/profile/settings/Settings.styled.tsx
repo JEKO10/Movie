@@ -6,7 +6,6 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
-  tertiaryColor,
 } from "../../../assets/style/GlobalStyles";
 
 type WrongInfoProps = {
@@ -212,46 +211,66 @@ export const WrongInfo = styled.p<WrongInfoProps>`
 `;
 
 export const Avatar = styled.article`
-  ${flexMixin({ justify: "space-between", align: "flex-end" })};
-  background-color: #303c48;
+  ${flexMixin({ justify: "space-between", align: "flex-start" })};
+  flex-direction: column;
 
-  min-height: 500px;
-
-  padding: 20px;
-
-  div {
+  > div {
     ${flexMixin({ justify: "space-between", align: "center" })};
+    flex-direction: column;
+    background-color: #303c48;
+
     width: 100%;
-  }
 
-  button {
-    background-color: ${secondaryColor};
-    color: #fff;
-
-    font-size: 1.2rem;
-    font-family: ${primaryFont};
-    text-transform: uppercase;
-    letter-spacing: 2px;
-
-    padding: 0 30px;
-    border-radius: 4px;
-
-    cursor: pointer;
-  }
-
-  p {
-    color: ${tertiaryColor};
-    letter-spacing: 2px;
-
-    padding: 5px 20px;
-    border-radius: 4px;
-
-    transition: all 200ms ease;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #ff0000;
-      color: #fff;
+    img {
+      height: 400px;
+      width: 100%;
+      object-fit: cover;
     }
+
+    div {
+      ${flexMixin({ justify: "space-between", align: "center" })};
+      width: 100%;
+
+      padding: 20px;
+
+      button {
+        background-color: ${secondaryColor};
+        color: #fff;
+
+        font-size: 1.2rem;
+        font-family: ${primaryFont};
+        text-transform: uppercase;
+        letter-spacing: 2px;
+
+        padding: 0 30px;
+        border-radius: 4px;
+
+        cursor: pointer;
+      }
+
+      p {
+        color: #8999a9;
+        letter-spacing: 2px;
+
+        padding: 5px 20px;
+        border-radius: 4px;
+
+        transition: all 200ms ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ff0000;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  > p {
+    color: #8999a9;
+    text-align: center;
+    letter-spacing: 1px;
+
+    margin: 2rem auto;
   }
 `;
