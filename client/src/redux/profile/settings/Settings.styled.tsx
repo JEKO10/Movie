@@ -6,6 +6,7 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
+  tertiaryColor,
 } from "../../../assets/style/GlobalStyles";
 
 type WrongInfoProps = {
@@ -208,4 +209,49 @@ export const WrongInfo = styled.p<WrongInfoProps>`
   margin-top: 1rem;
 
   transition: opacity 0.3s ease-in-out;
+`;
+
+export const Avatar = styled.article`
+  ${flexMixin({ justify: "space-between", align: "flex-end" })};
+  background-color: #303c48;
+
+  min-height: 500px;
+
+  padding: 20px;
+
+  div {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+    width: 100%;
+  }
+
+  button {
+    background-color: ${secondaryColor};
+    color: #fff;
+
+    font-size: 1.2rem;
+    font-family: ${primaryFont};
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    padding: 0 30px;
+    border-radius: 4px;
+
+    cursor: pointer;
+  }
+
+  p {
+    color: ${tertiaryColor};
+    letter-spacing: 2px;
+
+    padding: 5px 20px;
+    border-radius: 4px;
+
+    transition: all 200ms ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ff0000;
+      color: #fff;
+    }
+  }
 `;
