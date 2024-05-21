@@ -4,7 +4,7 @@ import { Avatar as Container } from "../Settings.styled";
 
 const Avatar = () => {
   const [image, setImage] = useState("");
-  const imageInputRef = useRef(null);
+  const imageInputRef = useRef<HTMLInputElement | null>(null);
 
   const selectImage = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files && event.target.files[0];
@@ -13,6 +13,14 @@ const Avatar = () => {
 
     const imgLink = URL.createObjectURL(selectedFile);
     setImage(imgLink);
+  };
+
+  const removeImage = () => {
+    setImage("");
+
+    if (imageInputRef.current) {
+      imageInputRef.current.value = "";
+    }
   };
 
   return (
@@ -30,8 +38,14 @@ const Avatar = () => {
           {image && <img src={image} alt="Avatar" />}
         </label>
         <div>
-          <button>Select new avatar</button>
-          <p>Remove</p>
+          <button
+            onClick={() =>
+              imageInputRef.current && imageInputRef.current.click()
+            }
+          >
+            Select new avatar
+          </button>
+          <p onClick={removeImage}>Remove</p>
         </div>
       </div>
       <p>Avatars must be JPEG or PNG format with maximum dimensions of Xpx.</p>
