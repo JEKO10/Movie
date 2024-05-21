@@ -223,7 +223,9 @@ export const Avatar = styled.article`
     border: 2px solid #303c48;
     border-radius: 4px;
 
-    input {
+    label {
+      ${flexMixin({ justify: "center", align: "center" })};
+
       background-image: linear-gradient(
           45deg,
           rgba(200, 212, 224, 0.05) 25%,
@@ -239,8 +241,21 @@ export const Avatar = styled.article`
         0 10px;
       background-size: 20px 20px;
 
-      height: 400px;
+      height: 500px;
       width: 100%;
+
+      input {
+        position: absolute;
+        opacity: 0;
+      }
+
+      img {
+        height: 250px;
+        width: 250px;
+        object-fit: cover;
+
+        border-radius: 50%;
+      }
     }
 
     div {

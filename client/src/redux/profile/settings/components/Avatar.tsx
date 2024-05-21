@@ -13,27 +13,28 @@ const Avatar = () => {
 
     const imgLink = URL.createObjectURL(selectedFile);
     setImage(imgLink);
-
-    console.log(imgLink);
   };
 
   return (
     <Container>
       <div>
-        <input
-          name="file"
-          type="file"
-          accept="image/*"
-          ref={imageInputRef}
-          onChange={selectImage}
-        />
+        <label>
+          <input
+            name="file"
+            type="file"
+            accept="image/*"
+            ref={imageInputRef}
+            onChange={selectImage}
+          />
+          {!image && <p>Drag and Drop image</p>}
+          {image && <img src={image} alt="Avatar" />}
+        </label>
         <div>
           <button>Select new avatar</button>
           <p>Remove</p>
         </div>
       </div>
       <p>Avatars must be JPEG or PNG format with maximum dimensions of Xpx.</p>
-      {image && <img src={image} alt="Avatar" />}
     </Container>
   );
 };
