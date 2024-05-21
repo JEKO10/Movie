@@ -217,18 +217,36 @@ export const Avatar = styled.article`
   > div {
     ${flexMixin({ justify: "space-between", align: "center" })};
     flex-direction: column;
-    background-color: #303c48;
 
     width: 100%;
 
-    img {
+    border: 2px solid #303c48;
+    border-radius: 4px;
+
+    input {
+      background-image: linear-gradient(
+          45deg,
+          rgba(200, 212, 224, 0.05) 25%,
+          transparent 0
+        ),
+        linear-gradient(135deg, rgba(200, 212, 224, 0.05) 25%, transparent 0),
+        linear-gradient(45deg, transparent 75%, rgba(200, 212, 224, 0.05) 0),
+        linear-gradient(135deg, transparent 75%, rgba(200, 212, 224, 0.05) 0);
+      background-position:
+        0 0,
+        10px 0,
+        10px -10px,
+        0 10px;
+      background-size: 20px 20px;
+
       height: 400px;
       width: 100%;
-      object-fit: cover;
     }
 
     div {
       ${flexMixin({ justify: "space-between", align: "center" })};
+      background-color: #303c48;
+
       width: 100%;
 
       padding: 20px;
@@ -237,12 +255,12 @@ export const Avatar = styled.article`
         background-color: ${secondaryColor};
         color: #fff;
 
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-family: ${primaryFont};
         text-transform: uppercase;
         letter-spacing: 2px;
 
-        padding: 0 30px;
+        padding: 0 15px;
         border-radius: 4px;
 
         cursor: pointer;
@@ -252,7 +270,7 @@ export const Avatar = styled.article`
         color: #8999a9;
         letter-spacing: 2px;
 
-        padding: 5px 20px;
+        padding: 5px 10px;
         border-radius: 4px;
 
         transition: all 200ms ease;
