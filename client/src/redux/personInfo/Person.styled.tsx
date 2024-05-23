@@ -6,13 +6,13 @@ export const Person = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-start" })};
   color: ${paragraphColor};
 
-  min-height: 76.5vh;
+  max-width: 80vw;
 
-  margin: 3rem 0;
+  margin: 3rem auto;
 
   article:first-of-type {
     grid-template-columns: repeat(5, 1fr);
-    margin: 0 1rem;
+    margin: 0 5rem;
 
     img {
       border: none;

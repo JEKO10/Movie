@@ -8,7 +8,9 @@ type MoviesListProps = {
 
 export const Discover = styled.section`
   min-height: 76.5vh;
-  margin: 3rem 0;
+  max-width: 80vw;
+
+  margin: 3rem auto;
 `;
 
 export const MoviesList = styled.article<MoviesListProps>`
@@ -16,7 +18,7 @@ export const MoviesList = styled.article<MoviesListProps>`
   grid-template-columns: ${({ isCollection }) =>
     isCollection ? `repeat(8, 1fr)` : `repeat(12, 1fr)`};
   /* grid-template-columns: repeat(auto-fit, minmax(12, 1fr)); */
-  grid-gap: 5px 10px;
+  grid-gap: 10px;
 
   > p {
     grid-area: 1/-1;
