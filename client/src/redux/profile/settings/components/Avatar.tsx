@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { Avatar as Container } from "../Settings.styled";
+import { Avatar as Container, AvatarLabel } from "../Settings.styled";
 
 const Avatar = () => {
   const [image, setImage] = useState("");
@@ -26,7 +26,7 @@ const Avatar = () => {
   return (
     <Container>
       <div>
-        <label>
+        <AvatarLabel image={image}>
           <input
             name="file"
             type="file"
@@ -34,9 +34,9 @@ const Avatar = () => {
             ref={imageInputRef}
             onChange={selectImage}
           />
-          {!image && <p>Drag and Drop image</p>}
-          {image && <img src={image} alt="Avatar" />}
-        </label>
+          <p>Drag and drop image</p>
+          <img src={image} alt="Avatar" />
+        </AvatarLabel>
         <div>
           <button
             onClick={() =>

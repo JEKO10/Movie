@@ -12,8 +12,8 @@ type WrongInfoProps = {
   invalidCredentials: boolean;
 };
 
-type FavoriteFilmProps = {
-  background: string;
+type ImageProp = {
+  image: string;
 };
 
 export const SettingsContainer = styled.section`
@@ -147,13 +147,12 @@ export const FavoriteFilms = styled.article`
   }
 `;
 
-export const FavoriteFilm = styled.li<FavoriteFilmProps>`
+export const FavoriteFilm = styled.li<ImageProp>`
   ${flexMixin({ justify: "center", align: "center" })};
 
-  background: ${({ background }) => `url(${background})`};
+  background: ${({ image }) => `url(${image})`};
   background-size: 100%;
-  background-position: ${({ background }) =>
-    background ? `100%` : "0 -100px"};
+  background-position: ${({ image }) => (image ? `100%` : "0 -100px")};
   transition: background-position 500ms ease;
 
   position: relative;
@@ -223,41 +222,6 @@ export const Avatar = styled.article`
     border: 2px solid #303c48;
     border-radius: 4px;
 
-    label {
-      ${flexMixin({ justify: "center", align: "center" })};
-
-      background-image: linear-gradient(
-          45deg,
-          rgba(200, 212, 224, 0.05) 25%,
-          transparent 0
-        ),
-        linear-gradient(135deg, rgba(200, 212, 224, 0.05) 25%, transparent 0),
-        linear-gradient(45deg, transparent 75%, rgba(200, 212, 224, 0.05) 0),
-        linear-gradient(135deg, transparent 75%, rgba(200, 212, 224, 0.05) 0);
-      background-position:
-        0 0,
-        10px 0,
-        10px -10px,
-        0 10px;
-      background-size: 20px 20px;
-
-      height: 500px;
-      width: 100%;
-
-      input {
-        position: absolute;
-        opacity: 0;
-      }
-
-      img {
-        height: 250px;
-        width: 250px;
-        object-fit: cover;
-
-        border-radius: 50%;
-      }
-    }
-
     div {
       ${flexMixin({ justify: "space-between", align: "center" })};
       background-color: #303c48;
@@ -305,5 +269,69 @@ export const Avatar = styled.article`
     letter-spacing: 1px;
 
     margin: 2rem auto;
+  }
+`;
+
+export const AvatarLabel = styled.label<ImageProp>`
+  ${flexMixin({ justify: "center", align: "center" })};
+
+  background-image: linear-gradient(
+      45deg,
+      rgba(200, 212, 224, 0.05) 25%,
+      transparent 0
+    ),
+    linear-gradient(135deg, rgba(200, 212, 224, 0.05) 25%, transparent 0),
+    linear-gradient(45deg, transparent 75%, rgba(200, 212, 224, 0.05) 0),
+    linear-gradient(135deg, transparent 75%, rgba(200, 212, 224, 0.05) 0);
+  background-position:
+    0 0,
+    10px 0,
+    10px -10px,
+    0 10px;
+  background-size: 20px 20px;
+
+  height: 500px;
+  width: 1071px;
+
+  input {
+    position: absolute;
+    opacity: 0;
+
+    height: 500px;
+    width: 1071px;
+
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    text-indent: -9999px;
+    opacity: ${({ image }) => (image ? 1 : 0)};
+    transition: opacity 500ms ease;
+  }
+
+  p {
+    ${flexMixin({ justify: "center", align: "center" })}
+    background-color: ${({ image }) => image && "rgba(0, 0, 0, .5)"};
+    color: #d6dade;
+    letter-spacing: 2px;
+
+    height: 500px;
+    width: 1071px;
+
+    position: absolute;
+
+    opacity: ${({ image }) => (image ? 0 : 1)};
+    transition: opacity 200ms ease;
+  }
+
+  &:hover p {
+    opacity: 1;
   }
 `;
