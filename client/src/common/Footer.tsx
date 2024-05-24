@@ -1,11 +1,13 @@
 import React from "react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaThreads, FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+
+import { Footer as Container } from "../assets/style/Footer.styled";
 
 const Footer = () => {
   return (
-    <footer>
+    <Container>
       <Link to={"/"}>
         <h1>
           <span>Movie</span>xd
@@ -19,11 +21,12 @@ const Footer = () => {
         <li>Journal</li>
       </ul>
       <article>
-        <FaXTwitter />
         <FaInstagram />
+        <FaXTwitter />
         <FaFacebook />
+        <FaThreads />
       </article>
-    </footer>
+    </Container>
   );
 };
 
