@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import logo from "../assets/images/logo.png";
 import RandomStyledError from "../assets/style/ErrorPage.styled";
 import { useAppDispatch } from "../common/hooks";
 import { Loader, LoaderWrapper } from "../common/Loader";
@@ -64,9 +63,6 @@ const Error = () => {
   return (
     <ErrorComponent>
       <article>
-        <Link to="/">
-          <img src={logo} alt="LOGO" />
-        </Link>
         <p
           dangerouslySetInnerHTML={{
             __html: text.intro.replace(/\n/g, "<br>"),

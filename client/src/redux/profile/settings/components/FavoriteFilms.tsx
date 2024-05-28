@@ -51,7 +51,7 @@ const FavoriteFilms = () => {
           <FavoriteFilm
             key={index}
             onClick={() => handleClick(index)}
-            background={posterPaths[index]}
+            image={posterPaths[index]}
           >
             {posterPaths[index] && (
               <RemoveMovie

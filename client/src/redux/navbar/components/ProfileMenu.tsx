@@ -57,51 +57,51 @@ const ProfileMenu = () => {
       });
   }, []);
 
-  if (!isLoggedIn) {
-    return false;
-  }
-  return (
-    <Container ref={ref}>
-      <ProfileHeader onClick={() => dispath(setIsProfileOpen(!isProfileOpen))}>
-        <CgProfile />
-        <p>{user.username}</p>
-        <IoIosArrowDown />
-      </ProfileHeader>
-      {isProfileOpen && (
-        <ProfileModal isModalOpen={isProfileOpen}>
-          <li onClick={onLinkChange}>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
-          <li onClick={onLinkChange}>
-            <Link to="/">Home</Link>
-          </li>
-          <li onClick={onLinkChange}>
-            <Link to="/profile/films">Films</Link>
-          </li>
-          <li onClick={onLinkChange}>
-            <Link to="/profile/reviews">Reviews</Link>
-          </li>
-          <li onClick={onLinkChange}>
-            <Link to="/profile/likes">Likes</Link>
-          </li>
-          <li onClick={onLinkChange}>
-            <Link to="/profile/watchlist">Watchlist</Link>
-          </li>
-          <li onClick={onLinkChange}>
-            <Link to="/profile/lists">Lists</Link>
-          </li>
-          <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
-          <li onClick={onLinkChange}>
-            <Link to="/settings">Settings</Link>
-          </li>
-          <li onClick={handleLogout}>
-            <Link to="/">Sign Out</Link>
-          </li>
-        </ProfileModal>
-      )}
-    </Container>
-  );
+  if (isLoggedIn)
+    return (
+      <Container ref={ref}>
+        <ProfileHeader
+          onClick={() => dispath(setIsProfileOpen(!isProfileOpen))}
+        >
+          <CgProfile />
+          <p>{user.username}</p>
+          <IoIosArrowDown />
+        </ProfileHeader>
+        {isProfileOpen && (
+          <ProfileModal isModalOpen={isProfileOpen}>
+            <li onClick={onLinkChange}>
+              <Link to="/profile">Profile</Link>
+            </li>
+            <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
+            <li onClick={onLinkChange}>
+              <Link to="/">Home</Link>
+            </li>
+            <li onClick={onLinkChange}>
+              <Link to="/profile/films">Films</Link>
+            </li>
+            <li onClick={onLinkChange}>
+              <Link to="/profile/reviews">Reviews</Link>
+            </li>
+            <li onClick={onLinkChange}>
+              <Link to="/profile/likes">Likes</Link>
+            </li>
+            <li onClick={onLinkChange}>
+              <Link to="/profile/watchlist">Watchlist</Link>
+            </li>
+            <li onClick={onLinkChange}>
+              <Link to="/profile/lists">Lists</Link>
+            </li>
+            <Underline margin="5px -20px 5px -5px" width="calc(100% + 25px)" />
+            <li onClick={onLinkChange}>
+              <Link to="/settings">Settings</Link>
+            </li>
+            <li onClick={handleLogout}>
+              <Link to="/">Sign Out</Link>
+            </li>
+          </ProfileModal>
+        )}
+      </Container>
+    );
 };
 
 export default ProfileMenu;

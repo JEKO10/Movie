@@ -35,14 +35,14 @@ const Navbar = () => {
         </LogButton>
       )}
       <ProfileMenu />
-      {/* {!isLoggedIn && (
+      {isLoggedIn && (
         <article>
           <button onClick={() => dispatch(setIsLogInOpen(true))}>Log in</button>
           <button onClick={() => dispatch(setIsSignUpOpen(true))}>
             Sign up
           </button>
         </article>
-      )} */}
+      )}
       <ul>
         {!isLoggedIn && (
           <li onClick={() => dispatch(setIsLogInOpen(true))}>Log in</li>

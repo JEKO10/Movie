@@ -5,6 +5,8 @@ import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import { MoviesList } from "../discoverMovies/DiscoverMovies.styled";
 import { setQuery } from "../navbar/navbarSlice";
+import ImageModal from "../singleMovie/components/modals/ImageModal";
+import { togglePoster } from "../singleMovie/singleMovieSlice";
 import { FullBio, Person, PersonImg } from "./Person.styled";
 import { getMovies, getPerson, toggleBio } from "./personInfoSlice";
 
@@ -63,12 +65,14 @@ const PersonInfo = () => {
           <p>No movies found for this person.</p>
         )}
       </MoviesList>
+      <ImageModal posterUrl={posterUrl} poster_path={profile_path} />
       <article>
         <PersonImg
           src={
             profile_path ? posterUrl + profile_path : import.meta.env.VITE_IMG
           }
           alt="POSTER"
+          onClick={() => dispatch(togglePoster(true))}
         />
         <h2>{name}</h2>
         <h4>Date of birth: {birthday}</h4>
