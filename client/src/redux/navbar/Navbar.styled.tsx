@@ -1,11 +1,13 @@
+import { RxHamburgerMenu } from "react-icons/rx";
 import styled from "styled-components";
 
 import {
+  devices,
   flexMixin,
   primaryColor,
   primaryFont,
   secondaryColor,
-  tertiaryColor
+  tertiaryColor,
 } from "../../assets/style/GlobalStyles";
 
 type ProfileMenuProps = {
@@ -16,12 +18,24 @@ export const Nav = styled.nav`
   ${flexMixin({ justify: "space-between", align: "center" })};
   padding: 20px 50px;
 
+  @media ${devices.desktopS} {
+    padding: 20px 30px;
+  }
+
+  @media ${devices.laptopL} {
+    padding: 20px;
+  }
+
+  @media ${devices.mobile} {
+    padding: 10px 20px;
+  }
+
   a {
     color: #fff;
     text-decoration: none;
 
     h1 {
-      font-size: 40px;
+      font-size: 2.5rem;
       font-weight: 200;
 
       cursor: pointer;
@@ -30,12 +44,22 @@ export const Nav = styled.nav`
         text-transform: uppercase;
         color: ${secondaryColor};
       }
+
+      @media ${devices.laptopS} {
+        font-size: 2rem;
+
+        margin-bottom: 0.3rem;
+      }
     }
   }
 
   > ul {
     ${flexMixin({ justify: "center", align: "center" })};
     list-style: none;
+
+    @media ${devices.tablet} {
+      display: none;
+    }
 
     li {
       color: #dedede;
@@ -44,13 +68,22 @@ export const Nav = styled.nav`
       line-height: 17px;
       text-transform: uppercase;
 
-      margin: 0 2.5rem;
+      margin: 0 2rem;
 
       transition: all 200ms ease;
       cursor: pointer;
 
       &:hover {
         color: #fff;
+      }
+
+      /* top | right | bottom | left */
+      @media ${devices.desktopS} {
+        margin: 0 0 0 2rem;
+      }
+
+      @media ${devices.laptopL} {
+        margin: 0 0 0 1.5rem;
       }
     }
   }
@@ -162,10 +195,22 @@ export const LogButton = styled.button`
   &:hover {
     background-color: ${secondaryColor};
   }
+
+  @media ${devices.tablet} {
+    display: none;
+  }
 `;
 
 export const Input = styled.div`
   position: relative;
+
+  margin-left: 2rem;
+
+  @media ${devices.laptopS} {
+    margin-left: 0;
+
+    order: 3;
+  }
 
   input {
     background-color: ${primaryColor};
@@ -179,6 +224,27 @@ export const Input = styled.div`
     padding: 0 20px;
     border-radius: 5px;
     outline: none;
+
+    @media ${devices.laptopL} {
+      width: 400px;
+    }
+
+    @media ${devices.laptop} {
+      width: 350px;
+    }
+
+    @media ${devices.laptopS} {
+      font-size: 1.1rem;
+
+      height: 35px;
+      width: 200px;
+
+      padding: 0 10px;
+    }
+
+    @media ${devices.tablet} {
+      display: none;
+    }
   }
 
   svg {
@@ -190,112 +256,33 @@ export const Input = styled.div`
     right: 1rem;
 
     cursor: pointer;
+
+    @media ${devices.laptopS} {
+      font-size: 1.3rem;
+
+      top: 0.35rem;
+      right: 0.5rem;
+
+      margin-top: 0.1rem;
+    }
+
+    @media ${devices.tablet} {
+      font-size: 1.5rem;
+
+      position: static;
+    }
   }
 `;
 
-// type NavProps = {
-//   query: string;
-//   isVisible: boolean;
-//   scrollTop: number;
-// };
+export const MenuButton = styled(RxHamburgerMenu)`
+  color: ${tertiaryColor};
+  font-size: 2rem;
 
-// type InputProps = {
-//   isSearchOpen: boolean;
-// };
+  display: none;
 
-// type NavMenuItemProps = {
-//   active: boolean;
-// };
+  cursor: pointer;
 
-// export const Nav = styled.nav<NavProps>`
-//   ${flexMixin({ justify: "space-between", align: "center" })};
-//   color: #99aabb;
-//   background-color: ${({ scrollTop, query }) =>
-//     scrollTop === 0 && query === "singleMovie"
-//       ? "rgba(17, 22, 29, 0)"
-//       : "rgba(17, 22, 29, 0.95)"};
-//   padding: 20px 50px;
-//   width: 100%;
-//   display: ${({ query }) => (query === "error" ? "none" : "flex")};
-//   position: fixed;
-//   top: ${({ isVisible }) => (isVisible ? "0" : "-95px")};
-//   left: 0;
-//   z-index: 1;
-//   transition: all 500ms ease;
-
-//   img {
-//     height: 50px;
-//     cursor: pointer;
-//   }
-// `;
-
-// export const NavMenu = styled.ul`
-//   ${flexMixin({ justify: "flex-end", align: "center" })};
-//   list-style-type: none;
-//   width: 100%;
-// `;
-
-// export const NavMenuItem = styled.li<NavMenuItemProps>`
-//   font-family: ${primaryFont};
-//   text-transform: uppercase;
-//   font-weight: 900;
-//   font-size: 0.8rem;
-//   letter-spacing: 1.5px;
-//   margin: 0 30px;
-//   cursor: pointer;
-//   transition: all 200ms ease;
-
-//   a {
-//     color: #99aabb;
-//     text-decoration: none;
-//     ${({ active }) =>
-//       active &&
-//       css`
-//         color: #fff;
-//       `}
-
-//     &:hover,
-//     &.active {
-//       color: #fff;
-//     }
-//   }
-
-//   &:last-of-type {
-//     ${flexMixin({ justify: "center", align: "center" })};
-//     margin: 0;
-//   }
-// `;
-
-// export const Input = styled.input<InputProps>`
-//   background-color: #2c3440;
-//   color: ${primaryColor};
-//   font-family: ${primaryFont};
-//   padding: 5px 10px;
-//   border: none;
-//   border-radius: 5px;
-//   transition: all 500ms ease;
-//   transform: ${({ isSearchOpen }) =>
-//     isSearchOpen ? "translate(0, -5%)" : "translateX(300px)"};
-//   width: ${({ isSearchOpen }) => (isSearchOpen ? "200px" : "0")};
-
-//   &::placeholder {
-//     color: ${secondaryColor};
-//     letter-spacing: 1px;
-//   }
-
-//   &:is(:focus, :hover) {
-//     outline: 2px solid ${primaryColor};
-//     box-shadow: -2px 2px 5px ${primaryColor};
-//   }
-// `;
-
-// export const IconWrapper = styled.div`
-//   font-size: 1rem;
-//   color: #99aabb;
-//   margin-right: 20px;
-//   transform: translate(0%, 10%);
-
-//   &:hover {
-//     color: ${primaryColor};
-//   }
-// `;
+  @media ${devices.tablet} {
+    display: block;
+  }
+`;

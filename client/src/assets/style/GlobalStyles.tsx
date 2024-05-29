@@ -77,3 +77,27 @@ export const GlobalStyles = React.memo(
     } */
   `}`
 );
+
+const sizes = {
+  mobileS: "375px",
+  mobile: "480px",
+  tablet: "768px",
+  laptopS: "992px",
+  laptop: "1024px",
+  laptopL: "1200px",
+  desktopS: "1440px",
+  desktop: "1600px",
+  desktopL: "1920px",
+};
+
+export const devices = {
+  mobileS: `(max-width: ${sizes.mobileS})`,
+  mobile: `(max-width: ${sizes.mobile})`,
+  tablet: `(max-width: ${sizes.tablet})`,
+  laptopS: `(max-width: ${sizes.laptopS})`,
+  laptop: `(max-width: ${sizes.laptop})`,
+  laptopL: `(max-width: ${sizes.laptopL})`,
+  desktopS: `(max-width: ${sizes.desktopS})`,
+  desktop: `(max-width: ${sizes.desktop})`,
+  desktopL: `(max-width: ${sizes.desktopL})`,
+};

@@ -5,7 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import Input from "./components/Input";
 import ProfileMenu from "./components/ProfileMenu";
-import { Input as InputContainer, LogButton, Nav } from "./Navbar.styled";
+import {
+  Input as InputContainer,
+  LogButton,
+  MenuButton,
+  Nav,
+} from "./Navbar.styled";
 import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
 
 const Navbar = () => {
@@ -18,6 +23,7 @@ const Navbar = () => {
 
   return (
     <Nav>
+      <MenuButton />
       <Link to={"/"}>
         <h1>
           <span>Movie</span>xd
@@ -35,14 +41,14 @@ const Navbar = () => {
         </LogButton>
       )}
       <ProfileMenu />
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <article>
           <button onClick={() => dispatch(setIsLogInOpen(true))}>Log in</button>
           <button onClick={() => dispatch(setIsSignUpOpen(true))}>
             Sign up
           </button>
         </article>
-      )}
+      )} */}
       <ul>
         {!isLoggedIn && (
           <li onClick={() => dispatch(setIsLogInOpen(true))}>Log in</li>

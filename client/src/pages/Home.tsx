@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 
+import Footer from "../common/Footer";
 import { useAppDispatch } from "../common/hooks";
 import { setQuery } from "../redux/navbar/navbarSlice";
 import { togglePoster } from "../redux/singleMovie/singleMovieSlice";
@@ -21,13 +22,14 @@ const Home = () => {
 
   return (
     <section>
-      <FixedSidebar />
+      {/* <FixedSidebar />
       <Header />
       <TrendingMovies />
       <Features />
       <Oscar />
       <News />
       <FriendsActivity />
+      <Footer /> */}
     </section>
   );
 };
