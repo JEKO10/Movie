@@ -22,14 +22,14 @@ const Home = () => {
 
   return (
     <section>
-      <FixedSidebar />
+      {/* <FixedSidebar /> */}
       {/* <Header />
       <TrendingMovies />
       <Features />
-      <Oscar />
-      <News />
-      <FriendsActivity />
-      <Footer /> */}
+      <Oscar />*/}
+      {/* <News />
+       <FriendsActivity />*/}
+      <Footer />
     </section>
   );
 };

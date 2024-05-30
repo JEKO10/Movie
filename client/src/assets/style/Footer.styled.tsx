@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-import { flexMixin, primaryColor, secondaryColor } from "./GlobalStyles";
+import {
+  devices,
+  flexMixin,
+  primaryColor,
+  secondaryColor,
+} from "./GlobalStyles";
 
 export const Footer = styled.footer`
   ${flexMixin({ justify: "space-between", align: "center" })};
@@ -8,9 +13,26 @@ export const Footer = styled.footer`
 
   padding: 20px;
 
+  @media ${devices.laptop} {
+    flex-direction: column;
+  }
+
+  div {
+    ${flexMixin({ justify: "space-between", align: "center" })};
+  }
+
   ul {
     ${flexMixin({ justify: "center", align: "center" })};
     list-style: none;
+
+    @media ${devices.laptop} {
+      margin: 1rem 0 1.5rem;
+    }
+
+    @media ${devices.mobile} {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
     li {
       color: #dedede;
@@ -26,6 +48,10 @@ export const Footer = styled.footer`
 
       &:hover {
         color: #fff;
+      }
+
+      @media ${devices.tablet} {
+        margin: 0 1rem;
       }
     }
   }
@@ -58,6 +84,12 @@ export const Footer = styled.footer`
 
     &:hover {
       color: #fff;
+    }
+
+    @media ${devices.laptop} {
+      font-size: 2rem;
+
+      margin: 0 1rem;
     }
   }
 `;
