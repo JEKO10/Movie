@@ -23,15 +23,7 @@ const FixedSidebar = () => {
   return (
     <Container isScrolled={isScrolled}>
       <Sidebar />
-      <div
-        style={{
-          backgroundColor: "#3D3D3D",
-          height: "3px",
-          width: "130px",
-          margin: "0 50px",
-          borderRadius: "10px"
-        }}
-      />
+      <div />
       <Friends />
     </Container>
   );

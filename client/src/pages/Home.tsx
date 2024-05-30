@@ -22,8 +22,8 @@ const Home = () => {
 
   return (
     <section>
-      {/* <FixedSidebar />
-      <Header />
+      <FixedSidebar />
+      {/* <Header />
       <TrendingMovies />
       <Features />
       <Oscar />

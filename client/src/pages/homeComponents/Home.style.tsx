@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 import {
+  devices,
   flexMixin,
   paragraphColor,
   primaryColor,
@@ -271,11 +272,43 @@ export const FixedSidebar = styled.aside<SidebarProp>`
     isScrolled ? " translateY(-80px)" : " translateY(0)"};
 
   transition: transform 200ms ease;
+
+  > div {
+    background-color: #3d3d3d;
+    height: 3px;
+    width: 130px;
+    margin: 0 50px;
+    border-radius: 10px;
+
+    @media ${devices.desktopS} {
+      margin: 0 33px 5px;
+    }
+
+    @media ${devices.laptopL} {
+      margin: 0 23px 5px;
+    }
+
+    @media ${devices.tablet} {
+      margin: 0 25px 5px;
+    }
+  }
 `;
 
 export const Side = styled.aside`
   width: fit-content;
   padding: 15px 50px;
+
+  @media ${devices.desktopS} {
+    padding: 15px 33px;
+  }
+
+  @media ${devices.laptopL} {
+    padding: 5px 23px;
+  }
+
+  @media ${devices.tablet} {
+    padding: 5px 25px;
+  }
 
   h3 {
     color: #949494;
