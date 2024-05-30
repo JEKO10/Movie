@@ -21,11 +21,24 @@ type SlideProps = {
 const sharedSectionStyle = css`
   margin: 1rem 50px 3rem 15vw; /* top | right | bottom | left */
 
+  @media ${devices.laptopS} {
+    margin: 1rem 10vw 3rem 10vw;
+  }
+
+  @media ${devices.tablet} {
+    margin: 1rem 5vw 3rem 5vw;
+  }
+
   h2 {
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 200;
 
     margin-bottom: 1rem;
+
+    @media ${devices.mobile} {
+      font-size: 2.5rem;
+      text-align: center;
+    }
   }
 `;
 
@@ -497,6 +510,19 @@ export const FriendsActivity = styled.section`
 
   article {
     ${flexMixin({ justify: "space-between", align: "center" })};
+    flex-wrap: wrap;
+
+    @media ${devices.desktopS} {
+      gap: 1rem;
+    }
+
+    @media ${devices.laptopL} {
+      justify-content: center;
+    }
+
+    @media ${devices.laptopS} {
+      flex-direction: column;
+    }
 
     > div {
       background-color: ${primaryColor};
@@ -506,6 +532,18 @@ export const FriendsActivity = styled.section`
       border-radius: 12px;
 
       cursor: pointer;
+
+      @media ${devices.laptopS} {
+        width: 100%;
+      }
+
+      @media ${devices.tablet} {
+        width: 333px;
+      }
+
+      @media ${devices.mobile} {
+        width: 287px;
+      }
 
       div {
         ${flexMixin({ justify: "space-between", align: "center" })};
@@ -534,8 +572,28 @@ export const FriendsActivity = styled.section`
 
       border-radius: 12px;
 
+      @media ${devices.laptopS} {
+        justify-content: space-between;
+      }
+
+      @media ${devices.tablet} {
+        justify-content: flex-start;
+      }
+
       li {
         margin-right: -5rem;
+
+        @media ${devices.laptopS} {
+          margin-right: 0;
+        }
+
+        @media ${devices.tablet} {
+          margin-right: -5rem;
+        }
+
+        @media ${devices.mobile} {
+          margin-right: -4rem;
+        }
 
         img {
           height: 185px;
@@ -547,6 +605,11 @@ export const FriendsActivity = styled.section`
           box-shadow:
             inset 0 1px 0 #000,
             0 0 10px #000;
+
+          @media ${devices.mobile} {
+            height: 170px;
+            width: 115px;
+          }
         }
       }
     }

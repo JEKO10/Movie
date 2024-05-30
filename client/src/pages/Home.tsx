@@ -27,8 +27,8 @@ const Home = () => {
       <TrendingMovies />
       <Features />
       <Oscar />*/}
-      {/* <News />
-       <FriendsActivity />*/}
+      {/* <News />*/}
+      <FriendsActivity />
       <Footer />
     </section>
   );

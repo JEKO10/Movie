@@ -42,15 +42,15 @@ export const Nav = styled.nav`
 
       cursor: pointer;
 
-      span {
-        text-transform: uppercase;
-        color: ${secondaryColor};
-      }
-
       @media ${devices.laptopS} {
         font-size: 2rem;
 
         margin-bottom: 0.3rem;
+      }
+
+      span {
+        text-transform: uppercase;
+        color: ${secondaryColor};
       }
     }
   }
