@@ -407,6 +407,23 @@ export const Oscar = styled.section`
     /* display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
 
+    @media ${devices.laptopS} {
+      /* justify-content: center; */
+      flex-wrap: wrap;
+
+      gap: 10px 20px;
+    }
+
+    @media ${devices.tablet} {
+      justify-content: space-between;
+    }
+
+    @media ${devices.mobile} {
+      justify-content:center;
+      align-items: center;
+      gap: 10px;
+    }
+
     img {
       width: 162px;
 
@@ -418,6 +435,26 @@ export const Oscar = styled.section`
 
       &:hover {
         border: 2px solid ${secondaryColor};
+      }
+
+      @media ${devices.desktopS} {
+        width: 150px;
+      }
+
+      @media ${devices.laptopL} {
+        width: 120px;
+      }
+
+      @media ${devices.laptopS} {
+        width: 150px;
+      }
+
+      @media ${devices.tablet} {
+        width: 120px;
+      }
+
+      @media ${devices.mobile} {
+        width: 200px;
       }
     }
   }
