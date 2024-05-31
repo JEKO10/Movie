@@ -27,7 +27,7 @@ const Home = () => {
       <TrendingMovies />
       <Features />
       <Oscar />*/}
-      {/* <News />*/}
+      <News />
       <FriendsActivity />
       <Footer />
     </section>

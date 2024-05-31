@@ -471,16 +471,55 @@ export const News = styled.section`
   article {
     ${flexMixin({ justify: "flex-start", align: "center" })};
     background-color: ${primaryColor};
+
+    padding-right: 20px;
     border-radius: 12px;
 
+    @media ${devices.laptopS} {
+      align-items: flex-start;
+      flex-direction: column;
+
+      padding-right: 0;
+    }
+
+    div {
+      @media ${devices.laptopS} {
+        padding: 20px;
+      }
+    }
+
     img {
-      border-radius: 12px;
       margin-right: 2rem;
+      border-radius: 12px;
+
+      @media ${devices.laptopS} {
+        width: 100%;
+
+        margin-right: 0;
+        border-radius: 12px 12px 0 0; /* top-left | top-right | bottom-right | bottom-left */
+      }
     }
 
     h3 {
-      font-weight: 100;
       font-size: 3rem;
+      font-weight: 100;
+
+      @media ${devices.desktopS} {
+        font-size: 2.5rem;
+      }
+
+      @media ${devices.laptopL} {
+        font-size: 2rem;
+        line-height: 35px;
+      }
+
+      @media ${devices.laptopS} {
+        font-size: 3rem;
+      }
+
+      @media ${devices.tablet} {
+        font-size: 2rem;
+      }
     }
 
     p {
@@ -490,6 +529,14 @@ export const News = styled.section`
 
       max-width: 450px;
       margin: 1rem 0;
+
+      @media ${devices.laptopL} {
+        font-size: 1rem;
+      }
+
+      @media ${devices.laptopS} {
+        max-width: none;
+      }
     }
 
     button {
