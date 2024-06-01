@@ -22,10 +22,10 @@ const Home = () => {
 
   return (
     <section>
-      {/* <FixedSidebar /> */}
+      <FixedSidebar />
       {/* <Header />
-      <TrendingMovies />
-      <Features />*/}
+      <Features />
+      <TrendingMovies />*/}
       <Oscar />
       <News />
       <FriendsActivity />

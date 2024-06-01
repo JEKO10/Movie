@@ -283,8 +283,11 @@ export const FixedSidebar = styled.aside<SidebarProp>`
 
   transform: ${({ isScrolled }) =>
     isScrolled ? " translateY(-80px)" : " translateY(0)"};
-
   transition: transform 200ms ease;
+
+  @media ${devices.laptopS} {
+    display: none;
+  }
 
   > div {
     background-color: #3d3d3d;
@@ -298,6 +301,8 @@ export const FixedSidebar = styled.aside<SidebarProp>`
     }
 
     @media ${devices.laptopL} {
+      width: 110px;
+
       margin: 0 23px 5px;
     }
 
@@ -335,8 +340,8 @@ export const Side = styled.aside`
     margin-bottom: 0.8rem;
     cursor: pointer;
 
-    &:hover p {
-      color: ${secondaryColor};
+    @media ${devices.laptopL} {
+      margin-bottom: 0.5rem;
     }
 
     svg {
@@ -347,11 +352,19 @@ export const Side = styled.aside`
       margin-right: 0.5rem;
 
       transform: translateX(-5px);
+
+      @media ${devices.laptopL} {
+        margin-right: 0rem;
+      }
     }
 
     p {
       font-size: 20px;
       color: #949494;
+    }
+
+    &:hover p {
+      color: ${secondaryColor};
     }
   }
 `;
@@ -419,7 +432,7 @@ export const Oscar = styled.section`
     }
 
     @media ${devices.mobile} {
-      justify-content:center;
+      justify-content: center;
       align-items: center;
       gap: 10px;
     }

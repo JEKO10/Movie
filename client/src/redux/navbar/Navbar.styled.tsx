@@ -18,8 +18,6 @@ export const Nav = styled.nav`
   ${flexMixin({ justify: "space-between", align: "center" })};
   padding: 20px 50px;
 
-  margin-bottom: 20rem;
-
   @media ${devices.desktopS} {
     padding: 20px 30px;
   }
