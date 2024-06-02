@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import {
+  devices,
   flexMixin,
   paragraphColor,
   primaryFont,
-  secondaryColor
+  secondaryColor,
 } from "../../assets/style/GlobalStyles";
 
 type TitleProps = {
@@ -104,6 +105,20 @@ export const TrendingMovies = styled.section`
   max-width: 55vw;
   margin: 1rem 455px 3rem auto;
 
+  @media ${devices.desktopS} {
+    max-width: none;
+
+    margin: 1rem 50px 3rem 15vw;
+  }
+
+  @media ${devices.laptopS} {
+    margin: 1rem 10vw 3rem 10vw;
+  }
+
+  @media ${devices.tablet} {
+    margin: 1rem 5vw 3rem 5vw;
+  }
+
   h2 {
     font-size: 40px;
     font-weight: 200;
@@ -111,8 +126,24 @@ export const TrendingMovies = styled.section`
     margin-bottom: 1rem;
   }
 
+  > h2 {
+    @media ${devices.mobile} {
+      text-align: center;
+    }
+  }
+
   article {
     ${flexMixin({ justify: "space-between", align: "center" })};
+
+    @media ${devices.laptopS} {
+      gap: 10px;
+    }
+
+    @media ${devices.tablet} {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px 30px;
+    }
 
     > div {
       ${flexMixin({ justify: "space-between", align: "flex-start" })};
@@ -129,6 +160,14 @@ export const TrendingMovies = styled.section`
 
       transition: all 200ms ease;
       cursor: pointer;
+
+      @media ${devices.desktopS} {
+        margin-right: 2rem;
+      }
+
+      @media ${devices.laptopS} {
+        margin-right: 0;
+      }
 
       &:hover {
         box-shadow:
@@ -151,6 +190,14 @@ export const TrendingMovies = styled.section`
         position: absolute;
         bottom: 0;
         right: 0;
+
+        @media ${devices.laptopS} {
+          height: 250px;
+        }
+
+        @media ${devices.tablet} {
+          height: initial;
+        }
       }
 
       h3 {

@@ -24,8 +24,8 @@ const Home = () => {
     <section>
       <FixedSidebar />
       {/* <Header />
-      <Features />
-      <TrendingMovies />*/}
+      <Features />*/}
+      <TrendingMovies />
       <Oscar />
       <News />
       <FriendsActivity />
