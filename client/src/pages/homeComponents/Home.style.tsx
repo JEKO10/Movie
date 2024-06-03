@@ -7,7 +7,7 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
-  tertiaryColor,
+  tertiaryColor
 } from "../../assets/style/GlobalStyles";
 
 type SidebarProp = {
@@ -48,6 +48,20 @@ export const Header = styled.header`
   margin: 1rem 455px 3rem auto;
 
   position: relative;
+
+  @media ${devices.desktopS} {
+    max-width: none;
+
+    margin: 1rem 50px 3rem 15vw;
+  }
+
+  @media ${devices.laptopS} {
+    margin: 1rem 10vw 3rem 10vw;
+  }
+
+  @media ${devices.tablet} {
+    margin: 1rem 5vw 3rem 5vw;
+  }
 `;
 
 export const HeaderMovie = styled.article<SlideProps>`
@@ -199,6 +213,16 @@ export const HeaderSlides = styled.div<SlideProps>`
 export const HeaderInfo = styled.article<SlideProps>`
   ${flexMixin({ justify: "space-between", align: "center" })};
 
+  @media ${devices.tablet} {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  @media ${devices.mobile} {
+    gap: 20px 0;
+  }
+
   > article {
     ${flexMixin({ justify: "flex-start", align: "flex-start" })};
     background-color: ${primaryColor};
@@ -235,8 +259,26 @@ export const HeaderInfo = styled.article<SlideProps>`
       }
     }
 
-    &:last-of-type div {
-      flex-direction: column;
+    &:last-of-type {
+      @media ${devices.laptopS} {
+        width: 150px;
+      }
+
+      @media ${devices.tablet} {
+        width: 225px;
+      }
+
+      div {
+        flex-direction: column;
+
+        @media ${devices.laptopS} {
+          width: 150px;
+        }
+
+        @media ${devices.tablet} {
+          width: 225px;
+        }
+      }
     }
   }
 
@@ -268,6 +310,14 @@ export const HeaderInfo = styled.article<SlideProps>`
     width: 225px;
 
     list-style-type: none;
+
+    @media ${devices.laptopS} {
+      width: 140px;
+    }
+
+    @media ${devices.tablet} {
+      width: 225px;
+    }
 
     li {
       font-size: 1.4rem;

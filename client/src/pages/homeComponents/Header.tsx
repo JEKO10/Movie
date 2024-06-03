@@ -12,7 +12,7 @@ import {
   HeaderInfo,
   HeaderMovie,
   HeaderRating,
-  HeaderSlides,
+  HeaderSlides
 } from "./Home.style";
 
 type GenreList = {
@@ -76,7 +76,7 @@ const Header = () => {
   }
   return (
     <Container>
-      <HeaderMovie slide={slide}>
+      {/* <HeaderMovie slide={slide}>
         {trendingMovies.slice(0, 4).map((movie) => (
           <article key={movie.id}>
             <div>
@@ -113,7 +113,7 @@ const Header = () => {
           <div onClick={() => handleClick(2)} />
           <div onClick={() => handleClick(3)} />
         </HeaderSlides>
-      </HeaderMovie>
+      </HeaderMovie> */}
       <HeaderInfo slide={slide}>
         <article>
           {movieCredits?.map((credits) => {

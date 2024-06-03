@@ -6,7 +6,7 @@ import {
   flexMixin,
   paragraphColor,
   primaryFont,
-  secondaryColor,
+  secondaryColor
 } from "../../assets/style/GlobalStyles";
 
 type TitleProps = {
