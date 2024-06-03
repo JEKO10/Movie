@@ -373,6 +373,21 @@ export const Features = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-end" })};
   ${sharedSectionStyle};
 
+  @media ${devices.tablet} {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  article {
+    margin-right: 1rem;
+
+    @media ${devices.tablet} {
+      width: 100%;
+
+      margin-right: 0;
+    }
+  }
+
   div {
     ${flexMixin({ justify: "flex-start", align: "center" })};
     background-color: ${primaryColor};
@@ -384,6 +399,18 @@ export const Features = styled.section`
     border-radius: 10px;
 
     cursor: pointer;
+
+    @media ${devices.desktopS} {
+      width: 100%;
+    }
+
+    @media ${devices.laptopS} {
+      margin-top: 1rem;
+    }
+
+    @media ${devices.mobile} {
+      padding: 10px;
+    }
 
     & {
       :hover p {
@@ -400,14 +427,113 @@ export const Features = styled.section`
       color: ${tertiaryColor};
 
       margin-right: 2rem;
+
+      @media ${devices.laptopL} {
+        margin-right: 1rem;
+      }
+
+      @media ${devices.laptopS} {
+        font-size: 4rem;
+
+        margin-right: 0.5rem;
+      }
+
+      @media ${devices.tablet} {
+        margin-right: 1rem;
+      }
     }
 
     p {
       color: ${tertiaryColor};
-      font-size: 30px;
+      font-size: 1.8rem;
       text-transform: uppercase;
 
       max-width: 550px;
+
+      @media ${devices.laptopL} {
+        font-size: 1.5rem;
+        line-height: 25px;
+      }
+
+      @media ${devices.laptopS} {
+        font-size: 1.2rem;
+      }
+
+      @media ${devices.mobile} {
+        font-size: 1rem;
+        line-height: 20px;
+      }
+    }
+  }
+`;
+
+export const RatePopUp = styled.aside`
+  background-color: rgba(0, 175, 81, 0.2);
+
+  text-align: center;
+
+  width: 324px;
+
+  padding: 25px 0;
+  border-radius: 12px;
+
+  @media ${devices.tablet} {
+    width: 100%;
+
+    margin-top: 2rem;
+  }
+
+  p {
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    text-align: center;
+
+    max-width: 260px;
+
+    margin: 1rem auto 2rem;
+
+    @media ${devices.laptopL} {
+      font-size: 1.3rem;
+
+      padding: 0 10px;
+    }
+
+    @media ${devices.laptopS} {
+      font-size: 1.1rem;
+
+      padding: 0 20px;
+    }
+
+    @media ${devices.tablet} {
+      font-size: 1.5rem;
+
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+  button {
+    background-color: ${secondaryColor};
+    color: #fff;
+
+    font-size: 2rem;
+    font-family: ${primaryFont};
+    text-transform: uppercase;
+
+    padding: 5px 60px;
+    border-radius: 10px;
+
+    transition: all 300ms ease;
+    cursor: pointer;
+
+    @media ${devices.laptopS} {
+      margin-left: 0;
+      padding: 5px 50px;
+    }
+
+    &:hover {
+      background-color: ${primaryColor};
+      color: ${secondaryColor};
     }
   }
 `;
@@ -469,48 +595,6 @@ export const Oscar = styled.section`
       @media ${devices.mobile} {
         width: 200px;
       }
-    }
-  }
-`;
-
-export const RatePopUp = styled.aside`
-  background-color: rgba(0, 175, 81, 0.2);
-
-  text-align: center;
-
-  width: 324px;
-
-  padding: 25px 0;
-  border-radius: 12px;
-
-  p {
-    font-size: 28px;
-    text-transform: uppercase;
-    text-align: center;
-
-    max-width: 260px;
-
-    margin: 1rem auto 2rem;
-  }
-
-  button {
-    background-color: ${secondaryColor};
-    color: #fff;
-
-    font-size: 30px;
-    font-family: ${primaryFont};
-    text-transform: uppercase;
-
-    margin-left: 1rem;
-    padding: 5px 60px;
-    border-radius: 10px;
-
-    transition: all 300ms ease;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${primaryColor};
-      color: ${secondaryColor};
     }
   }
 `;

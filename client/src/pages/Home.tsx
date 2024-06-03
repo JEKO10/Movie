@@ -23,8 +23,8 @@ const Home = () => {
   return (
     <section>
       <FixedSidebar />
-      {/* <Header />
-      <Features />*/}
+      {/* <Header />*/}
+      <Features />
       <TrendingMovies />
       <Oscar />
       <News />
