@@ -32,11 +32,11 @@ const routes = [
     path: "/settings",
     element: Settings
   },
-  {
-    id: 3,
-    path: "/:username",
-    element: User
-  },
+  // {
+  //   id: 3,
+  //   path: "/:username",
+  //   element: User
+  // },
   {
     id: 4,
     path: "/reviews",

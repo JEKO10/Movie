@@ -316,7 +316,7 @@ export const HeaderInfo = styled.article<SlideProps>`
     }
 
     @media ${devices.tablet} {
-      width: 225px;
+      width: 215px;
     }
 
     li {

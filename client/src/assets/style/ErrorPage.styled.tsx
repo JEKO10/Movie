@@ -5,7 +5,7 @@ import onceAmerica from "../images/onceAmerica.jpg";
 import toyStory from "../images/toyStory.webp";
 import trainingDay from "../images/training.jpg";
 import wonderfulLife from "../images/wonderfulLife.jpg";
-import { primaryColor, secondaryColor } from "./GlobalStyles";
+import { devices, primaryColor, secondaryColor } from "./GlobalStyles";
 
 const commonStyles = css`
   height: 100vh;
@@ -17,11 +17,21 @@ const commonStyles = css`
 
   padding: 30px;
 
+  @media ${devices.mobile} {
+    padding: 10px;
+  }
+
   > article {
     background-color: rgba(0, 0, 0, 0.8);
     width: max-content;
 
     padding: 25px 40px;
+
+    @media ${devices.mobile} {
+      width: 300px;
+
+      padding: 15px;
+    }
   }
 
   img {
@@ -33,14 +43,14 @@ const commonStyles = css`
 
   p {
     font-size: 1.2rem;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 
     span {
       color: ${primaryColor};
     }
 
     a {
-      color: ${primaryColor};
+      color: ${secondaryColor};
       transition: all 200ms ease;
 
       &:hover {
@@ -56,7 +66,7 @@ const commonStyles = css`
     margin: 1rem 0;
 
     a {
-      color: ${primaryColor};
+      color: ${secondaryColor};
       transition: all 200ms ease;
 
       &:hover {
