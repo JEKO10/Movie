@@ -50,12 +50,17 @@ export const Header = styled.header`
   position: relative;
 
   @media ${devices.desktopS} {
+    ${flexMixin({ justify: "center", align: "flex-start" })};
+    flex-direction: column;
+
     max-width: none;
 
     margin: 1rem 50px 3rem 15vw;
   }
 
   @media ${devices.laptopS} {
+    align-items: center;
+
     margin: 1rem 10vw 3rem 10vw;
   }
 
@@ -68,12 +73,32 @@ export const HeaderMovie = styled.article<SlideProps>`
   display: flex;
   background-color: ${primaryColor};
 
+  height: 281.25px;
+  width: 845px;
+
   position: relative;
 
   margin-bottom: 3rem;
   border-radius: 12px;
 
   overflow: hidden;
+
+  @media ${devices.laptopL} {
+    width: 795px;
+  }
+
+  @media ${devices.laptopS} {
+    height: auto;
+    width: 615px;
+  }
+
+  @media ${devices.tablet} {
+    width: 430px;
+  }
+
+  @media ${devices.mobile} {
+    width: 288px;
+  }
 
   > article {
     ${flexMixin({ justify: "space-between", align: "center" })};
@@ -83,6 +108,10 @@ export const HeaderMovie = styled.article<SlideProps>`
     transform: ${({ slide }) => css`translateX(-${slide * 100}%)`};
     transition: transform 500ms ease;
 
+    @media ${devices.laptopS} {
+      flex-direction: column-reverse;
+    }
+
     div:first-of-type {
       min-height: 100%;
       width: 345px;
@@ -90,12 +119,28 @@ export const HeaderMovie = styled.article<SlideProps>`
       margin-top: 1.5rem;
       padding: 0 20px;
 
+      @media ${devices.laptopS} {
+        min-height: auto;
+        width: 100%;
+
+        padding-bottom: 0.8rem;
+      }
+
+      @media ${devices.mobile} {
+        margin-top: 1rem;
+        padding: 0 15px 0.8rem;
+      }
+
       > p {
         color: ${paragraphColor};
         font-size: 1.1rem;
         line-height: 22px;
 
         height: 110px;
+
+        @media ${devices.mobile} {
+          line-height: 23px;
+        }
       }
     }
   }
@@ -119,6 +164,10 @@ export const HeaderMovie = styled.article<SlideProps>`
     font-weight: 100;
 
     margin-top: 0.5rem;
+
+    @media ${devices.mobile} {
+      margin-top: 3rem;
+    }
   }
 
   button {
@@ -152,6 +201,22 @@ export const HeaderMovie = styled.article<SlideProps>`
     height: 100%;
     width: 500px;
     border-radius: 0 12px 12px 0;
+
+    @media ${devices.laptopL} {
+      width: 450px;
+    }
+
+    @media ${devices.laptopS} {
+      width: 615px;
+    }
+
+    @media ${devices.tablet} {
+      width: 430px;
+    }
+
+    @media ${devices.mobile} {
+      width: 288px;
+    }
   }
 `;
 
@@ -186,6 +251,15 @@ export const HeaderSlides = styled.div<SlideProps>`
   bottom: 0.8rem;
   left: 20px;
 
+  @media ${devices.laptopS} {
+    left: initial;
+    right: 20px;
+  }
+
+  @media ${devices.mobile} {
+    right: 10px;
+  }
+
   div {
     height: 6px;
     width: 33px;
@@ -212,6 +286,15 @@ export const HeaderSlides = styled.div<SlideProps>`
 
 export const HeaderInfo = styled.article<SlideProps>`
   ${flexMixin({ justify: "space-between", align: "center" })};
+  gap: 85px;
+
+  @media ${devices.laptopL} {
+    gap: 60px;
+  }
+
+  @media ${devices.laptopS} {
+    width: 100%;
+  }
 
   @media ${devices.tablet} {
     flex-wrap: wrap;
@@ -307,7 +390,7 @@ export const HeaderInfo = styled.article<SlideProps>`
     flex-wrap: wrap;
     gap: 5px;
 
-    width: 225px;
+    width: 215px;
 
     list-style-type: none;
 

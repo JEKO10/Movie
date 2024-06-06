@@ -9,7 +9,7 @@ import {
   Input as InputContainer,
   LogButton,
   MenuButton,
-  Nav,
+  Nav
 } from "./Navbar.styled";
 import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
 
