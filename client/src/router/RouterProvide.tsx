@@ -1,6 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
+import FixedNavMenu from "../common/FixedNavMenu";
 import Modals from "../common/modals/Modals";
 import ScrollToTop from "../common/ScrollTop";
 import routes from "./routes";
@@ -10,6 +11,7 @@ function RouterProvider() {
     <Router>
       <Modals />
       <ScrollToTop />
+      <FixedNavMenu />
       <main>
         <Routes>
           {routes.map(({ id, path, element: Component }) => (
