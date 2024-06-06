@@ -27,40 +27,12 @@ export const FixedNavMenu = styled.section`
     list-style-type: none;
 
     margin-top: 8rem;
-
-    @media ${devices.tablet} {
-      margin-top: 5rem;
-    }
-
-    &:last-of-type {
-      @media ${devices.tablet} {
-        margin-top: 2rem;
-      }
-
-      @media ${devices.mobile} {
-        margin-top: 1rem;
-      }
-    }
   }
 
   li {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
 
-    margin: 0 2rem;
-
-    @media ${devices.tablet} {
-      font-size: 1.1rem;
-
-      margin: 1rem 0.5rem;
-    }
-
-    @media ${devices.mobile} {
-      font-size: 0.8rem;
-    }
-
-    @media ${devices.mobileS} {
-      max-width: 110px;
-    }
+    margin: 1.5rem 0;
   }
 `;

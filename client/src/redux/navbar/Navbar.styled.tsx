@@ -280,6 +280,7 @@ export const MenuButton = styled(RxHamburgerMenu)`
 
   display: none;
 
+  z-index: 3;
   cursor: pointer;
 
   @media ${devices.tablet} {
