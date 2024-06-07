@@ -34,5 +34,7 @@ export const FixedNavMenu = styled.section`
     text-transform: uppercase;
 
     margin: 1.5rem 0;
+
+    cursor: pointer;
   }
 `;

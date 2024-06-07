@@ -1,3 +1,4 @@
+import { IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import styled from "styled-components";
 
@@ -275,6 +276,20 @@ export const Input = styled.div`
 `;
 
 export const MenuButton = styled(RxHamburgerMenu)`
+  color: ${tertiaryColor};
+  font-size: 2rem;
+
+  display: none;
+
+  z-index: 3;
+  cursor: pointer;
+
+  @media ${devices.tablet} {
+    display: block;
+  }
+`;
+
+export const MenuButtonClose = styled(IoMdClose)`
   color: ${tertiaryColor};
   font-size: 2rem;
 

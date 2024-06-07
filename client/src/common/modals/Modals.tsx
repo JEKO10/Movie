@@ -14,12 +14,17 @@ import { useAppSelector, useOutsideClick } from "../hooks";
 const Modals = () => {
   const [isClosing, setIsClosing] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const { inputValue, isLogOpen, isMovieModalOpen, isLogInOpen, isSignUpOpen } =
     useAppSelector((state) => state.navbar);
   const { isFavoriteOpen } = useAppSelector((state) => state.profile);
 
   const { ref } = useOutsideClick(setIsModalOpen);
+
+  if (isMenuOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
 
   return (
     <section ref={ref}>

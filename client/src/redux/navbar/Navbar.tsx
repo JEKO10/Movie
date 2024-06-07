@@ -9,6 +9,7 @@ import {
   Input as InputContainer,
   LogButton,
   MenuButton,
+  MenuButtonClose,
   Nav,
 } from "./Navbar.styled";
 import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
@@ -28,7 +29,11 @@ const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
 
   return (
     <Nav>
-      <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)} />
+      {isMenuOpen ? (
+        <MenuButtonClose onClick={() => setIsMenuOpen(false)} />
+      ) : (
+        <MenuButton onClick={() => setIsMenuOpen(true)} />
+      )}
       <Link to={"/"}>
         <h1>
           <span>Movie</span>xd
