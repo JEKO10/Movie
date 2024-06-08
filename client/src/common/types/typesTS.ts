@@ -52,6 +52,7 @@ export type InitialTrendPeople = {
 export type InitialTrendMovies = {
   isLoading: boolean;
   trendingMovies: Trending[];
+  movieCredits: MovieCreditsType[];
   time: string;
 };
 

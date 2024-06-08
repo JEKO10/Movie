@@ -4,13 +4,14 @@ import {
   devices,
   flexMixin,
   primaryColor,
-  secondaryColor,
+  secondaryColor
 } from "./GlobalStyles";
 
 export const Footer = styled.footer`
   ${flexMixin({ justify: "space-between", align: "center" })};
   background-color: ${primaryColor};
 
+  margin-top: 7rem;
   padding: 20px;
 
   @media ${devices.laptop} {

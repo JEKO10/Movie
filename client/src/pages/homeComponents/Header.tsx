@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
-import { MovieCreditsType } from "../../common/types/typesTS";
-import { getTrending } from "../../redux/trendingMovies/trendingMoviesSlice";
+import {
+  getCredits,
+  getTrending
+} from "../../redux/trendingMovies/trendingMoviesSlice";
 import {
   Header as Container,
   HeaderInfo,
@@ -22,50 +24,41 @@ type GenreList = {
 
 const Header = () => {
   const [slide, setSlide] = useState(0);
-  const [movieCredits, setMovieCredits] = useState<MovieCreditsType[]>();
   const [genresList, setGenresList] = useState<GenreList[]>();
-  const { trendingMovies, time, isLoading } = useAppSelector(
+  const { trendingMovies, movieCredits, time, isLoading } = useAppSelector(
     (store) => store.trendingMovies
   );
   const dispatch = useAppDispatch();
   const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
   const profileUrl = "https://image.tmdb.org/t/p/w185/";
 
-  const getCredits = async () => {
-    const movieCreditsArray: MovieCreditsType[] = [];
-
-    try {
-      for (let i = 0; i < 4; i++) {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${trendingMovies[i]?.id}/credits?api_key=${import.meta.env.VITE_API_KEY}`
-        );
-
-        movieCreditsArray.push(response.data);
-      }
-
-      setMovieCredits(movieCreditsArray);
-    } catch (error) {
-      console.error("Error fetching credits:", error);
-    }
-  };
-
   const handleClick = (index: number) => {
     setSlide(index);
-    getCredits();
   };
 
   useEffect(() => {
-    dispatch(getTrending(time));
-    getCredits();
+    const fetchTrendingAndCredits = async () => {
+      const trendingAction = await dispatch(getTrending(time));
+
+      if (getTrending.fulfilled.match(trendingAction)) {
+        const trendingMovies = trendingAction.payload;
+
+        if (trendingMovies.length > 0) {
+          dispatch(getCredits());
+        }
+      }
+    };
+
+    fetchTrendingAndCredits();
 
     axios
       .get(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=57f3cbeef6fb415a143ea528978252e4&language=en-US`
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`
       )
       .then((response) => {
         setGenresList(response.data.genres);
       });
-  }, []);
+  }, [dispatch, time]);
 
   if (isLoading) {
     return (
