@@ -220,7 +220,7 @@ export const Name = styled.div`
 export const Overview = styled.div`
   ${flexMixin({ justify: "center", align: "flex-start" })};
 
-  article:first-child {
+  > article:first-of-type {
     display: flex;
     flex-direction: column;
 

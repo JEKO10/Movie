@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import { flexMixin, paragraphColor } from "../../assets/style/GlobalStyles";
+import {
+  devices,
+  flexMixin,
+  paragraphColor
+} from "../../assets/style/GlobalStyles";
 
 type MoviesListProps = {
   isCollection: boolean;
@@ -11,6 +15,10 @@ export const Discover = styled.section`
   max-width: 80vw;
 
   margin: 3rem auto;
+
+  @media ${devices.tablet} {
+    max-width: 90vw;
+  }
 `;
 
 export const MoviesList = styled.article<MoviesListProps>`
@@ -19,6 +27,26 @@ export const MoviesList = styled.article<MoviesListProps>`
     isCollection ? `repeat(8, 1fr)` : `repeat(12, 1fr)`};
   /* grid-template-columns: repeat(auto-fit, minmax(12, 1fr)); */
   grid-gap: 10px;
+
+  @media ${devices.laptopL} {
+    grid-template-columns: ${({ isCollection }) =>
+      isCollection ? `repeat(6, 1fr)` : `repeat(12, 1fr)`};
+  }
+
+  @media ${devices.laptopS} {
+    grid-template-columns: ${({ isCollection }) =>
+      isCollection ? `repeat(5, 1fr)` : `repeat(12, 1fr)`};
+  }
+
+  @media ${devices.tablet} {
+    grid-template-columns: ${({ isCollection }) =>
+      isCollection ? `repeat(3, 1fr)` : `repeat(12, 1fr)`};
+  }
+
+  @media ${devices.mobile} {
+    grid-template-columns: ${({ isCollection }) =>
+      isCollection ? `repeat(1, 1fr)` : `repeat(12, 1fr)`};
+  }
 
   > p {
     grid-area: 1/-1;

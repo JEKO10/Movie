@@ -7,7 +7,7 @@ import {
   Modal,
   ModalLists,
   PublicToggle,
-  Submit,
+  Submit
 } from "../../../../assets/style/Modals.styled";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks";
 import { Underline } from "../../SingleMovie.styled";
