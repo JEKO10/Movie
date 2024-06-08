@@ -9,11 +9,17 @@ import {
   Input as InputContainer,
   LogButton,
   MenuButton,
-  Nav
+  MenuButtonClose,
+  Nav,
 } from "./Navbar.styled";
 import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
 
-const Navbar = () => {
+type NavbarProps = {
+  isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Navbar: React.FC<NavbarProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const { isLogOpen, inputValue } = useAppSelector((store) => store.navbar);
   const { isLoggedIn, isFavoriteOpen } = useAppSelector(
     (store) => store.profile
@@ -23,7 +29,11 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <MenuButton />
+      {isMenuOpen ? (
+        <MenuButtonClose onClick={() => setIsMenuOpen(false)} />
+      ) : (
+        <MenuButton onClick={() => setIsMenuOpen(true)} />
+      )}
       <Link to={"/"}>
         <h1>
           <span>Movie</span>xd
