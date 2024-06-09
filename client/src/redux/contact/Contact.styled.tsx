@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import {
+  devices,
   flexMixin,
   primaryFont,
   secondaryColor
@@ -10,12 +11,18 @@ export const ContactPage = styled.section`
   ${flexMixin({ justify: "flex-start", align: "flex-start" })};
   flex-direction: column;
 
-  min-height: 90vh;
+  max-width: 80vw;
 
-  padding-top: 70px;
+  margin: 3rem auto;
+
+  @media ${devices.laptopS} {
+    max-width: 90vw;
+  }
 
   h2 {
     color: ${secondaryColor};
+    font-weight: 100;
+
     margin-bottom: 2rem;
   }
 

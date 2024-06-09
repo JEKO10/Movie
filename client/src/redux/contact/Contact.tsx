@@ -1,5 +1,5 @@
 import emailjs from "@emailjs/browser";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import contactImg from "../../assets/images/contact.jpg";
@@ -10,6 +10,7 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [contactStatus, setContactStatus] = useState("");
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
@@ -36,15 +37,29 @@ const Contact = () => {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <ContactPage>
       <h2>Contact Moviexd</h2>
       <article>
-        <ContactPoster>
-          <Link to="/movie/686">
-            <img src={contactImg} alt="contactImg" />
-          </Link>
-        </ContactPoster>
+        {innerWidth > 768 && (
+          <ContactPoster>
+            <Link to="/movie/686">
+              <img src={contactImg} alt="contactImg" />
+            </Link>
+          </ContactPoster>
+        )}
         <ContactForm ref={form} onSubmit={sendEmail}>
           <label>
             Your name

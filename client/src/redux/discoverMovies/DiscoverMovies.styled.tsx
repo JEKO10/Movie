@@ -11,7 +11,6 @@ type MoviesListProps = {
 };
 
 export const Discover = styled.section`
-  min-height: 76.5vh;
   max-width: 80vw;
 
   margin: 3rem auto;
