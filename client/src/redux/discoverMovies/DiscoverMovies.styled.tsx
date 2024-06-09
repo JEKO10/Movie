@@ -16,7 +16,7 @@ export const Discover = styled.section`
 
   margin: 3rem auto;
 
-  @media ${devices.tablet} {
+  @media ${devices.laptopS} {
     max-width: 90vw;
   }
 `;
@@ -30,22 +30,22 @@ export const MoviesList = styled.article<MoviesListProps>`
 
   @media ${devices.laptopL} {
     grid-template-columns: ${({ isCollection }) =>
-      isCollection ? `repeat(6, 1fr)` : `repeat(12, 1fr)`};
+      isCollection ? `repeat(6, 1fr)` : `repeat(8, 1fr)`};
   }
 
   @media ${devices.laptopS} {
     grid-template-columns: ${({ isCollection }) =>
-      isCollection ? `repeat(5, 1fr)` : `repeat(12, 1fr)`};
+      isCollection ? `repeat(5, 1fr)` : `repeat(6, 1fr)`};
   }
 
   @media ${devices.tablet} {
     grid-template-columns: ${({ isCollection }) =>
-      isCollection ? `repeat(3, 1fr)` : `repeat(12, 1fr)`};
+      isCollection ? `repeat(3, 1fr)` : `repeat(4, 1fr)`};
   }
 
   @media ${devices.mobile} {
     grid-template-columns: ${({ isCollection }) =>
-      isCollection ? `repeat(1, 1fr)` : `repeat(12, 1fr)`};
+      isCollection ? `repeat(1, 1fr)` : `repeat(2, 1fr)`};
   }
 
   > p {

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-import { devices, flexMixin, paragraphColor } from "../../assets/style/GlobalStyles";
+import {
+  devices,
+  flexMixin,
+  paragraphColor
+} from "../../assets/style/GlobalStyles";
 
 export const Person = styled.section`
   ${flexMixin({ justify: "space-between", align: "flex-start" })};
@@ -40,8 +44,10 @@ export const Person = styled.section`
   }
 
   h2 {
-    margin: 0.5rem 0;
     color: #fff;
+    font-weight: 100;
+
+    margin: 0.5rem 0;
 
     @media ${devices.tablet} {
       line-height: 25px;
@@ -49,10 +55,10 @@ export const Person = styled.section`
   }
 
   h4 {
+    font-weight: 100;
     margin: 0.2rem 0;
 
     @media ${devices.tablet} {
-      font-weight: 100;
       line-height: 20px;
 
       margin: 0.5rem 0;
@@ -72,6 +78,7 @@ export const PersonImg = styled.img`
   border-radius: 5px;
 
   transition: all 200ms ease;
+  cursor: pointer;
 
   @media ${devices.laptopS} {
     width: 170px;
@@ -91,6 +98,7 @@ export const FullBio = styled.h5`
 
   color: #fff;
   font-size: 1rem;
+  font-weight: 100;
   text-decoration: underline;
 
   margin-top: 1rem;

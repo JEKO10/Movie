@@ -423,9 +423,15 @@ export const Review = styled.article`
       margin-right: 2rem;
       border-radius: 50%;
     }
+
+    h2 {
+      font-weight: 100;
+      letter-spacing: 1px;
+    }
   }
 
   h4 {
+    font-weight: 100;
     text-align: start;
 
     width: 100%;
