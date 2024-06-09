@@ -19,6 +19,10 @@ export const ContactPage = styled.section`
     max-width: 90vw;
   }
 
+  @media ${devices.tablet} {
+    justify-content: center;
+  }
+
   h2 {
     color: ${secondaryColor};
     font-weight: 100;
@@ -29,6 +33,10 @@ export const ContactPage = styled.section`
   > article {
     ${flexMixin({ justify: "space-between", align: "flex-start" })};
     width: 100%;
+
+    @media ${devices.tablet} {
+      justify-content: center;
+    }
   }
 `;
 
@@ -44,6 +52,10 @@ export const ContactPoster = styled.article`
 `;
 
 export const ContactForm = styled.form`
+  @media ${devices.tablet} {
+    width: 100%;
+  }
+
   label {
     ${flexMixin({ justify: "center", align: "flex-start" })};
     flex-direction: column;
@@ -59,7 +71,7 @@ export const ContactForm = styled.form`
       background-color: #2c3440;
       color: #89a;
       font-family: ${primaryFont};
-      font-weight: 600;
+      font-weight: 100;
 
       max-height: 200px;
       width: 350px;
@@ -73,6 +85,12 @@ export const ContactForm = styled.form`
 
       box-shadow: inset 0 -1px 0 #456;
       resize: vertical;
+
+      @media ${devices.tablet} {
+        font-size: 1.2rem;
+
+        width: 100%;
+      }
     }
   }
 
@@ -80,7 +98,7 @@ export const ContactForm = styled.form`
     background-color: #2c3440;
     color: #89a;
     font-family: ${primaryFont};
-    font-weight: 600;
+    font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 2px;
 
@@ -93,6 +111,12 @@ export const ContactForm = styled.form`
     box-shadow: inset 0 -1px 0 #456;
     transition: all 200ms ease;
     cursor: pointer;
+
+    @media ${devices.tablet} {
+      font-size: 1.2rem;
+
+      width: 100%;
+    }
 
     &:hover {
       color: #f4fcf0;
