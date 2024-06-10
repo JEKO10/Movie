@@ -10,6 +10,7 @@
 - [Project overview](#project-overview)
 - [Built with](#built-with)
 - [Live preview](#live-preview)
+- [Lighthouse Score](#lighthouse-score)
 
 ## Project task
 
@@ -30,6 +31,19 @@
 - Vite 
 - GitHub Pages
 
+## Lighthouse Score
+
+![Lighthouse Score](https://github.com/JEKO10/Moviexd/assets/84730554/ac7385a2-b8fd-4697-adf2-00344eed7be6)
+
+- **Performance**: 98
+- **Accessibility**: 94
+- **Best Practices**: 93
+- **SEO**: 90
+
+*Last updated: 6/10/2024*
+
+I continuously strive to maintain and improve these scores with each update.
+
 ## Live preview
 
-[Click for live preview]()
+[Click for live preview](https://jeko10.github.io/Moviexd/)
