@@ -8,7 +8,7 @@ import {
   primaryColor,
   primaryFont,
   secondaryColor,
-  tertiaryColor,
+  tertiaryColor
 } from "../../assets/style/GlobalStyles";
 
 type ProfileMenuProps = {
@@ -122,7 +122,7 @@ export const ProfileHeader = styled.header`
   }
 
   p {
-    font-size: 25px;
+    font-size: 1.5rem;
     margin: 0 0.5rem;
   }
 
@@ -133,6 +133,14 @@ export const ProfileHeader = styled.header`
 
 export const ProfileMenu = styled.section`
   position: relative;
+
+  @media ${devices.laptopL} {
+    margin-right: -1.5rem;
+  }
+
+  @media ${devices.tablet} {
+    position: absolute;
+  }
 `;
 
 export const ProfileModal = styled.ul<ProfileMenuProps>`
@@ -183,7 +191,7 @@ export const ProfileModal = styled.ul<ProfileMenuProps>`
 export const LogButton = styled.button`
   background-color: ${primaryColor};
   color: #fff;
-  font-size: 30px;
+  font-size: 1.8rem;
   font-family: ${primaryFont};
   text-transform: uppercase;
 
@@ -193,19 +201,25 @@ export const LogButton = styled.button`
   transition: background-color 200ms ease;
   cursor: pointer;
 
-  &:hover {
-    background-color: ${secondaryColor};
+  @media ${devices.laptopL} {
+    font-size: 1.5rem;
+
+    padding: 10px 20px;
   }
 
   @media ${devices.tablet} {
-    display: none;
+    position: absolute;
+  }
+
+  &:hover {
+    background-color: ${secondaryColor};
   }
 `;
 
 export const Input = styled.div`
   position: relative;
 
-  margin-left: 2rem;
+  margin-left: 1rem;
 
   @media ${devices.laptopS} {
     margin-left: 0;
@@ -226,7 +240,7 @@ export const Input = styled.div`
     border-radius: 5px;
     outline: none;
 
-    @media ${devices.laptopL} {
+    @media ${devices.desktopS} {
       width: 400px;
     }
 

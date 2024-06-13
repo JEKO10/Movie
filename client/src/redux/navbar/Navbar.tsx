@@ -10,7 +10,7 @@ import {
   LogButton,
   MenuButton,
   MenuButtonClose,
-  Nav,
+  Nav
 } from "./Navbar.styled";
 import { setIsLogInOpen, setIsLogOpen, setIsSignUpOpen } from "./navbarSlice";
 
