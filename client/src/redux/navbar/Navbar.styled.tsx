@@ -134,12 +134,8 @@ export const ProfileHeader = styled.header`
 export const ProfileMenu = styled.section`
   position: relative;
 
-  @media ${devices.laptopL} {
-    margin-right: -1.5rem;
-  }
-
   @media ${devices.tablet} {
-    position: absolute;
+    display: none;
   }
 `;
 
@@ -208,7 +204,7 @@ export const LogButton = styled.button`
   }
 
   @media ${devices.tablet} {
-    position: absolute;
+    display: none;
   }
 
   &:hover {

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { devices, flexMixin } from "./GlobalStyles";
+import { devices, flexMixin, primaryColor } from "./GlobalStyles";
 
 export const FixedNavMenu = styled.section`
   ${flexMixin({ justify: "center", align: "flex-start" })};
@@ -26,7 +26,26 @@ export const FixedNavMenu = styled.section`
     flex-wrap: wrap;
     list-style-type: none;
 
-    margin-top: 8rem;
+    margin-top: 3rem;
+
+    > ul {
+      background-color: ${primaryColor};
+      list-style-type: none;
+
+      margin-top: 0;
+      padding: 0 20px; // top right bottom left
+      border-radius: 5px;
+
+      li {
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+
+        width: 100%;
+
+        margin: 0.5rem 0;
+      }
+    }
   }
 
   li {

@@ -1,26 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FixedNavMenu as Container } from "../assets/style/FixedNavMenu.styled";
-import { LogButton } from "../redux/navbar/Navbar.styled";
 import {
   setIsLogInOpen,
   setIsLogOpen,
-  setIsSignUpOpen,
+  setIsSignUpOpen
 } from "../redux/navbar/navbarSlice";
+import { Underline } from "../redux/singleMovie/SingleMovie.styled";
 import { useAppDispatch, useAppSelector } from "./hooks";
 
 const FixedNavMenu = () => {
-  const { isLoggedIn } = useAppSelector((store) => store.profile);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const { isLoggedIn, registerInfo } = useAppSelector((store) => store.profile);
   const dispatch = useAppDispatch();
 
   return (
     <Container>
-      {isLoggedIn && (
-        <LogButton onClick={() => dispatch(setIsLogOpen(true))}>
-          Log +
-        </LogButton>
-      )}
       <ul>
+        {isLoggedIn && (
+          <li onClick={() => setIsProfileOpen(!isProfileOpen)}>JEKO</li>
+        )}
+        {isProfileOpen && (
+          <ul>
+            <li>Profile</li>
+            <Underline margin="5px 0 5px -20px" width="calc(100% + 40px)" />
+            <li>Home</li>
+            <li>Films</li>
+            <li>Reviews</li>
+            <li>Likes</li>
+            <li>Watchlist</li>
+            <li>Lists</li>
+            <li>Settings</li>
+            <Underline margin="5px 0 5px -20px" width="calc(100% + 40px)" />
+            <li>Sign Out</li>
+          </ul>
+        )}
+        {isLoggedIn && (
+          <li onClick={() => dispatch(setIsLogOpen(true))}>Log +</li>
+        )}
         {!isLoggedIn && (
           <li onClick={() => dispatch(setIsLogInOpen(true))}>Log in</li>
         )}
@@ -29,7 +46,7 @@ const FixedNavMenu = () => {
         )}
         <li>Films</li>
         <li>Members</li>
-        {!isLoggedIn && <li>Journal</li>}
+        <li>Journal</li>
       </ul>
     </Container>
   );
