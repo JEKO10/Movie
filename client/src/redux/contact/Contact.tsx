@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import contactImg from "../../assets/images/contact.jpg";
+import { useResize } from "../../common/hooks";
 import { ContactForm, ContactPage, ContactPoster } from "./Contact.styled";
 
 const Contact = () => {
@@ -10,8 +11,9 @@ const Contact = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [contactStatus, setContactStatus] = useState("");
-  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const form = useRef<HTMLFormElement>(null);
+
+  useResize();
 
   const sendEmail = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,18 +38,6 @@ const Contact = () => {
       );
     }
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setInnerWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <ContactPage>

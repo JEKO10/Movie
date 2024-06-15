@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IoStar } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../common/hooks";
+import { useAppDispatch, useAppSelector, useResize } from "../../common/hooks";
 import { Loader, LoaderWrapper } from "../../common/Loader";
 import {
   getCredits,
@@ -31,6 +31,8 @@ const Header = () => {
   const dispatch = useAppDispatch();
   const backdropUrl = "https://image.tmdb.org/t/p/w1280/";
   const profileUrl = "https://image.tmdb.org/t/p/w185/";
+
+  useResize();
 
   const handleClick = (index: number) => {
     setSlide(index);
@@ -74,14 +76,8 @@ const Header = () => {
           <article key={movie.id}>
             <div>
               <h3>
-                {movie.title.slice(0, 14) ||
-                  movie.original_title.slice(0, 14) ||
-                  movie.original_name.slice(0, 14)}
-                {movie.title?.length > 14 ||
-                movie.original_title?.length > 14 ||
-                movie.original_name?.length > 14
-                  ? "..."
-                  : ""}
+                {innerWidth > 992 ? movie.title.slice(0, 14) : movie.title}
+                {movie.title?.length > 14 && innerWidth > 992 && "..."}
               </h3>
               <p>{movie.overview.slice(0, 200)}...</p>
               <h5>{movie.release_date.slice(0, 4)}</h5>

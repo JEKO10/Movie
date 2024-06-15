@@ -152,6 +152,15 @@ export const HeaderMovie = styled.article<SlideProps>`
     line-height: 40px;
 
     margin-bottom: 0.5rem;
+
+    @media ${devices.laptopS} {
+      line-height: 45px;
+    }
+
+    @media ${devices.tablet} {
+      font-size: 2.2rem;
+      line-height: 40px;
+    }
   }
 
   h4 {

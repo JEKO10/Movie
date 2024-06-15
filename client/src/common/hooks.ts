@@ -47,3 +47,17 @@ export const useCapsLock = () => {
 
   return { isCapsOn, handleCapsLock, setIsCapsOn };
 };
+
+export const useResize = () => {
+  const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  const handleResize = () => {
+    setInnerWidth(window.innerWidth);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () => {
+    window.removeEventListener("resize", handleResize);
+  };
+};
