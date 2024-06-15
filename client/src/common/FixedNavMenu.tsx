@@ -7,18 +7,20 @@ import {
   setIsSignUpOpen
 } from "../redux/navbar/navbarSlice";
 import { Underline } from "../redux/singleMovie/SingleMovie.styled";
-import { useAppDispatch, useAppSelector } from "./hooks";
+import { useAppDispatch, useAppSelector, useGetUsername } from "./hooks";
 
 const FixedNavMenu = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const { isLoggedIn, registerInfo } = useAppSelector((store) => store.profile);
+  const { isLoggedIn } = useAppSelector((store) => store.profile);
   const dispatch = useAppDispatch();
+
+  const { username } = useGetUsername();
 
   return (
     <Container>
       <ul>
         {isLoggedIn && (
-          <li onClick={() => setIsProfileOpen(!isProfileOpen)}>JEKO</li>
+          <li onClick={() => setIsProfileOpen(!isProfileOpen)}>{username}</li>
         )}
         {isProfileOpen && (
           <ul>
