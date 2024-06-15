@@ -23,7 +23,7 @@ const FixedNavMenu = () => {
         {isProfileOpen && (
           <ul>
             <li>Profile</li>
-            <Underline margin="5px 0 5px -20px" width="calc(100% + 40px)" />
+            <Underline margin="5px 0 5px 0" width="100%" />
             <li>Home</li>
             <li>Films</li>
             <li>Reviews</li>
@@ -31,7 +31,7 @@ const FixedNavMenu = () => {
             <li>Watchlist</li>
             <li>Lists</li>
             <li>Settings</li>
-            <Underline margin="5px 0 5px -20px" width="calc(100% + 40px)" />
+            <Underline margin="5px 0 5px 0" width="100%" />
             <li>Sign Out</li>
           </ul>
         )}

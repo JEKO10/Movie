@@ -15,6 +15,7 @@ export const FixedNavMenu = styled.section`
   left: 0;
 
   z-index: 2;
+  overflow-y: auto;
 
   @media ${devices.tablet} {
     display: flex;
@@ -26,14 +27,13 @@ export const FixedNavMenu = styled.section`
     flex-wrap: wrap;
     list-style-type: none;
 
-    margin-top: 3rem;
+    margin: 3rem 0;
 
     > ul {
       background-color: ${primaryColor};
       list-style-type: none;
 
-      margin-top: 0;
-      padding: 0 20px; // top right bottom left
+      margin: 0;
       border-radius: 5px;
 
       li {
@@ -43,7 +43,12 @@ export const FixedNavMenu = styled.section`
 
         width: 100%;
 
-        margin: 0.5rem 0;
+        margin: 0;
+        padding: 0.5rem 20px;
+
+        &:last-of-type {
+          padding-bottom: 0.7rem;
+        }
       }
     }
   }
